@@ -6,7 +6,7 @@ public class Parking {
 	static private int numeroPlace = 0, nbPlacesMax;
 
 	private String nom;
-	private ArrayList<Place> listeVehicules = new ArrayList<Place>(); // Le type de collection n'est sans doute pas définitif
+	private ArrayList<Place> listeVehicules = new ArrayList<Place>(); // Le type de collection n'est sans doute pas dï¿½finitif
 
 	@Override
 	public String toString() {
@@ -41,21 +41,29 @@ public class Parking {
 		}
 		return false;
 	}// vehiculeExiste()
-	
+
+	public Vehicule unpark(int numeroPlace) {
+		for(Place p : this.listeVehicules ){
+			if(numeroPlace == p.getNumero())
+				return p.unpark();
+		}
+		return null;
+	}// unpark()
+
 	public static void main(String[] args) {
-		// Création du parking //
+		// Crï¿½ation du parking //
 		Parking parking = new Parking("My fucking parking", 4);
 		
-		// Création des places //
+		// Crï¿½ation des places //
 		Particulier p1 = new Particulier();
 		Particulier p2 = new Particulier();
 		Transporteur t1 = new Transporteur();
 		Transporteur t2 = new Transporteur();
 
-		// Création des véhicules //
+		// Crï¿½ation des vï¿½hicules //
 		Vehicule v1 = new Vehicule("E4IL", "Sitrohaine", "NTM", "Voili Voilou");
 		Vehicule v2 = new Vehicule("R3T4RD", "Beta Juliette", "LMAO", "Titi Tata");
-		Vehicule v3 = new Vehicule("KDNAPPR", "Pherrary", "SWAG", "Claude François");
+		Vehicule v3 = new Vehicule("KDNAPPR", "Pherrary", "SWAG", "Claude Franï¿½ois");
 		Camion c1 = new Camion("S0L31L", "Porschiaaaaa", "YOLO", "Toto Tata", 15, 355);
 		
 		// Ajout des places au parking //
@@ -64,12 +72,18 @@ public class Parking {
 		parking.ajouterPlace(p2);
 		parking.ajouterPlace(t2);
 		
-		// Placements des véhicules sur les places //
+		// Placements des vï¿½hicules sur les places //
 		p1.park(v1);
 		t1.park(c1);
 		p2.park(v2);
 		t2.park(v3);
 		
+		System.out.println(parking);
+
+		Vehicule vehiculetest = parking.unpark(1);
+
+		System.out.println("Le vhehicule Ã  Ã©tÃ© retirÃ© :" + vehiculetest + "Ã  la place numero :" + 1);
+
 		System.out.println(parking);
 	}
 

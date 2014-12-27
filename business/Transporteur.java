@@ -1,6 +1,7 @@
 package parking.business;
 
 import parking.exception.NombrePlacesMaxException;
+import parking.exception.PlaceLibreException;
 import parking.exception.PlaceOccupeeException;
 
 public class Transporteur implements Place {
@@ -34,6 +35,8 @@ public class Transporteur implements Place {
 		this.vehicule = vehicule;
 	}// setVehicule()
 
+	public int getNumero() { return numeroPlace; }//getNumero()
+
 	public void park(Vehicule v) {
 		try{
 			if(this.vehicule != null)
@@ -41,9 +44,21 @@ public class Transporteur implements Place {
 			setVehicule(v);
 		}
 		catch(PlaceOccupeeException e){
-			System.out.println("La place " + numeroPlace + " est déjà occupée et/ou n'est pas adaptée à ce véhicule");
+			System.out.println("La place " + numeroPlace + " est dï¿½jï¿½ occupï¿½e et/ou n'est pas adaptï¿½e ï¿½ ce vï¿½hicule");
 		}
 	}// park()
 
-	
+	public Vehicule unpark() {
+		try {
+			if(this.vehicule == null)
+				throw new PlaceLibreException();
+			Vehicule vehicule_renvoyÃ© = this.vehicule;
+			setVehicule(null);
+			return vehicule_renvoyÃ©;
+		}
+		catch (PlaceLibreException e) {
+			System.out.println("La place " + numeroPlace + "est dÃ¨ja vide.");
+			return null;
+		}
+	}// unpark()
 }

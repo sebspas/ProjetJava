@@ -6,6 +6,10 @@ public interface Place {
 	public String toString();
 	
 	public Vehicule getVehicule();
+
+	public int getNumero();
 	
 	public void park(Vehicule v);
+
+	public Vehicule unpark();
 }
