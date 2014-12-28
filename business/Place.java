@@ -21,4 +21,5 @@ public interface Place {
 
 	public boolean getReservation(); // renvoie un boolean indiquant si la place est ou non réservée
 
+	public void setNumero(int numero);
 }

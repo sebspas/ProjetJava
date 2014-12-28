@@ -21,7 +21,7 @@ public class Vehicule {
 	public String toString() {
 		return "Vehicule [immatriculation=" + immatriculation + ", marque="
 				+ marque + ", modele=" + modele + ", proprietaire="
-				+ proprietaire + "]";
+				+ proprietaire + "type=" + type + "]";
 	}// toString()
 	
 	

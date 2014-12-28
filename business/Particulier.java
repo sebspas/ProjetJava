@@ -13,17 +13,8 @@ public class Particulier implements Place{
 	private boolean Reserver;
 
 	public Particulier() {
-		try{
-			if(Parking.getNbPlacesMax() == Parking.getNumeroPlace())
-				throw new NombrePlacesMaxException();
-			this.numeroPlace = Parking.getNumeroPlace();
-			Parking.setNumeroPlace(Parking.getNumeroPlace()+1);
-			this.type = "Particulier";
-			this.Reserver = false;
-		}
-		catch(NombrePlacesMaxException e){
-			System.out.println("Le parking a atteint le nombre maximal de places");
-		}
+		this.type = "Particulier";
+		this.Reserver = false;
 	}// Constructeur()
 
 	@Override
@@ -41,6 +32,10 @@ public class Particulier implements Place{
 	}// setVehicule()
 
 	public int getNumero() { return numeroPlace; }//getNumero()
+
+	public void setNumero(int numero) {
+		numeroPlace = numero;
+	} // setNumero()
 
 	public String getType() { return type; }//getType()
 

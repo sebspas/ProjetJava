@@ -1,5 +1,6 @@
 package parking.business;
 
+import parking.exception.NombrePlacesMaxException;
 import parking.exception.PlaceDisponibleException;
 import parking.exception.PlusAucunePlaceException;
 
@@ -39,7 +40,16 @@ public class Parking {
 	}// getNbPlacesMax()
 
 	public static void ajouterPlace(Place p){
-		Parking.listeVehicules.add(p);
+		try {
+			if(Parking.getNbPlacesMax() == Parking.getNumeroPlace())
+				throw new NombrePlacesMaxException();
+			p.setNumero(Parking.getNumeroPlace());
+			Parking.setNumeroPlace(Parking.getNumeroPlace()+1);
+			Parking.listeVehicules.add(p);
+		}
+		catch (NombrePlacesMaxException e) {
+			System.out.println("Le parking a atteint le nombre maximal de places");
+		}
 	}// ajouterPlace()
 
 	public static boolean vehiculeExiste(Vehicule v){
@@ -57,6 +67,34 @@ public class Parking {
 		}
 		return null;
 	}// unpark()
+
+	public static void park(Vehicule vehicule) {
+		try {
+			String typePlace = "Transporteur";
+			if (vehicule.getType().equals("Voiture")) {
+				typePlace = "Particulier";
+			}
+			Place placeTransporteur = new Transporteur();
+			for (Place p : Parking.listeVehicules) {
+				if (p.getVehicule() == null) {
+					if (p.getType().equals(typePlace)) {
+						p.park(vehicule);
+						return;
+					}
+					else {
+						placeTransporteur = p;
+					}
+				}
+			}
+			if (placeTransporteur != null)
+				placeTransporteur.park(vehicule);
+			else
+				throw new PlusAucunePlaceException();
+		}
+		catch (PlusAucunePlaceException e) {
+			System.out.println("Le parking est complet !");
+		}
+	} // park()
 
 	public static void etatParking() {
 		System.out.println("Debut de l'affichage du parking !");
@@ -144,12 +182,14 @@ public class Parking {
 		Parking.ajouterPlace(t1);
 		Parking.ajouterPlace(p2);
 		Parking.ajouterPlace(t2);
-		
+
+		Parking.etatParking();
+
 		// Placements des v�hicules sur les places //
-		p1.park(v1);
-		t1.park(c1);
-		p2.park(v2);
-		t2.park(v3);
+		Parking.park(v1);
+		Parking.park(c1);
+		Parking.park(v2);
+		Parking.park(v3);
 		
 		//System.out.println(parking);
 		Parking.etatParking();
