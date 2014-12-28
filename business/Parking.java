@@ -161,6 +161,17 @@ public class Parking {
 			return unpark(numPlace);
 	} // retirerVehicule()
 
+	public static void reorganiserPlaces() {
+		for (Place p : Parking.listeVehicules) {
+			if (p.getType().equals("Transporteur") && p.getVehicule() != null) {
+				if (p.getVehicule().getType().equals("Voiture")) {
+					Vehicule vretiré = unpark(p.getNumero());
+					Parking.park(vretiré);
+				}
+			}
+		}
+	} // reorganiserPlaces()
+
 	public static void main(String[] args) {
 		// Cr�ation du parking //
 		//Parking parking = new Parking("My fucking parking", 4);
@@ -219,6 +230,10 @@ public class Parking {
 
 		System.out.println("On retire le vehicule immatriculé E4IL de la place trouver via getLocation");
 		Vehicule vehiculeRetire = Parking.retirerVehicule("E4IL");
+
+		Parking.etatParking();
+
+		Parking.reorganiserPlaces();
 
 		Parking.etatParking();
 	}
