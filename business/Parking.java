@@ -1,5 +1,9 @@
 package parking.business;
 
+import parking.exception.PlaceDisponibleException;
+import parking.exception.PlaceLibreException;
+import parking.exception.PlusAucunePlaceException;
+
 import java.util.ArrayList;
 
 public class Parking {
@@ -57,11 +61,48 @@ public class Parking {
 			if (p.getVehicule() != null)
 				System.out.println("La place a pour vehicule : " + p.getVehicule() + "\n");
 			else
-				System.out.println("La place n'a pas de vehicule !\n");
+				System.out.println("La place n'a pas de vehicule ! Elle " + p.getReserver() + "\n");
 		}
 		System.out.println("Fin de l'affichage du parking !\n");
-	}
+	} // etatParking()
 
+	public Place bookPlace() {
+		try {
+			for (Place p : this.listeVehicules) {
+				if (p.getVehicule() == null) {
+					p.setReservation(true);
+					return p;
+				}
+			}
+			throw new PlusAucunePlaceException();
+		}
+		catch (PlusAucunePlaceException e) {
+			System.out.println("Aucune place disponble");
+			return null;
+		}
+	} // bookPlace()
+
+	public Place freePlace(int numeroPlace) {
+		try {
+			for (Place p : this.listeVehicules) {
+				if (p.getNumero() == numeroPlace ) {
+					if (p.getReservation()) {
+						p.setReservation(false);
+						return p;
+					}
+					else
+						throw new PlaceDisponibleException();
+				}
+			}
+			return null;
+		}
+		catch (PlaceDisponibleException e) {
+			System.out.println("place déja disponible ! (pas réservée)");
+			return null;
+		}
+	} // freePlace()
+
+	
 	public static void main(String[] args) {
 		// Cr�ation du parking //
 		Parking parking = new Parking("My fucking parking", 4);
@@ -73,10 +114,10 @@ public class Parking {
 		Transporteur t2 = new Transporteur();
 
 		// Cr�ation des v�hicules //
-		Vehicule v1 = new Vehicule("E4IL", "Sitrohaine", "NTM", "Voili Voilou");
-		Vehicule v2 = new Vehicule("R3T4RD", "Beta Juliette", "LMAO", "Titi Tata");
-		Vehicule v3 = new Vehicule("KDNAPPR", "Pherrary", "SWAG", "Claude Fran�ois");
-		Camion c1 = new Camion("S0L31L", "Porschiaaaaa", "YOLO", "Toto Tata", 15, 355);
+		Vehicule v1 = new Vehicule("E4IL", "Sitrohaine", "NTM", "Voili Voilou","Voiture");
+		Vehicule v2 = new Vehicule("R3T4RD", "Beta Juliette", "LMAO", "Titi Tata","Voiture");
+		Vehicule v3 = new Vehicule("KDNAPPR", "Pherrary", "SWAG", "Claude Fran�ois","Voiture");
+		Camion c1 = new Camion("S0L31L", "Porschiaaaaa", "YOLO", "Toto Tata", "Camion",15, 355);
 		
 		// Ajout des places au parking //
 		parking.ajouterPlace(p1);
@@ -98,6 +139,16 @@ public class Parking {
 		System.out.println("Le vhehicule à été retiré :" + vehiculetest + "à la place numero :" + 1);
 
 		//System.out.println(parking);
+		parking.etatParking();
+
+		Place p = parking.bookPlace();
+
+		System.out.println("Place réserver : " + p);
+
+		parking.etatParking();
+
+		parking.freePlace(1);
+
 		parking.etatParking();
 	}
 

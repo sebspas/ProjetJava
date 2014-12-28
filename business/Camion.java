@@ -5,8 +5,8 @@ public class Camion extends Vehicule{
 	private int tonnage, hauteur;
 	
 	public Camion(String immatriculation, String marque, String modele,
-			String proprietaire, int tonnage, int hauteur) {
-		super(immatriculation, marque, modele, proprietaire);
+			String proprietaire, String type, int tonnage, int hauteur) {
+		super(immatriculation, marque, modele, proprietaire, type);
 		this.tonnage = tonnage;
 		this.hauteur = hauteur;
 	}// Constructeur()
