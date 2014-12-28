@@ -1,7 +1,6 @@
 package parking.business;
 
 import parking.exception.PlaceDisponibleException;
-import parking.exception.PlaceLibreException;
 import parking.exception.PlusAucunePlaceException;
 
 import java.util.ArrayList;
@@ -102,7 +101,23 @@ public class Parking {
 		}
 	} // freePlace()
 
-	
+	public int getLocation(String numeroImmatriculation) {
+		for (Place p : this.listeVehicules) {
+			if (p.getVehicule() != null && (p.getVehicule().getImmatriculation()).equals(numeroImmatriculation)) {
+				return p.getNumero();
+			}
+		}
+		return -1;
+	} // getlocation()
+
+	public Vehicule retirerVehicule(String numeroImmatriculation) {
+		int numPlace = getLocation(numeroImmatriculation);
+		if (numPlace == -1)
+			return null;
+		else
+			return unpark(numPlace);
+	} // retirerVehicule()
+
 	public static void main(String[] args) {
 		// Cr�ation du parking //
 		Parking parking = new Parking("My fucking parking", 4);
@@ -148,6 +163,17 @@ public class Parking {
 		parking.etatParking();
 
 		parking.freePlace(1);
+
+		parking.etatParking();
+
+		int numPlace = parking.getLocation("E4IL");
+
+		System.out.println("Le vehicule immatriculé : E4IL est garer à la place : " + numPlace);
+
+		parking.etatParking();
+
+		System.out.println("On retire le vehicule immatriculé E4IL de la place trouver via getLocation");
+		Vehicule vehiculeRetire = parking.retirerVehicule("E4IL");
 
 		parking.etatParking();
 	}

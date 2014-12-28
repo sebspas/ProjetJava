@@ -13,6 +13,10 @@ public class Vehicule {
 
 	public String getType() { return type; } // getType()
 
+	public String getImmatriculation() {
+		return immatriculation;
+	} // getImmatriculation()
+
 	@Override
 	public String toString() {
 		return "Vehicule [immatriculation=" + immatriculation + ", marque="

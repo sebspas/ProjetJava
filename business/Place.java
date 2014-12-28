@@ -17,7 +17,8 @@ public interface Place {
 
 	public void setReservation(boolean Reserver);
 
-	public String getReserver(); // rnvoie une string explicite surla réservation de la place
+	public String getReserver(); // renvoie une string explicite surla réservation de la place
 
-	public boolean getReservation(); // renoie un boolean indiquant si la place est ou non réservée
+	public boolean getReservation(); // renvoie un boolean indiquant si la place est ou non réservée
+
 }
