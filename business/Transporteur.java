@@ -8,13 +8,15 @@ public class Transporteur implements Place {
 	
 	private int numeroPlace;
 	private Vehicule vehicule;
+	private String type;
 	
 	public Transporteur() {
 		try{
 			if(Parking.getNbPlacesMax() == Parking.getNumeroPlace())
 				throw new NombrePlacesMaxException();
 			this.numeroPlace = Parking.getNumeroPlace();
-			Parking.setNumeroPlace(Parking.getNumeroPlace()+1);			
+			Parking.setNumeroPlace(Parking.getNumeroPlace()+1);
+			this.type = "Transporteur";
 		}
 		catch(NombrePlacesMaxException e){
 			System.out.println("Le parking a atteint le nombre maximal de places");
@@ -36,6 +38,8 @@ public class Transporteur implements Place {
 	}// setVehicule()
 
 	public int getNumero() { return numeroPlace; }//getNumero()
+
+	public String getType() { return type; }//getType()
 
 	public void park(Vehicule v) {
 		try{

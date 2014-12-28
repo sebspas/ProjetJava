@@ -8,6 +8,8 @@ public interface Place {
 	public Vehicule getVehicule();
 
 	public int getNumero();
+
+	public String getType();
 	
 	public void park(Vehicule v);
 

@@ -50,6 +50,18 @@ public class Parking {
 		return null;
 	}// unpark()
 
+	public void etatParking() {
+		System.out.println("Debut de l'affichage du parking !");
+		for(Place p : this.listeVehicules ) {
+			System.out.println("La place numero : " + p.getNumero() + " du type : " + p.getType());
+			if (p.getVehicule() != null)
+				System.out.println("La place a pour vehicule : " + p.getVehicule() + "\n");
+			else
+				System.out.println("La place n'a pas de vehicule !\n");
+		}
+		System.out.println("Fin de l'affichage du parking !\n");
+	}
+
 	public static void main(String[] args) {
 		// Cr�ation du parking //
 		Parking parking = new Parking("My fucking parking", 4);
@@ -78,13 +90,15 @@ public class Parking {
 		p2.park(v2);
 		t2.park(v3);
 		
-		System.out.println(parking);
+		//System.out.println(parking);
+		parking.etatParking();
 
 		Vehicule vehiculetest = parking.unpark(1);
 
 		System.out.println("Le vhehicule à été retiré :" + vehiculetest + "à la place numero :" + 1);
 
-		System.out.println(parking);
+		//System.out.println(parking);
+		parking.etatParking();
 	}
 
 }
