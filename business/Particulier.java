@@ -42,10 +42,7 @@ public class Particulier implements Place{
 	public void setReservation(boolean Reserver) { this.Reserver = Reserver; } // setRservation()
 
 	public String getReserver() {
-		if(Reserver)
-			return "est réservée.";
-		else
-			return  "n'est pas réservée.";
+		return Reserver ?  "est réservée." : "n'est pas réservée.";
 	} // getReserver()
 
 	public boolean getReservation() {
