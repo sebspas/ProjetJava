@@ -1,44 +1,102 @@
 package parking.business;
 
+/***************************************************************/
+/*						Import						   		   */
+/***************************************************************/
 import parking.exception.NombrePlacesMaxException;
 import parking.exception.PlaceDisponibleException;
 import parking.exception.PlusAucunePlaceException;
-
 import java.util.ArrayList;
 
 public class Parking {
-	static private int numeroPlace = 0, nbPlacesMax;
+	/***************************************************************/
+	/*						Debut Donnees Membres 				   */
+	/***************************************************************/
+	/**
+	 * Numero de place, servant a remplir le parking. Il permet de savoir le nulmero de la derniere place ajoutee.
+	 */
+	static private int numeroPlace = 0;
 
+	/**
+	 * Nombre de place maximum du parking.
+	 */
+	static private int nbPlacesMax;
+
+	/**
+	 * Nom du parking.
+	 */
 	private static String nom;
-	private static ArrayList<Place> listeVehicules = new ArrayList<Place>(); // Le type de collection n'est sans doute pas d�finitif
 
-	@Override
-	public String toString() {
-		return "Parking [nom=" + nom + ", listeVehicules=" + listeVehicules + "]";
-	}// toString()
+	/**
+	 * Liste des vehicule du parking.
+	 * Type de collection a definir ...
+	 */
+	private static ArrayList<Place> listeVehicules = new ArrayList<Place>();
 
-	/*public Parking(String nom, int nbPlacesMax) {
-		this.nom = nom;
-		Parking.nbPlacesMax = nbPlacesMax;
-	}// Constructeur()*/
-
+	/**
+	 * Initialisation des informations generales du parking. En static car le parking est unique.
+	 */
 	static {
 		nom = "Mon Parking";
 		nbPlacesMax = 4;
 	}
 
+
+	/***************************************************************/
+	/*						Getter								   */
+	/***************************************************************/
+	/**
+	 * Methode renvoyant le numero de la derniere place ajoutee au parking.
+	 *
+	 * @return le numero de la derniere place ajoutee.
+	 */
 	public static int getNumeroPlace() {
 		return numeroPlace;
 	}// getNumeroPlace()
-	
-	public static void setNumeroPlace(int numeroPlace) {
-		Parking.numeroPlace = numeroPlace;
-	}// setNumeroPlace()
-	
+
+	/**
+	 * Methode renvoyant le nombre de place maximal du parking.
+	 *
+	 * @return Nombre de place max du parking.
+	 */
 	public static int getNbPlacesMax() {
 		return nbPlacesMax;
 	}// getNbPlacesMax()
 
+
+	/***************************************************************/
+	/*						Setter								   */
+	/***************************************************************/
+	/**
+	 * Methode permettant de modifier la valeur de la derniere place ajoutee.
+	 *
+	 * @param numeroPlace
+	 * 		Numero de la derniere place ajouter au parking.
+	 */
+	public static void setNumeroPlace(int numeroPlace) {
+		Parking.numeroPlace = numeroPlace;
+	}// setNumeroPlace()
+
+
+	/***************************************************************/
+	/*						Methodes							   */
+	/***************************************************************/
+	/**
+	 * Methode toString() permettant de connaitre toutes les informations detaillees sur le parking.
+	 *
+	 * @return rencoie une chaine de caracteres contenant les informatiosn sur le parking.
+	 */
+	@Override
+	public String toString() {
+		return "Parking [nom=" + nom + ", listeVehicules=" + listeVehicules + "]";
+	}// toString()
+
+	/**
+	 * Methode permettant d'ajouter une place dans le parking.
+	 *
+	 * @param p
+	 * 		la place a ajoutee.
+	 */
 	public static void ajouterPlace(Place p){
 		try {
 			if(Parking.getNbPlacesMax() == Parking.getNumeroPlace())
@@ -52,6 +110,13 @@ public class Parking {
 		}
 	}// ajouterPlace()
 
+	/**
+	 * Methode testant l'existance d'un vehicule dans le parking.
+	 *
+	 * @param v
+	 * 		Vehicule a recherche dans le parking.
+	 * @return Renvoie un booleen indiquant si le vehicule est present ou non.
+	 */
 	public static boolean vehiculeExiste(Vehicule v){
 		for(Place p : Parking.listeVehicules ){
 			if(p.getVehicule() == v)
@@ -60,6 +125,13 @@ public class Parking {
 		return false;
 	}// vehiculeExiste()
 
+	/**
+	 * Methode permettant de retirer un vehicule de sa place sur le parking.
+	 *
+	 * @param numeroPlace
+	 * 			Numero de la place ou retirer le vehicule.
+	 * @return renvoie le vehicule retire.
+	 */
 	public static Vehicule unpark(int numeroPlace) {
 		for(Place p : Parking.listeVehicules ){
 			if(numeroPlace == p.getNumero())
@@ -68,6 +140,14 @@ public class Parking {
 		return null;
 	}// unpark()
 
+	/**
+	 * Methode permettant de garrer un vehicule sur une place de parking. La fonction va
+	 * chercher la place du meme type que le vehicule a garer, sinon elle le placera sur une place
+	 * du type transporteur si il y en a une de disponible.
+	 *
+	 * @param vehicule
+	 * 		Vehicule a garer su rle parking.
+	 */
 	public static void park(Vehicule vehicule) {
 		try {
 			String typePlace = "Transporteur";
@@ -108,6 +188,11 @@ public class Parking {
 		System.out.println("Fin de l'affichage du parking !\n");
 	} // etatParking()
 
+	/**
+	 * Methode permettant de reserver une place disponible sur le parking
+	 *
+	 * @return La place reserver.
+	 */
 	public static Place bookPlace() {
 		try {
 			for (Place p : Parking.listeVehicules) {
@@ -124,6 +209,13 @@ public class Parking {
 		}
 	} // bookPlace()
 
+	/**
+	 * Methode permettant de liberer une place reserver sur le parking.
+	 *
+	 * @param numeroPlace
+	 * 		Numero de la place a dereserver.
+	 * @return la place de nouveau libre.
+	 */
 	public static Place freePlace(int numeroPlace) {
 		try {
 			for (Place p : Parking.listeVehicules) {
@@ -144,6 +236,13 @@ public class Parking {
 		}
 	} // freePlace()
 
+	/**
+	 * Permet de connaitre la place ou se situe un vehicule a partir de son numero d'immatriculation.
+	 *
+	 * @param numeroImmatriculation
+	 * 			numero d'immatriculation du vehicule a recherche.
+	 * @return le numero ou le vehicule se trouve sur le parking.
+	 */
 	public static int getLocation(String numeroImmatriculation) {
 		for (Place p : Parking.listeVehicules) {
 			if (p.getVehicule() != null && (p.getVehicule().getImmatriculation()).equals(numeroImmatriculation)) {
@@ -153,6 +252,13 @@ public class Parking {
 		return -1;
 	} // getlocation()
 
+	/**
+	 * Methode permettant de retirer un vehicule d'une place a partir de son numero d'immatriculation.
+	 *
+	 * @param numeroImmatriculation
+	 * 			Numero d'immatriculation du vehicule a retirer.
+	 * @return le vehivule retirer de sa place de parking.
+	 */
 	public static Vehicule retirerVehicule(String numeroImmatriculation) {
 		int numPlace = getLocation(numeroImmatriculation);
 		if (numPlace == -1)
@@ -161,17 +267,25 @@ public class Parking {
 			return unpark(numPlace);
 	} // retirerVehicule()
 
+	/**
+	 * Methode reorganisant les places de parking apres le depart d'un vehicule.
+	 * par exemple si une place du type particulier c'est liberer et q'une voiture et sur une
+	 * place du type camion , on va alors la deplacer sur la place libre.
+	 */
 	public static void reorganiserPlaces() {
 		for (Place p : Parking.listeVehicules) {
 			if (p.getType().equals("Transporteur") && p.getVehicule() != null) {
 				if (p.getVehicule().getType().equals("Voiture")) {
-					Vehicule vretiré = unpark(p.getNumero());
-					Parking.park(vretiré);
+					Vehicule vretire = unpark(p.getNumero());
+					Parking.park(vretire);
 				}
 			}
 		}
 	} // reorganiserPlaces()
 
+	/***************************************************************/
+	/*						Main							  	   */
+	/***************************************************************/
 	public static void main(String[] args) {
 		// Cr�ation du parking //
 		//Parking parking = new Parking("My fucking parking", 4);
@@ -183,10 +297,10 @@ public class Parking {
 		Transporteur t2 = new Transporteur();
 
 		// Cr�ation des v�hicules //
-		Vehicule v1 = new Vehicule("E4IL", "Sitrohaine", "NTM", "Voili Voilou","Voiture");
-		Vehicule v2 = new Vehicule("R3T4RD", "Beta Juliette", "LMAO", "Titi Tata","Voiture");
-		Vehicule v3 = new Vehicule("KDNAPPR", "Pherrary", "SWAG", "Claude Fran�ois","Voiture");
-		Camion c1 = new Camion("S0L31L", "Porschiaaaaa", "YOLO", "Toto Tata", "Camion",15, 355);
+		Vehicule v1 = new Voiture("E4IL", "Sitrohaine", "NTM", "Voili Voilou");
+		Vehicule v2 = new Voiture("R3T4RD", "Beta Juliette", "LMAO", "Titi Tata");
+		Vehicule v3 = new Voiture("KDNAPPR", "Pherrary", "SWAG", "Claude Francois");
+		Vehicule c1 = new Camion("S0L31L", "Porschiaaaaa", "YOLO", "Toto Tata",15, 355);
 		
 		// Ajout des places au parking //
 		Parking.ajouterPlace(p1);
@@ -236,6 +350,6 @@ public class Parking {
 		Parking.reorganiserPlaces();
 
 		Parking.etatParking();
-	}
+	} // main()
 
-}
+} // Parking class
