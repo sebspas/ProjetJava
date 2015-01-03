@@ -102,8 +102,13 @@ public class Particulier implements Place{
 	 * @param vehicule
 	 * 		Le vehicule a garer sur la place.
 	 */
-	public void setVehicule(Vehicule vehicule) {
-		this.vehicule = vehicule;
+	public void setVehicule(Vehicule vehicule) throws PlaceOccupeeException, PlaceReserverException{
+			if(this.vehicule != null | vehicule.getType() != "Voiture")
+				throw new PlaceOccupeeException();
+			else if (this.Reserver)
+				throw new PlaceReserverException();
+			else
+				this.vehicule = vehicule;
 	}// setVehicule()
 
 	/**
@@ -142,42 +147,12 @@ public class Particulier implements Place{
 				+ vehicule + getReserver() + "]";
 	}// toString()
 
-	/*
-* Cette fonction ne va plus ici il faut modifier cette class ainsi que particulier et parking
-* pour n'utiliser que la fonction park de parking et le setVehicule d'une place
- */
-	public void park(Vehicule v) {
-		try{
-			if(this.vehicule != null | v.getType() != "Voiture")
-				throw new PlaceOccupeeException();
-			if (this.Reserver)
-				throw new PlaceReserverException();
-			setVehicule(v);
+	public Vehicule retirerVehicule() throws PlaceLibreException{
+		if (this.vehicule == null) {
+			throw new PlaceLibreException();
 		}
-		catch(PlaceOccupeeException e){
-			System.out.println("La place " + numeroPlace + " est d�j� occup�e et/ou n'est pas adapt�e � ce v�hicule");
-		}
-		catch (PlaceReserverException e) {
-			System.out.println("La place " + numeroPlace + " est réservée !");
-		}
-	}// park()
-
-	/*
-* Cette fonction ne va plus ici il faut modifier cette class ainsi que particulier et parking
-* pour n'utiliser que la fonction park de parking et le setVehicule d'une place
- */
-	public Vehicule unpark() {
-		try {
-			if(this.vehicule == null)
-				throw new PlaceLibreException();
-			Vehicule vehicule_renvoye = this.vehicule;
-			setVehicule(null);
-			return vehicule_renvoye;
-		}
-		catch (PlaceLibreException e) {
-			System.out.println("La place " + numeroPlace + "est dèja vide.");
-			return null;
-		}
-	}// unpark()
-
+		Vehicule temp = this.vehicule;
+		this.vehicule = null;
+		return temp;
+	} // retirerVehicule()
 }

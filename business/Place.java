@@ -1,5 +1,9 @@
 package parking.business;
 
+import parking.exception.PlaceLibreException;
+import parking.exception.PlaceOccupeeException;
+import parking.exception.PlaceReserverException;
+
 /**
  * Interface definissant les methodes requise pour implementer une place de parking.
  *
@@ -69,25 +73,11 @@ public interface Place {
 	 */
 	public void setNumero(int numero);
 
+	public void setVehicule(Vehicule vehicule) throws PlaceOccupeeException, PlaceReserverException;
 
 	/***************************************************************/
 	/*						Methodes							   */
 	/***************************************************************/
-	/**
-	 * Methode devant garer le vehicule en parametre a cette place.
-	 *
-	 * @param v
-	 * 		Vehicule a garer.
-	 */
-	public void park(Vehicule v);
-
-	/**
-	 * Methode devant enlever le vehicule present a cette place.
-	 *
-	 * @return Vehicule enlever.
-	 */
-	public Vehicule unpark();
-
 	/**
 	 * Methode toString() affichant toutes les informations de la place.
 	 *
@@ -96,4 +86,5 @@ public interface Place {
 	@Override
 	public String toString();
 
+	public Vehicule retirerVehicule() throws PlaceLibreException;
 }

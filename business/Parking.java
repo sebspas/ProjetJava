@@ -3,9 +3,8 @@ package parking.business;
 /***************************************************************/
 /*						Import						   		   */
 /***************************************************************/
-import parking.exception.NombrePlacesMaxException;
-import parking.exception.PlaceDisponibleException;
-import parking.exception.PlusAucunePlaceException;
+import parking.exception.*;
+
 import java.util.ArrayList;
 
 public class Parking {
@@ -134,8 +133,14 @@ public class Parking {
 	 */
 	public static Vehicule unpark(int numeroPlace) {
 		for(Place p : Parking.listeVehicules ){
-			if(numeroPlace == p.getNumero())
-				return p.unpark();
+			if (numeroPlace == p.getNumero())
+				try {
+					return p.retirerVehicule();
+				}
+				catch (PlaceLibreException e) {
+					System.out.println("La place est déja vide !");
+					return null;
+				}
 		}
 		return null;
 	}// unpark()
@@ -156,9 +161,9 @@ public class Parking {
 			}
 			Place placeTransporteur = new Transporteur();
 			for (Place p : Parking.listeVehicules) {
-				if (p.getVehicule() == null) {
+				if (p.getVehicule() == null && !(p.getReservation())) {
 					if (p.getType().equals(typePlace)) {
-						p.park(vehicule);
+						p.setVehicule(vehicule);
 						return;
 					}
 					else {
@@ -167,9 +172,15 @@ public class Parking {
 				}
 			}
 			if (placeTransporteur != null)
-				placeTransporteur.park(vehicule);
+				placeTransporteur.setVehicule(vehicule);
 			else
 				throw new PlusAucunePlaceException();
+		}
+		catch(PlaceOccupeeException e){
+			System.out.println("La place " + numeroPlace + " est d�j� occup�e et/ou n'est pas adapt�e � ce v�hicule");
+		}
+		catch (PlaceReserverException e) {
+			System.out.println("La place " + numeroPlace + " est réservée !");
 		}
 		catch (PlusAucunePlaceException e) {
 			System.out.println("Le parking est complet !");
@@ -308,6 +319,7 @@ public class Parking {
 		Parking.ajouterPlace(p2);
 		Parking.ajouterPlace(t2);
 
+		System.out.println("===================================Premier affichage parking vide===========================================");
 		Parking.etatParking();
 
 		// Placements des v�hicules sur les places //
@@ -315,40 +327,39 @@ public class Parking {
 		Parking.park(c1);
 		Parking.park(v2);
 		Parking.park(v3);
-		
-		//System.out.println(parking);
+
+		System.out.println("===================================Second affichage parking remplit===========================================");
 		Parking.etatParking();
 
 		Vehicule vehiculetest = Parking.unpark(1);
 
 		System.out.println("Le vhehicule à été retiré :" + vehiculetest + "à la place numero :" + 1);
 
-		//System.out.println(parking);
+		System.out.println("===================================Troisieme affichage sans le vehicule retiré===========================================");
 		Parking.etatParking();
 
 		Place p = Parking.bookPlace();
 
 		System.out.println("Place réserver : " + p);
 
+		System.out.println("===================================Quatireme affichage après reservation d'une place===========================================");
 		Parking.etatParking();
 
 		Parking.freePlace(1);
-
+		System.out.println("===================================Cinquieme affichage après dereservation de la place reservée===========================================");
 		Parking.etatParking();
 
 		int numPlace = Parking.getLocation("E4IL");
 
 		System.out.println("Le vehicule immatriculé : E4IL est garer à la place : " + numPlace);
-
-		Parking.etatParking();
-
 		System.out.println("On retire le vehicule immatriculé E4IL de la place trouver via getLocation");
 		Vehicule vehiculeRetire = Parking.retirerVehicule("E4IL");
-
+		System.out.println("===================================Sixieme affichage après avoir retiré le vehicule de la place trouvée===========================================");
 		Parking.etatParking();
 
 		Parking.reorganiserPlaces();
 
+		System.out.println("===================================Septieme affichage après avoir reorganiser le parking===========================================");
 		Parking.etatParking();
 	} // main()
 
