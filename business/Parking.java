@@ -297,7 +297,8 @@ public class Parking {
 	/***************************************************************/
 	/*						Main							  	   */
 	/***************************************************************/
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
+		new ParkingIHM();
 		// Cr�ation du parking //
 		//Parking parking = new Parking("My fucking parking", 4);
 		
@@ -361,6 +362,6 @@ public class Parking {
 
 		System.out.println("===================================Septieme affichage après avoir reorganiser le parking===========================================");
 		Parking.etatParking();
-	} // main()
+	} */ // main()
 
 } // Parking class
