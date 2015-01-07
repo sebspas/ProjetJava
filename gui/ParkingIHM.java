@@ -1,13 +1,12 @@
 package parking.gui;
 
+import parking.business.Parking;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-/**
- * Created by jonathan on 04/01/2015.
- */
 public class ParkingIHM extends JFrame {
 
     public ParkingIHM() {
