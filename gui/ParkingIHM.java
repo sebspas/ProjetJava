@@ -1,4 +1,4 @@
-package parking.business;
+package parking.gui;
 
 import javax.swing.*;
 import java.awt.*;
