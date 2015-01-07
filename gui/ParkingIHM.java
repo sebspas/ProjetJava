@@ -15,6 +15,9 @@ public class ParkingIHM extends JFrame {
         setTitle("Parking");
         setLayout(new BorderLayout());
 
+        setPreferredSize(new Dimension(500, 700));
+        setLocation(100, 100);
+
         setJMenuBar(barreMenus());
 
         pack();
