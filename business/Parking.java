@@ -159,25 +159,24 @@ public class Parking {
 			if (vehicule.getType().equals("Voiture")) {
 				typePlace = "Particulier";
 			}
-			Place placeTransporteur = new Transporteur();
 			for (Place p : Parking.listeVehicules) {
 				if (p.getVehicule() == null && !(p.getReservation())) {
 					if (p.getType().equals(typePlace)) {
 						p.setVehicule(vehicule);
 						return;
 					}
-					else {
-						placeTransporteur = p;
-					}
 				}
 			}
-			if (placeTransporteur != null)
-				placeTransporteur.setVehicule(vehicule);
-			else
-				throw new PlusAucunePlaceException();
+			for (Place p : Parking.listeVehicules) {
+				if (p.getVehicule() == null && !(p.getReservation())) {
+					p.setVehicule(vehicule);
+					return;
+				}
+			}
+			throw new PlusAucunePlaceException();
 		}
 		catch(PlaceOccupeeException e){
-			System.out.println("La place " + numeroPlace + " est d�j� occup�e et/ou n'est pas adapt�e � ce v�hicule");
+			System.out.println("La place est d�j� occup�e et/ou n'est pas adapt�e � ce v�hicule");
 		}
 		catch (PlaceReserverException e) {
 			System.out.println("La place " + numeroPlace + " est réservée !");
@@ -297,16 +296,16 @@ public class Parking {
 	/***************************************************************/
 	/*						Main							  	   */
 	/***************************************************************/
-	/*public static void main(String[] args) {
-		new ParkingIHM();
+	public static void main(String[] args) {
+		//new ParkingIHM();
 		// Cr�ation du parking //
 		//Parking parking = new Parking("My fucking parking", 4);
 		
 		// Cr�ation des places //
-		Particulier p1 = new Particulier();
-		Particulier p2 = new Particulier();
-		Transporteur t1 = new Transporteur();
-		Transporteur t2 = new Transporteur();
+		Place p1 = new Place("Particulier");
+		Place p2 = new Place("Particulier");
+		Place t1 = new Place("Transporteur");
+		Place t2 = new Place("Transporteur");
 
 		// Cr�ation des v�hicules //
 		Vehicule v1 = new Voiture("E4IL", "Sitrohaine", "NTM", "Voili Voilou");
@@ -362,6 +361,6 @@ public class Parking {
 
 		System.out.println("===================================Septieme affichage après avoir reorganiser le parking===========================================");
 		Parking.etatParking();
-	} */ // main()
+	} // main()
 
 } // Parking class
