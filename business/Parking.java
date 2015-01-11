@@ -4,7 +4,7 @@ package parking.business;
 /*						Import						   		   */
 /***************************************************************/
 import parking.exception.*;
-
+import parking.gui.Vue;
 import java.util.ArrayList;
 
 public class Parking {
@@ -32,12 +32,14 @@ public class Parking {
 	 */
 	private static ArrayList<Place> listeVehicules = new ArrayList<Place>();
 
+	private static ArrayList<Vue> listeVue = new ArrayList<Vue>();
+
 	/**
 	 * Initialisation des informations generales du parking. En static car le parking est unique.
 	 */
 	static {
 		nom = "Mon Parking";
-		nbPlacesMax = 4;
+		nbPlacesMax = 20;
 	}
 
 
@@ -62,6 +64,8 @@ public class Parking {
 		return nbPlacesMax;
 	}// getNbPlacesMax()
 
+	public static ArrayList<Place> getListeVehicules() { return listeVehicules; }
+
 
 	/***************************************************************/
 	/*						Setter								   */
@@ -80,6 +84,16 @@ public class Parking {
 	/***************************************************************/
 	/*						Methodes							   */
 	/***************************************************************/
+
+	public static void addVue(Vue v) {
+		listeVue.add(v);
+	}
+	public static void notifier() {
+		for (Vue v : listeVue) {
+			System.out.println("Modification notifier");
+			v.mettreAJour();
+		}
+	}
 	/**
 	 * Methode toString() permettant de connaitre toutes les informations detaillees sur le parking.
 	 *
@@ -103,6 +117,7 @@ public class Parking {
 			p.setNumero(Parking.getNumeroPlace());
 			Parking.setNumeroPlace(Parking.getNumeroPlace()+1);
 			Parking.listeVehicules.add(p);
+			notifier();
 		}
 		catch (NombrePlacesMaxException e) {
 			System.out.println("Le parking a atteint le nombre maximal de places");
@@ -140,6 +155,9 @@ public class Parking {
 				catch (PlaceLibreException e) {
 					System.out.println("La place est déja vide !");
 					return null;
+				}
+				finally {
+					notifier();
 				}
 		}
 		return null;
@@ -184,6 +202,9 @@ public class Parking {
 		catch (PlusAucunePlaceException e) {
 			System.out.println("Le parking est complet !");
 		}
+		finally {
+			notifier();
+		}
 	} // park()
 
 	public static void etatParking() {
@@ -217,6 +238,9 @@ public class Parking {
 			System.out.println("Aucune place disponble");
 			return null;
 		}
+		finally {
+			notifier();
+		}
 	} // bookPlace()
 
 	/**
@@ -243,6 +267,9 @@ public class Parking {
 		catch (PlaceDisponibleException e) {
 			System.out.println("place déja disponible ! (pas réservée)");
 			return null;
+		}
+		finally {
+			notifier();
 		}
 	} // freePlace()
 
@@ -291,6 +318,7 @@ public class Parking {
 				}
 			}
 		}
+		notifier();
 	} // reorganiserPlaces()
 
 	/***************************************************************/
