@@ -15,9 +15,9 @@ public class Main {
     public static void main(String[] args) {
 
         Vue test = new VueParking();
-        Vue listeVehicule = new VueVehicule();
+        //Vue listeVehicule = new VueVehicule();
         Parking.addVue(test);
-        Parking.addVue(listeVehicule);
+        //Parking.addVue(listeVehicule);
         // Cr�ation des places //
         Place p1 = new Place("Particulier");
         Place p2 = new Place("Particulier");

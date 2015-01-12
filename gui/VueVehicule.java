@@ -24,9 +24,9 @@ public class VueVehicule extends Vue{
     }
 
     public VueVehicule() {
-        fenetre.setLocation(1100, 100);
+        fenetre.setLocation(0, 0);
         fenetre.setPreferredSize(new Dimension(520,450));
-        fenetre.setDefaultCloseOperation(fenetre.EXIT_ON_CLOSE);
+        fenetre.setDefaultCloseOperation(fenetre.DISPOSE_ON_CLOSE);
         BorderLayout borderLayout = new BorderLayout();
         fenetre.setLayout(borderLayout);
         JPanel main = new JPanel();

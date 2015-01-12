@@ -35,7 +35,7 @@ public class VueParking extends Vue{
         JPanel main = new JPanel();
 
         fenetre.setLocation(300, 100);
-        fenetre.setPreferredSize(new Dimension(750,850));
+        fenetre.setPreferredSize(new Dimension(800,600));
         fenetre.setDefaultCloseOperation(fenetre.EXIT_ON_CLOSE);
 
         fenetre.setLayout(new BorderLayout());
@@ -110,6 +110,7 @@ public class VueParking extends Vue{
     private JMenuBar barreMenus() {
         JMenuBar barre = new JMenuBar();
         barre.add(creerMenuFichier());
+        barre.add(creerMenuVehicule());
         return barre;
     } // barreMenus()
 
@@ -135,4 +136,48 @@ public class VueParking extends Vue{
         if (JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(fenetre, "Voulez-vous vraiment quitter ?"))
             System.exit(0);
     } // actionMenuFichierQuitter()
+
+
+    private JMenu creerMenuVehicule() {
+        JMenu menuVehicule = new JMenu("Vehicule");
+        menuVehicule.add(creerMenuVehiculeListe());
+        menuVehicule.add(creerMenuVehiculeAjouterVehicule());
+        return menuVehicule;
+    } // creerMenuVehicule()
+
+    private JMenuItem creerMenuVehiculeListe() {
+        JMenuItem menu = new JMenuItem("Liste vehicules");
+        menu.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                actionMenuVehiculeListe();
+            }
+
+        });
+        return menu;
+    } // creerMenuVehiculeListe()
+
+    private void actionMenuVehiculeListe() {
+        parking.gui.Vue listeVehicule = new parking.gui.VueVehicule();
+        listeVehicule.mettreAJour();
+    } // actionMenuVehiculeListe()
+
+
+    private JMenuItem creerMenuVehiculeAjouterVehicule() {
+        JMenuItem menu = new JMenuItem("Ajouter vehicule");
+        menu.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                actionMenuVehiculeAjouterVoiture();
+            }
+
+        });
+        return menu;
+    } // creerMenuVehiculeAjouterVehicule()
+
+    private void actionMenuVehiculeAjouterVoiture() {
+        parking.gui.Vue AjouterVehicule = new parking.gui.VueAjouterVehicule();
+    } // actionMenuVehiculeAjouterVoiture()
+
+
 }
