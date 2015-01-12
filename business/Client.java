@@ -17,6 +17,14 @@ public class Client {
 
     private int pointsDeFidelite;
 
+    public String getAdresse() {
+        return adresse;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
     private ArrayList<Vehicule> listeVehicule;
 
     private CalculerTarif calculerTarif;

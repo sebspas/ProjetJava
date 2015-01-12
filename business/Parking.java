@@ -35,7 +35,7 @@ public class Parking {
 
 	private static ArrayList<Client> listeClients = new ArrayList<Client>();
 
-	private static ArrayList<Facture> listeFacture;
+	private static ArrayList<Facture> listeFacture = new ArrayList<Facture>();
 
 	private static ArrayList<Vue> listeVue = new ArrayList<Vue>();
 
@@ -114,7 +114,7 @@ public class Parking {
 		Parking.numeroFacture = numeroFacture;
 	}
 
-	public void addFacture(Facture facture) {
+	public static void addFacture(Facture facture) {
 		listeFacture.add(facture);
 	}
 
@@ -181,6 +181,10 @@ public class Parking {
 		return false;
 	}// vehiculeExiste()
 
+	public static ArrayList<Facture> getListeFacture() {
+		return listeFacture;
+	}
+
 	/**
 	 * Methode permettant de retirer un vehicule de sa place sur le parking.
 	 *
@@ -193,7 +197,7 @@ public class Parking {
 			if (numeroPlace == p.getNumero())
 				try {
 					if (!appelInterne) {
-						System.out.println(new Facture(p));
+						Parking.addFacture(new Facture(p));
 					}
 					return p.retirerVehicule();
 				}

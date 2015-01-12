@@ -81,6 +81,9 @@ public class Main {
         client1.setPointsDeFidelite(450);
         Parking.unpark(2);
 
+        for(Facture f : Parking.getListeFacture()){
+            f.sauvegarder();
+        }
         Parking.bookPlace();
 
     }
