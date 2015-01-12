@@ -7,6 +7,8 @@ import parking.exception.PlaceLibreException;
 import parking.exception.PlaceOccupeeException;
 import parking.exception.PlaceReserverException;
 
+import java.util.Date;
+
 public class Place{
 	/***************************************************************/
 	/*						Debut Donnees Membres 				   */

@@ -20,7 +20,7 @@ public class Voiture extends Vehicule{
      * @param modele          Le modele du camion a construire.
      * @param proprietaire    Le proprietaire du camion a construire.
      */
-    public Voiture(String immatriculation, String marque, String modele, String proprietaire) {
+    public Voiture(String immatriculation, String marque, String modele, Client proprietaire) {
         super(immatriculation, marque, modele, proprietaire,"Voiture");
     }
 
@@ -35,7 +35,7 @@ public class Voiture extends Vehicule{
     @Override
     public String toString() {
         return "Voiture[immatriculation=" + immatriculation + ", marque="
-                + marque + ", modele=" + modele + ", proprietaire=" + proprietaire
+                + marque + ", modele=" + modele + ", proprio=" + proprietaire.getNom()
                 +  "]";
     }// toString()
 }

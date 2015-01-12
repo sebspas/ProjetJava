@@ -6,6 +6,7 @@ package parking.business;
 import parking.exception.*;
 import parking.gui.Vue;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Parking {
 	/***************************************************************/
@@ -32,7 +33,19 @@ public class Parking {
 	 */
 	private static ArrayList<Place> listeVehicules = new ArrayList<Place>();
 
+	private static ArrayList<Client> listeClients;
+
+	private static ArrayList<Facture> listeFacture;
+
 	private static ArrayList<Vue> listeVue = new ArrayList<Vue>();
+
+	private static double tarif_particulier;
+
+	private static double tarif_transporteur;
+
+	private static int numeroFacture;
+
+	private static boolean appelInterne;
 
 	/**
 	 * Initialisation des informations generales du parking. En static car le parking est unique.
@@ -40,6 +53,10 @@ public class Parking {
 	static {
 		nom = "Mon Parking";
 		nbPlacesMax = 20;
+		numeroFacture = 0;
+		tarif_particulier = 1;
+		tarif_transporteur = 1.5;
+		appelInterne = false;
 	}
 
 
@@ -66,6 +83,11 @@ public class Parking {
 
 	public static ArrayList<Place> getListeVehicules() { return listeVehicules; }
 
+	public static double getTarif_transporteur() { return tarif_transporteur; }
+
+	public static double getTarif_particulier() { return tarif_particulier; }
+
+	public static int getNumeroFacture() {return numeroFacture; }
 
 	/***************************************************************/
 	/*						Setter								   */
@@ -80,6 +102,21 @@ public class Parking {
 		Parking.numeroPlace = numeroPlace;
 	}// setNumeroPlace()
 
+	public static void setTarif_transporteur(double tarif_transporteur) {
+		Parking.tarif_transporteur = tarif_transporteur;
+	}
+
+	public static void setTarif_particulier(double tarif_particulier) {
+		Parking.tarif_particulier = tarif_particulier;
+	}
+
+	public static void setNumeroFacture(int numeroFacture) {
+		Parking.numeroFacture = numeroFacture;
+	}
+
+	public void addFacture(Facture facture) {
+		listeFacture.add(facture);
+	}
 
 	/***************************************************************/
 	/*						Methodes							   */
@@ -94,6 +131,11 @@ public class Parking {
 			v.mettreAJour();
 		}
 	}
+
+	public static void addClient(Client c){
+		listeClients.add(c);
+	}
+
 	/**
 	 * Methode toString() permettant de connaitre toutes les informations detaillees sur le parking.
 	 *
@@ -150,6 +192,9 @@ public class Parking {
 		for(Place p : Parking.listeVehicules ){
 			if (numeroPlace == p.getNumero())
 				try {
+					if (!appelInterne) {
+						System.out.println(new Facture(p));
+					}
 					return p.retirerVehicule();
 				}
 				catch (PlaceLibreException e) {
@@ -181,6 +226,8 @@ public class Parking {
 				if (p.getVehicule() == null && !(p.getReservation())) {
 					if (p.getType().equals(typePlace)) {
 						p.setVehicule(vehicule);
+						if (!appelInterne)
+							p.getVehicule().setDateArrivee(new Date());
 						return;
 					}
 				}
@@ -310,6 +357,7 @@ public class Parking {
 	 * place du type camion , on va alors la deplacer sur la place libre.
 	 */
 	public static void reorganiserPlaces() {
+		appelInterne = true;
 		for (Place p : Parking.listeVehicules) {
 			if (p.getType().equals("Transporteur") && p.getVehicule() != null) {
 				if (p.getVehicule().getType().equals("Voiture")) {
@@ -319,12 +367,13 @@ public class Parking {
 			}
 		}
 		notifier();
+		appelInterne = false;
 	} // reorganiserPlaces()
 
 	/***************************************************************/
 	/*						Main							  	   */
 	/***************************************************************/
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		//new ParkingIHM();
 		// Cr�ation du parking //
 		//Parking parking = new Parking("My fucking parking", 4);
@@ -389,6 +438,6 @@ public class Parking {
 
 		System.out.println("===================================Septieme affichage après avoir reorganiser le parking===========================================");
 		Parking.etatParking();
-	} // main()
+	} // main()*/
 
 } // Parking class

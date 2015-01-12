@@ -1,5 +1,7 @@
 package parking.business;
 
+import java.util.Date;
+
 /**
  * Class vehicule permettant de consturire un vehicule dit classique, à l'aide de diverses informations
  * tel que son immatriculation, sa marque, ...
@@ -28,12 +30,14 @@ public class Vehicule {
 	/**
 	 * Le propietaire du vehicule.
 	 */
-	protected String proprietaire;
+	protected Client proprietaire;
 
 	/**
 	 * Le type du vehicule.
 	 */
 	protected String type;
+
+	private Date dateArrivee;
 
 
 	/***************************************************************/
@@ -54,7 +58,7 @@ public class Vehicule {
 	 * @param type
 	 * 			Le type du vehicule a construire.
 	 */
-	public Vehicule(String immatriculation, String marque, String modele, String proprietaire, String type) {
+	public Vehicule(String immatriculation, String marque, String modele, Client proprietaire, String type) {
 		this.immatriculation = immatriculation;
 		this.marque = marque;
 		this.modele = modele;
@@ -84,6 +88,21 @@ public class Vehicule {
 		return immatriculation;
 	} // getImmatriculation()
 
+	public Client getProprietaire() {
+		return proprietaire;
+	}
+
+	public Date getDateArrivee() {
+		return dateArrivee;
+	}
+
+	/***************************************************************/
+	/*						Setter								   */
+	/***************************************************************/
+
+	public void setDateArrivee(Date dateArrivee) {
+		this.dateArrivee = dateArrivee;
+	}
 
 	/***************************************************************/
 	/*						Methodes							   */

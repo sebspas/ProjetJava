@@ -43,7 +43,7 @@ public class Camion extends Vehicule{
 	 * 			La hauteur du camion a construire.
 	 */
 	public Camion(String immatriculation, String marque, String modele,
-			String proprietaire, int tonnage, int hauteur) {
+			Client proprietaire, int tonnage, int hauteur) {
 		super(immatriculation, marque, modele, proprietaire,"Camion");
 		this.tonnage = tonnage;
 		this.hauteur = hauteur;
@@ -61,7 +61,7 @@ public class Camion extends Vehicule{
 	@Override
 	public String toString() {
 		return "Camion [immatriculation=" + immatriculation + ", marque="
-				+ marque + ", modele=" + modele + ", proprietaire=" + proprietaire
+				+ marque + ", modele=" + modele + ", proprio=" + proprietaire.getNom()
 				+ ", tonnage=" + tonnage + ", hauteur=" + hauteur + "]";
 	}// toString()
 	
