@@ -33,7 +33,7 @@ public class Parking {
 	 */
 	private static ArrayList<Place> listeVehicules = new ArrayList<Place>();
 
-	private static ArrayList<Client> listeClients;
+	private static ArrayList<Client> listeClients = new ArrayList<Client>();
 
 	private static ArrayList<Facture> listeFacture;
 
