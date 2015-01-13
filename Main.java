@@ -13,7 +13,7 @@ import java.util.Date;
  */
 public class Main {
     public static void main(String[] args) {
-
+/* */
         Vue test = new VueParking();
         //Vue listeVehicule = new VueVehicule();
         Parking.addVue(test);
