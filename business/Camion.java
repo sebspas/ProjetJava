@@ -1,23 +1,23 @@
 package parking.business;
 
 /**
- * Class Camion, qui herite de la classe vehicule, et rajoute les informations suplementaires
+ * Class Camion, qui herite de la classe Vehicule, et rajoute les informations suplementaires
  * dont elle a besoin pour cree un vehicule du type camion.
  *
  * @see Vehicule
- * @author Coadalen, Chergui, Corral, Corfa
+ * @author Chergui, Coadalen, Corfa, Corral
  */
 public class Camion extends Vehicule{
 	/***************************************************************/
 	/*						Debut Donnees Membres 				   */
 	/***************************************************************/
 	/**
-	 * Le tonnage du camion
+	 * Le tonnage du camion.
 	 */
 	private int tonnage;
 
 	/**
-	 * La hauteur du camion
+	 * La hauteur du camion.
 	 */
 	private int hauteur;
 
@@ -26,7 +26,7 @@ public class Camion extends Vehicule{
 	/*						Constructeur						   */
 	/***************************************************************/
 	/**
-	 * Constructeur de la class camion, utilisant le constructeur d'unvehicule classique
+	 * Constructeur de la classe Camion, utilisant le constructeur d'un vehicule classique
 	 * et ajoutant les specificites d'un camion
 	 *
 	 * @param immatriculation
@@ -48,7 +48,6 @@ public class Camion extends Vehicule{
 		this.tonnage = tonnage;
 		this.hauteur = hauteur;
 	}// Constructeur()
-
 
 	/***************************************************************/
 	/*						Methodes							   */

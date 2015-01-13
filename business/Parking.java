@@ -70,7 +70,7 @@ public class Parking {
 	 */
 	public static int getNumeroPlace() {
 		return numeroPlace;
-	}// getNumeroPlace()
+	} // getNumeroPlace()
 
 	/**
 	 * Methode renvoyant le nombre de place maximal du parking.
@@ -79,15 +79,15 @@ public class Parking {
 	 */
 	public static int getNbPlacesMax() {
 		return nbPlacesMax;
-	}// getNbPlacesMax()
+	} // getNbPlacesMax()
 
-	public static ArrayList<Place> getListeVehicules() { return listeVehicules; }
+	public static ArrayList<Place> getListeVehicules() { return listeVehicules; } // getListeVehicules()
 
-	public static double getTarif_transporteur() { return tarif_transporteur; }
+	public static double getTarif_transporteur() { return tarif_transporteur; } // getTarif_transporteur()
 
-	public static double getTarif_particulier() { return tarif_particulier; }
+	public static double getTarif_particulier() { return tarif_particulier; } // getTarif_particulier()
 
-	public static int getNumeroFacture() {return numeroFacture; }
+	public static int getNumeroFacture() {return numeroFacture; } // getNumeroFacture()
 
 	/***************************************************************/
 	/*						Setter								   */
@@ -218,7 +218,7 @@ public class Parking {
 	 * du type transporteur si il y en a une de disponible.
 	 *
 	 * @param vehicule
-	 * 		Vehicule a garer su rle parking.
+	 * 		Vehicule a garer sur le parking.
 	 */
 	public static void park(Vehicule vehicule) {
 		try {
@@ -379,16 +379,16 @@ public class Parking {
 	/***************************************************************/
 	/*public static void main(String[] args) {
 		//new ParkingIHM();
-		// Cr�ation du parking //
+		// Creation du parking //
 		//Parking parking = new Parking("My fucking parking", 4);
 		
-		// Cr�ation des places //
+		// Creation des places //
 		Place p1 = new Place("Particulier");
 		Place p2 = new Place("Particulier");
 		Place t1 = new Place("Transporteur");
 		Place t2 = new Place("Transporteur");
 
-		// Cr�ation des v�hicules //
+		// Creation des vehicules //
 		Vehicule v1 = new Voiture("E4IL", "Sitrohaine", "NTM", "Voili Voilou");
 		Vehicule v2 = new Voiture("R3T4RD", "Beta Juliette", "LMAO", "Titi Tata");
 		Vehicule v3 = new Voiture("KDNAPPR", "Pherrary", "SWAG", "Claude Francois");
@@ -403,7 +403,7 @@ public class Parking {
 		System.out.println("===================================Premier affichage parking vide===========================================");
 		Parking.etatParking();
 
-		// Placements des v�hicules sur les places //
+		// Placements des vehicules sur les places //
 		Parking.park(v1);
 		Parking.park(c1);
 		Parking.park(v2);

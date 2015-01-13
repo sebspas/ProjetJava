@@ -1,12 +1,15 @@
 package parking.business;
 
+/***************************************************************/
+/*						Import						   		   */
+/***************************************************************/
 import java.util.Date;
 
 /**
- * Class vehicule permettant de consturire un vehicule dit classique, à l'aide de diverses informations
- * tel que son immatriculation, sa marque, ...
+ * Class Vehicule permettant de construire un vehicule dit classique, à l'aide de diverses informations
+ * telles que son immatriculation, sa marque, ...
  *
- * @author Coadalen, Chergui, Corral, Corfa
+ * @author Chergui, Coadalen, Corfa, Corral
  */
 public class Vehicule {
 	/***************************************************************/
@@ -28,7 +31,7 @@ public class Vehicule {
 	protected String modele;
 
 	/**
-	 * Le propietaire du vehicule.
+	 * Le proprietaire du vehicule.
 	 */
 	protected Client proprietaire;
 
@@ -37,24 +40,26 @@ public class Vehicule {
 	 */
 	protected String type;
 
+	/**
+	 * La date d'arrivée du vehicule.
+	 */
 	private Date dateArrivee;
-
 
 	/***************************************************************/
 	/*						Constructeur						   */
 	/***************************************************************/
 	/**
-	 * Constructeur de la class camion, utilisant le constructeur d'unvehicule classique
-	 * et ajoutant les specificites d'un camion
+	 * Constructeur de la classe Vehicule permettant de construire un vehicule dit classique
+	 * et ajoutant les specificites d'un vehicule.
 	 *
 	 * @param immatriculation
-	 * 			L'immatriculation du camion a construire.
+	 * 			L'immatriculation du vehicule a construire.
 	 * @param marque
 	 * 			La marque du vehicule a construire.
 	 * @param modele
-	 * 			Le modele du camion a construire.
+	 * 			Le modele du vehicule a construire.
 	 * @param proprietaire
-	 * 			Le proprietaire du camion a construire.
+	 * 			Le proprietaire du vehicule a construire.
 	 * @param type
 	 * 			Le type du vehicule a construire.
 	 */
@@ -64,8 +69,7 @@ public class Vehicule {
 		this.modele = modele;
 		this.proprietaire = proprietaire;
 		this.type = type;
-	} //Constructeur
-
+	} // Constructeur
 
 	/***************************************************************/
 	/*						Getter								   */
@@ -88,21 +92,37 @@ public class Vehicule {
 		return immatriculation;
 	} // getImmatriculation()
 
+	/**
+	 * Methode getProprietaire() renvoie le numero d'immatriculation du vehicule.
+	 *
+	 * @return Le numero d'immatriculation du vehicule.
+	 */
 	public Client getProprietaire() {
 		return proprietaire;
-	}
+	} // getProprietaire()
 
+	/**
+	 * Methode getDateArrivee() renvoie la date d'arrivee du vehicule.
+	 *
+	 * @return La date d'arrivee du vehicule.
+	 */
 	public Date getDateArrivee() {
 		return dateArrivee;
-	}
+	} // getDateArrivee()
 
 	/***************************************************************/
 	/*						Setter								   */
 	/***************************************************************/
 
+	/**
+	 * Methode setDateArrivee() modifie la date d'arrivee du vehicule.
+	 *
+	 * @param dateArrivee
+	 * 			La date d'arrivee du vehicule.
+	 */
 	public void setDateArrivee(Date dateArrivee) {
 		this.dateArrivee = dateArrivee;
-	}
+	} // setDateArrivee()
 
 	/***************************************************************/
 	/*						Methodes							   */
@@ -117,7 +137,6 @@ public class Vehicule {
 		return "Vehicule [immatriculation=" + immatriculation + ", marque="
 				+ marque + ", modele=" + modele + ", proprietaire="
 				+ proprietaire + "type=" + type + "]";
-	}// toString()
-	
+	} // toString()
 	
 } // Vehicule class

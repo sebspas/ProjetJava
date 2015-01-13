@@ -1,5 +1,8 @@
 package parking.gui;
 
+/***************************************************************/
+/*						Import						   		   */
+/***************************************************************/
 import parking.business.Parking;
 import parking.business.Place;
 import parking.business.Vehicule;
@@ -12,21 +15,18 @@ import java.awt.*;
  * Created by 2570P on 12/01/2015.
  */
 public class VueAjouterVehicule extends Vue {
-
+    /***************************************************************/
+	/*						Debut Donnees Membres 				   */
+    /***************************************************************/
     JFrame fenetre = new JFrame("Ajouter Vehicule");
     //JPanel listeVehicule = new JPanel();
 
     //private JComboBox client;
     //private JPanel panel1;
 
-    @Override
-    public void mettreAJour() {
-        //listeVehicule = AfficheListeVehicule();
-
-        //listeVehicule.revalidate();
-        //listeVehicule.repaint();
-    }
-
+    /***************************************************************/
+	/*						Constructeur						   */
+    /***************************************************************/
     public VueAjouterVehicule() {
         fenetre.setLocation(0, 0);
         fenetre.setPreferredSize(new Dimension(320,250));
@@ -34,7 +34,6 @@ public class VueAjouterVehicule extends Vue {
         BorderLayout borderLayout = new BorderLayout();
         fenetre.setLayout(borderLayout);
         JPanel main = new JPanel();
-
 
 
         JPanel top = new JPanel();
@@ -124,14 +123,21 @@ public class VueAjouterVehicule extends Vue {
         //this.setContentPane(container);
 
 
-
         fenetre.setContentPane(main);
         fenetre.pack();
         fenetre.setResizable(false);
         fenetre.setVisible(true);
-    }
+    } // Constructeur()
 
+    /***************************************************************/
+	/*						Methodes							   */
+    /***************************************************************/
+    @Override
+    public void mettreAJour() {
+        //listeVehicule = AfficheListeVehicule();
 
+        //listeVehicule.revalidate();
+        //listeVehicule.repaint();
+    } // mettreAJour()
 
-
-} // VueAjouterVehicule
+} // VueAjouterVehicule class

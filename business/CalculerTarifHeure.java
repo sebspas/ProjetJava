@@ -1,13 +1,29 @@
 package parking.business;
 
+/***************************************************************/
+/*						Import						   		   */
+/***************************************************************/
 import java.util.Date;
 import java.util.GregorianCalendar;
 
 /**
- * Created by Administrateur on 12/01/2015.
+ * Class CalculerTarifHeure, qui implemente l'interface CalculerTarif, et rajoute des
+ * informations suplementaires dont elle a besoin pour calculer le tarif à l'heure.
+ *
+ * @see CalculerTarif
+ * @author Chergui, Coadalen, Corfa, Corral
  */
 public class CalculerTarifHeure implements CalculerTarif{
-
+    /***************************************************************/
+	/*						Constructeur						   */
+    /***************************************************************/
+    /**
+     * Constructeur de la classe CalculerTarifHeure, permettant de calculer le tarif
+     * a l'heure d'une place.
+     *
+     * @param p
+     *          La place sur laquelle on effectue le calcul du tarif à l'heure.
+     */
     @Override
     public double calculerTarif(Place p) {
 
@@ -35,6 +51,14 @@ public class CalculerTarifHeure implements CalculerTarif{
         return ((double)nombreHeures)* tarif + ((double)nombreHeures)* tarif * Constante.TVA / 100;
     }
 
+    /***************************************************************/
+	/*						Methodes							   */
+    /***************************************************************/
+    /**
+     * Methode toString() affichant le tarif à l'heure d'une place.
+     *
+     * @return Une chaine de caracteres contenant l'information.
+     */
     @Override
     public String toString() {
         return "CalculerTarifHeure";

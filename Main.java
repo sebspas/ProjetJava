@@ -13,12 +13,12 @@ import java.util.Date;
  */
 public class Main {
     public static void main(String[] args) {
-/* */
+
         Vue test = new VueParking();
         //Vue listeVehicule = new VueVehicule();
         Parking.addVue(test);
         //Parking.addVue(listeVehicule);
-        // Cr�ation des places //
+        // Creation des places //
         Place p1 = new Place("Particulier");
         Place p2 = new Place("Particulier");
         Place t1 = new Place("Transporteur");
@@ -36,7 +36,7 @@ public class Main {
         Place t14 = new Place("Transporteur");
         Place t15 = new Place("Transporteur");
 
-        // Création des clients //
+        // Creation des clients //
         Client client1 = new Client("Voili","Voilou", "69 rue du Porn",new CalculerTarifHeure());
         Client client2 = new Client("Titi","Tata", "69 rue du Porn",new CalculerTarifHeure());
         Client client3 = new Client("Claude","François", "69 rue du Porn",new CalculerTarifPointsFidelite());
@@ -47,7 +47,7 @@ public class Main {
         Parking.addClient(client3);
         Parking.addClient(client4);
 
-        // Cr�ation des v�hicules //
+        // Creation des vehicules //
         Vehicule v1 = new Voiture("E4IL", "Sitrohaine", "NTM", client1);
         Vehicule v2 = new Voiture("R3T4RD", "Beta Juliette", "LMAO", client2);
         Vehicule v3 = new Voiture("KDNAPPR", "Pherrary", "SWAG", client3);
@@ -72,7 +72,7 @@ public class Main {
         Parking.ajouterPlace(p12);
         Parking.ajouterPlace(t14);
 
-        // Placements des v�hicules sur les places //
+        // Placements des vehicules sur les places //
         Parking.park(v1);
         Parking.park(c1);
         Parking.park(v2);
@@ -86,7 +86,6 @@ public class Main {
         }
         Parking.bookPlace();
 
-    }
+    } // main()
 
-
-}
+} // Main class

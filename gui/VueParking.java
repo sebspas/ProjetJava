@@ -1,5 +1,8 @@
 package parking.gui;
 
+/***************************************************************/
+/*						Import						   		   */
+/***************************************************************/
 import parking.business.Parking;
 import parking.business.Place;
 import parking.business.Vehicule;
@@ -13,24 +16,17 @@ import java.awt.event.ActionListener;
  * Created by Administrateur on 10/01/2015.
  */
 public class VueParking extends Vue{
-
+    /***************************************************************/
+	/*						Debut Donnees Membres 				   */
+    /***************************************************************/
     private JFrame fenetre = new JFrame("Affichage Parking");
     private JPanel parking = new JPanel();
     private JProgressBar progressBar = new JProgressBar();
     private JPanel panel1;
 
-    @Override
-    public void mettreAJour() {
-        float nbPlacesMax = Parking.getNbPlacesMax();
-        float nbrVehicule = Parking.getListeVehicules().size();
-        int pourcentage = (int)((nbrVehicule/nbPlacesMax)*100);
-        progressBar.setValue(pourcentage);
-        parking = AffichageParking();
-
-        parking.revalidate();
-        parking.repaint();
-    }
-
+    /***************************************************************/
+	/*						Constructeur						   */
+    /***************************************************************/
     public VueParking() {
         JPanel main = new JPanel();
 
@@ -54,12 +50,15 @@ public class VueParking extends Vue{
         main.add(legende(), BorderLayout.SOUTH);
 
 
-
         fenetre.pack();
 
         fenetre.setVisible(true);
-    }
 
+    } // Constructeur
+
+    /***************************************************************/
+	/*						Methodes							   */
+    /***************************************************************/
     private JPanel AffichageParking() {
         parking.removeAll();
         for (Place p : Parking.getListeVehicules()) {
@@ -84,7 +83,7 @@ public class VueParking extends Vue{
         }
 
         return parking;
-    }
+    } // AffichageParking()
 
     private JPanel legende() {
         JPanel legende = new JPanel();
@@ -106,7 +105,8 @@ public class VueParking extends Vue{
         legende.add(bouton3, BorderLayout.CENTER);
 
         return legende;
-    }
+    } // legende()
+
     private JMenuBar barreMenus() {
         JMenuBar barre = new JMenuBar();
         barre.add(creerMenuFichier());
@@ -179,5 +179,16 @@ public class VueParking extends Vue{
         parking.gui.Vue AjouterVehicule = new parking.gui.VueAjouterVehicule();
     } // actionMenuVehiculeAjouterVoiture()
 
+    @Override
+    public void mettreAJour() {
+        float nbPlacesMax = Parking.getNbPlacesMax();
+        float nbrVehicule = Parking.getListeVehicules().size();
+        int pourcentage = (int)((nbrVehicule/nbPlacesMax)*100);
+        progressBar.setValue(pourcentage);
+        parking = AffichageParking();
 
-}
+        parking.revalidate();
+        parking.repaint();
+    } // mettreAJour()
+
+} // VueParking class

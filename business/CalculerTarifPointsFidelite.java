@@ -1,11 +1,17 @@
 package parking.business;
 
+/***************************************************************/
+/*						Import						   		   */
+/***************************************************************/
 import java.util.Date;
 
 /**
  * Created by Administrateur on 12/01/2015.
  */
 public class CalculerTarifPointsFidelite implements CalculerTarif {
+    /***************************************************************/
+	/*						Constructeur						   */
+    /***************************************************************/
     @Override
     public double calculerTarif(Place p) {
         Date dateActuelle = new Date();
@@ -32,10 +38,14 @@ public class CalculerTarifPointsFidelite implements CalculerTarif {
 
         return ((((double)nombreHeures)* tarif) * (1-(p.getVehicule().getProprietaire().getPointsDeFidelite()/1000)) +
                 (((double)nombreHeures)* tarif) * (1-(p.getVehicule().getProprietaire().getPointsDeFidelite()/1000)) * Constante.TVA / 100);
-    }
+    } // CalculerTarifPointsFidelite()
 
+    /***************************************************************/
+	/*						Methodes							   */
+    /***************************************************************/
     @Override
     public String toString() {
         return "CalculerTarifPtsFidelite";
-    }
-}
+    } // toString()
+
+} // CalculerTarifPointsFidelite class

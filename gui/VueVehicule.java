@@ -1,5 +1,8 @@
 package parking.gui;
 
+/***************************************************************/
+/*						Import						   		   */
+/***************************************************************/
 import parking.business.Parking;
 import parking.business.Place;
 import parking.business.Vehicule;
@@ -12,17 +15,15 @@ import java.awt.*;
  * Created by Administrateur on 11/01/2015.
  */
 public class VueVehicule extends Vue{
+    /***************************************************************/
+	/*						Debut Donnees Membres 				   */
+    /***************************************************************/
     JFrame fenetre = new JFrame("Gestion Vehicule");
     JPanel listeVehicule = new JPanel();
 
-    @Override
-    public void mettreAJour() {
-        listeVehicule = AfficheListeVehicule();
-
-        listeVehicule.revalidate();
-        listeVehicule.repaint();
-    }
-
+    /***************************************************************/
+	/*						Constructeur						   */
+    /***************************************************************/
     public VueVehicule() {
         fenetre.setLocation(0, 0);
         fenetre.setPreferredSize(new Dimension(520,450));
@@ -50,8 +51,11 @@ public class VueVehicule extends Vue{
         fenetre.pack();
 
         fenetre.setVisible(true);
-    }
+    } // Constructeur
 
+    /***************************************************************/
+	/*						Methodes							   */
+    /***************************************************************/
     private JPanel AfficheListeVehicule() {
         listeVehicule.removeAll();
         DefaultListModel dlm = new DefaultListModel();
@@ -69,5 +73,14 @@ public class VueVehicule extends Vue{
         }
         listeVehicule.add(listScroller);
         return listeVehicule;
-    }
-}
+    } // AfficheListeVehicule()
+
+    @Override
+    public void mettreAJour() {
+        listeVehicule = AfficheListeVehicule();
+
+        listeVehicule.revalidate();
+        listeVehicule.repaint();
+    } // mettreAJour()
+
+} // VueVehicule class

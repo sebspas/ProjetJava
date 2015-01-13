@@ -1,24 +1,28 @@
 package parking.business;
 
 /**
- * Class Voiture, qui herite de la classe vehicule, et rajoute les informations suplementaires
+ * Class Voiture, qui herite de la classe Vehicule, et rajoute les informations suplementaires
  * dont elle a besoin pour cree un vehicule du type voiture.
  *
  * @see Vehicule
- * @author Coadalen, Chergui, Corral, Corfa
+ * @author Chergui, Coadalen, Corfa, Corral
  */
 public class Voiture extends Vehicule{
     /***************************************************************/
 	/*						Constructeur						   */
     /***************************************************************/
     /**
-     * Constructeur de la class voiture, utilisant le constructeur d'un vehicule classique
-     * et ajoutant les specificites d'une voiture
+     * Constructeur de la classe Voiture, utilisant le constructeur d'un vehicule classique
+     * et ajoutant les specificites d'une voiture.
      *
-     * @param immatriculation L'immatriculation du camion a construire.
-     * @param marque          La marque du vehicule a construire.
-     * @param modele          Le modele du camion a construire.
-     * @param proprietaire    Le proprietaire du camion a construire.
+     * @param immatriculation
+     *          L'immatriculation de la voiture a construire.
+     * @param marque
+     *          La marque de la voiture a construire.
+     * @param modele
+     *          Le modele de la voiture a construire.
+     * @param proprietaire
+     *          Le proprietaire de la voiture a construire.
      */
     public Voiture(String immatriculation, String marque, String modele, Client proprietaire) {
         super(immatriculation, marque, modele, proprietaire,"Voiture");
@@ -38,4 +42,5 @@ public class Voiture extends Vehicule{
                 + marque + ", modele=" + modele + ", proprio=" + proprietaire.getNom()
                 +  "]";
     }// toString()
-}
+
+} // Voiture class

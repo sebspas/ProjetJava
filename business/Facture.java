@@ -1,5 +1,8 @@
 package parking.business;
 
+/***************************************************************/
+/*						Import						   		   */
+/***************************************************************/
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
@@ -9,11 +12,20 @@ import java.io.ObjectOutputStream;
  * Created by Administrateur on 12/01/2015.
  */
 public class Facture {
+    /***************************************************************/
+	/*						Debut Donnees Membres 				   */
+    /***************************************************************/
     private int numeroFacture;
+
     private double tarif;
+
     private Client client;
+
     private Vehicule vehicule;
 
+    /***************************************************************/
+	/*						Constructeur						   */
+    /***************************************************************/
     public Facture(Place place) {
         this.numeroFacture = Parking.getNumeroFacture();
         Parking.setNumeroFacture(Parking.getNumeroFacture()+1);
@@ -21,7 +33,19 @@ public class Facture {
         tarif = place.getVehicule().getProprietaire().getCalculerTarif().calculerTarif(place);
         client = place.getVehicule().getProprietaire();
         Parking.addFacture(this);
-    }
+    } // Constructeur
+
+    /***************************************************************/
+	/*						Methodes							   */
+    /***************************************************************/
+    @Override
+    public String toString() {
+        return "Facture{" +
+                "numeroFacture=" + numeroFacture +
+                ", tarif=" + tarif +
+                ", client=" + client +
+                '}';
+    } // toString()
 
     public void sauvegarder(){
         try{
@@ -41,14 +65,6 @@ public class Facture {
             e.printStackTrace();
         }
 
-    }
+    } // sauvegarder()
 
-    @Override
-    public String toString() {
-        return "Facture{" +
-                "numeroFacture=" + numeroFacture +
-                ", tarif=" + tarif +
-                ", client=" + client +
-                '}';
-    }
-}
+} // Facture class
