@@ -116,6 +116,13 @@ public class Parking {
 	public static ArrayList<Place> getListeVehicules() { return listeVehicules; } // getListeVehicules()
 
 	/**
+	 * Methode getListeClients() renvoie la liste des clients.
+	 *
+	 * @return La liste des clients.
+	 */
+	public static ArrayList<Client> getListeClient() { return listeClients; } // getListeClients()
+
+	/**
 	 * Methode getTarif_transporteur() renvoie le tarif d'une place de type transporteur.
 	 *
 	 * @return Le tarif d'une place de type transporteur.
