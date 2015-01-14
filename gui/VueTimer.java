@@ -23,7 +23,7 @@ public class VueTimer extends Vue{
         fenetre = new JFrame("Timer");
         fenetre.setResizable(false);
         fenetre.setPreferredSize(new Dimension(350,100));
-        fenetre.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        fenetre.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         
         panel = new JPanel();
         panel.setLayout(new BorderLayout());

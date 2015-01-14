@@ -7,6 +7,7 @@ import parking.business.Client;
 import parking.business.Parking;
 import parking.business.Place;
 import parking.business.vehicule.Vehicule;
+import parking.gui.VueFacture;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -58,7 +59,7 @@ public class Facture {
         tarif = place.getVehicule().getProprietaire().getCalculerTarif().calculerTarif(place);
         client = place.getVehicule().getProprietaire();
         Parking.addFacture(this);
-        sauvegarder();
+        new VueFacture(this);
     } // Constructeur
 
     /***************************************************************/
@@ -71,7 +72,7 @@ public class Facture {
      */
     @Override
     public String toString() {
-        return "Facture{" +
+        return "Facture{" + "\r\n" +
                 "numeroFacture=" + numeroFacture +
                 ", tarif=" + tarif +
                 ", client=" + client +
