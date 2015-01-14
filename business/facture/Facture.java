@@ -1,12 +1,15 @@
-package parking.business;
+package parking.business.facture;
 
 /***************************************************************/
 /*						Import						   		   */
 /***************************************************************/
+import parking.business.Client;
+import parking.business.Parking;
+import parking.business.Place;
+import parking.business.vehicule.Vehicule;
+
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
-import java.io.ObjectOutputStream;
 
 /**
  * Created by Administrateur on 12/01/2015.

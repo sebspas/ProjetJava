@@ -1,4 +1,4 @@
-package parking.business;
+package parking;
 
 /**
  * Created by Administrateur on 12/01/2015.

@@ -3,7 +3,10 @@ package parking.business;
 /***************************************************************/
 /*						Import						   		   */
 /***************************************************************/
-import parking.exception.*;
+import parking.business.facture.Facture;
+import parking.business.vehicule.Vehicule;
+import parking.exception.business.*;
+import parking.exception.business.PlusAucunePlaceException;
 import parking.gui.Vue;
 import java.util.ArrayList;
 import java.util.Date;

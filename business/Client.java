@@ -3,10 +3,11 @@ package parking.business;
 /***************************************************************/
 /*						Import						   		   */
 /***************************************************************/
-import parking.exception.VehiculeGareException;
+import parking.business.facture.CalculerTarif;
+import parking.business.vehicule.Vehicule;
+import parking.exception.business.VehiculeGareException;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Administrateur on 12/01/2015.

@@ -1,4 +1,4 @@
-package parking.exception;
+package parking.exception.business;
 
 public class PlaceReserverException extends Exception{
 

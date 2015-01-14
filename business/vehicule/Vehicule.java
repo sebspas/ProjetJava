@@ -1,8 +1,10 @@
-package parking.business;
+package parking.business.vehicule;
 
 /***************************************************************/
 /*						Import						   		   */
 /***************************************************************/
+import parking.business.Client;
+
 import java.util.Date;
 
 /**

@@ -1,4 +1,6 @@
-package parking.business;
+package parking.business.vehicule;
+
+import parking.business.Client;
 
 /**
  * Class Camion, qui herite de la classe Vehicule, et rajoute les informations suplementaires

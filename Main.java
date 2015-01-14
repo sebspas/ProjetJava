@@ -1,12 +1,14 @@
 package parking;
 
 import parking.business.*;
+import parking.business.facture.CalculerTarifHeure;
+import parking.business.facture.CalculerTarifPointsFidelite;
+import parking.business.facture.Facture;
+import parking.business.vehicule.Camion;
+import parking.business.vehicule.Vehicule;
+import parking.business.vehicule.Voiture;
 import parking.gui.Vue;
 import parking.gui.VueParking;
-import parking.gui.VueVehicule;
-
-import javax.swing.*;
-import java.util.Date;
 
 /**
  * Created by Administrateur on 10/01/2015.

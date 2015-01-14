@@ -3,11 +3,10 @@ package parking.business;
 /***************************************************************/
 /*						Import						   		   */
 /***************************************************************/
-import parking.exception.PlaceLibreException;
-import parking.exception.PlaceOccupeeException;
-import parking.exception.PlaceReserverException;
-
-import java.util.Date;
+import parking.business.vehicule.Vehicule;
+import parking.exception.business.PlaceLibreException;
+import parking.exception.business.PlaceOccupeeException;
+import parking.exception.business.PlaceReserverException;
 
 public class Place{
 	/***************************************************************/

@@ -1,4 +1,6 @@
-package parking.business;
+package parking.business.facture;
+
+import parking.business.Place;
 
 /**
  * Interface CalculerTarif, utilisant la fonction calculerTarif(),

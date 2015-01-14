@@ -5,10 +5,8 @@ package parking.gui;
 /***************************************************************/
 import parking.business.Parking;
 import parking.business.Place;
-import parking.business.Vehicule;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 
 /**
