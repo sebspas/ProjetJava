@@ -163,7 +163,7 @@ public class VueVehicule extends Vue{
     } // afficherClients()
 
     /**
-     * Methode mettreAJour() permet de ...
+     * Methode mettreAJour() permet de mettre a jour la vue.
      */
     @Override
     public void mettreAJour() {

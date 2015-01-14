@@ -248,7 +248,7 @@ public class VueParking extends Vue{
     } // actionMenuVehiculeAjouterVoiture()
 
     /**
-     * Methode mettreAJour() permet de ...
+     * Methode mettreAJour() permet de mettre a jour la vue.
      */
     @Override
     public void mettreAJour() {

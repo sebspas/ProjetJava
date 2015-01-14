@@ -31,41 +31,40 @@ public class VueAjouterVehicule extends Vue {
     //private JComboBox client;
     //private JPanel panel1;
 
+    /**
+     *
+     */
     private JComboBox client;
-    private JComboBox typeVehicule;
-
-    private JTextField Immatriculation;
-    private JTextField Marque;
-    private JTextField Modele;
-    private JTextField Hauteur;
-    private JTextField Tonnage;
 
     /**
-     * Methode validateData() permet de
      *
-     * @return
      */
-    public boolean validateData() {
-        if (Immatriculation.getText().isEmpty()) {
-            return false;
-        }    
-        if (Marque.getText().isEmpty()) {
-            return false;
-        }
-        if (Modele.getText().isEmpty()) {
-            return  false;
-        }
-        
-        if (typeVehicule.getSelectedItem() == "Camion") {
-            if (Hauteur.getText().isEmpty()) {
-                return false;
-            }
-            if (Tonnage.getText().isEmpty()) {
-                return false;
-            }
-        }
-        return true;
-    } // validateData()
+    private JComboBox typeVehicule;
+
+    /**
+     *
+     */
+    private JTextField Immatriculation;
+
+    /**
+     *
+     */
+    private JTextField Marque;
+
+    /**
+     *
+     */
+    private JTextField Modele;
+
+    /**
+     *
+     */
+    private JTextField Hauteur;
+
+    /**
+     *
+     */
+    private JTextField Tonnage;
 
     /***************************************************************/
 	/*						Constructeur						   */
@@ -327,6 +326,33 @@ public class VueAjouterVehicule extends Vue {
     } // Bottom()
 
     /**
+     * Methode validateData() permet de
+     *
+     * @return
+     */
+    public boolean validateData() {
+        if (Immatriculation.getText().isEmpty()) {
+            return false;
+        }
+        if (Marque.getText().isEmpty()) {
+            return false;
+        }
+        if (Modele.getText().isEmpty()) {
+            return  false;
+        }
+
+        if (typeVehicule.getSelectedItem() == "Camion") {
+            if (Hauteur.getText().isEmpty()) {
+                return false;
+            }
+            if (Tonnage.getText().isEmpty()) {
+                return false;
+            }
+        }
+        return true;
+    } // validateData()
+
+    /**
      * Methode afficherClients() permet de
      */
     public void afficherClients() {
@@ -338,7 +364,7 @@ public class VueAjouterVehicule extends Vue {
     } // afficherClients()
 
     /**
-     * Methode mettreAJour() permet de
+     * Methode mettreAJour() permet de mettre a jour la vue.
      */
     @Override
     public void mettreAJour() {
