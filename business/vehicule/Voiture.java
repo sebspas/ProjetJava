@@ -31,6 +31,7 @@ public class Voiture extends Vehicule{
         this.marque = marque;
         this.modele = modele;
         this.proprietaire = proprietaire;
+        proprietaire.addVehicule(this);
         this.type = "Voiture";
     }
 

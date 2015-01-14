@@ -44,12 +44,12 @@ public class Camion extends Vehicule{
 	 * @param hauteur
 	 * 			La hauteur du camion a construire.
 	 */
-	public Camion(String immatriculation, String marque, String modele,
-			Client proprietaire, int tonnage, int hauteur) {
+	public Camion(String immatriculation, String marque, String modele, Client proprietaire, int tonnage, int hauteur) {
 		this.immatriculation = immatriculation;
 		this.marque = marque;
 		this.modele = modele;
 		this.proprietaire = proprietaire;
+		proprietaire.addVehicule(this);
 		this.type = "Camion";
 		this.tonnage = tonnage;
 		this.hauteur = hauteur;
