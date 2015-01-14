@@ -7,13 +7,8 @@ import parking.business.Client;
 
 import java.util.Date;
 
-/**
- * Class Vehicule permettant de construire un vehicule dit classique, à l'aide de diverses informations
- * telles que son immatriculation, sa marque, ...
- *
- * @author Chergui, Coadalen, Corfa, Corral
- */
-public class Vehicule {
+
+public abstract class Vehicule {
 	/***************************************************************/
 	/*						Debut Donnees Membres 				   */
 	/***************************************************************/
@@ -46,32 +41,6 @@ public class Vehicule {
 	 * La date d'arrivée du vehicule.
 	 */
 	private Date dateArrivee;
-
-	/***************************************************************/
-	/*						Constructeur						   */
-	/***************************************************************/
-	/**
-	 * Constructeur de la classe Vehicule permettant de construire un vehicule dit classique
-	 * et ajoutant les specificites d'un vehicule.
-	 *
-	 * @param immatriculation
-	 * 			L'immatriculation du vehicule a construire.
-	 * @param marque
-	 * 			La marque du vehicule a construire.
-	 * @param modele
-	 * 			Le modele du vehicule a construire.
-	 * @param proprietaire
-	 * 			Le proprietaire du vehicule a construire.
-	 * @param type
-	 * 			Le type du vehicule a construire.
-	 */
-	public Vehicule(String immatriculation, String marque, String modele, Client proprietaire, String type) {
-		this.immatriculation = immatriculation;
-		this.marque = marque;
-		this.modele = modele;
-		this.proprietaire = proprietaire;
-		this.type = type;
-	} // Constructeur
 
 	/***************************************************************/
 	/*						Getter								   */
@@ -135,10 +104,6 @@ public class Vehicule {
 	 * @return Une chaine de caracteres contenant les informations.
 	 */
 	@Override
-	public String toString() {
-		return "Vehicule [immatriculation=" + immatriculation + ", marque="
-				+ marque + ", modele=" + modele + ", proprietaire="
-				+ proprietaire + "type=" + type + "]";
-	} // toString()
+	public abstract String toString(); // toString()
 	
 } // Vehicule class

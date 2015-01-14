@@ -46,7 +46,11 @@ public class Camion extends Vehicule{
 	 */
 	public Camion(String immatriculation, String marque, String modele,
 			Client proprietaire, int tonnage, int hauteur) {
-		super(immatriculation, marque, modele, proprietaire,"Camion");
+		this.immatriculation = immatriculation;
+		this.marque = marque;
+		this.modele = modele;
+		this.proprietaire = proprietaire;
+		this.type = "Camion";
 		this.tonnage = tonnage;
 		this.hauteur = hauteur;
 	}// Constructeur()
@@ -54,6 +58,7 @@ public class Camion extends Vehicule{
 	/***************************************************************/
 	/*						Methodes							   */
 	/***************************************************************/
+
 	/**
 	 * Methode toString() affichant toutes les informations du camion.
 	 *

@@ -27,7 +27,11 @@ public class Voiture extends Vehicule{
      *          Le proprietaire de la voiture a construire.
      */
     public Voiture(String immatriculation, String marque, String modele, Client proprietaire) {
-        super(immatriculation, marque, modele, proprietaire,"Voiture");
+        this.immatriculation = immatriculation;
+        this.marque = marque;
+        this.modele = modele;
+        this.proprietaire = proprietaire;
+        this.type = "Voiture";
     }
 
     /***************************************************************/
