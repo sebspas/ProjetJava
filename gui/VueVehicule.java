@@ -13,21 +13,40 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
 /**
- * Created by Administrateur on 11/01/2015.
+ * Class VueVehicule, herite de la classe Vue, permettant de ...
+ *
+ * @author Chergui, Coadalen, Corfa, Corral
  */
 public class VueVehicule extends Vue{
     /***************************************************************/
 	/*						Debut Donnees Membres 				   */
     /***************************************************************/
+    /**
+     *
+     */
     JFrame fenetre = new JFrame("Gestion Vehicule");
+
+    /**
+     *
+     */
     JPanel listeVehicule = new JPanel();
 
+    /**
+     *
+     */
     private JComboBox client;
+
+    /**
+     *
+     */
     private JComboBox vehicule;
 
     /***************************************************************/
 	/*						Constructeur						   */
     /***************************************************************/
+    /**
+     * Constructeur de la classe VueVehicule, permettant de ...
+     */
     public VueVehicule() {
         Parking.addVue(this);
         fenetre.setLocation(0, 0);
@@ -62,7 +81,11 @@ public class VueVehicule extends Vue{
     /***************************************************************/
 	/*						Methodes							   */
     /***************************************************************/
-
+    /**
+     * Methode Top() permet de ...
+     *
+     * @return Le panneau en haut de la fenetre.
+     */
     private JPanel Top() {
 
         // Top
@@ -88,7 +111,7 @@ public class VueVehicule extends Vue{
             @Override
             public void itemStateChanged(ItemEvent e) {
                 Object item = e.getItem();
-                // to do
+                // TODO
             }
         });
 
@@ -103,9 +126,11 @@ public class VueVehicule extends Vue{
         return top;
     } // Top()
 
-
-
-
+    /**
+     * Methode AfficheListeVehicule() permet de ...
+     *
+     * @return
+     */
     private JPanel AfficheListeVehicule() {
         listeVehicule.removeAll();
         DefaultListModel dlm = new DefaultListModel();
@@ -125,14 +150,9 @@ public class VueVehicule extends Vue{
         return listeVehicule;
     } // AfficheListeVehicule()
 
-    @Override
-    public void mettreAJour() {
-        listeVehicule = AfficheListeVehicule();
-
-        listeVehicule.revalidate();
-        listeVehicule.repaint();
-    } // mettreAJour()
-
+    /**
+     * Methode afficherClients() permet de ...
+     */
     public void afficherClients() {
         String identite;
         for (Client c : Parking.getListeClient()) {
@@ -140,6 +160,17 @@ public class VueVehicule extends Vue{
             client.addItem(identite);
 
         }
-    }
+    } // afficherClients()
+
+    /**
+     * Methode mettreAJour() permet de ...
+     */
+    @Override
+    public void mettreAJour() {
+        listeVehicule = AfficheListeVehicule();
+
+        listeVehicule.revalidate();
+        listeVehicule.repaint();
+    } // mettreAJour()
 
 } // VueVehicule class

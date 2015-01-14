@@ -12,20 +12,40 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * Created by Administrateur on 10/01/2015.
+ * Class VueParking, herite de la classe Vue, permettant de ...
+ *
+ * @author Chergui, Coadalen, Corfa, Corral
  */
 public class VueParking extends Vue{
     /***************************************************************/
 	/*						Debut Donnees Membres 				   */
     /***************************************************************/
+    /**
+     *
+     */
     private JFrame fenetre = new JFrame("Affichage Parking");
+
+    /**
+     *
+     */
     private JPanel parking = new JPanel();
+
+    /**
+     *
+     */
     private JProgressBar progressBar = new JProgressBar();
+
+    /**
+     *
+     */
     private JPanel panel1;
 
     /***************************************************************/
 	/*						Constructeur						   */
     /***************************************************************/
+    /**
+     * Constructeur de la classe VueParking, permettant de ...
+     */
     public VueParking() {
         Parking.addVue(this);
         JPanel main = new JPanel();
@@ -59,6 +79,11 @@ public class VueParking extends Vue{
     /***************************************************************/
 	/*						Methodes							   */
     /***************************************************************/
+    /**
+     * Methode AffichageParking() permet de ...
+     *
+     * @return
+     */
     private JPanel AffichageParking() {
         parking.removeAll();
         for (Place p : Parking.getListePlaces()) {
@@ -86,6 +111,11 @@ public class VueParking extends Vue{
         return parking;
     } // AffichageParking()
 
+    /**
+     * Methode legende() permet de ...
+     *
+     * @return Le panneau "legende".
+     */
     private JPanel legende() {
         JPanel legende = new JPanel();
 
@@ -108,6 +138,11 @@ public class VueParking extends Vue{
         return legende;
     } // legende()
 
+    /**
+     * Methode barreMenus() permet de ...
+     *
+     * @return
+     */
     private JMenuBar barreMenus() {
         JMenuBar barre = new JMenuBar();
         barre.add(creerMenuFichier());
@@ -115,12 +150,22 @@ public class VueParking extends Vue{
         return barre;
     } // barreMenus()
 
+    /**
+     * Methode creerMenuFichier() permet de ...
+     *
+     * @return
+     */
     private JMenu creerMenuFichier() {
         JMenu menuFichier = new JMenu("Fichier");
         menuFichier.add(creerMenuFichierQuitter());
         return menuFichier;
     } // creerMenuFichier()
 
+    /**
+     * Methode creerMenuFichierQuitter() permet de ...
+     *
+     * @return
+     */
     private JMenuItem creerMenuFichierQuitter() {
         JMenuItem menu = new JMenuItem("Quitter");
         menu.addActionListener(new ActionListener() {
@@ -133,12 +178,19 @@ public class VueParking extends Vue{
         return menu;
     } // creerMenuFichierQuitter()
 
+    /**
+     * Methode actionMenuFichierQuitter() permet de ...
+     */
     private void actionMenuFichierQuitter() {
         if (JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(fenetre, "Voulez-vous vraiment quitter ?"))
             System.exit(0);
     } // actionMenuFichierQuitter()
 
-
+    /**
+     * Methode creerMenuVehicule() permet de ...
+     *
+     * @return
+     */
     private JMenu creerMenuVehicule() {
         JMenu menuVehicule = new JMenu("Vehicule");
         menuVehicule.add(creerMenuVehiculeListe());
@@ -146,6 +198,11 @@ public class VueParking extends Vue{
         return menuVehicule;
     } // creerMenuVehicule()
 
+    /**
+     * Methode creerMenuVehiculeListe() permet de ...
+     *
+     * @return
+     */
     private JMenuItem creerMenuVehiculeListe() {
         JMenuItem menu = new JMenuItem("Liste vehicules");
         menu.addActionListener(new ActionListener() {
@@ -158,12 +215,19 @@ public class VueParking extends Vue{
         return menu;
     } // creerMenuVehiculeListe()
 
+    /**
+     * Methode actionMenuVehiculeListe() permet de ...
+     */
     private void actionMenuVehiculeListe() {
         parking.gui.Vue listeVehicule = new parking.gui.VueVehicule();
         listeVehicule.mettreAJour();
     } // actionMenuVehiculeListe()
 
-
+    /**
+     * Methode creerMenuVehiculeAjouterVehicule() permet de ...
+     *
+     * @return
+     */
     private JMenuItem creerMenuVehiculeAjouterVehicule() {
         JMenuItem menu = new JMenuItem("Ajouter vehicule");
         menu.addActionListener(new ActionListener() {
@@ -176,10 +240,16 @@ public class VueParking extends Vue{
         return menu;
     } // creerMenuVehiculeAjouterVehicule()
 
+    /**
+     * Methode actionMenuVehiculeAjouterVoiture() permet de ...
+     */
     private void actionMenuVehiculeAjouterVoiture() {
         parking.gui.Vue AjouterVehicule = new parking.gui.VueAjouterVehicule();
     } // actionMenuVehiculeAjouterVoiture()
 
+    /**
+     * Methode mettreAJour() permet de ...
+     */
     @Override
     public void mettreAJour() {
         float nbPlacesMax = Parking.getNbPlacesMax();
