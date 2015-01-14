@@ -55,11 +55,6 @@ public class Main {
         Vehicule v3 = new Voiture("KDNAPPR", "Pherrary", "SWAG", client3);
         Vehicule c1 = new Camion("S0L31L", "Porschiaaaaa", "YOLO", client4,15, 355);
 
-        client1.addVehicule(v1);
-        client2.addVehicule(v2);
-        client3.addVehicule(v3);
-        client4.addVehicule(c1);
-
         // Ajout des places au parking //
         Parking.ajouterPlace(p1);
         Parking.ajouterPlace(t1);

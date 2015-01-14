@@ -1,6 +1,7 @@
 package parking.business.vehicule;
 
 import parking.business.Client;
+import parking.business.Parking;
 
 /**
  * Class Voiture, qui herite de la classe Vehicule, et rajoute les informations suplementaires
@@ -33,6 +34,7 @@ public class Voiture extends Vehicule{
         this.proprietaire = proprietaire;
         proprietaire.addVehicule(this);
         this.type = "Voiture";
+        Parking.notifier();
     }
 
     /***************************************************************/
