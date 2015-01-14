@@ -187,11 +187,12 @@ public class VueAjouterVehicule extends Vue {
         return center;
     } // Center()
 
-    public Client getClient(String nom, String prenom) {
+    public Client getClient(String nomprenom) {
+        String[] splited = nomprenom.split("\\s+");
         for (Client c : Parking.getListeClient()) {
-            String Nom = c.getNom();
-            String Prenom = c.getPrenom();
-            if (Nom.equals(nom) && Prenom.equals(prenom)) {
+            String Nom = splited[0];
+            String Prenom = splited[1];
+            if (Nom.equals(c.getNom()) && Prenom.equals(c.getPrenom())) {
                 return c;
             }
         }
@@ -237,15 +238,12 @@ public class VueAjouterVehicule extends Vue {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (validateData()) {
-                    String temp = client.getSelectedItem().toString();
-                    String[] splited = temp.split("\\s+");
-                    if (typeVehicule.getSelectedItem() == "Voiture") {
-                        //System.out.println(getClient(splited[0],splited[1]));
+                    if (typeVehicule.getSelectedItem() == "Voiture") {;
                         new Voiture(
                                 Immatriculation.getText(),
                                 Marque.getText(),
                                 Modele.getText(),
-                                getClient(splited[0],splited[1])
+                                getClient(client.getSelectedItem().toString())
                         );
 
                     } else if (typeVehicule.getSelectedItem() == "Camion") {
@@ -253,7 +251,7 @@ public class VueAjouterVehicule extends Vue {
                                 Immatriculation.getText(),
                                 Marque.getText(),
                                 Modele.getText(),
-                                getClient(splited[0],splited[1]),
+                                getClient(client.getSelectedItem().toString()),
                                 new Integer(Tonnage.getText()),
                                 new Integer(Hauteur.getText())
                         );
