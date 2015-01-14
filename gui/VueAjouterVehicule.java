@@ -6,6 +6,8 @@ package parking.gui;
 
 import parking.business.Client;
 import parking.business.Parking;
+import parking.business.vehicule.Camion;
+import parking.business.vehicule.Voiture;
 
 import javax.swing.*;
 import java.awt.*;
@@ -220,6 +222,39 @@ public class VueAjouterVehicule extends Vue {
         final JButton Valider = new JButton();
         Valider.setText("Valider");
         Valider.setPreferredSize(new Dimension(140,40));
+        Valider.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (validateData()) {
+
+                    if (typeVehicule.getSelectedItem() == "Voiture") {
+
+                        new Voiture(
+                                Immatriculation.getText(),
+                                Marque.getText(),
+                                Modele.getText(),
+                                // proprietaire
+                        );
+
+                    }
+                    else if(typeVehicule.getSelectedItem() == "Camion") {
+                        new Camion(
+                                Immatriculation.getText(),
+                                Marque.getText(),
+                                Modele.getText(),
+                                // proprietaire
+                                Tonnage.getText(),
+                                Hauteur.getText()
+                        );
+                    }
+
+                    fenetre.dispose();
+                }
+                else {
+                    System.out.println("Une Erreur est survenue !!!");
+                }
+            }
+        });
 
 
 
