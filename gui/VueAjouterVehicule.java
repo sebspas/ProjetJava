@@ -3,7 +3,6 @@ package parking.gui;
 /***************************************************************/
 /*						Import						   		   */
 /***************************************************************/
-
 import parking.business.Client;
 import parking.business.Parking;
 import parking.business.vehicule.Camion;
@@ -17,7 +16,10 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
 /**
- * Created by 2570P on 12/01/2015.
+ * Class VueAjouterVehicule, qui herite de la classe Vue,
+ * qui cree une vue permettant d'ajouter un vehicule.
+ *
+ * @author Chergui, Coadalen, Corfa, Corral
  */
 public class VueAjouterVehicule extends Vue {
     /***************************************************************/
@@ -29,40 +31,47 @@ public class VueAjouterVehicule extends Vue {
     //private JComboBox client;
     //private JPanel panel1;
 
+    /**
+     *
+     */
     private JComboBox client;
+
+    /**
+     *
+     */
     private JComboBox typeVehicule;
 
+    /**
+     *
+     */
     private JTextField Immatriculation;
+
+    /**
+     *
+     */
     private JTextField Marque;
+
+    /**
+     *
+     */
     private JTextField Modele;
+
+    /**
+     *
+     */
     private JTextField Hauteur;
+
+    /**
+     *
+     */
     private JTextField Tonnage;
-    
-    public boolean validateData() {
-        if (Immatriculation.getText().isEmpty()) {
-            return false;
-        }    
-        if (Marque.getText().isEmpty()) {
-            return false;
-        }
-        if (Modele.getText().isEmpty()) {
-            return  false;
-        }
-        
-        if (typeVehicule.getSelectedItem() == "Camion") {
-            if (Hauteur.getText().isEmpty()) {
-                return false;
-            }
-            if (Tonnage.getText().isEmpty()) {
-                return false;
-            }
-        }
-        return true;
-    }
 
     /***************************************************************/
 	/*						Constructeur						   */
     /***************************************************************/
+    /**
+     * Constructeur de la classe VueAjouterVehicule(), permettant de
+     */
     public VueAjouterVehicule() {
         // fenetre
         fenetre.setLocation(0, 0);
@@ -82,13 +91,37 @@ public class VueAjouterVehicule extends Vue {
         fenetre.setVisible(true);
     } // Constructeur()
 
+    /***************************************************************/
+	/*						Getter								   */
+    /***************************************************************/
+    /**
+     * Methode getClient() renvoie ...
+     *
+     * @param nomprenom
+     *          Le nom et prenom du client.
+     * @return Le client.
+     */
+    public Client getClient(String nomprenom) {
+        String[] splited = nomprenom.split("\\s+");
+        for (Client c : Parking.getListeClient()) {
+            String Nom = splited[0];
+            String Prenom = splited[1];
+            if (Nom.equals(c.getNom()) && Prenom.equals(c.getPrenom())) {
+                return c;
+            }
+        }
+        System.out.println("Echec");
+        return null;
+    } // getClient()
 
     /***************************************************************/
 	/*						Methodes							   */
     /***************************************************************/
-
-
-
+    /**
+     * Methode Top() permet de ...
+     *
+     * @return Le panneau en haut de la fenetre.
+     */
     private JPanel Top() {
 
         // Top
@@ -141,7 +174,11 @@ public class VueAjouterVehicule extends Vue {
         return top;
     } // Top()
 
-
+    /**
+     * Methode Center() permet de
+     *
+     * @return Le panneau au centre de la fenetre.
+     */
     private JPanel Center() {
         // Center
         JPanel center = new JPanel();
@@ -187,19 +224,11 @@ public class VueAjouterVehicule extends Vue {
         return center;
     } // Center()
 
-    public Client getClient(String nomprenom) {
-        String[] splited = nomprenom.split("\\s+");
-        for (Client c : Parking.getListeClient()) {
-            String Nom = splited[0];
-            String Prenom = splited[1];
-            if (Nom.equals(c.getNom()) && Prenom.equals(c.getPrenom())) {
-                return c;
-            }
-        }
-        System.out.println("Echec");
-        return null;
-    } 
-    
+    /**
+     * Methode Bottom() permet de
+     *
+     * @return Le panneau en bas de la fenetre.
+     */
     private JPanel Bottom() {
         // Bottom
         JPanel bottom = new JPanel();
@@ -268,7 +297,6 @@ public class VueAjouterVehicule extends Vue {
         });
 
 
-
         final JButton Annuler = new JButton();
         Annuler.setText("Annuler");
         Annuler.setPreferredSize(new Dimension(140,40));
@@ -297,16 +325,47 @@ public class VueAjouterVehicule extends Vue {
         return bottom;
     } // Bottom()
 
+    /**
+     * Methode validateData() permet de
+     *
+     * @return
+     */
+    public boolean validateData() {
+        if (Immatriculation.getText().isEmpty()) {
+            return false;
+        }
+        if (Marque.getText().isEmpty()) {
+            return false;
+        }
+        if (Modele.getText().isEmpty()) {
+            return  false;
+        }
 
+        if (typeVehicule.getSelectedItem() == "Camion") {
+            if (Hauteur.getText().isEmpty()) {
+                return false;
+            }
+            if (Tonnage.getText().isEmpty()) {
+                return false;
+            }
+        }
+        return true;
+    } // validateData()
+
+    /**
+     * Methode afficherClients() permet de
+     */
     public void afficherClients() {
         String identite;
         for (Client c : Parking.getListeClient()) {
             identite = c.getNom() + " " + c.getPrenom();
             client.addItem(identite);
-
         }
-    }
+    } // afficherClients()
 
+    /**
+     * Methode mettreAJour() permet de mettre a jour la vue.
+     */
     @Override
     public void mettreAJour() {
         //listeClients = AfficheListeVehicule();

@@ -16,16 +16,32 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
 /**
- * Created by Administrateur on 11/01/2015.
+ * Class VueVehicule, herite de la classe Vue, permettant de ...
+ *
+ * @author Chergui, Coadalen, Corfa, Corral
  */
 public class VueVehicule extends Vue{
     /***************************************************************/
 	/*						Debut Donnees Membres 				   */
     /***************************************************************/
+    /**
+     *
+     */
     JFrame fenetre = new JFrame("Gestion Vehicule");
+
+    /**
+     *
+     */
     JPanel listeVehicule = new JPanel();
 
+    /**
+     *
+     */
     private JComboBox client;
+
+    /**
+     *
+     */
     private JComboBox vehicule;
     
     private JButton parker_vehicule;
@@ -34,6 +50,9 @@ public class VueVehicule extends Vue{
     /***************************************************************/
 	/*						Constructeur						   */
     /***************************************************************/
+    /**
+     * Constructeur de la classe VueVehicule, permettant de ...
+     */
     public VueVehicule() {
         Parking.addVue(this);
         fenetre.setLocation(0, 0);
@@ -110,7 +129,7 @@ public class VueVehicule extends Vue{
         System.out.println("Echec");
         return null;
     }
-    
+
     private JPanel Top() {
 
         // Top
@@ -175,9 +194,11 @@ public class VueVehicule extends Vue{
         return top;
     } // Top()
 
-
-
-
+    /**
+     * Methode AfficheListeVehicule() permet de ...
+     *
+     * @return
+     */
     private JPanel AfficheListeVehicule() {
         listeVehicule.removeAll();
         DefaultListModel dlm = new DefaultListModel();
@@ -197,14 +218,9 @@ public class VueVehicule extends Vue{
         return listeVehicule;
     } // AfficheListeVehicule()
 
-    @Override
-    public void mettreAJour() {
-        listeVehicule = AfficheListeVehicule();
-
-        listeVehicule.revalidate();
-        listeVehicule.repaint();
-    } // mettreAJour()
-
+    /**
+     * Methode afficherClients() permet de ...
+     */
     public void afficherClients() {
         String identite;
         for (Client c : Parking.getListeClient()) {
@@ -212,6 +228,17 @@ public class VueVehicule extends Vue{
             client.addItem(identite);
 
         }
-    }
+    } // afficherClients()
+
+    /**
+     * Methode mettreAJour() permet de mettre a jour la vue.
+     */
+    @Override
+    public void mettreAJour() {
+        listeVehicule = AfficheListeVehicule();
+
+        listeVehicule.revalidate();
+        listeVehicule.repaint();
+    } // mettreAJour()
 
 } // VueVehicule class
