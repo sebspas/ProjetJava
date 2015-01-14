@@ -12,23 +12,45 @@ import java.io.File;
 import java.io.FileWriter;
 
 /**
- * Created by Administrateur on 12/01/2015.
+ * Class Facture permettant de creer une nouvelle facture comportant des informations telles
+ * que le numero de facture, le tarif, le client et le vehicule associe.
+ *
+ * @author Chergui, Coadalen, Corfa, Corral
  */
 public class Facture {
     /***************************************************************/
 	/*						Debut Donnees Membres 				   */
     /***************************************************************/
+    /**
+     * Le numero de la facture.
+     */
     private int numeroFacture;
 
+    /**
+     * Le tarif de la facture.
+     */
     private double tarif;
 
+    /**
+     * Le client concerne par la facture.
+     */
     private Client client;
 
+    /**
+     * Le vehicule concerne par la facture.
+     */
     private Vehicule vehicule;
 
     /***************************************************************/
 	/*						Constructeur						   */
     /***************************************************************/
+    /**
+     * Constructeur de la classe Facture, permettant de creer une facture
+     * a partir de la place concernee par celle ci.
+     *
+     * @param place
+     *          La place associee a la facture.
+     */
     public Facture(Place place) {
         this.numeroFacture = Parking.getNumeroFacture();
         Parking.setNumeroFacture(Parking.getNumeroFacture()+1);
@@ -41,6 +63,11 @@ public class Facture {
     /***************************************************************/
 	/*						Methodes							   */
     /***************************************************************/
+    /**
+     * Methode toString() affiche toutes les informations de la facture.
+     *
+     * @return Une chaine de caracteres contenant les informations.
+     */
     @Override
     public String toString() {
         return "Facture{" +
@@ -50,6 +77,10 @@ public class Facture {
                 '}';
     } // toString()
 
+    /**
+     * Methode sauvegarder() permettant de sauvegarder la facture dans un fichier
+     * a part et avec une mise en page minimaliste d'une reelle facture.
+     */
     public void sauvegarder(){
         try{
             new File("Factures").mkdir();
@@ -70,7 +101,6 @@ public class Facture {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     } // sauvegarder()
 
 } // Facture class

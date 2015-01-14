@@ -54,7 +54,7 @@ public class Client {
     /***************************************************************/
     /**
      * Constructeur de la classe Client, permettant de construire/creer un client ainsi que
-     * toute les specificites utiles pour un client.
+     * toute les informations utiles pour un client comme son nom, son prenom, son adresse, etc..
      *
      * @param nom
      *          Le nom du client a creer.

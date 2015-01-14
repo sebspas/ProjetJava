@@ -18,14 +18,15 @@ import java.util.Date;
  */
 public class CalculerTarifHeure implements CalculerTarif{
     /***************************************************************/
-	/*						Constructeur						   */
+	/*						Methodes							   */
     /***************************************************************/
     /**
-     * Constructeur de la classe CalculerTarifHeure, permettant de calculer le tarif
-     * a l'heure d'une place.
+     * Implementation calculerTarif(), de la classe CalculerTarifHeure, permettant de
+     * calculer le tarif a l'heure d'une place pour un client.
      *
      * @param p
-     *          La place sur laquelle on effectue le calcul du tarif à l'heure.
+     *          La place sur laquelle on effectue le calcul du tarif a l'heure.
+     * @return Le tarif à l'heure du client.
      */
     @Override
     public double calculerTarif(Place p) {
@@ -52,13 +53,10 @@ public class CalculerTarifHeure implements CalculerTarif{
             tarif = Parking.getTarif_transporteur();
 
         return ((double)nombreHeures)* tarif + ((double)nombreHeures)* tarif * Constante.TVA / 100;
-    }
+    } // calculerTarif()
 
-    /***************************************************************/
-	/*						Methodes							   */
-    /***************************************************************/
     /**
-     * Methode toString() affichant le tarif à l'heure d'une place.
+     * Methode toString() affichant le tarif a l'heure d'une place pour un client.
      *
      * @return Une chaine de caracteres contenant l'information.
      */
@@ -66,4 +64,5 @@ public class CalculerTarifHeure implements CalculerTarif{
     public String toString() {
         return "CalculerTarifHeure";
     }
-}
+
+} // CalculerTarifHeure class

@@ -7,7 +7,12 @@ import parking.business.Client;
 
 import java.util.Date;
 
-
+/**
+ * Class Vehicule permettant de creer un nouveau vehicule avec ses specificites comme
+ * l'immatriculation, la marque, le modele, le type, le nom du proprietaire, et la date d'arrivee.
+ *
+ * @author Chergui, Coadalen, Corfa, Corral
+ */
 public abstract class Vehicule {
 	/***************************************************************/
 	/*						Debut Donnees Membres 				   */

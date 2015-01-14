@@ -8,27 +8,33 @@ import parking.exception.business.PlaceLibreException;
 import parking.exception.business.PlaceOccupeeException;
 import parking.exception.business.PlaceReserverException;
 
+/**
+ * Class Place permmettant de creer une nouvelle place au parking avec son numero,
+ * son type, le vehicule qui s'y situe, etc..
+ *
+ * @author Chergui, Coadalen, Corfa, Corral
+ */
 public class Place{
 	/***************************************************************/
 	/*						Debut Donnees Membres 				   */
 	/***************************************************************/
 	/**
-	 * Numero de la place.
+	 * Le numero de la place.
 	 */
 	private int numeroPlace;
 
 	/**
-	 * Vehicule garer sur la place.
+	 * Le vehicule gare sur la place.
 	 */
 	private Vehicule vehicule;
 
 	/**
-	 * type de place (ex: transporteur, particulir)
+	 * Le type de la place (ex: transporteur, particulier)
 	 */
 	private String type;
 
 	/**
-	 * Booleen indiquant si la place est ou non reserver.
+	 * Booleen indiquant si la place est reservee ou non.
 	 */
 	private boolean Reserver;
 
@@ -36,8 +42,12 @@ public class Place{
 	/*						Constructeur						   */
 	/***************************************************************/
 	/**
-	 * Constructeur de la class particulier, cree une place du type particulier
-	 * et qui n'est pas reserver pas defaut.
+	 * Constructeur de la classe Place, permettant de creer une place a partir
+	 * du type specifie en parametre ainsi que les informations utliles pour
+	 * une place, celle ci n'est pas reservee pas defaut.
+	 *
+	 * @param type
+	 *			Le type de la place.
 	 */
 	public Place(String type) {
 		this.type = type;
@@ -48,25 +58,25 @@ public class Place{
 	/*						Getter								   */
 	/***************************************************************/
 	/**
-	 * Methode renvoyant le Vehicule qui se situe sur la place.
+	 * Methode getVehicule() renvoie le Vehicule qui se situe sur la place.
 	 *
-	 * @return Le vehicule situer sur cette place.
+	 * @return Le vehicule situe sur cette place.
 	 */
 	public Vehicule getVehicule() {
 		return vehicule;
 	}// getVehicule()
 
 	/**
-	 * Methode renvoyant le numero de la place.
+	 * Methode getNumero() renvoie le numero de la place.
 	 *
-	 * @return Le vehicule situer sur cette place.
+	 * @return Le numero de la place.
 	 */
 	public int getNumero() {
 		return numeroPlace;
 	}//getNumero()
 
 	/**
-	 * Methode renvoyant le type de place.
+	 * Methode getType() renvoie le type de place.
 	 *
 	 * @return le type de la place.
 	 */
@@ -75,7 +85,7 @@ public class Place{
 	}//getType()
 
 	/**
-	 * Methode renvoyant une chaine de caracteres explicite indiquant si la place est ou non reserver.
+	 * Methode getReserver() renvoie une chaine de caracteres explicite indiquant si la place est ou non reserver.
 	 *
 	 * @return Chaine de caractere indiquant la reservation ou non.
 	 */
@@ -84,9 +94,9 @@ public class Place{
 	} // getReserver()
 
 	/**
-	 * Methode renvoyant le booleen indiquant l'etat de la reservation.
+	 * Methode getReservation() renvoie le booleen indiquant l'etat de la reservation.
 	 *
-	 * @return True pour reserver, false pour non reserver.
+	 * @return True pour reserver, false pour ne pas reserver.
 	 */
 	public boolean getReservation() {
 		return Reserver;
@@ -96,12 +106,14 @@ public class Place{
 	/*						Setter								   */
 	/***************************************************************/
 	/**
-	 * Methode permettant de definir le vehicule present sur cette place.
-	 *
-	 * @see Parking#park
+	 * Methode setVehicule() permet de definir le vehicule present sur cette place.
 	 *
 	 * @param vehicule
-	 * 		Le vehicule a garer sur la place.
+	 *			Le vehicule a garer sur la place.
+	 * @throws PlaceOccupeeException
+	 * 			Une des exceptions possible de se propager en cas d'erreur.
+	 * @throws PlaceReserverException
+	 * 			Une autre exception propagee en cas d'erreur.
 	 */
 	public void setVehicule(Vehicule vehicule) throws PlaceOccupeeException, PlaceReserverException{
 			if(this.vehicule != null || (vehicule.getType() == "Camion" && type == "Particulier"))
@@ -113,9 +125,7 @@ public class Place{
 	}// setVehicule()
 
 	/**
-	 * Methode permettant de definir le numero de la place lors de son insertion dans le parking.
-	 *
-	 * @see Parking#ajouterPlace
+	 * Methode setNumero() permet de definir le numero de la place lors de son insertion dans le parking.
 	 *
 	 * @param numero
 	 * 		Le numero a attribuer a la place de parking.
@@ -125,7 +135,7 @@ public class Place{
 	} // setNumero()
 
 	/**
-	 * Methode permettant de reserver ou non la place.
+	 * Methode setReservation() permet de reserver ou non la place.
 	 *
 	 * @param Reserver
 	 * 		Boolean True pour reserver, false pour dereserver
@@ -138,9 +148,9 @@ public class Place{
 	/*						Methodes							   */
 	/***************************************************************/
 	/**
-	 * Methode toString() affichant toutes les informations de la place.
+	 * Methode toString() affiche toutes les informations de la place.
 	 *
-	 * @return Une chaine de caracteres contenant les informations.
+	 * @return Une chaine de caracteres contenant les informations spécifiques a une place.
 	 */
 	@Override
 	public String toString() {
@@ -156,4 +166,5 @@ public class Place{
 		this.vehicule = null;
 		return temp;
 	} // retirerVehicule()
-}
+
+} // Place class

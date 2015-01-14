@@ -11,6 +11,12 @@ import parking.gui.Vue;
 import java.util.ArrayList;
 import java.util.Date;
 
+/**
+ * Class Parking permettant de creer le parking selon des criteres tels que le numero d'une
+ * place (derniere place ajoutee), le nombre de place maximum, le nom du parking, etc..
+ *
+ * @author Chergui, Coadalen, Corfa, Corral
+ */
 public class Parking {
 	/***************************************************************/
 	/*						Debut Donnees Membres 				   */
@@ -109,13 +115,6 @@ public class Parking {
 	} // getNbPlacesMax()
 
 	/**
-	 * Methode getListeVehicules() renvoie la liste des vehicules existants.
-	 *
-	 * @return La liste des vehicules existants.
-	 */
-	public static ArrayList<Place> getListeVehicules() { return listeVehicules; } // getListeVehicules()
-
-	/**
 	 * Methode getTarif_transporteur() renvoie le tarif d'une place de type transporteur.
 	 *
 	 * @return Le tarif d'une place de type transporteur.
@@ -137,13 +136,6 @@ public class Parking {
 	public static int getNumeroFacture() { return numeroFacture; } // getNumeroFacture()
 
 	/**
-	 * Methode getListeFacture() renvoie la liste de toutes les factures.
-	 *
-	 * @return La liste des factures.
-	 */
-	public static ArrayList<Facture> getListeFacture() { return listeFacture; } // getListeFacture()
-
-	/**
 	 * Methode getLocation() permet de connaitre la place ou se situe un vehicule a partir de son numero d'immatriculation.
 	 *
 	 * @param numeroImmatriculation
@@ -158,6 +150,20 @@ public class Parking {
 		}
 		return -1;
 	} // getLocation()
+
+	/**
+	 * Methode getListeVehicules() renvoie la liste des vehicules existants.
+	 *
+	 * @return La liste des vehicules existants.
+	 */
+	public static ArrayList<Place> getListeVehicules() { return listeVehicules; } // getListeVehicules()
+
+	/**
+	 * Methode getListeFacture() renvoie la liste de toutes les factures.
+	 *
+	 * @return La liste des factures.
+	 */
+	public static ArrayList<Facture> getListeFacture() { return listeFacture; } // getListeFacture()
 
 	/***************************************************************/
 	/*						Setter								   */
@@ -450,7 +456,7 @@ public class Parking {
 	} // retirerVehicule()
 
 	/**
-	 * Methode reoreorganisant les places de parking apres le depart d'un vehicule.
+	 * Methode reorganiserPlaces() reorganise les places de parking apres le depart d'un vehicule.
 	 * par exemple si une place du type particulier c'est liberer et qu'une voiture et sur une
 	 * place du type camion , on va alors la deplacer sur la place libre.
 	 */
