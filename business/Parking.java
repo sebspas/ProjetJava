@@ -6,7 +6,6 @@ package parking.business;
 import parking.business.facture.Facture;
 import parking.business.vehicule.Vehicule;
 import parking.exception.business.*;
-import parking.exception.business.PlusAucunePlaceException;
 import parking.gui.Vue;
 import java.util.ArrayList;
 import java.util.Date;
@@ -295,13 +294,13 @@ public class Parking {
 	 * 		Vehicule a recherche dans le parking.
 	 * @return Renvoie un booleen indiquant si le vehicule est present ou non.
 	 */
-	public static boolean vehiculeExiste(Vehicule v){
+	public static boolean vehiculeGare(Vehicule v){
 		for(Place p : Parking.listeVehicules ){
 			if(p.getVehicule() == v)
 				return true;
 		}
 		return false;
-	} // vehiculeExiste()
+	} // vehiculeGare()
 
 	/**
 	 * Methode unpark() permet de retirer un vehicule de sa place sur le parking.
@@ -363,7 +362,7 @@ public class Parking {
 			throw new PlusAucunePlaceException();
 		}
 		catch(PlaceOccupeeException e){
-			System.out.println("La place est d�j� occup�e et/ou n'est pas adapt�e � ce v�hicule");
+			System.out.println("La place est déja occupée et/ou n'est pas adaptée à ce véhicule");
 		}
 		catch (PlaceReserverException e) {
 			System.out.println("La place " + numeroPlace + " est réservée !");
@@ -439,7 +438,7 @@ public class Parking {
 			return null;
 		}
 		catch (PlaceDisponibleException e) {
-			System.out.println("place déja disponible ! (pas réservée)");
+			System.out.println("Place déja disponible ! (Non réservée)");
 			return null;
 		}
 		finally {
