@@ -296,7 +296,6 @@ public class VueParking extends Vue{
     private void actionMenuTimerAfficher() {
         parking.gui.Vue Timer = new parking.gui.VueTimer(Parking.getTimer());
         Parking.getTimer().setVue(Timer);
-        Parking.getTimer().start();
     } // actionMenuTimerAfficher()
 
 
