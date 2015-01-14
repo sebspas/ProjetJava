@@ -4,6 +4,9 @@ package parking.gui;
 /*						Import						   		   */
 /***************************************************************/
 
+import parking.business.Client;
+import parking.business.Parking;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -78,7 +81,6 @@ public class VueAjouterVehicule extends Vue {
     } // Constructeur()
 
 
-
     /***************************************************************/
 	/*						Methodes							   */
     /***************************************************************/
@@ -94,7 +96,9 @@ public class VueAjouterVehicule extends Vue {
         JLabel labelClient = new JLabel("Client");
         client = new JComboBox();
         client.setPreferredSize(new Dimension(300, 20));
-        client.addItem("Le gitan");
+
+        afficherClients();
+        fenetre.repaint();
 
         JPanel topClient = new JPanel();
         topClient.setLayout(new BorderLayout());
@@ -250,10 +254,11 @@ public class VueAjouterVehicule extends Vue {
 
     public void afficherClients() {
         String identite;
-        /*for (Client c : Client.getListeClients()) {
+        for (Client c : Parking.getListeClient()) {
             identite = c.getPrenom() + " " + c.getNom();
-            
-        }*/
+            client.addItem(identite);
+
+        }
     }
 
     @Override
