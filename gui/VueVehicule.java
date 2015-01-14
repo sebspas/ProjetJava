@@ -3,6 +3,7 @@ package parking.gui;
 /***************************************************************/
 /*						Import						   		   */
 /***************************************************************/
+import parking.business.Client;
 import parking.business.Parking;
 import parking.business.Place;
 
@@ -72,7 +73,7 @@ public class VueVehicule extends Vue{
         client = new JComboBox();
         client.setPreferredSize(new Dimension(300, 20));
 
-        //afficherClients();
+        afficherClients();
         fenetre.repaint();
 
         JPanel topClient = new JPanel();
@@ -131,5 +132,14 @@ public class VueVehicule extends Vue{
         listeVehicule.revalidate();
         listeVehicule.repaint();
     } // mettreAJour()
+
+    public void afficherClients() {
+        String identite;
+        for (Client c : Parking.getListeClient()) {
+            identite = c.getNom() + " " + c.getPrenom();
+            client.addItem(identite);
+
+        }
+    }
 
 } // VueVehicule class
