@@ -32,6 +32,28 @@ public class VueAjouterVehicule extends Vue {
     private JTextField Modele;
     private JTextField Hauteur;
     private JTextField Tonnage;
+    
+    public boolean validateData() {
+        if (Immatriculation.getText() == null) {
+            return false;
+        }    
+        if (Marque.getText() == null) {
+            return false;
+        }
+        if (Modele.getText() == null) {
+            return  false;
+        }
+        
+        if (typeVehicule.getSelectedItem() == "Camion") {
+            if (Hauteur.getText() == null) {
+                return false;
+            }
+            if (Tonnage.getText() == null) {
+                return false;
+            }
+        }
+        return true;
+    }
 
     /***************************************************************/
 	/*						Constructeur						   */
