@@ -187,7 +187,16 @@ public class VueAjouterVehicule extends Vue {
         return center;
     } // Center()
 
-
+    public Client getClient(String nom, String prenom) {
+        for (Client c : Parking.getListeClient()) {
+            if (c.getNom() == nom && c.getPrenom() == prenom) {
+                System.out.println(c);
+                return c;
+            }
+        }
+        return null;
+    } 
+    
     private JPanel Bottom() {
         // Bottom
         JPanel bottom = new JPanel();
@@ -221,36 +230,35 @@ public class VueAjouterVehicule extends Vue {
 
         final JButton Valider = new JButton();
         Valider.setText("Valider");
-        Valider.setPreferredSize(new Dimension(140,40));
+        Valider.setPreferredSize(new Dimension(140, 40));
         Valider.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (validateData()) {
-
+                    String temp = client.getSelectedItem().toString();
+                    String[] splited = temp.split("\\s+");
                     if (typeVehicule.getSelectedItem() == "Voiture") {
-
+                        System.out.println(getClient(splited[0],splited[1]));
                         new Voiture(
                                 Immatriculation.getText(),
                                 Marque.getText(),
                                 Modele.getText(),
-                                // proprietaire
+                                getClient(splited[0],splited[1])
                         );
 
-                    }
-                    else if(typeVehicule.getSelectedItem() == "Camion") {
+                    } else if (typeVehicule.getSelectedItem() == "Camion") {
                         new Camion(
                                 Immatriculation.getText(),
                                 Marque.getText(),
                                 Modele.getText(),
-                                // proprietaire
-                                Tonnage.getText(),
-                                Hauteur.getText()
+                                getClient(splited[0],splited[1]),
+                                new Integer(Tonnage.getText()),
+                                new Integer(Hauteur.getText())
                         );
                     }
 
                     fenetre.dispose();
-                }
-                else {
+                } else {
                     System.out.println("Une Erreur est survenue !!!");
                 }
             }
