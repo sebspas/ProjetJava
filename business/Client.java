@@ -71,6 +71,7 @@ public class Client {
         this.adresse = adresse;
         this.calculerTarif = calculerTarif;
         this.listeVehicule = new ArrayList<Vehicule>();
+        Parking.addClient(this);
     } // Constructeur
 
     /***************************************************************/

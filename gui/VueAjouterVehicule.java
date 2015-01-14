@@ -39,21 +39,21 @@ public class VueAjouterVehicule extends Vue {
     private JTextField Tonnage;
     
     public boolean validateData() {
-        if (Immatriculation.getText() == null) {
+        if (Immatriculation.getText().isEmpty()) {
             return false;
         }    
-        if (Marque.getText() == null) {
+        if (Marque.getText().isEmpty()) {
             return false;
         }
-        if (Modele.getText() == null) {
+        if (Modele.getText().isEmpty()) {
             return  false;
         }
         
         if (typeVehicule.getSelectedItem() == "Camion") {
-            if (Hauteur.getText() == null) {
+            if (Hauteur.getText().isEmpty()) {
                 return false;
             }
-            if (Tonnage.getText() == null) {
+            if (Tonnage.getText().isEmpty()) {
                 return false;
             }
         }
@@ -189,11 +189,13 @@ public class VueAjouterVehicule extends Vue {
 
     public Client getClient(String nom, String prenom) {
         for (Client c : Parking.getListeClient()) {
-            if (c.getNom() == nom && c.getPrenom() == prenom) {
-                System.out.println(c);
+            String Nom = c.getNom();
+            String Prenom = c.getPrenom();
+            if (Nom.equals(nom) && Prenom.equals(prenom)) {
                 return c;
             }
         }
+        System.out.println("Echec");
         return null;
     } 
     
@@ -238,7 +240,7 @@ public class VueAjouterVehicule extends Vue {
                     String temp = client.getSelectedItem().toString();
                     String[] splited = temp.split("\\s+");
                     if (typeVehicule.getSelectedItem() == "Voiture") {
-                        System.out.println(getClient(splited[0],splited[1]));
+                        //System.out.println(getClient(splited[0],splited[1]));
                         new Voiture(
                                 Immatriculation.getText(),
                                 Marque.getText(),
@@ -259,7 +261,10 @@ public class VueAjouterVehicule extends Vue {
 
                     fenetre.dispose();
                 } else {
-                    System.out.println("Une Erreur est survenue !!!");
+                    JOptionPane.showMessageDialog(fenetre,
+                            "Vous devez remplir tous les champs !",
+                            "Inane error",
+                            JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
@@ -298,7 +303,7 @@ public class VueAjouterVehicule extends Vue {
     public void afficherClients() {
         String identite;
         for (Client c : Parking.getListeClient()) {
-            identite = c.getPrenom() + " " + c.getNom();
+            identite = c.getNom() + " " + c.getPrenom();
             client.addItem(identite);
 
         }

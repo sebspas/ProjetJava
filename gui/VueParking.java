@@ -27,6 +27,7 @@ public class VueParking extends Vue{
 	/*						Constructeur						   */
     /***************************************************************/
     public VueParking() {
+        Parking.addVue(this);
         JPanel main = new JPanel();
 
         fenetre.setLocation(300, 100);
@@ -60,8 +61,9 @@ public class VueParking extends Vue{
     /***************************************************************/
     private JPanel AffichageParking() {
         parking.removeAll();
-        for (Place p : Parking.getListeVehicules()) {
+        for (Place p : Parking.getListePlaces()) {
             JButton button = new JButton();
+            button.setRolloverEnabled(false);
 
             button.setPreferredSize(new Dimension(200,50));
 
@@ -181,7 +183,7 @@ public class VueParking extends Vue{
     @Override
     public void mettreAJour() {
         float nbPlacesMax = Parking.getNbPlacesMax();
-        float nbrVehicule = Parking.getListeVehicules().size();
+        float nbrVehicule = Parking.getNbVehicule();
         int pourcentage = (int)((nbrVehicule/nbPlacesMax)*100);
         progressBar.setValue(pourcentage);
         parking = AffichageParking();

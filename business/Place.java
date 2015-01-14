@@ -52,6 +52,7 @@ public class Place{
 	public Place(String type) {
 		this.type = type;
 		this.Reserver = false;
+		Parking.ajouterPlace(this);
 	}// Constructeur()
 
 	/***************************************************************/

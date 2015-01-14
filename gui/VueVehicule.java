@@ -8,6 +8,8 @@ import parking.business.Place;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 /**
  * Created by Administrateur on 11/01/2015.
@@ -19,10 +21,14 @@ public class VueVehicule extends Vue{
     JFrame fenetre = new JFrame("Gestion Vehicule");
     JPanel listeVehicule = new JPanel();
 
+    private JComboBox client;
+    private JComboBox vehicule;
+
     /***************************************************************/
 	/*						Constructeur						   */
     /***************************************************************/
     public VueVehicule() {
+        Parking.addVue(this);
         fenetre.setLocation(0, 0);
         fenetre.setPreferredSize(new Dimension(520,450));
         fenetre.setDefaultCloseOperation(fenetre.DISPOSE_ON_CLOSE);
@@ -30,7 +36,7 @@ public class VueVehicule extends Vue{
         fenetre.setLayout(borderLayout);
         JPanel main = new JPanel();
 
-        JPanel bouton_bas = new JPanel();
+       /* JPanel bouton_bas = new JPanel();
         JButton ajouter = new JButton();
         ajouter.setText("Ajouter Vehicule");
         ajouter.setPreferredSize(new Dimension(260,40));
@@ -43,7 +49,8 @@ public class VueVehicule extends Vue{
         bouton_bas.add(supprimer);
 
         main.add(listeVehicule, BorderLayout.NORTH);
-        main.add(bouton_bas, BorderLayout.SOUTH);
+        main.add(bouton_bas, BorderLayout.SOUTH);*/
+        main.add(Top(), BorderLayout.NORTH);
 
         fenetre.setContentPane(main);
         fenetre.pack();
@@ -54,6 +61,50 @@ public class VueVehicule extends Vue{
     /***************************************************************/
 	/*						Methodes							   */
     /***************************************************************/
+
+    private JPanel Top() {
+
+        // Top
+        JPanel top = new JPanel();
+        top.setLayout(new BorderLayout());
+
+        JLabel labelClient = new JLabel("Client");
+        client = new JComboBox();
+        client.setPreferredSize(new Dimension(300, 20));
+
+        //afficherClients();
+        fenetre.repaint();
+
+        JPanel topClient = new JPanel();
+        topClient.setLayout(new BorderLayout());
+        topClient.add(labelClient, BorderLayout.NORTH);
+        topClient.add(client, BorderLayout.CENTER);
+
+        JLabel labelTypeVehicule = new JLabel("Véhicule");
+        vehicule = new JComboBox();
+        vehicule.setPreferredSize(new Dimension(300, 20));
+        vehicule.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                Object item = e.getItem();
+                // to do
+            }
+        });
+
+        JPanel topVehicule = new JPanel();
+        topVehicule.setLayout(new BorderLayout());
+        topVehicule.add(labelTypeVehicule, BorderLayout.NORTH);
+        topVehicule.add(vehicule, BorderLayout.CENTER);
+
+        top.add(topClient, BorderLayout.NORTH);
+        top.add(topVehicule, BorderLayout.CENTER);
+
+        return top;
+    } // Top()
+
+
+
+
     private JPanel AfficheListeVehicule() {
         listeVehicule.removeAll();
         DefaultListModel dlm = new DefaultListModel();
@@ -64,7 +115,7 @@ public class VueVehicule extends Vue{
         JScrollPane listScroller = new JScrollPane(list);
         listScroller.setPreferredSize(new Dimension(500, 350));
         list.setVisibleRowCount(10);
-        for (Place p : Parking.getListeVehicules()) {
+        for (Place p : Parking.getListePlaces()) {
             if (p.getVehicule() != null) {
                 dlm.addElement(p.getVehicule());
             }
