@@ -7,11 +7,12 @@
     <properties/>
     <border type="none"/>
     <children>
-      <component id="46cf4" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+      <component id="c7775" class="javax.swing.JTextArea" binding="textArea1" default-binding="true">
         <constraints border-constraint="Center"/>
         <properties>
+          <autoscrolls value="true"/>
           <editable value="false"/>
-          <horizontalAlignment value="10"/>
+          <margin top="20" left="20" bottom="20" right="20"/>
         </properties>
       </component>
     </children>

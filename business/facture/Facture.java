@@ -62,6 +62,10 @@ public class Facture {
         new VueFacture(this);
     } // Constructeur
 
+    public int getNumeroFacture() {
+        return numeroFacture;
+    }
+
     /***************************************************************/
 	/*						Methodes							   */
     /***************************************************************/
@@ -72,11 +76,16 @@ public class Facture {
      */
     @Override
     public String toString() {
-        return "Facture{" + "\r\n" +
-                "numeroFacture=" + numeroFacture +
-                ", tarif=" + tarif +
-                ", client=" + client +
-                '}';
+        return "####################### Facture " + numeroFacture + " #######################" + "\r\n" + 
+                "#"                                   + "\r\n" +
+                "# Véhicule :" + vehicule             + "\r\n" +
+                "# Tarif : "   + tarif + "€"          + "\r\n" +
+                "#"                                   + "\r\n" +
+                "# Client :"                          + "\r\n" +
+                "# Nom : "     + client.getNom()      + "\r\n" +
+                "# Prénom : "  + client.getPrenom()   + "\r\n" +
+                "# Adresse : " + client.getAdresse()  + "\r\n" +
+                "#########################################################";
     } // toString()
 
     /**

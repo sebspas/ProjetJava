@@ -11,13 +11,13 @@ import java.awt.event.ActionListener;
  * Created by Administrateur on 14/01/2015.
  */
 public class VueFacture {
-    private JTextField textField1;
     private JPanel panel1;
+    private JTextArea textArea1;
 
     public VueFacture(final Facture facture) {
-        final JFrame fenetre = new JFrame("Facture");
+        final JFrame fenetre = new JFrame("Facture n°" + facture.getNumeroFacture());
         fenetre.setResizable(false);
-        fenetre.setPreferredSize(new Dimension(600,800));
+        fenetre.setPreferredSize(new Dimension(450,320));
         fenetre.setDefaultCloseOperation(fenetre.DISPOSE_ON_CLOSE);
         
         JPanel panel = new JPanel();
@@ -27,10 +27,10 @@ public class VueFacture {
         JButton save = new JButton("Sauvegarder");
         
         panel.add(save, BorderLayout.SOUTH);
-        panel.add(textField1, BorderLayout.CENTER);
-        
-        textField1.setPreferredSize(new Dimension(450,700));
-        textField1.setText(facture.toString());
+        panel.add(textArea1, BorderLayout.CENTER);
+
+        textArea1.setPreferredSize(new Dimension(400,300));
+        textArea1.setText(facture.toString());
 
         
         save.addActionListener(new ActionListener() {
