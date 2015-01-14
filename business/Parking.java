@@ -115,23 +115,6 @@ public class Parking {
 	} // getNbPlacesMax()
 
 	/**
-<<<<<<< HEAD
-=======
-	 * Methode getListeVehicules() renvoie la liste des vehicules existants.
-	 *
-	 * @return La liste des vehicules existants.
-	 */
-	public static ArrayList<Place> getListeVehicules() { return listeVehicules; } // getListeVehicules()
-
-	/**
-	 * Methode getListeClients() renvoie la liste des clients.
-	 *
-	 * @return La liste des clients.
-	 */
-	public static ArrayList<Client> getListeClient() { return listeClients; } // getListeClients()
-
-	/**
->>>>>>> origin/master
 	 * Methode getTarif_transporteur() renvoie le tarif d'une place de type transporteur.
 	 *
 	 * @return Le tarif d'une place de type transporteur.
@@ -167,6 +150,13 @@ public class Parking {
 		}
 		return -1;
 	} // getLocation()
+
+	/**
+	 * Methode getListeClients() renvoie la liste des clients.
+	 *
+	 * @return La liste des clients.
+	 */
+	public static ArrayList<Client> getListeClient() { return listeClients; } // getListeClients()
 
 	/**
 	 * Methode getListeVehicules() renvoie la liste des vehicules existants.
