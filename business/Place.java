@@ -165,6 +165,7 @@ public class Place{
 		}
 		Vehicule temp = this.vehicule;
 		this.vehicule = null;
+		Parking.reorganiserPlaces();
 		return temp;
 	} // retirerVehicule()
 

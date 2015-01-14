@@ -77,6 +77,10 @@ public class Client {
     /***************************************************************/
 	/*						Getter								   */
     /***************************************************************/
+    public ArrayList<Vehicule> getListeVehicule() {
+        return listeVehicule;
+    }
+
     /**
      * Methode getNom() renvoie le nom du client.
      *

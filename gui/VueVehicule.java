@@ -6,9 +6,12 @@ package parking.gui;
 import parking.business.Client;
 import parking.business.Parking;
 import parking.business.Place;
+import parking.business.vehicule.Vehicule;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
@@ -24,6 +27,9 @@ public class VueVehicule extends Vue{
 
     private JComboBox client;
     private JComboBox vehicule;
+    
+    private JButton parker_vehicule;
+    private JButton unpark_vehicule;
 
     /***************************************************************/
 	/*						Constructeur						   */
@@ -37,20 +43,38 @@ public class VueVehicule extends Vue{
         fenetre.setLayout(borderLayout);
         JPanel main = new JPanel();
 
-       /* JPanel bouton_bas = new JPanel();
-        JButton ajouter = new JButton();
-        ajouter.setText("Ajouter Vehicule");
-        ajouter.setPreferredSize(new Dimension(260,40));
+        JPanel bouton_bas = new JPanel();
+        parker_vehicule = new JButton();
+        parker_vehicule.setText("Park le vehicule");
+        parker_vehicule.setPreferredSize(new Dimension(260, 40));
+        
 
-        JButton supprimer = new JButton();
-        supprimer.setText("Supprimer Vehicule");
-        supprimer.setPreferredSize(new Dimension(260,40));
+        unpark_vehicule = new JButton();
+        unpark_vehicule.setText("Unpark le vehicule");
+        unpark_vehicule.setPreferredSize(new Dimension(260,40));
 
-        bouton_bas.add(ajouter);
-        bouton_bas.add(supprimer);
-
-        main.add(listeVehicule, BorderLayout.NORTH);
-        main.add(bouton_bas, BorderLayout.SOUTH);*/
+        bouton_bas.add(parker_vehicule);
+        parker_vehicule.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Vehicule v = getVehicule(vehicule.getSelectedItem().toString());
+                Parking.park(v);
+                parker_vehicule.setEnabled(false);
+                unpark_vehicule.setEnabled(true);
+            }
+        });
+        bouton_bas.add(unpark_vehicule);
+        unpark_vehicule.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Vehicule v = getVehicule(vehicule.getSelectedItem().toString());
+                Parking.retirerVehicule(v.getImmatriculation());
+                parker_vehicule.setEnabled(true);
+                unpark_vehicule.setEnabled(false);
+            }
+        });
+        
+        main.add(bouton_bas, BorderLayout.SOUTH);
         main.add(Top(), BorderLayout.NORTH);
 
         fenetre.setContentPane(main);
@@ -62,7 +86,31 @@ public class VueVehicule extends Vue{
     /***************************************************************/
 	/*						Methodes							   */
     /***************************************************************/
+    public Client getClient(String nomprenom) {
+        String[] splited = nomprenom.split("\\s+");
+        for (Client c : Parking.getListeClient()) {
+            String Nom = splited[0];
+            String Prenom = splited[1];
+            if (Nom.equals(c.getNom()) && Prenom.equals(c.getPrenom())) {
+                return c;
+            }
+        }
+        System.out.println("Echec");
+        return null;
+    }
 
+    public Vehicule getVehicule(String vehicule) {
+        Client c1 = getClient(client.getSelectedItem().toString());
+        String[] splited = vehicule.split("\\s+");
+        for (Vehicule v : c1.getListeVehicule()) {
+            if (v.getImmatriculation().equals(splited[3])) {
+                return v;
+            }
+        }
+        System.out.println("Echec");
+        return null;
+    }
+    
     private JPanel Top() {
 
         // Top
@@ -75,7 +123,9 @@ public class VueVehicule extends Vue{
 
         afficherClients();
         fenetre.repaint();
-
+        
+        client.setSelectedIndex(0);
+        
         JPanel topClient = new JPanel();
         topClient.setLayout(new BorderLayout());
         topClient.add(labelClient, BorderLayout.NORTH);
@@ -87,11 +137,33 @@ public class VueVehicule extends Vue{
         vehicule.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
-                Object item = e.getItem();
-                // to do
+                if (vehicule.getItemCount() != 0) {
+                    Vehicule v = getVehicule(vehicule.getSelectedItem().toString());
+                    if (Parking.vehiculeGare(v)) {
+                        parker_vehicule.setEnabled(false);
+                        unpark_vehicule.setEnabled(true);
+                    }
+                    else {
+                        parker_vehicule.setEnabled(true);
+                        unpark_vehicule.setEnabled(false);
+                    }
+                }
             }
         });
 
+        client.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                vehicule.removeAllItems();
+                Client client1 = getClient(client.getSelectedItem().toString());
+                for (Vehicule v1: client1.getListeVehicule()) {
+                    vehicule.addItem(v1);
+                }
+                vehicule.setSelectedIndex(0);
+                
+            }
+        });
+        
         JPanel topVehicule = new JPanel();
         topVehicule.setLayout(new BorderLayout());
         topVehicule.add(labelTypeVehicule, BorderLayout.NORTH);
@@ -99,7 +171,7 @@ public class VueVehicule extends Vue{
 
         top.add(topClient, BorderLayout.NORTH);
         top.add(topVehicule, BorderLayout.CENTER);
-
+        
         return top;
     } // Top()
 

@@ -1,6 +1,7 @@
 package parking.business.vehicule;
 
 import parking.business.Client;
+import parking.business.Parking;
 
 /**
  * Class Camion, qui herite de la classe Vehicule, et rajoute les informations suplementaires
@@ -66,7 +67,7 @@ public class Camion extends Vehicule{
 	@Override
 	public String toString() {
 		return  "Camion" + "\r\n" +
-				"            immatriculation :" + immatriculation  +  "\r\n" +
+				"            immatriculation : " + immatriculation  +  "\r\n" +
 				"            marque  :" + marque  + "\r\n" +
 				"            modele  :" + modele + "\r\n" +
 				"            proprio :" + proprietaire.getNom() +

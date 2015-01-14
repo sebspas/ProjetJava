@@ -58,6 +58,7 @@ public class Facture {
         tarif = place.getVehicule().getProprietaire().getCalculerTarif().calculerTarif(place);
         client = place.getVehicule().getProprietaire();
         Parking.addFacture(this);
+        sauvegarder();
     } // Constructeur
 
     /***************************************************************/

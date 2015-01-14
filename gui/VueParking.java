@@ -31,7 +31,7 @@ public class VueParking extends Vue{
         JPanel main = new JPanel();
 
         fenetre.setLocation(300, 100);
-        fenetre.setPreferredSize(new Dimension(800,600));
+        fenetre.setPreferredSize(new Dimension(800,750));
         fenetre.setDefaultCloseOperation(fenetre.EXIT_ON_CLOSE);
 
         fenetre.setLayout(new BorderLayout());

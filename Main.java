@@ -19,7 +19,7 @@ public class Main {
         Vue test = new VueParking();
         
         // Creation des places Particulier //
-        for (int i = 0; i < 20; ++i) {
+        for (int i = 0; i < 2; ++i) {
             new Place("Particulier");
         }
         
@@ -45,9 +45,6 @@ public class Main {
         Parking.park(c1);
         Parking.park(v2);
         Parking.park(v3);
-
-        client1.setPointsDeFidelite(450);
-        Parking.unpark(2);
 
         for(Facture f : Parking.getListeFacture()){
             f.sauvegarder();

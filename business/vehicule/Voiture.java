@@ -48,7 +48,7 @@ public class Voiture extends Vehicule{
     @Override
     public String toString() {
         return  "Voiture" + "\r\n" +
-                "            immatriculation :" + immatriculation  +  "\r\n" +
+                "            immatriculation : " + immatriculation  +  "\r\n" +
                 "            marque  :" + marque  + "\r\n" +
                 "            modele  :" + modele + "\r\n" +
                 "            proprio :" + proprietaire.getNom();
