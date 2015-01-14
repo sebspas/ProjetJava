@@ -66,9 +66,13 @@ public class Camion extends Vehicule{
 	 */
 	@Override
 	public String toString() {
-		return "Camion [immatriculation=" + immatriculation + ", marque="
-				+ marque + ", modele=" + modele + ", proprio=" + proprietaire.getNom()
-				+ ", tonnage=" + tonnage + ", hauteur=" + hauteur + "]";
+		return  "Camion" + "\r\n" +
+				"            immatriculation :" + immatriculation  +  "\r\n" +
+				"            marque  :" + marque  + "\r\n" +
+				"            modele  :" + modele + "\r\n" +
+				"            proprio :" + proprietaire.getNom() +
+				"			 hauteur :" + hauteur +
+				"			 tonnage :" + tonnage;
 	}// toString()
 	
 } // Camion class

@@ -56,13 +56,16 @@ public class Facture {
             File ff=new File("Factures/Factures" + numeroFacture + ".txt");
             ff.createNewFile();
             FileWriter ffw=new FileWriter(ff);
-            ffw.write("Facture numéro :" + numeroFacture + "\r\n");
-            ffw.write("Véhicule :" + vehicule + "\r\n");
-            ffw.write("Tarif : " + tarif + "€" + "\r\n" + "\r\n");
-            ffw.write("Client :" + "\r\n");
-            ffw.write("Nom : " + client.getNom() + "\r\n");
-            ffw.write("Prénom : " + client.getPrenom() + "\r\n");
-            ffw.write("Adresse : " + client.getAdresse() + "\r\n");
+            ffw.write("####################### Facture " + numeroFacture + " #######################" + "\r\n" );
+            ffw.write("#"                                   + "\r\n");
+            ffw.write("# Véhicule :" + vehicule             + "\r\n");
+            ffw.write("# Tarif : "   + tarif + "€"          + "\r\n");
+            ffw.write("#"                                   + "\r\n");
+            ffw.write("# Client :"                          + "\r\n");
+            ffw.write("# Nom : "     + client.getNom()      + "\r\n");
+            ffw.write("# Prénom : "  + client.getPrenom()   + "\r\n");
+            ffw.write("# Adresse : " + client.getAdresse()  + "\r\n");
+            ffw.write("#########################################################");
             ffw.close();
         } catch (Exception e) {
             e.printStackTrace();
