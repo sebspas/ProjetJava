@@ -65,7 +65,7 @@ public class VueVehicule extends Vue{
         JScrollPane listScroller = new JScrollPane(list);
         listScroller.setPreferredSize(new Dimension(500, 350));
         list.setVisibleRowCount(10);
-        for (Place p : Parking.getListeVehicules()) {
+        for (Place p : Parking.getListePlaces()) {
             if (p.getVehicule() != null) {
                 dlm.addElement(p.getVehicule());
             }

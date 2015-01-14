@@ -41,7 +41,7 @@ public class Parking {
 	 * La liste des vehicule du parking.
 	 * Type de collection a definir ...
 	 */
-	private static ArrayList<Place> listeVehicules = new ArrayList<Place>();
+	private static ArrayList<Place> listePlaces = new ArrayList<Place>();
 
 	/**
 	 * La liste de tous les clients.
@@ -143,7 +143,7 @@ public class Parking {
 	 * @return le numero ou le vehicule se trouve sur le parking.
 	 */
 	public static int getLocation(String numeroImmatriculation) {
-		for (Place p : Parking.listeVehicules) {
+		for (Place p : Parking.listePlaces) {
 			if (p.getVehicule() != null && (p.getVehicule().getImmatriculation()).equals(numeroImmatriculation)) {
 				return p.getNumero();
 			}
@@ -159,11 +159,11 @@ public class Parking {
 	public static ArrayList<Client> getListeClient() { return listeClients; } // getListeClients()
 
 	/**
-	 * Methode getListeVehicules() renvoie la liste des vehicules existants.
+	 * Methode getListePlaces() renvoie la liste des vehicules existants.
 	 *
 	 * @return La liste des vehicules existants.
 	 */
-	public static ArrayList<Place> getListeVehicules() { return listeVehicules; } // getListeVehicules()
+	public static ArrayList<Place> getListePlaces() { return listePlaces; } // getListePlaces()
 
 	/**
 	 * Methode getListeFacture() renvoie la liste de toutes les factures.
@@ -265,7 +265,7 @@ public class Parking {
 	 */
 	@Override
 	public String toString() {
-		return "Parking [nom=" + nom + ", listeVehicules=" + listeVehicules + "]";
+		return "Parking [nom=" + nom + ", listePlaces=" + listePlaces + "]";
 	}// toString()
 
 	/**
@@ -280,7 +280,7 @@ public class Parking {
 				throw new NombrePlacesMaxException();
 			p.setNumero(Parking.getNumeroPlace());
 			Parking.setNumeroPlace(Parking.getNumeroPlace()+1);
-			Parking.listeVehicules.add(p);
+			Parking.listePlaces.add(p);
 			notifier();
 		}
 		catch (NombrePlacesMaxException e) {
@@ -296,7 +296,7 @@ public class Parking {
 	 * @return Renvoie un booleen indiquant si le vehicule est present ou non.
 	 */
 	public static boolean vehiculeExiste(Vehicule v){
-		for(Place p : Parking.listeVehicules ){
+		for(Place p : Parking.listePlaces){
 			if(p.getVehicule() == v)
 				return true;
 		}
@@ -311,7 +311,7 @@ public class Parking {
 	 * @return renvoie le vehicule retire.
 	 */
 	public static Vehicule unpark(int numeroPlace) {
-		for(Place p : Parking.listeVehicules ){
+		for(Place p : Parking.listePlaces){
 			if (numeroPlace == p.getNumero())
 				try {
 					if (!appelInterne) {
@@ -344,7 +344,7 @@ public class Parking {
 			if (vehicule.getType().equals("Voiture")) {
 				typePlace = "Particulier";
 			}
-			for (Place p : Parking.listeVehicules) {
+			for (Place p : Parking.listePlaces) {
 				if (p.getVehicule() == null && !(p.getReservation())) {
 					if (p.getType().equals(typePlace)) {
 						p.setVehicule(vehicule);
@@ -354,7 +354,7 @@ public class Parking {
 					}
 				}
 			}
-			for (Place p : Parking.listeVehicules) {
+			for (Place p : Parking.listePlaces) {
 				if (p.getVehicule() == null && !(p.getReservation())) {
 					p.setVehicule(vehicule);
 					return;
@@ -383,7 +383,7 @@ public class Parking {
 	 */
 	public static void etatParking() {
 		System.out.println("Debut de l'affichage du parking !");
-		for(Place p : Parking.listeVehicules ) {
+		for(Place p : Parking.listePlaces) {
 			System.out.println("La place numero : " + p.getNumero() + " du type : " + p.getType());
 			if (p.getVehicule() != null)
 				System.out.println("La place a pour vehicule : " + p.getVehicule() + "\n");
@@ -400,7 +400,7 @@ public class Parking {
 	 */
 	public static Place bookPlace() {
 		try {
-			for (Place p : Parking.listeVehicules) {
+			for (Place p : Parking.listePlaces) {
 				if (p.getVehicule() == null) {
 					p.setReservation(true);
 					return p;
@@ -426,7 +426,7 @@ public class Parking {
 	 */
 	public static Place freePlace(int numeroPlace) {
 		try {
-			for (Place p : Parking.listeVehicules) {
+			for (Place p : Parking.listePlaces) {
 				if (p.getNumero() == numeroPlace ) {
 					if (p.getReservation()) {
 						p.setReservation(false);
@@ -469,7 +469,7 @@ public class Parking {
 	 */
 	public static void reorganiserPlaces() {
 		appelInterne = true;
-		for (Place p : Parking.listeVehicules) {
+		for (Place p : Parking.listePlaces) {
 			if (p.getType().equals("Transporteur") && p.getVehicule() != null) {
 				if (p.getVehicule().getType().equals("Voiture")) {
 					Vehicule vretire = unpark(p.getNumero());

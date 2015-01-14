@@ -61,7 +61,7 @@ public class VueParking extends Vue{
     /***************************************************************/
     private JPanel AffichageParking() {
         parking.removeAll();
-        for (Place p : Parking.getListeVehicules()) {
+        for (Place p : Parking.getListePlaces()) {
             JButton button = new JButton();
             button.setRolloverEnabled(false);
 
@@ -183,7 +183,9 @@ public class VueParking extends Vue{
     @Override
     public void mettreAJour() {
         float nbPlacesMax = Parking.getNbPlacesMax();
-        float nbrVehicule = Parking.getListeVehicules().size();
+        float nbrVehicule = Parking.getListePlaces().size();
+        
+        System.out.println(nbrVehicule);
         int pourcentage = (int)((nbrVehicule/nbPlacesMax)*100);
         progressBar.setValue(pourcentage);
         parking = AffichageParking();
