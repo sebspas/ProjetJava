@@ -183,9 +183,7 @@ public class VueParking extends Vue{
     @Override
     public void mettreAJour() {
         float nbPlacesMax = Parking.getNbPlacesMax();
-        float nbrVehicule = Parking.getListePlaces().size();
-        
-        System.out.println(nbrVehicule);
+        float nbrVehicule = Parking.getNbVehicule();
         int pourcentage = (int)((nbrVehicule/nbPlacesMax)*100);
         progressBar.setValue(pourcentage);
         parking = AffichageParking();

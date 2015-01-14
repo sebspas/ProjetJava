@@ -32,6 +32,7 @@ public class Parking {
 	 */
 	static private int nbPlacesMax;
 
+	static private int nbVehicule;
 	/**
 	 * Le nom du parking.
 	 */
@@ -96,6 +97,10 @@ public class Parking {
 	/***************************************************************/
 	/*						Getter								   */
 	/***************************************************************/
+	public static int getNbVehicule() {
+		return nbVehicule;
+	}
+
 	/**
 	 * Methode renvoyant le numero de la derniere place ajoutee au parking.
 	 *
@@ -315,6 +320,7 @@ public class Parking {
 			if (numeroPlace == p.getNumero())
 				try {
 					if (!appelInterne) {
+						--nbVehicule;
 						Parking.addFacture(new Facture(p));
 					}
 					return p.retirerVehicule();
@@ -348,8 +354,10 @@ public class Parking {
 				if (p.getVehicule() == null && !(p.getReservation())) {
 					if (p.getType().equals(typePlace)) {
 						p.setVehicule(vehicule);
-						if (!appelInterne)
+						if (!appelInterne) {
+							++nbVehicule;
 							p.getVehicule().setDateArrivee(new Date());
+						}
 						return;
 					}
 				}
