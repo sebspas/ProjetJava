@@ -299,13 +299,8 @@ public class Parking {
 	 * 		Vehicule a recherche dans le parking.
 	 * @return Renvoie un booleen indiquant si le vehicule est present ou non.
 	 */
-<<<<<<< HEAD
 	public static boolean vehiculeGare(Vehicule v){
-		for(Place p : Parking.listeVehicules ){
-=======
-	public static boolean vehiculeExiste(Vehicule v){
-		for(Place p : Parking.listePlaces){
->>>>>>> origin/master
+		for(Place p : Parking.listePlaces ){
 			if(p.getVehicule() == v)
 				return true;
 		}

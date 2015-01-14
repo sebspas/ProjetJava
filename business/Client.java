@@ -170,7 +170,7 @@ public class Client {
      *          L'exception propagee en cas d'erreur.
      */
     public void removeVehicule(Vehicule vehicule) throws VehiculeGareException {
-        if (Parking.vehiculeExiste(vehicule))
+        if (Parking.vehiculeGare(vehicule))
             throw new VehiculeGareException();
         else
             listeVehicule.remove(vehicule);
