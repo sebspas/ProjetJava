@@ -27,6 +27,7 @@ public class VueParking extends Vue{
 	/*						Constructeur						   */
     /***************************************************************/
     public VueParking() {
+        Parking.addVue(this);
         JPanel main = new JPanel();
 
         fenetre.setLocation(300, 100);
@@ -62,6 +63,7 @@ public class VueParking extends Vue{
         parking.removeAll();
         for (Place p : Parking.getListeVehicules()) {
             JButton button = new JButton();
+            button.setRolloverEnabled(false);
 
             button.setPreferredSize(new Dimension(200,50));
 

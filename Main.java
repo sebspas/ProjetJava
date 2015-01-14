@@ -17,26 +17,16 @@ public class Main {
     public static void main(String[] args) {
 
         Vue test = new VueParking();
-        //Vue listeVehicule = new VueVehicule();
-        Parking.addVue(test);
-        //Parking.addVue(listeVehicule);
-        // Creation des places //
-        Place p1 = new Place("Particulier");
-        Place p2 = new Place("Particulier");
-        Place t1 = new Place("Transporteur");
-        Place t2 = new Place("Transporteur");
-        Place p4 = new Place("Particulier");
-        Place p5 = new Place("Particulier");
-        Place t6 = new Place("Transporteur");
-        Place t7 = new Place("Transporteur");
-        Place t8 = new Place("Particulier");
-        Place p9 = new Place("Particulier");
-        Place t10 = new Place("Transporteur");
-        Place t11 = new Place("Transporteur");
-        Place p12 = new Place("Particulier");
-        Place p13 = new Place("Particulier");
-        Place t14 = new Place("Transporteur");
-        Place t15 = new Place("Transporteur");
+        
+        // Creation des places Particulier //
+        for (int i = 0; i < 20; ++i) {
+            new Place("Particulier");
+        }
+        
+        // Creation des places Transporteur //
+        for (int i = 0; i < 5; ++i) {
+            new Place("Transporteur");
+        }
 
         // Creation des clients //
         Client client1 = new Client("Voili","Voilou", "69 rue du Porn",new CalculerTarifHeure());

@@ -86,7 +86,7 @@ public class Parking {
 	 */
 	static {
 		nom = "Mon Parking";
-		nbPlacesMax = 20;
+		nbPlacesMax = 25;
 		numeroFacture = 0;
 		tarif_particulier = 1;
 		tarif_transporteur = 1.5;

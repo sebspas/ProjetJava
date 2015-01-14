@@ -23,6 +23,7 @@ public class VueVehicule extends Vue{
 	/*						Constructeur						   */
     /***************************************************************/
     public VueVehicule() {
+        Parking.addVue(this);
         fenetre.setLocation(0, 0);
         fenetre.setPreferredSize(new Dimension(520,450));
         fenetre.setDefaultCloseOperation(fenetre.DISPOSE_ON_CLOSE);
