@@ -56,49 +56,19 @@ public class VueVehicule extends Vue{
     public VueVehicule() {
         Parking.addVue(this);
         fenetre.setLocation(0, 0);
-        fenetre.setPreferredSize(new Dimension(520,450));
+        fenetre.setPreferredSize(new Dimension(320,180));
         fenetre.setDefaultCloseOperation(fenetre.DISPOSE_ON_CLOSE);
         BorderLayout borderLayout = new BorderLayout();
         fenetre.setLayout(borderLayout);
         JPanel main = new JPanel();
 
-        JPanel bouton_bas = new JPanel();
-        parker_vehicule = new JButton();
-        parker_vehicule.setText("Park le vehicule");
-        parker_vehicule.setPreferredSize(new Dimension(260, 40));
-        
 
-        unpark_vehicule = new JButton();
-        unpark_vehicule.setText("Unpark le vehicule");
-        unpark_vehicule.setPreferredSize(new Dimension(260,40));
-
-        bouton_bas.add(parker_vehicule);
-        parker_vehicule.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Vehicule v = getVehicule(vehicule.getSelectedItem().toString());
-                Parking.park(v);
-                parker_vehicule.setEnabled(false);
-                unpark_vehicule.setEnabled(true);
-            }
-        });
-        bouton_bas.add(unpark_vehicule);
-        unpark_vehicule.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Vehicule v = getVehicule(vehicule.getSelectedItem().toString());
-                Parking.retirerVehicule(v.getImmatriculation());
-                parker_vehicule.setEnabled(true);
-                unpark_vehicule.setEnabled(false);
-            }
-        });
-        
-        main.add(bouton_bas, BorderLayout.SOUTH);
         main.add(Top(), BorderLayout.NORTH);
+        main.add(Center(), BorderLayout.SOUTH);
 
         fenetre.setContentPane(main);
         fenetre.pack();
-
+        fenetre.setResizable(false);
         fenetre.setVisible(true);
     } // Constructeur
 
@@ -193,6 +163,43 @@ public class VueVehicule extends Vue{
         
         return top;
     } // Top()
+
+    private JPanel Center() {
+        JPanel center = new JPanel();
+        center.setLayout(new BorderLayout());
+
+        parker_vehicule = new JButton();
+        parker_vehicule.setText("Park le vehicule");
+        parker_vehicule.setPreferredSize(new Dimension(150, 40));
+
+        unpark_vehicule = new JButton();
+        unpark_vehicule.setText("Unpark le vehicule");
+        unpark_vehicule.setPreferredSize(new Dimension(150,40));
+
+        center.add(parker_vehicule, BorderLayout.WEST);
+        parker_vehicule.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Vehicule v = getVehicule(vehicule.getSelectedItem().toString());
+                Parking.park(v);
+                parker_vehicule.setEnabled(false);
+                unpark_vehicule.setEnabled(true);
+            }
+        });
+
+        center.add(unpark_vehicule, BorderLayout.EAST);
+        unpark_vehicule.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Vehicule v = getVehicule(vehicule.getSelectedItem().toString());
+                Parking.retirerVehicule(v.getImmatriculation());
+                parker_vehicule.setEnabled(true);
+                unpark_vehicule.setEnabled(false);
+            }
+        });
+
+        return center;
+    }
 
     /**
      * Methode AfficheListeVehicule() permet de ...

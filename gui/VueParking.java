@@ -147,6 +147,8 @@ public class VueParking extends Vue{
         JMenuBar barre = new JMenuBar();
         barre.add(creerMenuFichier());
         barre.add(creerMenuVehicule());
+        barre.add(creerMenuClient());
+        barre.add(creerMenuTimer());
         return barre;
     } // barreMenus()
 
@@ -246,6 +248,57 @@ public class VueParking extends Vue{
     private void actionMenuVehiculeAjouterVoiture() {
         parking.gui.Vue AjouterVehicule = new parking.gui.VueAjouterVehicule();
     } // actionMenuVehiculeAjouterVoiture()
+
+
+    private JMenu creerMenuClient() {
+        JMenu menuClient = new JMenu("Client");
+        menuClient.add(creerMenuClientNouveau());
+        return menuClient;
+    } // creerMenuClient()
+
+    private JMenuItem creerMenuClientNouveau() {
+        JMenuItem menu = new JMenuItem("Nouveau");
+        menu.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                actionMenuClientNouveau();
+            }
+
+        });
+        return menu;
+    } // creerMenuClientNouveau()
+
+
+    private void actionMenuClientNouveau() {
+       parking.gui.Vue NouveauClient = new parking.gui.VueNouveauClient();
+    } // actionMenuClientNouveau()
+
+
+    private JMenu creerMenuTimer() {
+        JMenu menuTimer = new JMenu("Timer");
+        menuTimer.add(creerMenuTimerAfficher());
+        return menuTimer;
+    } // creerMenuTimer()
+
+    private JMenuItem creerMenuTimerAfficher() {
+        JMenuItem menu = new JMenuItem("Afficher");
+        menu.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                actionMenuTimerAfficher();
+            }
+
+        });
+        return menu;
+    } // creerMenuTimerAfficher()
+
+
+    private void actionMenuTimerAfficher() {
+        parking.gui.Vue Timer = new parking.gui.VueTimer(Parking.getTimer());
+        Parking.getTimer().setVue(Timer);
+        Parking.getTimer().start();
+    } // actionMenuTimerAfficher()
+
 
     /**
      * Methode mettreAJour() permet de mettre a jour la vue.
