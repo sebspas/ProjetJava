@@ -38,7 +38,7 @@ public class Voiture extends Vehicule{
 	/*						Methodes							   */
     /***************************************************************/
     /**
-     * Methode toString() affichant toutes les informations de la voiture.
+     * Methode toString() affiche toutes les informations de la voiture.
      *
      * @return Une chaine de caracteres contenant les informations.
      */

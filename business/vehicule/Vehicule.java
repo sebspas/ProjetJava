@@ -84,7 +84,6 @@ public abstract class Vehicule {
 	/***************************************************************/
 	/*						Setter								   */
 	/***************************************************************/
-
 	/**
 	 * Methode setDateArrivee() modifie la date d'arrivee du vehicule.
 	 *
@@ -99,9 +98,7 @@ public abstract class Vehicule {
 	/*						Methodes							   */
 	/***************************************************************/
 	/**
-	 * Methode toString() affichant toutes les informations du vehicule.
-	 *
-	 * @return Une chaine de caracteres contenant les informations.
+	 * Methode abstraite toString() servant a afficher toutes les informations du vehicule.
 	 */
 	@Override
 	public abstract String toString(); // toString()

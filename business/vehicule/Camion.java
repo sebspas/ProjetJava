@@ -58,9 +58,8 @@ public class Camion extends Vehicule{
 	/***************************************************************/
 	/*						Methodes							   */
 	/***************************************************************/
-
 	/**
-	 * Methode toString() affichant toutes les informations du camion.
+	 * Methode toString() affiche toutes les informations du camion.
 	 *
 	 * @return Une chaine de caracteres contenant les informations.
 	 */

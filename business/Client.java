@@ -102,14 +102,19 @@ public class Client {
     public String getAdresse() { return adresse; } // getAdresse()
 
     /**
-     * 
+     * Methode getPointsDeFidelite() renvoie le nombre de points de fidelite du client.
      *
-     * @return
+     * @return Le nombre de points de fidelite du client.
      */
     public int getPointsDeFidelite() {
         return pointsDeFidelite;
     } // getPointsDeFidelite()
 
+    /**
+     * Methode getCalculerTarif() renvoie le calcul du tarif (general) du client.
+     *
+     * @return Le calcul du tarif du client.
+     */
     public CalculerTarif getCalculerTarif() {
         return calculerTarif;
     } // getCalculerTarif()
@@ -117,12 +122,22 @@ public class Client {
     /***************************************************************/
 	/*						Setter								   */
     /***************************************************************/
+    /**
+     * Methode setPointsDeFidelite() modifie le nombre de points de fidelite du client.
+     *
+     * @param pointsDeFidelite
+     *          Le nombre de points de fidelite du client.
+     */
     public void setPointsDeFidelite(int pointsDeFidelite) { this.pointsDeFidelite = pointsDeFidelite; } // setPointsDeFidelite()
 
     /***************************************************************/
 	/*						Methodes							   */
     /***************************************************************/
-
+    /**
+     * Methode toString() affiche toutes les informations du client.
+     *
+     * @return Une chaine de caracteres contenant les informations.
+     */
     @Override
     public String toString() {
         return "Client{" +
@@ -135,8 +150,24 @@ public class Client {
                 + '}';
     } // toString()
 
+    /**
+     * Methode addVehicule() ajoute un vehicule a la liste de tous les vehicules existants,
+     * qu'ils soient sur le parking ou non.
+     *
+     * @param vehicule
+     *          Le vehicule a ajouter.
+     */
     public void addVehicule(Vehicule vehicule) { listeVehicule.add(vehicule); } // addVehicule()
 
+    /**
+     * Methode removeVehicule() supprime un vehicule de la liste de tous les vehicules existants.
+     * Si le vehicule n'existe pas, la methode se contente de propager une exception.
+     *
+     * @param vehicule
+     *          Le vehicule a supprimer.
+     * @throws VehiculeGareException
+     *          L'exception propagee en cas d'erreur.
+     */
     public void removeVehicule(Vehicule vehicule) throws VehiculeGareException {
         if (Parking.vehiculeExiste(vehicule))
             throw new VehiculeGareException();
