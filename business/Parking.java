@@ -80,6 +80,8 @@ public class Parking {
 	 * Un booleen permettant de savoir si une fonction a ete appele en interne ou non.
 	 */
 	private static boolean appelInterne;
+	
+	private static Timer timer;
 
 	/**
 	 * Initialisation des informations generales du parking. Statiquement car le parking est unique.
@@ -91,11 +93,17 @@ public class Parking {
 		tarif_particulier = 1;
 		tarif_transporteur = 1.5;
 		appelInterne = false;
+		timer = new Timer(0,0,0,0,4);
 	}
 
 	/***************************************************************/
 	/*						Getter								   */
 	/***************************************************************/
+
+	public static Timer getTimer() {
+		return timer;
+	}
+
 	public static int getNbVehicule() {
 		return nbVehicule;
 	}
@@ -355,7 +363,7 @@ public class Parking {
 						p.setVehicule(vehicule);
 						if (!appelInterne) {
 							++nbVehicule;
-							p.getVehicule().setDateArrivee(new Date());
+							p.getVehicule().setDateArrivee();
 						}
 						return;
 					}
@@ -487,75 +495,5 @@ public class Parking {
 		notifier();
 		appelInterne = false;
 	} // reorganiserPlaces()
-
-	/***************************************************************/
-	/*						Main							  	   */
-	/***************************************************************/
-	/*public static void main(String[] args) {
-		//new ParkingIHM();
-		// Creation du parking //
-		//Parking parking = new Parking("My fucking parking", 4);
-		
-		// Creation des places //
-		Place p1 = new Place("Particulier");
-		Place p2 = new Place("Particulier");
-		Place t1 = new Place("Transporteur");
-		Place t2 = new Place("Transporteur");
-
-		// Creation des vehicules //
-		Vehicule v1 = new Voiture("E4IL", "Sitrohaine", "NTM", "Voili Voilou");
-		Vehicule v2 = new Voiture("R3T4RD", "Beta Juliette", "LMAO", "Titi Tata");
-		Vehicule v3 = new Voiture("KDNAPPR", "Pherrary", "SWAG", "Claude Francois");
-		Vehicule c1 = new Camion("S0L31L", "Porschiaaaaa", "YOLO", "Toto Tata",15, 355);
-		
-		// Ajout des places au parking //
-		Parking.ajouterPlace(p1);
-		Parking.ajouterPlace(t1);
-		Parking.ajouterPlace(p2);
-		Parking.ajouterPlace(t2);
-
-		System.out.println("===================================Premier affichage parking vide===========================================");
-		Parking.etatParking();
-
-		// Placements des vehicules sur les places //
-		Parking.park(v1);
-		Parking.park(c1);
-		Parking.park(v2);
-		Parking.park(v3);
-
-		System.out.println("===================================Second affichage parking remplit===========================================");
-		Parking.etatParking();
-
-		Vehicule vehiculetest = Parking.unpark(1);
-
-		System.out.println("Le vhehicule à été retiré :" + vehiculetest + "à la place numero :" + 1);
-
-		System.out.println("===================================Troisieme affichage sans le vehicule retiré===========================================");
-		Parking.etatParking();
-
-		Place p = Parking.bookPlace();
-
-		System.out.println("Place réserver : " + p);
-
-		System.out.println("===================================Quatireme affichage après reservation d'une place===========================================");
-		Parking.etatParking();
-
-		Parking.freePlace(1);
-		System.out.println("===================================Cinquieme affichage après dereservation de la place reservée===========================================");
-		Parking.etatParking();
-
-		int numPlace = Parking.getLocation("E4IL");
-
-		System.out.println("Le vehicule immatriculé : E4IL est garer à la place : " + numPlace);
-		System.out.println("On retire le vehicule immatriculé E4IL de la place trouver via getLocation");
-		Vehicule vehiculeRetire = Parking.retirerVehicule("E4IL");
-		System.out.println("===================================Sixieme affichage après avoir retiré le vehicule de la place trouvée===========================================");
-		Parking.etatParking();
-
-		Parking.reorganiserPlaces();
-
-		System.out.println("===================================Septieme affichage après avoir reorganiser le parking===========================================");
-		Parking.etatParking();
-	} // main()*/
 
 } // Parking class

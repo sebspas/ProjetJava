@@ -31,12 +31,11 @@ public class CalculerTarifHeure implements CalculerTarif{
     @Override
     public double calculerTarif(Place p) {
 
-        Date dateActuelle = new Date();
-        int heureActuelle = dateActuelle.getHours();
-        int jourActuel = dateActuelle.getDate();
+        int heureActuelle = Parking.getTimer().getHeures();
+        int jourActuel = Parking.getTimer().getDay();
 
-        int heureArrivee = p.getVehicule().getDateArrivee().getHours();
-        int jourArrivee = p.getVehicule().getDateArrivee().getDate();
+        int heureArrivee = p.getVehicule().getHeureArrivee();
+        int jourArrivee = p.getVehicule().getJourArrivee();
 
         int nombreHeures = 0;
         if (jourActuel == jourArrivee) {

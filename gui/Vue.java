@@ -4,6 +4,7 @@ package parking.gui;
 /*						Import						   		   */
 /***************************************************************/
 import parking.business.Parking;
+import parking.business.Timer;
 
 /**
  * Class Vue permettant de creer une nouvelle vue (generale) contenant uniquement un parking.

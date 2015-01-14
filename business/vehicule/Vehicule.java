@@ -4,6 +4,7 @@ package parking.business.vehicule;
 /*						Import						   		   */
 /***************************************************************/
 import parking.business.Client;
+import parking.business.Parking;
 
 import java.util.Date;
 
@@ -45,7 +46,9 @@ public abstract class Vehicule {
 	/**
 	 * La date d'arrivée du vehicule.
 	 */
-	private Date dateArrivee;
+	private int jourArrivee;
+
+	private int heureArrivee;
 
 	/***************************************************************/
 	/*						Getter								   */
@@ -77,14 +80,13 @@ public abstract class Vehicule {
 		return proprietaire;
 	} // getProprietaire()
 
-	/**
-	 * Methode getDateArrivee() renvoie la date d'arrivee du vehicule.
-	 *
-	 * @return La date d'arrivee du vehicule.
-	 */
-	public Date getDateArrivee() {
-		return dateArrivee;
-	} // getDateArrivee()
+	public int getJourArrivee() {
+		return jourArrivee;
+	}
+
+	public int getHeureArrivee() {
+		return heureArrivee;
+	}
 
 	/***************************************************************/
 	/*						Setter								   */
@@ -92,11 +94,11 @@ public abstract class Vehicule {
 	/**
 	 * Methode setDateArrivee() modifie la date d'arrivee du vehicule.
 	 *
-	 * @param dateArrivee
 	 * 			La date d'arrivee du vehicule.
 	 */
-	public void setDateArrivee(Date dateArrivee) {
-		this.dateArrivee = dateArrivee;
+	public void setDateArrivee() {
+		this.jourArrivee = Parking.getTimer().getDay();
+		this.heureArrivee = Parking.getTimer().getHeures();
 	} // setDateArrivee()
 
 	/***************************************************************/
