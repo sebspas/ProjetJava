@@ -31,6 +31,14 @@ public class Timer extends Thread {
         return heures;
     }
 
+    public int getMinutes() {
+        return minutes;
+    }
+
+    public int getSecondes() {
+        return secondes;
+    }
+
     public void setVue(Vue vue) {
         this.vue = vue;
     }

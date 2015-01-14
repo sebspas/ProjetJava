@@ -16,13 +16,14 @@ public class VueTimer extends Vue{
     private Timer timer;
     private JButton incremente;
     private JPanel panel;
+    private JTextField textField2;
 
     public VueTimer(final Timer timer) {
         this.timer = timer;
 
         fenetre = new JFrame("Timer");
         fenetre.setResizable(false);
-        fenetre.setPreferredSize(new Dimension(350,100));
+        fenetre.setPreferredSize(new Dimension(300,200));
         fenetre.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         
         panel = new JPanel();
@@ -36,8 +37,9 @@ public class VueTimer extends Vue{
                 timer.setHeures(timer.getHeures() + 1);
             }
         });
-
-        panel.add(textField1, BorderLayout.CENTER);
+        
+        panel.add(textField1, BorderLayout.NORTH);
+        panel.add(textField2, BorderLayout.CENTER);
         panel.add(incremente, BorderLayout.SOUTH);
         
         fenetre.setContentPane(panel);
@@ -47,6 +49,7 @@ public class VueTimer extends Vue{
 
     @Override
     public void mettreAJour() {
-        textField1.setText(this.timer.getTimer());
+        textField1.setText("Jour : " + this.timer.getDay() + " jour(s)");
+        textField2.setText("Heure : " + this.timer.getHeures() + " : " + this.timer.getMinutes() + " : "  + this.timer.getSecondes() +" sec");
     }
 }
