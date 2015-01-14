@@ -46,7 +46,11 @@ public class Camion extends Vehicule{
 	 */
 	public Camion(String immatriculation, String marque, String modele,
 			Client proprietaire, int tonnage, int hauteur) {
-		super(immatriculation, marque, modele, proprietaire,"Camion");
+		this.immatriculation = immatriculation;
+		this.marque = marque;
+		this.modele = modele;
+		this.proprietaire = proprietaire;
+		this.type = "Camion";
 		this.tonnage = tonnage;
 		this.hauteur = hauteur;
 	}// Constructeur()
@@ -55,15 +59,19 @@ public class Camion extends Vehicule{
 	/*						Methodes							   */
 	/***************************************************************/
 	/**
-	 * Methode toString() affichant toutes les informations du camion.
+	 * Methode toString() affiche toutes les informations du camion.
 	 *
 	 * @return Une chaine de caracteres contenant les informations.
 	 */
 	@Override
 	public String toString() {
-		return "Camion [immatriculation=" + immatriculation + ", marque="
-				+ marque + ", modele=" + modele + ", proprio=" + proprietaire.getNom()
-				+ ", tonnage=" + tonnage + ", hauteur=" + hauteur + "]";
+		return  "Camion" + "\r\n" +
+				"            immatriculation :" + immatriculation  +  "\r\n" +
+				"            marque  :" + marque  + "\r\n" +
+				"            modele  :" + modele + "\r\n" +
+				"            proprio :" + proprietaire.getNom() +
+				"			 hauteur :" + hauteur +
+				"			 tonnage :" + tonnage;
 	}// toString()
 	
 } // Camion class

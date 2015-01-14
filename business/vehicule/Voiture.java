@@ -27,22 +27,28 @@ public class Voiture extends Vehicule{
      *          Le proprietaire de la voiture a construire.
      */
     public Voiture(String immatriculation, String marque, String modele, Client proprietaire) {
-        super(immatriculation, marque, modele, proprietaire,"Voiture");
+        this.immatriculation = immatriculation;
+        this.marque = marque;
+        this.modele = modele;
+        this.proprietaire = proprietaire;
+        this.type = "Voiture";
     }
 
     /***************************************************************/
 	/*						Methodes							   */
     /***************************************************************/
     /**
-     * Methode toString() affichant toutes les informations de la voiture.
+     * Methode toString() affiche toutes les informations de la voiture.
      *
      * @return Une chaine de caracteres contenant les informations.
      */
     @Override
     public String toString() {
-        return "Voiture[immatriculation=" + immatriculation + ", marque="
-                + marque + ", modele=" + modele + ", proprio=" + proprietaire.getNom()
-                +  "]";
+        return  "Voiture" + "\r\n" +
+                "            immatriculation :" + immatriculation  +  "\r\n" +
+                "            marque  :" + marque  + "\r\n" +
+                "            modele  :" + modele + "\r\n" +
+                "            proprio :" + proprietaire.getNom();
     }// toString()
 
 } // Voiture class
