@@ -44,30 +44,11 @@ public class Main {
         Client client3 = new Client("Claude","François", "69 rue du Porn",new CalculerTarifPointsFidelite());
         Client client4 = new Client("Toto","Tata", "69 rue du Porn",new CalculerTarifHeure());
 
-        Parking.addClient(client1);
-        Parking.addClient(client2);
-        Parking.addClient(client3);
-        Parking.addClient(client4);
-
         // Creation des vehicules //
         Vehicule v1 = new Voiture("E4IL", "Sitrohaine", "NTM", client1);
         Vehicule v2 = new Voiture("R3T4RD", "Beta Juliette", "LMAO", client2);
         Vehicule v3 = new Voiture("KDNAPPR", "Pherrary", "SWAG", client3);
         Vehicule c1 = new Camion("S0L31L", "Porschiaaaaa", "YOLO", client4,15, 355);
-
-        // Ajout des places au parking //
-        Parking.ajouterPlace(p1);
-        Parking.ajouterPlace(t1);
-        Parking.ajouterPlace(p2);
-        Parking.ajouterPlace(t2);
-        Parking.ajouterPlace(p5);
-        Parking.ajouterPlace(t6);
-        Parking.ajouterPlace(p13);
-        Parking.ajouterPlace(t8);
-        Parking.ajouterPlace(p9);
-        Parking.ajouterPlace(t10);
-        Parking.ajouterPlace(p12);
-        Parking.ajouterPlace(t14);
 
         // Placements des vehicules sur les places //
         Parking.park(v1);
