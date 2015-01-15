@@ -84,7 +84,7 @@ public class VueParking extends Vue{
         JScrollPane scrollPane = new JScrollPane(affichageParking);
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-        //3scrollPane.setBounds(50, 30, 300, 50);
+        scrollPane.setBounds(50, 30, 300, 50);
         scrollPane.setPreferredSize(new Dimension(800, 400));
         
         progressBar.setForeground(new Color(46, 204, 113));
@@ -118,12 +118,13 @@ public class VueParking extends Vue{
     private JPanel AffichageParking() {
         affichageParking.removeAll();
         for (Place p : Parking.getInstance().getListePlaces()) {
-            JButton button = new JButton();
+            final ButtonPlace button = new ButtonPlace(p);
+
             button.setRolloverEnabled(false);
             button.setBackground(new Color(189, 195, 199));
                 
             button.setPreferredSize(new Dimension(190,70));
-
+            
             if (p.getVehicule() != null) {
                 button.setText(String.valueOf(p.getVehicule().getImmatriculation()));
                 if (p.getVehicule().getType().equals("Camion")) {
@@ -142,6 +143,26 @@ public class VueParking extends Vue{
                 button.setText(p.getType());
             }
 
+            button.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    if (button.getPlace().getVehicule() == null) {
+                        if (button.getPlace().getReservation()) {
+                            button.getPlace().setReservation(false);
+                        }    
+                        else {
+                            button.getPlace().setReservation(true);
+                        }
+                    }
+                    else {
+                        JOptionPane.showMessageDialog(fenetre,
+                                "Place déja occuper ! Ne peut pas être réservée !",
+                                "Error Place Occupée",
+                                JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+            });
+            
             affichageParking.add(button);
         }
 
@@ -163,12 +184,10 @@ public class VueParking extends Vue{
         bouton3 = new JButton("Voiture");
         bouton4 = new JButton("Camion");
 
-
         bouton1.setIcon(icon_disponible);
         bouton2.setIcon(icon_reservee);
         bouton3.setIcon(icon_voiture);
         bouton4.setIcon(icon_camion);
-
 
         legende.add(bouton1, BorderLayout.CENTER);
         legende.add(bouton2, BorderLayout.CENTER);
@@ -345,7 +364,7 @@ public class VueParking extends Vue{
     public void mettreAJour() {
         Parking p = Parking.getInstance();
         float nbPlacesMax = p.getNbPlacesMax();
-        float nbrVehicule = p.getNbVehicule();
+        float nbrVehicule = p.getNbPlaceOccupees();
         int pourcentage = (int)((nbrVehicule/nbPlacesMax)*100);
         progressBar.setValue(pourcentage);
         affichageParking = AffichageParking();

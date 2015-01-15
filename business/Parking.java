@@ -33,7 +33,7 @@ public class Parking {
 	 */
 	private int nbPlacesMax;
 
-	private int nbVehicule;
+	private int nbPlaceOccupees;
 	/**
 	 * Le nom du parking.
 	 */
@@ -125,8 +125,8 @@ public class Parking {
 	/*						Getter								   */
 	/***************************************************************/
 
-	public int getNbVehicule() {
-		return nbVehicule;
+	public int getNbPlaceOccupees() {
+		return nbPlaceOccupees;
 	}
 
 	/**
@@ -248,6 +248,10 @@ public class Parking {
 		this.numeroFacture = numeroFacture;
 	}
 
+	public void setNbPlaceOccupees(int nbPlaceOccupees) {
+		this.nbPlaceOccupees = nbPlaceOccupees;
+	}
+
 	/***************************************************************/
 	/*						Methodes							   */
 	/***************************************************************/
@@ -347,7 +351,7 @@ public class Parking {
 			if (numeroPlace == p.getNumero())
 				try {
 					if (!appelInterne) {
-						--nbVehicule;
+						--nbPlaceOccupees;
 						this.addFacture(new Facture(p));
 					}
 					return p.retirerVehicule();
@@ -382,7 +386,7 @@ public class Parking {
 					if (p.getType().equals(typePlace)) {
 						p.setVehicule(vehicule);
 						if (!appelInterne) {
-							++nbVehicule;
+							++nbPlaceOccupees;
 							p.getVehicule().setDateArrivee();
 						}
 						return;
@@ -391,7 +395,7 @@ public class Parking {
 			}
 			for (Place p : this.listePlaces) {
 				if (p.getVehicule() == null && !(p.getReservation())) {
-					++nbVehicule;
+					++nbPlaceOccupees;
 					p.setVehicule(vehicule);
 					p.getVehicule().setDateArrivee();
 					return;

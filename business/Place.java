@@ -143,6 +143,12 @@ public class Place{
 	 */
 	public void setReservation(boolean Reserver) {
 		this.Reserver = Reserver;
+		if (Reserver) {
+			Parking.getInstance().setNbPlaceOccupees(Parking.getInstance().getNbPlaceOccupees() + 1);
+		}
+		else
+			Parking.getInstance().setNbPlaceOccupees(Parking.getInstance().getNbPlaceOccupees() - 1);
+		Parking.getInstance().notifier();
 	} // setRservation()
 
 	/***************************************************************/
