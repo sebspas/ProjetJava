@@ -47,11 +47,11 @@ public class VueParking extends Vue{
      * Constructeur de la classe VueParking, permettant de ...
      */
     public VueParking() {
-        Parking.addVue(this);
+        Parking.getInstance().addVue(this);
         JPanel main = new JPanel();
 
         fenetre.setLocation(300, 100);
-        fenetre.setPreferredSize(new Dimension(800,750));
+        fenetre.setPreferredSize(new Dimension(800, 750));
         fenetre.setDefaultCloseOperation(fenetre.EXIT_ON_CLOSE);
 
         fenetre.setLayout(new BorderLayout());
@@ -86,7 +86,7 @@ public class VueParking extends Vue{
      */
     private JPanel AffichageParking() {
         parking.removeAll();
-        for (Place p : Parking.getListePlaces()) {
+        for (Place p : Parking.getInstance().getListePlaces()) {
             JButton button = new JButton();
             button.setRolloverEnabled(false);
 
@@ -294,8 +294,8 @@ public class VueParking extends Vue{
 
 
     private void actionMenuTimerAfficher() {
-        parking.gui.Vue Timer = new parking.gui.VueTimer(Parking.getTimer());
-        Parking.getTimer().setVue(Timer);
+        parking.gui.Vue Timer = new parking.gui.VueTimer(Parking.getInstance().getTimer());
+        Parking.getInstance().getTimer().setVue(Timer);
     } // actionMenuTimerAfficher()
 
 
@@ -304,8 +304,9 @@ public class VueParking extends Vue{
      */
     @Override
     public void mettreAJour() {
-        float nbPlacesMax = Parking.getNbPlacesMax();
-        float nbrVehicule = Parking.getNbVehicule();
+        Parking p = Parking.getInstance();
+        float nbPlacesMax = p.getNbPlacesMax();
+        float nbrVehicule = p.getNbVehicule();
         int pourcentage = (int)((nbrVehicule/nbPlacesMax)*100);
         progressBar.setValue(pourcentage);
         parking = AffichageParking();

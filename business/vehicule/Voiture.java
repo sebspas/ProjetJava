@@ -34,7 +34,7 @@ public class Voiture extends Vehicule{
         this.proprietaire = proprietaire;
         proprietaire.addVehicule(this);
         this.type = "Voiture";
-        Parking.notifier();
+        Parking.getInstance().notifier();
     }
 
     /***************************************************************/

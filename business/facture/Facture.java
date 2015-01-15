@@ -53,12 +53,13 @@ public class Facture {
      *          La place associee a la facture.
      */
     public Facture(Place place) {
-        this.numeroFacture = Parking.getNumeroFacture();
-        Parking.setNumeroFacture(Parking.getNumeroFacture()+1);
-       this.vehicule = place.getVehicule();
+        Parking p = Parking.getInstance();
+        this.numeroFacture = p.getNumeroFacture();
+        p.setNumeroFacture(p.getNumeroFacture()+1);
+        this.vehicule = place.getVehicule();
         tarif = place.getVehicule().getProprietaire().getCalculerTarif().calculerTarif(place);
         client = place.getVehicule().getProprietaire();
-        Parking.addFacture(this);
+        p.addFacture(this);
         new VueFacture(this);
     } // Constructeur
 

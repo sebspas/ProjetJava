@@ -17,9 +17,10 @@ import parking.gui.VueTimer;
 public class Main {
     public static void main(String[] args) {
         try {
-            //Vue vuetimer = new VueTimer(Parking.getTimer());
+            Parking parking = Parking.getInstance();
+            Vue vuetimer = new VueTimer(parking.getTimer());
 
-            //Parking.getTimer().setVue(vuetimer);
+            parking.getTimer().setVue(vuetimer);
 
             Vue test = new VueParking();
 
@@ -46,12 +47,12 @@ public class Main {
             Vehicule c1 = new Camion("S0L31L", "Porschiaaaaa", "YOLO", client4, 15, 355);
 
             // Placements des vehicules sur les places //
-            Parking.park(v1);
-            Parking.park(c1);
-            Parking.park(v2);
-            Parking.park(v3);
+            parking.park(v1);
+            parking.park(c1);
+            parking.park(v2);
+            parking.park(v3);
 
-            Parking.bookPlace();
+            parking.bookPlace();
         }
         catch (Exception e) {
             e.printStackTrace();

@@ -54,7 +54,7 @@ public class VueVehicule extends Vue{
      * Constructeur de la classe VueVehicule, permettant de ...
      */
     public VueVehicule() {
-        Parking.addVue(this);
+        Parking.getInstance().addVue(this);
         fenetre.setLocation(0, 0);
         fenetre.setPreferredSize(new Dimension(320,180));
         fenetre.setDefaultCloseOperation(fenetre.DISPOSE_ON_CLOSE);
@@ -77,7 +77,7 @@ public class VueVehicule extends Vue{
     /***************************************************************/
     public Client getClient(String nomprenom) {
         String[] splited = nomprenom.split("\\s+");
-        for (Client c : Parking.getListeClient()) {
+        for (Client c : Parking.getInstance().getListeClient()) {
             String Nom = splited[0];
             String Prenom = splited[1];
             if (Nom.equals(c.getNom()) && Prenom.equals(c.getPrenom())) {
@@ -128,7 +128,7 @@ public class VueVehicule extends Vue{
             public void itemStateChanged(ItemEvent e) {
                 if (vehicule.getItemCount() != 0) {
                     Vehicule v = getVehicule(vehicule.getSelectedItem().toString());
-                    if (Parking.vehiculeGare(v)) {
+                    if (Parking.getInstance().vehiculeGare(v)) {
                         parker_vehicule.setEnabled(false);
                         unpark_vehicule.setEnabled(true);
                     }
@@ -181,7 +181,7 @@ public class VueVehicule extends Vue{
             @Override
             public void actionPerformed(ActionEvent e) {
                 Vehicule v = getVehicule(vehicule.getSelectedItem().toString());
-                Parking.park(v);
+                Parking.getInstance().park(v);
                 parker_vehicule.setEnabled(false);
                 unpark_vehicule.setEnabled(true);
             }
@@ -192,7 +192,7 @@ public class VueVehicule extends Vue{
             @Override
             public void actionPerformed(ActionEvent e) {
                 Vehicule v = getVehicule(vehicule.getSelectedItem().toString());
-                Parking.retirerVehicule(v.getImmatriculation());
+                Parking.getInstance().retirerVehicule(v.getImmatriculation());
                 parker_vehicule.setEnabled(true);
                 unpark_vehicule.setEnabled(false);
             }
@@ -216,7 +216,7 @@ public class VueVehicule extends Vue{
         JScrollPane listScroller = new JScrollPane(list);
         listScroller.setPreferredSize(new Dimension(500, 350));
         list.setVisibleRowCount(10);
-        for (Place p : Parking.getListePlaces()) {
+        for (Place p : Parking.getInstance().getListePlaces()) {
             if (p.getVehicule() != null) {
                 dlm.addElement(p.getVehicule());
             }
@@ -230,7 +230,7 @@ public class VueVehicule extends Vue{
      */
     public void afficherClients() {
         String identite;
-        for (Client c : Parking.getListeClient()) {
+        for (Client c : Parking.getInstance().getListeClient()) {
             identite = c.getNom() + " " + c.getPrenom();
             client.addItem(identite);
 

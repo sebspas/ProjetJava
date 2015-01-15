@@ -71,7 +71,7 @@ public class Client {
         this.adresse = adresse;
         this.calculerTarif = calculerTarif;
         this.listeVehicule = new ArrayList<Vehicule>();
-        Parking.addClient(this);
+        Parking.getInstance().addClient(this);
     } // Constructeur
 
     /***************************************************************/
@@ -174,7 +174,7 @@ public class Client {
      *          L'exception propagee en cas d'erreur.
      */
     public void removeVehicule(Vehicule vehicule) throws VehiculeGareException {
-        if (Parking.vehiculeGare(vehicule))
+        if (Parking.getInstance().vehiculeGare(vehicule))
             throw new VehiculeGareException();
         else
             listeVehicule.remove(vehicule);

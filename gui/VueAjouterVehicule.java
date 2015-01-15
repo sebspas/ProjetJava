@@ -103,7 +103,7 @@ public class VueAjouterVehicule extends Vue {
      */
     public Client getClient(String nomprenom) {
         String[] splited = nomprenom.split("\\s+");
-        for (Client c : Parking.getListeClient()) {
+        for (Client c : Parking.getInstance().getListeClient()) {
             String Nom = splited[0];
             String Prenom = splited[1];
             if (Nom.equals(c.getNom()) && Prenom.equals(c.getPrenom())) {
@@ -357,7 +357,7 @@ public class VueAjouterVehicule extends Vue {
      */
     public void afficherClients() {
         String identite;
-        for (Client c : Parking.getListeClient()) {
+        for (Client c : Parking.getInstance().getListeClient()) {
             identite = c.getNom() + " " + c.getPrenom();
             client.addItem(identite);
         }

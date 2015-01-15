@@ -97,8 +97,9 @@ public abstract class Vehicule {
 	 * 			La date d'arrivee du vehicule.
 	 */
 	public void setDateArrivee() {
-		//this.jourArrivee = Parking.getTimer().getDay();
-		//this.heureArrivee = Parking.getTimer().getHeures();
+		System.out.println(Parking.getInstance().getTimer().getHeures());
+		this.jourArrivee = Parking.getInstance().getTimer().getDay();
+		this.heureArrivee = Parking.getInstance().getTimer().getHeures();
 	} // setDateArrivee()
 
 	/***************************************************************/

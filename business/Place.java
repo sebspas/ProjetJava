@@ -52,7 +52,7 @@ public class Place{
 	public Place(String type) {
 		this.type = type;
 		this.Reserver = false;
-		Parking.ajouterPlace(this);
+		Parking.getInstance().ajouterPlace(this);
 	}// Constructeur()
 
 	/***************************************************************/
@@ -165,7 +165,7 @@ public class Place{
 		}
 		Vehicule temp = this.vehicule;
 		this.vehicule = null;
-		Parking.reorganiserPlaces();
+		Parking.getInstance().reorganiserPlaces();
 		return temp;
 	} // retirerVehicule()
 

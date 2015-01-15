@@ -24,69 +24,78 @@ public class Parking {
 	 * Le numero d'une place, servant a remplir le parking.
 	 * Il permet de savoir le numero de la derniere place ajoutee.
 	 */
-	static private int numeroPlace;
+	private int numeroPlace;
 
 	/**
 	 * Le nombre de place maximum du parking.
 	 */
-	static private int nbPlacesMax;
+	private int nbPlacesMax;
 
-	static private int nbVehicule;
+	private int nbVehicule;
 	/**
 	 * Le nom du parking.
 	 */
-	private static String nom;
+	private String nom;
 
 	/**
 	 * La liste des vehicule du parking.
 	 * Type de collection a definir ...
 	 */
-	private static ArrayList<Place> listePlaces;
+	private ArrayList<Place> listePlaces;
 
 	/**
 	 * La liste de tous les clients.
 	 * Type de collection a definir ...
 	 */
-	private static ArrayList<Client> listeClients;
+	private ArrayList<Client> listeClients;
 
 	/**
 	 * La liste de toutes les factures.
 	 * Type de collection a definir ...
 	 */
-	private static ArrayList<Facture> listeFacture;
+	private ArrayList<Facture> listeFacture;
 
 	/**
 	 * La liste de toute les vues.
 	 * Type de collection a definir ...
 	 */
-	private static ArrayList<Vue> listeVue;
+	private ArrayList<Vue> listeVue;
 
 	/**
 	 * Le tarif d'une place de type particulier.
 	 */
-	private static double tarif_particulier;
+	private double tarif_particulier;
 
 	/**
 	 * Le tarif d'une place de type transporteur.
 	 */
-	private static double tarif_transporteur;
+	private double tarif_transporteur;
 
 	/**
 	 * Le numero de la facture associee a un client.
 	 */
-	private static int numeroFacture;
+	private int numeroFacture;
 
 	/**
 	 * Un booleen permettant de savoir si une fonction a ete appele en interne ou non.
 	 */
-	private static boolean appelInterne;
+	private boolean appelInterne;
 	
-	private static Timer timer;
+	private Timer timer;
 
+	private static Parking singleton;
 	/**
 	 * Initialisation des informations generales du parking. Statiquement car le parking est unique.
 	 */
-	static {
+	public static Parking getInstance() {
+		if (singleton != null) {
+			return singleton;
+		}
+		singleton = new Parking();
+		return  singleton;
+	}
+	
+	private Parking() {
 		nom = "Mon Parking";
 		numeroPlace = 0;
 		listeVue = new ArrayList<Vue>();
@@ -98,19 +107,19 @@ public class Parking {
 		tarif_particulier = 1;
 		tarif_transporteur = 1.5;
 		appelInterne = false;
-		//timer = new Timer(0,0,0,0,4);
-		//timer.start();
+		timer = new Timer(0,0,0,0,4);
+		timer.start();
 	}
 
 	/***************************************************************/
 	/*						Getter								   */
 	/***************************************************************/
 
-	public static Timer getTimer() {
+	public Timer getTimer() {
 		return timer;
 	}
 
-	public static int getNbVehicule() {
+	public int getNbVehicule() {
 		return nbVehicule;
 	}
 
@@ -119,7 +128,7 @@ public class Parking {
 	 *
 	 * @return le numero de la derniere place ajoutee.
 	 */
-	public static int getNumeroPlace() {
+	public int getNumeroPlace() {
 		return numeroPlace;
 	} // getNumeroPlace()
 
@@ -128,7 +137,7 @@ public class Parking {
 	 *
 	 * @return Nombre de place max du parking.
 	 */
-	public static int getNbPlacesMax() {
+	public int getNbPlacesMax() {
 		return nbPlacesMax;
 	} // getNbPlacesMax()
 
@@ -137,21 +146,21 @@ public class Parking {
 	 *
 	 * @return Le tarif d'une place de type transporteur.
 	 */
-	public static double getTarif_transporteur() { return tarif_transporteur; } // getTarif_transporteur()
+	public double getTarif_transporteur() { return tarif_transporteur; } // getTarif_transporteur()
 
 	/**
 	 * Methode getTarif_particulier() renvoie le tarif d'une place de type particulier.
 	 *
 	 * @return Le tarif d'une place de type particulier.
 	 */
-	public static double getTarif_particulier() { return tarif_particulier; } // getTarif_particulier()
+	public double getTarif_particulier() { return tarif_particulier; } // getTarif_particulier()
 
 	/**
 	 * Methode getNumeroFacture() renvoie le numero de la facture.
 	 *
 	 * @return Le numero de la facture.
 	 */
-	public static int getNumeroFacture() { return numeroFacture; } // getNumeroFacture()
+	public int getNumeroFacture() { return numeroFacture; } // getNumeroFacture()
 
 	/**
 	 * Methode getLocation() permet de connaitre la place ou se situe un vehicule a partir de son numero d'immatriculation.
@@ -160,8 +169,8 @@ public class Parking {
 	 * 			numero d'immatriculation du vehicule a recherche.
 	 * @return le numero ou le vehicule se trouve sur le parking.
 	 */
-	public static int getLocation(String numeroImmatriculation) {
-		for (Place p : Parking.listePlaces) {
+	public int getLocation(String numeroImmatriculation) {
+		for (Place p : this.listePlaces) {
 			if (p.getVehicule() != null && (p.getVehicule().getImmatriculation()).equals(numeroImmatriculation)) {
 				return p.getNumero();
 			}
@@ -174,21 +183,21 @@ public class Parking {
 	 *
 	 * @return La liste des clients.
 	 */
-	public static ArrayList<Client> getListeClient() { return listeClients; } // getListeClients()
+	public ArrayList<Client> getListeClient() { return listeClients; } // getListeClients()
 
 	/**
 	 * Methode getListePlaces() renvoie la liste des vehicules existants.
 	 *
 	 * @return La liste des vehicules existants.
 	 */
-	public static ArrayList<Place> getListePlaces() { return listePlaces; } // getListePlaces()
+	public ArrayList<Place> getListePlaces() { return listePlaces; } // getListePlaces()
 
 	/**
 	 * Methode getListeFacture() renvoie la liste de toutes les factures.
 	 *
 	 * @return La liste des factures.
 	 */
-	public static ArrayList<Facture> getListeFacture() { return listeFacture; } // getListeFacture()
+	public ArrayList<Facture> getListeFacture() { return listeFacture; } // getListeFacture()
 
 	/***************************************************************/
 	/*						Setter								   */
@@ -199,8 +208,8 @@ public class Parking {
 	 * @param numeroPlace
 	 * 		Numero de la derniere place ajouter au parking.
 	 */
-	public static void setNumeroPlace(int numeroPlace) {
-		Parking.numeroPlace = numeroPlace;
+	public void setNumeroPlace(int numeroPlace) {
+		this.numeroPlace = numeroPlace;
 	}// setNumeroPlace()
 
 	/**
@@ -209,8 +218,8 @@ public class Parking {
 	 * @param tarif_transporteur
 	 * 			Le tarif d'une place de type transporteur.
 	 */
-	public static void setTarif_transporteur(double tarif_transporteur) {
-		Parking.tarif_transporteur = tarif_transporteur;
+	public void setTarif_transporteur(double tarif_transporteur) {
+		this.tarif_transporteur = tarif_transporteur;
 	}
 
 	/**
@@ -219,8 +228,8 @@ public class Parking {
 	 * @param tarif_particulier
 	 * 			Le tarif d'une place de type particulier.
 	 */
-	public static void setTarif_particulier(double tarif_particulier) {
-		Parking.tarif_particulier = tarif_particulier;
+	public void setTarif_particulier(double tarif_particulier) {
+		this.tarif_particulier = tarif_particulier;
 	}
 
 	/**
@@ -229,8 +238,8 @@ public class Parking {
 	 * @param numeroFacture
 	 * 			Le numero de la facture.
 	 */
-	public static void setNumeroFacture(int numeroFacture) {
-		Parking.numeroFacture = numeroFacture;
+	public void setNumeroFacture(int numeroFacture) {
+		this.numeroFacture = numeroFacture;
 	}
 
 	/***************************************************************/
@@ -242,7 +251,7 @@ public class Parking {
 	 * @param c
 	 * 			Le client a ajouter.
 	 */
-	public static void addClient(Client c){
+	public void addClient(Client c){
 		listeClients.add(c);
 	}
 
@@ -252,7 +261,7 @@ public class Parking {
 	 * @param facture
 	 * 			La facture a ajouter.
 	 */
-	public static void addFacture(Facture facture) {
+	public void addFacture(Facture facture) {
 		listeFacture.add(facture);
 	}
 
@@ -262,17 +271,15 @@ public class Parking {
 	 * @param v
 	 * 			La vue a ajouter.
 	 */
-	public static void addVue(Vue v) {
+	public void addVue(Vue v) {
 		listeVue.add(v);
 	} // addVue()
 
 	/**
 	 * Methode notifier() affiche un message a chaque vue de la liste des vues.
 	 */
-	public static void notifier() {
-		System.out.println("---------------- Debut notification -------------------------");
+	public void notifier() {
 		for (Vue v : listeVue) {
-			System.out.println("Modification notifier à la vue :" + v);
 			v.mettreAJour();
 		}
 	} // notifier()
@@ -293,13 +300,13 @@ public class Parking {
 	 * @param p
 	 * 		la place a ajoutee.
 	 */
-	public static void ajouterPlace(Place p){
+	public void ajouterPlace(Place p){
 		try {
-			if(Parking.getNbPlacesMax() == Parking.getNumeroPlace())
+			if(this.getNbPlacesMax() == this.getNumeroPlace())
 				throw new NombrePlacesMaxException();
-			p.setNumero(Parking.getNumeroPlace());
-			Parking.setNumeroPlace(Parking.getNumeroPlace()+1);
-			Parking.listePlaces.add(p);
+			p.setNumero(this.getNumeroPlace());
+			this.setNumeroPlace(this.getNumeroPlace() + 1);
+			this.listePlaces.add(p);
 			notifier();
 		}
 		catch (NombrePlacesMaxException e) {
@@ -314,8 +321,8 @@ public class Parking {
 	 * 		Vehicule a recherche dans le parking.
 	 * @return Renvoie un booleen indiquant si le vehicule est present ou non.
 	 */
-	public static boolean vehiculeGare(Vehicule v){
-		for(Place p : Parking.listePlaces ){
+	public boolean vehiculeGare(Vehicule v){
+		for(Place p : this.listePlaces ){
 			if(p.getVehicule() == v)
 				return true;
 		}
@@ -329,13 +336,13 @@ public class Parking {
 	 * 			Numero de la place ou retirer le vehicule.
 	 * @return renvoie le vehicule retire.
 	 */
-	public static Vehicule unpark(int numeroPlace) {
-		for(Place p : Parking.listePlaces){
+	public Vehicule unpark(int numeroPlace) {
+		for(Place p : this.listePlaces){
 			if (numeroPlace == p.getNumero())
 				try {
 					if (!appelInterne) {
 						--nbVehicule;
-						Parking.addFacture(new Facture(p));
+						this.addFacture(new Facture(p));
 					}
 					return p.retirerVehicule();
 				}
@@ -358,17 +365,18 @@ public class Parking {
 	 * @param vehicule
 	 * 		Le vehicule a garer sur le parking.
 	 */
-	public static void park(Vehicule vehicule) {
+	public void park(Vehicule vehicule) {
 		try {
 			String typePlace = "Transporteur";
 			if (vehicule.getType().equals("Voiture")) {
 				typePlace = "Particulier";
 			}
-			for (Place p : Parking.listePlaces) {
+			for (Place p : this.listePlaces) {
 				if (p.getVehicule() == null && !(p.getReservation())) {
 					if (p.getType().equals(typePlace)) {
 						p.setVehicule(vehicule);
 						if (!appelInterne) {
+							System.out.println("Incremente");
 							++nbVehicule;
 							p.getVehicule().setDateArrivee();
 						}
@@ -376,9 +384,10 @@ public class Parking {
 					}
 				}
 			}
-			for (Place p : Parking.listePlaces) {
+			for (Place p : this.listePlaces) {
 				if (p.getVehicule() == null && !(p.getReservation())) {
 					p.setVehicule(vehicule);
+					p.getVehicule().setDateArrivee();
 					return;
 				}
 			}
@@ -403,9 +412,9 @@ public class Parking {
 	 * Pour cela elle affiche, pour chaque vehicule, la
 	 * place qu'il occupe, le type de cette place, etc..
 	 */
-	public static void etatParking() {
+	public void etatParking() {
 		System.out.println("Debut de l'affichage du parking !");
-		for(Place p : Parking.listePlaces) {
+		for(Place p : this.listePlaces) {
 			System.out.println("La place numero : " + p.getNumero() + " du type : " + p.getType());
 			if (p.getVehicule() != null)
 				System.out.println("La place a pour vehicule : " + p.getVehicule() + "\n");
@@ -420,9 +429,9 @@ public class Parking {
 	 *
 	 * @return La place reserver.
 	 */
-	public static Place bookPlace() {
+	public Place bookPlace() {
 		try {
-			for (Place p : Parking.listePlaces) {
+			for (Place p : this.listePlaces) {
 				if (p.getVehicule() == null) {
 					p.setReservation(true);
 					return p;
@@ -446,9 +455,9 @@ public class Parking {
 	 * 		Numero de la place a dereserver.
 	 * @return La place de nouveau libre.
 	 */
-	public static Place freePlace(int numeroPlace) {
+	public Place freePlace(int numeroPlace) {
 		try {
-			for (Place p : Parking.listePlaces) {
+			for (Place p : this.listePlaces) {
 				if (p.getNumero() == numeroPlace ) {
 					if (p.getReservation()) {
 						p.setReservation(false);
@@ -476,7 +485,7 @@ public class Parking {
 	 * 			Numero d'immatriculation du vehicule a retirer.
 	 * @return Le vehivule retire de sa place de parking.
 	 */
-	public static Vehicule retirerVehicule(String numeroImmatriculation) {
+	public Vehicule retirerVehicule(String numeroImmatriculation) {
 		int numPlace = getLocation(numeroImmatriculation);
 		if (numPlace == -1)
 			return null;
@@ -489,13 +498,13 @@ public class Parking {
 	 * par exemple si une place du type particulier c'est liberer et qu'une voiture et sur une
 	 * place du type camion , on va alors la deplacer sur la place libre.
 	 */
-	public static void reorganiserPlaces() {
+	public void reorganiserPlaces() {
 		appelInterne = true;
-		for (Place p : Parking.listePlaces) {
+		for (Place p : this.listePlaces) {
 			if (p.getType().equals("Transporteur") && p.getVehicule() != null) {
 				if (p.getVehicule().getType().equals("Voiture")) {
 					Vehicule vretire = unpark(p.getNumero());
-					Parking.park(vretire);
+					this.park(vretire);
 				}
 			}
 		}
