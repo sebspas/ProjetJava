@@ -26,12 +26,12 @@ public class Main {
             Parking parking = Parking.getInstance();
             
             // Creation des places Particulier //
-            for (int i = 0; i < 2; ++i) {
+            for (int i = 0; i < 14; ++i) {
                 new Place("Particulier");
             }
 
             // Creation des places Transporteur //
-            for (int i = 0; i < 5; ++i) {
+            for (int i = 0; i < 10; ++i) {
                 new Place("Transporteur");
             }
 

@@ -70,7 +70,7 @@ public class VueParking extends Vue{
         main = new JPanel();
         main.setBackground(new Color(127, 140, 141));
         fenetre.setLocation(300, 100);
-        fenetre.setPreferredSize(new Dimension(800, 600));
+        fenetre.setPreferredSize(new Dimension(830, 600));
         fenetre.setDefaultCloseOperation(fenetre.EXIT_ON_CLOSE);
 
         fenetre.setLayout(new BorderLayout());
@@ -78,13 +78,24 @@ public class VueParking extends Vue{
 
         fenetre.setContentPane(main);
 
-        affichageParking.setPreferredSize(new Dimension(800, 400));
+        affichageParking.setPreferredSize(new Dimension(780, 470));
+
+        JScrollPane scrollPane = new JScrollPane(affichageParking);
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        //3scrollPane.setBounds(50, 30, 300, 50);
+        scrollPane.setPreferredSize(new Dimension(800, 400));
+        
+        progressBar.setForeground(new Color(46, 204, 113));
+        progressBar.setStringPainted(true);
+        progressBar.setBorderPainted(false);
         progressBar.setPreferredSize(new Dimension(500,15));
+
 
         main.add(new JLabel("Capacité :"), BorderLayout.NORTH);
         main.add(progressBar, BorderLayout.NORTH);
 
-        main.add(affichageParking, BorderLayout.CENTER);
+        main.add(scrollPane, BorderLayout.CENTER);
 
         main.add(legende(), BorderLayout.SOUTH);
 
@@ -110,10 +121,10 @@ public class VueParking extends Vue{
             button.setRolloverEnabled(false);
             button.setBackground(new Color(189, 195, 199));
                 
-            button.setPreferredSize(new Dimension(170,70));
+            button.setPreferredSize(new Dimension(190,70));
 
             if (p.getVehicule() != null) {
-                button.setText(p.getVehicule().getType() + " : " + String.valueOf(p.getVehicule().getImmatriculation()));
+                button.setText(String.valueOf(p.getVehicule().getImmatriculation()));
                 if (p.getVehicule().getType().equals("Camion")) {
                     button.setIcon(icon_camion);
                 }
