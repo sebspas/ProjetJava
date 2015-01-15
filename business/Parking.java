@@ -24,7 +24,7 @@ public class Parking {
 	 * Le numero d'une place, servant a remplir le parking.
 	 * Il permet de savoir le numero de la derniere place ajoutee.
 	 */
-	static private int numeroPlace = 0;
+	static private int numeroPlace;
 
 	/**
 	 * Le nombre de place maximum du parking.
@@ -41,25 +41,25 @@ public class Parking {
 	 * La liste des vehicule du parking.
 	 * Type de collection a definir ...
 	 */
-	private static ArrayList<Place> listePlaces = new ArrayList<Place>();
+	private static ArrayList<Place> listePlaces;
 
 	/**
 	 * La liste de tous les clients.
 	 * Type de collection a definir ...
 	 */
-	private static ArrayList<Client> listeClients = new ArrayList<Client>();
+	private static ArrayList<Client> listeClients;
 
 	/**
 	 * La liste de toutes les factures.
 	 * Type de collection a definir ...
 	 */
-	private static ArrayList<Facture> listeFacture = new ArrayList<Facture>();
+	private static ArrayList<Facture> listeFacture;
 
 	/**
 	 * La liste de toute les vues.
 	 * Type de collection a definir ...
 	 */
-	private static ArrayList<Vue> listeVue = new ArrayList<Vue>();
+	private static ArrayList<Vue> listeVue;
 
 	/**
 	 * Le tarif d'une place de type particulier.
@@ -88,12 +88,18 @@ public class Parking {
 	 */
 	static {
 		nom = "Mon Parking";
+		numeroPlace = 0;
+		listeVue = new ArrayList<Vue>();
+		listePlaces = new ArrayList<Place>();
+		listeFacture = new ArrayList<Facture>();
+		listeClients = new ArrayList<Client>();
 		nbPlacesMax = 25;
 		numeroFacture = 0;
 		tarif_particulier = 1;
 		tarif_transporteur = 1.5;
 		appelInterne = false;
-		timer = new Timer(0,0,0,0,4);
+		//timer = new Timer(0,0,0,0,4);
+		//timer.start();
 	}
 
 	/***************************************************************/
@@ -264,8 +270,9 @@ public class Parking {
 	 * Methode notifier() affiche un message a chaque vue de la liste des vues.
 	 */
 	public static void notifier() {
+		System.out.println("---------------- Debut notification -------------------------");
 		for (Vue v : listeVue) {
-			System.out.println("Modification notifier");
+			System.out.println("Modification notifier à la vue :" + v);
 			v.mettreAJour();
 		}
 	} // notifier()

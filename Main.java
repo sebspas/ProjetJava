@@ -17,10 +17,9 @@ import parking.gui.VueTimer;
 public class Main {
     public static void main(String[] args) {
         try {
-            Vue vuetimer = new VueTimer(Parking.getTimer());
+            //Vue vuetimer = new VueTimer(Parking.getTimer());
 
-            Parking.getTimer().setVue(vuetimer);
-            Parking.getTimer().start();
+            //Parking.getTimer().setVue(vuetimer);
 
             Vue test = new VueParking();
 
