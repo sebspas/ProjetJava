@@ -1,7 +1,6 @@
 package parking.business;
 
 import parking.gui.Vue;
-import parking.gui.VueTimer;
 
 /**
  * Created by Administrateur on 14/01/2015.
@@ -24,7 +23,7 @@ public class Timer extends Thread {
         if (timer != null) {
             return timer;
         }
-        timer = new Timer(0,10,10,0,4);
+        timer = new Timer(0,10,10,0,60);
         return timer;
     }
 
@@ -58,7 +57,14 @@ public class Timer extends Thread {
 
     public void setHeures(int heures) {
         this.heures = heures;
-        vue.mettreAJour();
+        if (this.heures == 24) {
+            this.heures = 0;
+            day++;
+            if(day == 30) {
+                day = 0;
+            }
+        }
+        this.mettreAJour();
     }
 
     @Override

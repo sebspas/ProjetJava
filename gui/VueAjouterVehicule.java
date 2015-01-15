@@ -363,6 +363,7 @@ public class VueAjouterVehicule extends Vue {
                 return false;
             }
         }
+        
         return true;
     } // validateData()
 

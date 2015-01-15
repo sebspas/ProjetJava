@@ -156,8 +156,10 @@ public class VueVehicule extends Vue{
                     }
                     vehicule.setSelectedIndex(0);
                 }
-
-                
+                else {
+                    parker_vehicule.setEnabled(false);
+                    unpark_vehicule.setEnabled(false);
+                }
             }
         });
         
@@ -183,6 +185,9 @@ public class VueVehicule extends Vue{
         unpark_vehicule = new JButton();
         unpark_vehicule.setText("Unpark le vehicule");
         unpark_vehicule.setPreferredSize(new Dimension(150,40));
+
+        parker_vehicule.setEnabled(false);
+        unpark_vehicule.setEnabled(false);
 
         center.add(parker_vehicule, BorderLayout.WEST);
         parker_vehicule.addActionListener(new ActionListener() {
@@ -241,8 +246,8 @@ public class VueVehicule extends Vue{
         for (Client c : Parking.getInstance().getListeClient()) {
             identite = c.getNom() + " " + c.getPrenom();
             client.addItem(identite);
-
         }
+        
     } // afficherClients()
 
     /**
