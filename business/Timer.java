@@ -167,7 +167,7 @@ public class Timer extends Thread {
      */
     public void setHeures(int heures) {
         this.heures = heures;
-        vue.mettreAJour();
+        this.mettreAJour();
     } // setHeures()
 
     /***************************************************************/
@@ -197,17 +197,17 @@ public class Timer extends Thread {
         if (secondes == 60) {
             secondes = 0;
             minutes++;
-            if (minutes == 60) {
-                minutes = 0;
-                heures++;
-                if (heures == 24) {
-                    heures = 0;
-                    day++;
-                    if (day == 30) {
-                        day = 0;
-                    }
-                }
-            }
+        }
+        if (minutes == 60) {
+            minutes = 0;
+            heures++;
+        }
+        if (heures == 24) {
+            heures = 0;
+            day++;
+        }
+        if (day == 30) {
+            day = 0;
         }
 
         vue.mettreAJour();
