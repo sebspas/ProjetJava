@@ -3,8 +3,8 @@ package parking.gui;
 /***************************************************************/
 /*						Import						   		   */
 /***************************************************************/
-import parking.business.Parking;
-import parking.business.Place;
+import parking.business.*;
+import parking.business.Timer;
 
 import javax.swing.*;
 import java.awt.*;
@@ -298,8 +298,7 @@ public class VueParking extends Vue{
 
 
     private void actionMenuTimerAfficher() {
-        parking.gui.Vue Timer = new parking.gui.VueTimer(Parking.getInstance().getTimer());
-        Parking.getInstance().getTimer().setVue(Timer);
+        Timer.getInstance().getVue().setVisible(true);
     } // actionMenuTimerAfficher()
 
 
@@ -318,5 +317,10 @@ public class VueParking extends Vue{
         parking.revalidate();
         parking.repaint();
     } // mettreAJour()
+
+    @Override
+    public void setVisible(boolean visible) {
+        fenetre.setVisible(visible);
+    }
 
 } // VueParking class

@@ -7,6 +7,8 @@ import parking.business.facture.Facture;
 import parking.business.vehicule.Vehicule;
 import parking.exception.business.*;
 import parking.gui.Vue;
+import parking.gui.VueTimer;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -80,9 +82,8 @@ public class Parking {
 	 * Un booleen permettant de savoir si une fonction a ete appele en interne ou non.
 	 */
 	private boolean appelInterne;
-	
-	private Timer timer;
 
+	private VueTimer vueTimer;
 	private static Parking singleton;
 	/**
 	 * Initialisation des informations generales du parking. Statiquement car le parking est unique.
@@ -107,17 +108,14 @@ public class Parking {
 		tarif_particulier = 1;
 		tarif_transporteur = 1.5;
 		appelInterne = false;
-		timer = new Timer(0,0,0,0,4);
-		timer.start();
+		vueTimer = new VueTimer(Timer.getInstance());
+		Timer.getInstance().setVue(vueTimer);
+		Timer.getInstance().start();
 	}
 
 	/***************************************************************/
 	/*						Getter								   */
 	/***************************************************************/
-
-	public Timer getTimer() {
-		return timer;
-	}
 
 	public int getNbVehicule() {
 		return nbVehicule;

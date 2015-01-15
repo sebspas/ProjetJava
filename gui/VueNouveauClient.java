@@ -204,4 +204,9 @@ public class VueNouveauClient extends Vue {
 
     } // mettreAJour()
 
+    @Override
+    public void setVisible(boolean visible) {
+        fenetre.setVisible(visible);
+    }
+
 } // VueNouveauClient

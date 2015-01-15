@@ -14,8 +14,21 @@ public class Timer extends Thread {
     private int vitesse;
     
     private Vue vue;
+    private static Timer timer;
 
-    public Timer(int day, int heures, int minutes, int secondes,int vitesse) {
+    public Vue getVue() {
+        return vue;
+    }
+
+    public static Timer getInstance() {
+        if (timer != null) {
+            return timer;
+        }
+        timer = new Timer(0,10,10,0,4);
+        return timer;
+    }
+
+    private Timer(int day, int heures, int minutes, int secondes,int vitesse) {
         this.day = day;
         this.heures = heures;
         this.minutes = minutes;
@@ -79,8 +92,7 @@ public class Timer extends Thread {
                 }
             }
         }
-        
-        //System.out.println(heures + ":" + minutes + ":" + secondes);
+
         vue.mettreAJour();
     }
 

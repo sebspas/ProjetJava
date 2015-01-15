@@ -5,6 +5,7 @@ package parking.business.vehicule;
 /***************************************************************/
 import parking.business.Client;
 import parking.business.Parking;
+import parking.business.Timer;
 
 import java.util.Date;
 
@@ -97,9 +98,8 @@ public abstract class Vehicule {
 	 * 			La date d'arrivee du vehicule.
 	 */
 	public void setDateArrivee() {
-		System.out.println(Parking.getInstance().getTimer().getHeures());
-		this.jourArrivee = Parking.getInstance().getTimer().getDay();
-		this.heureArrivee = Parking.getInstance().getTimer().getHeures();
+		this.jourArrivee = Timer.getInstance().getDay();
+		this.heureArrivee = Timer.getInstance().getHeures();
 	} // setDateArrivee()
 
 	/***************************************************************/

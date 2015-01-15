@@ -52,4 +52,9 @@ public class VueTimer extends Vue{
         textField1.setText("Jour : " + this.timer.getDay() + " jour(s)");
         textField2.setText("Heure : " + this.timer.getHeures() + " : " + this.timer.getMinutes() + " : "  + this.timer.getSecondes() +" sec");
     }
+
+    @Override
+    public void setVisible(boolean visible) {
+        fenetre.setVisible(visible);
+    }
 }

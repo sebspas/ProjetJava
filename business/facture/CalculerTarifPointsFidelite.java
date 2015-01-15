@@ -6,6 +6,7 @@ package parking.business.facture;
 import parking.Constante;
 import parking.business.Parking;
 import parking.business.Place;
+import parking.business.Timer;
 
 import java.util.Date;
 
@@ -31,8 +32,8 @@ public class CalculerTarifPointsFidelite implements CalculerTarif {
      */
     @Override
     public double calculerTarif(Place p) {
-        int heureActuelle = Parking.getInstance().getTimer().getHeures();
-        int jourActuel = Parking.getInstance().getTimer().getDay();
+        int heureActuelle = Timer.getInstance().getHeures();
+        int jourActuel = Timer.getInstance().getDay();
 
         int heureArrivee = p.getVehicule().getHeureArrivee();
         int jourArrivee = p.getVehicule().getJourArrivee();

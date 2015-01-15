@@ -28,4 +28,6 @@ public abstract class Vue {
      */
     public abstract void mettreAJour();
 
+    public abstract void setVisible(boolean visible);
+
 } // Vue class

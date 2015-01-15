@@ -256,4 +256,9 @@ public class VueVehicule extends Vue{
         listeVehicule.repaint();
     } // mettreAJour()
 
+    @Override
+    public void setVisible(boolean visible) {
+        fenetre.setVisible(visible);
+    }
+
 } // VueVehicule class

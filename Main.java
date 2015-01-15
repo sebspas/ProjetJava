@@ -18,9 +18,6 @@ public class Main {
     public static void main(String[] args) {
         try {
             Parking parking = Parking.getInstance();
-            Vue vuetimer = new VueTimer(parking.getTimer());
-
-            parking.getTimer().setVue(vuetimer);
 
             Vue test = new VueParking();
 
