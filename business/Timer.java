@@ -182,7 +182,6 @@ public class Timer extends Thread {
             try {
                 this.sleep(1000);
             } catch (InterruptedException e) {
-                System.out.println("Bug du thread...");
                 e.printStackTrace();
             }
             this.mettreAJour();

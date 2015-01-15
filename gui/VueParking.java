@@ -6,10 +6,12 @@ package parking.gui;
 import parking.business.*;
 import parking.business.Timer;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 /**
  * Class VueParking, herite de la classe Vue, permettant de ...
@@ -32,7 +34,7 @@ public class VueParking extends Vue{
     private JPanel main, legende;
 
     private JLabel titre;
-    private JButton bouton1, bouton2, bouton3;
+    private JButton bouton1, bouton2, bouton3, bouton4;
 
     /**
      *
@@ -44,6 +46,11 @@ public class VueParking extends Vue{
      */
     private JPanel panel1;
 
+    private ImageIcon icon_voiture;
+    private ImageIcon icon_camion;
+    private ImageIcon icon_reservee;
+    private ImageIcon icon_disponible;
+
     
     /***************************************************************/
 	/*						Constructeur						   */
@@ -52,8 +59,16 @@ public class VueParking extends Vue{
      * Constructeur de la classe VueParking, permettant de ...
      */
     public VueParking() {
+        try {
+            icon_voiture = new ImageIcon(ImageIO.read(getClass().getResource("ressources/voiture.png")));
+            icon_camion = new ImageIcon(ImageIO.read(getClass().getResource("ressources/camion.png")));
+            icon_reservee = new ImageIcon(ImageIO.read(getClass().getResource("ressources/reservee.png")));
+            icon_disponible = new ImageIcon(ImageIO.read(getClass().getResource("ressources/feu-vert.png")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         main = new JPanel();
-
+        main.setBackground(new Color(127, 140, 141));
         fenetre.setLocation(300, 100);
         fenetre.setPreferredSize(new Dimension(800, 750));
         fenetre.setDefaultCloseOperation(fenetre.EXIT_ON_CLOSE);
@@ -93,20 +108,26 @@ public class VueParking extends Vue{
         for (Place p : Parking.getInstance().getListePlaces()) {
             JButton button = new JButton();
             button.setRolloverEnabled(false);
-
-            button.setPreferredSize(new Dimension(200,50));
+            button.setBackground(new Color(189, 195, 199));
+                
+            button.setPreferredSize(new Dimension(200,70));
 
             if (p.getVehicule() != null) {
                 button.setText(p.getVehicule().getType() + " : " + String.valueOf(p.getVehicule().getImmatriculation()));
-                button.setBackground(Color.red);
+                if (p.getVehicule().getType().equals("Camion")) {
+                    button.setIcon(icon_camion);
+                }
+                else {
+                    button.setIcon(icon_voiture);
+                }
             }
             else if (p.getReservation()) {
                 button.setText(p.getType());
-                button.setBackground(Color.orange);
+                button.setIcon(icon_reservee);
             }
             else {
+                button.setIcon(icon_disponible);
                 button.setText(p.getType());
-                button.setBackground(Color.green);
             }
 
             affichageParking.add(button);
@@ -122,6 +143,8 @@ public class VueParking extends Vue{
      */
     private JPanel legende() {
         legende = new JPanel();
+        legende.setPreferredSize(new Dimension(800,70));
+        legende.setBackground(new Color(127, 140, 141));
 
         titre = new JLabel("Legende ");
 
@@ -129,15 +152,20 @@ public class VueParking extends Vue{
 
         bouton1 = new JButton("Libre");
         bouton2 = new JButton("Réservée");
-        bouton3 = new JButton("Occupée");
+        bouton3 = new JButton("Voiture");
+        bouton4 = new JButton("Camion");
 
-        bouton1.setBackground(Color.green);
-        bouton2.setBackground(Color.orange);
-        bouton3.setBackground(Color.red);
+
+        bouton1.setIcon(icon_disponible);
+        bouton2.setIcon(icon_reservee);
+        bouton3.setIcon(icon_voiture);
+        bouton4.setIcon(icon_camion);
+
 
         legende.add(bouton1, BorderLayout.CENTER);
         legende.add(bouton2, BorderLayout.CENTER);
         legende.add(bouton3, BorderLayout.CENTER);
+        legende.add(bouton4, BorderLayout.CENTER);
 
         return legende;
     } // legende()

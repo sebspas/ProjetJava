@@ -83,7 +83,7 @@ public class Parking {
 	 */
 	private boolean appelInterne;
 	
-	private static Parking singleton;
+	private static Parking singleton = null;
 	/**
 	 * Initialisation des informations generales du parking. Statiquement car le parking est unique.
 	 */
