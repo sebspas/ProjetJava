@@ -4,6 +4,7 @@ package parking.business.facture;
 /*						Import						   		   */
 /***************************************************************/
 import parking.Constante;
+import parking.business.Client;
 import parking.business.Parking;
 import parking.business.Place;
 import parking.business.Timer;
@@ -18,6 +19,7 @@ import java.util.Date;
  * @author Chergui, Coadalen, Corfa, Corral
  */
 public class CalculerTarifPointsFidelite implements CalculerTarif {
+    private CalculerTarif calculerTarifHeure = new CalculerTarifHeure();
     /***************************************************************/
 	/*						Methodes							   */
     /***************************************************************/
@@ -32,29 +34,17 @@ public class CalculerTarifPointsFidelite implements CalculerTarif {
      */
     @Override
     public double calculerTarif(Place p) {
-        int heureActuelle = Timer.getInstance().getHeures();
-        int jourActuel = Timer.getInstance().getDay();
-
-        int heureArrivee = p.getVehicule().getHeureArrivee();
-        int jourArrivee = p.getVehicule().getJourArrivee();
-
-        int nombreHeures;
-
-        if (jourActuel == jourArrivee) {
-            nombreHeures = heureActuelle - heureArrivee;
-            if (nombreHeures == 0)
-                nombreHeures = 1;
+        double tarif = calculerTarifHeure.calculerTarif(p);
+        double remise = 0;
+                
+        Client client = p.getVehicule().getProprietaire();
+        client.setPointsDeFidelite(client.getPointsDeFidelite() + (int) (tarif * 2));
+        
+        if (client.getPointsDeFidelite() >= 10) {
+            remise = 1.0;
+            client.setPointsDeFidelite(client.getPointsDeFidelite()- 10);
         }
-        else {
-            nombreHeures = (jourActuel-jourArrivee)*24 + (24-heureArrivee) + (heureActuelle);
-        }
-
-        double tarif = Parking.getInstance().getTarif_particulier();
-        if (p.getVehicule().getType() == "Transporteur")
-            tarif = Parking.getInstance().getTarif_transporteur();
-
-        return ((((double)nombreHeures)* tarif) * (1-(p.getVehicule().getProprietaire().getPointsDeFidelite()/1000)) +
-                (((double)nombreHeures)* tarif) * (1-(p.getVehicule().getProprietaire().getPointsDeFidelite()/1000)) * Constante.TVA / 100);
+            return  tarif - remise;
     } // CalculerTarifPointsFidelite()
 
     /**
