@@ -391,6 +391,7 @@ public class Parking {
 			}
 			for (Place p : this.listePlaces) {
 				if (p.getVehicule() == null && !(p.getReservation())) {
+					++nbVehicule;
 					p.setVehicule(vehicule);
 					p.getVehicule().setDateArrivee();
 					return;
