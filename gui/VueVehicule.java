@@ -27,12 +27,18 @@ public class VueVehicule extends Vue{
     /**
      *
      */
-    JFrame fenetre = new JFrame("Gestion Vehicule");
+    private JFrame fenetre = new JFrame("Gestion Vehicule");
 
     /**
      *
      */
-    JPanel listeVehicule = new JPanel();
+    private JPanel top, topClient, topVehicule,
+                   center,
+                   main;
+
+    private JPanel listeVehicule = new JPanel();
+
+    private JLabel labelClient, labelTypeVehicule;
 
     /**
      *
@@ -58,9 +64,8 @@ public class VueVehicule extends Vue{
         fenetre.setLocation(0, 0);
         fenetre.setPreferredSize(new Dimension(320,180));
         fenetre.setDefaultCloseOperation(fenetre.DISPOSE_ON_CLOSE);
-        BorderLayout borderLayout = new BorderLayout();
-        fenetre.setLayout(borderLayout);
-        JPanel main = new JPanel();
+        fenetre.setLayout(new BorderLayout());
+        main = new JPanel();
 
 
         main.add(Top(), BorderLayout.NORTH);
@@ -103,10 +108,10 @@ public class VueVehicule extends Vue{
     private JPanel Top() {
 
         // Top
-        JPanel top = new JPanel();
+        top = new JPanel();
         top.setLayout(new BorderLayout());
 
-        JLabel labelClient = new JLabel("Client");
+        labelClient = new JLabel("Client");
         client = new JComboBox();
         client.setPreferredSize(new Dimension(300, 20));
 
@@ -115,12 +120,12 @@ public class VueVehicule extends Vue{
         
         client.setSelectedIndex(0);
         
-        JPanel topClient = new JPanel();
+        topClient = new JPanel();
         topClient.setLayout(new BorderLayout());
         topClient.add(labelClient, BorderLayout.NORTH);
         topClient.add(client, BorderLayout.CENTER);
 
-        JLabel labelTypeVehicule = new JLabel("Véhicule");
+        labelTypeVehicule = new JLabel("Véhicule");
         vehicule = new JComboBox();
         vehicule.setPreferredSize(new Dimension(300, 20));
         vehicule.addItemListener(new ItemListener() {
@@ -153,7 +158,7 @@ public class VueVehicule extends Vue{
             }
         });
         
-        JPanel topVehicule = new JPanel();
+        topVehicule = new JPanel();
         topVehicule.setLayout(new BorderLayout());
         topVehicule.add(labelTypeVehicule, BorderLayout.NORTH);
         topVehicule.add(vehicule, BorderLayout.CENTER);
@@ -165,7 +170,7 @@ public class VueVehicule extends Vue{
     } // Top()
 
     private JPanel Center() {
-        JPanel center = new JPanel();
+        center = new JPanel();
         center.setLayout(new BorderLayout());
 
         parker_vehicule = new JButton();

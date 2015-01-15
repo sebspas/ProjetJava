@@ -25,11 +25,21 @@ public class VueAjouterVehicule extends Vue {
     /***************************************************************/
 	/*						Debut Donnees Membres 				   */
     /***************************************************************/
-    JFrame fenetre = new JFrame("Ajouter Vehicule");
+    private JFrame fenetre = new JFrame("Ajouter Vehicule");
     //JPanel listeVehicule = new JPanel();
 
     //private JComboBox client;
-    //private JPanel panel1;
+    private JPanel top, topClient, topVehicule,
+                   center, topCenter, midCenter, midCenterLeft, midCenterRight, midBottom,
+                   bottom, topBottom, topBottomLeft, topBottomRight,
+                   main;
+
+    private JLabel labelClient, labelTypeVehicule,
+                   labelImmatriculation, labelMarque, labelModele,
+                   labelTonnage, labelHauteur;
+
+    private final JButton Valider = new JButton();
+    private final JButton Annuler = new JButton();
 
     /**
      *
@@ -77,10 +87,9 @@ public class VueAjouterVehicule extends Vue {
         fenetre.setLocation(0, 0);
         fenetre.setPreferredSize(new Dimension(320,280));
         fenetre.setDefaultCloseOperation(fenetre.DISPOSE_ON_CLOSE);
-        BorderLayout borderLayout = new BorderLayout();
-        fenetre.setLayout(borderLayout);
+        fenetre.setLayout(new BorderLayout());
 
-        JPanel main = new JPanel();
+        main = new JPanel();
         main.add(Top(), BorderLayout.NORTH);
         main.add(Center(), BorderLayout.CENTER);
         main.add(Bottom(), BorderLayout.SOUTH);
@@ -125,23 +134,23 @@ public class VueAjouterVehicule extends Vue {
     private JPanel Top() {
 
         // Top
-        JPanel top = new JPanel();
+        top = new JPanel();
         top.setLayout(new BorderLayout());
 
-        JLabel labelClient = new JLabel("Client");
+        labelClient = new JLabel("Client");
         client = new JComboBox();
         client.setPreferredSize(new Dimension(300, 20));
 
         afficherClients();
         fenetre.repaint();
 
-        JPanel topClient = new JPanel();
+        topClient = new JPanel();
         topClient.setLayout(new BorderLayout());
         topClient.add(labelClient, BorderLayout.NORTH);
         topClient.add(client, BorderLayout.CENTER);
 
 
-        JLabel labelTypeVehicule = new JLabel("Type de véhicule");
+        labelTypeVehicule = new JLabel("Type de véhicule");
         typeVehicule = new JComboBox();
         typeVehicule.addItem("Voiture");
         typeVehicule.addItem("Camion");
@@ -163,7 +172,7 @@ public class VueAjouterVehicule extends Vue {
             }
         });
 
-        JPanel topVehicule = new JPanel();
+        topVehicule = new JPanel();
         topVehicule.setLayout(new BorderLayout());
         topVehicule.add(labelTypeVehicule, BorderLayout.NORTH);
         topVehicule.add(typeVehicule, BorderLayout.CENTER);
@@ -181,13 +190,13 @@ public class VueAjouterVehicule extends Vue {
      */
     private JPanel Center() {
         // Center
-        JPanel center = new JPanel();
+        center = new JPanel();
         center.setLayout(new BorderLayout());
 
-        JPanel topCenter = new JPanel();
+        topCenter = new JPanel();
         topCenter.setLayout(new BorderLayout());
 
-        JLabel labelImmatriculation = new JLabel("Immatriculation");
+        labelImmatriculation = new JLabel("Immatriculation");
         Immatriculation = new JTextField();
         Immatriculation.setPreferredSize(new Dimension(300, 20));
 
@@ -196,20 +205,20 @@ public class VueAjouterVehicule extends Vue {
         topCenter.add(Immatriculation, BorderLayout.CENTER);
 
 
-        JPanel midCenter = new JPanel();
+        midCenter = new JPanel();
         midCenter.setLayout(new BorderLayout());
 
-        JPanel midCenterLeft = new JPanel();
+        midCenterLeft = new JPanel();
         midCenterLeft.setLayout(new BorderLayout());
-        JLabel labelMarque = new JLabel("Marque");
+        labelMarque = new JLabel("Marque");
         Marque = new JTextField();
         Marque.setPreferredSize(new Dimension(140, 20));
         midCenterLeft.add(labelMarque, BorderLayout.NORTH);
         midCenterLeft.add(Marque, BorderLayout.CENTER);
 
-        JPanel midCenterRight = new JPanel();
+        midCenterRight = new JPanel();
         midCenterRight.setLayout(new BorderLayout());
-        JLabel labelModele = new JLabel("Modele");
+        labelModele = new JLabel("Modele");
         Modele = new JTextField();
         Modele.setPreferredSize(new Dimension(140, 20));
         midCenterRight.add(labelModele, BorderLayout.NORTH);
@@ -231,24 +240,24 @@ public class VueAjouterVehicule extends Vue {
      */
     private JPanel Bottom() {
         // Bottom
-        JPanel bottom = new JPanel();
+        bottom = new JPanel();
         bottom.setLayout(new BorderLayout());
 
-        JPanel topBottom = new JPanel();
+        topBottom = new JPanel();
         topBottom.setLayout(new BorderLayout());
 
 
-        JPanel topBottomLeft = new JPanel();
+        topBottomLeft = new JPanel();
         topBottomLeft.setLayout(new BorderLayout());
-        JLabel labelTonnage = new JLabel("Tonnage");
+        labelTonnage = new JLabel("Tonnage");
         Tonnage = new JTextField();
         Tonnage.setPreferredSize(new Dimension(140, 20));
         topBottomLeft.add(labelTonnage, BorderLayout.NORTH);
         topBottomLeft.add(Tonnage, BorderLayout.CENTER);
 
-        JPanel topBottomRight = new JPanel();
+        topBottomRight = new JPanel();
         topBottomRight.setLayout(new BorderLayout());
-        JLabel labelHauteur = new JLabel("Hauteur");
+        labelHauteur = new JLabel("Hauteur");
         Hauteur = new JTextField();
         Hauteur.setPreferredSize(new Dimension(140, 20));
         topBottomRight.add(labelHauteur, BorderLayout.NORTH);
@@ -257,10 +266,10 @@ public class VueAjouterVehicule extends Vue {
         topBottom.add(topBottomLeft, BorderLayout.WEST);
         topBottom.add(topBottomRight, BorderLayout.EAST);
 
-        JPanel midBottom = new JPanel();
+        midBottom = new JPanel();
         midBottom.setLayout(new BorderLayout());
 
-        final JButton Valider = new JButton();
+
         Valider.setText("Valider");
         Valider.setPreferredSize(new Dimension(140, 40));
         Valider.addActionListener(new ActionListener() {
@@ -286,6 +295,12 @@ public class VueAjouterVehicule extends Vue {
                         );
                     }
 
+
+                    JOptionPane.showMessageDialog(fenetre,
+                            "Véhicule " + Marque.getText() + " " + Modele.getText() + " ajouté avec succès !",
+                            "Success",
+                            JOptionPane.PLAIN_MESSAGE);
+
                     fenetre.dispose();
                 } else {
                     JOptionPane.showMessageDialog(fenetre,
@@ -297,7 +312,6 @@ public class VueAjouterVehicule extends Vue {
         });
 
 
-        final JButton Annuler = new JButton();
         Annuler.setText("Annuler");
         Annuler.setPreferredSize(new Dimension(140,40));
         Annuler.addActionListener(new ActionListener() {

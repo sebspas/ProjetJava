@@ -11,8 +11,9 @@ import java.awt.event.ActionListener;
  * Created by Administrateur on 14/01/2015.
  */
 public class VueFacture {
-    private JPanel panel1;
+    private JPanel panel1, panel;
     private JTextArea textArea1;
+    private JButton save;
 
     public VueFacture(final Facture facture) {
         final JFrame fenetre = new JFrame("Facture n°" + facture.getNumeroFacture());
@@ -20,11 +21,11 @@ public class VueFacture {
         fenetre.setPreferredSize(new Dimension(450,320));
         fenetre.setDefaultCloseOperation(fenetre.DISPOSE_ON_CLOSE);
         
-        JPanel panel = new JPanel();
+        panel = new JPanel();
         
         panel .setLayout(new BorderLayout());
         
-        JButton save = new JButton("Sauvegarder");
+        save = new JButton("Sauvegarder");
         
         panel.add(save, BorderLayout.SOUTH);
         panel.add(textArea1, BorderLayout.CENTER);

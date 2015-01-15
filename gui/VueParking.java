@@ -29,6 +29,10 @@ public class VueParking extends Vue{
      *
      */
     private JPanel parking = new JPanel();
+    private JPanel main, legende;
+
+    private JLabel titre;
+    private JButton bouton1, bouton2, bouton3;
 
     /**
      *
@@ -48,7 +52,7 @@ public class VueParking extends Vue{
      */
     public VueParking() {
         Parking.getInstance().addVue(this);
-        JPanel main = new JPanel();
+        main = new JPanel();
 
         fenetre.setLocation(300, 100);
         fenetre.setPreferredSize(new Dimension(800, 750));
@@ -117,15 +121,15 @@ public class VueParking extends Vue{
      * @return Le panneau "legende".
      */
     private JPanel legende() {
-        JPanel legende = new JPanel();
+        legende = new JPanel();
 
-        JLabel titre = new JLabel("Legende ");
+        titre = new JLabel("Legende ");
 
         legende.add(titre, BorderLayout.NORTH);
 
-        JButton bouton1 = new JButton("Libre");
-        JButton bouton2 = new JButton("Réservée");
-        JButton bouton3 = new JButton("Occupée");
+        bouton1 = new JButton("Libre");
+        bouton2 = new JButton("Réservée");
+        bouton3 = new JButton("Occupée");
 
         bouton1.setBackground(Color.green);
         bouton2.setBackground(Color.orange);

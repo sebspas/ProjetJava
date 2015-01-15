@@ -11,7 +11,7 @@ import parking.business.Timer;
  * Created by Administrateur on 14/01/2015.
  */
 public class VueTimer extends Vue{
-    JFrame fenetre;
+    private JFrame fenetre;
     private JTextField textField1;
     private Timer timer;
     private JButton incremente;
