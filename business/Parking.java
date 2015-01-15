@@ -7,10 +7,10 @@ import parking.business.facture.Facture;
 import parking.business.vehicule.Vehicule;
 import parking.exception.business.*;
 import parking.gui.Vue;
+import parking.gui.VueParking;
 import parking.gui.VueTimer;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * Class Parking permettant de creer le parking selon des criteres tels que le numero d'une
@@ -61,7 +61,7 @@ public class Parking {
 	 * La liste de toute les vues.
 	 * Type de collection a definir ...
 	 */
-	private ArrayList<Vue> listeVue;
+	private ArrayList<Vue> listeVueNotifiable;
 
 	/**
 	 * Le tarif d'une place de type particulier.
@@ -82,8 +82,7 @@ public class Parking {
 	 * Un booleen permettant de savoir si une fonction a ete appele en interne ou non.
 	 */
 	private boolean appelInterne;
-
-	private VueTimer vueTimer;
+	
 	private static Parking singleton;
 	/**
 	 * Initialisation des informations generales du parking. Statiquement car le parking est unique.
@@ -97,9 +96,10 @@ public class Parking {
 	}
 	
 	private Parking() {
+		/* Initialisation des donnees membres */
 		nom = "Mon Parking";
 		numeroPlace = 0;
-		listeVue = new ArrayList<Vue>();
+		listeVueNotifiable = new ArrayList<Vue>();
 		listePlaces = new ArrayList<Place>();
 		listeFacture = new ArrayList<Facture>();
 		listeClients = new ArrayList<Client>();
@@ -108,8 +108,16 @@ public class Parking {
 		tarif_particulier = 1;
 		tarif_transporteur = 1.5;
 		appelInterne = false;
-		vueTimer = new VueTimer(Timer.getInstance());
+		
+		/* Ajout de la vue Parking */
+		Vue test = new VueParking();
+		listeVueNotifiable.add(test);
+		
+		/*	Ajout de la vue du timer */
+		Vue vueTimer = new VueTimer(Timer.getInstance());
 		Timer.getInstance().setVue(vueTimer);
+		
+		/* Demarrage Timer */
 		Timer.getInstance().start();
 	}
 
@@ -270,14 +278,14 @@ public class Parking {
 	 * 			La vue a ajouter.
 	 */
 	public void addVue(Vue v) {
-		listeVue.add(v);
+		listeVueNotifiable.add(v);
 	} // addVue()
 
 	/**
 	 * Methode notifier() affiche un message a chaque vue de la liste des vues.
 	 */
 	public void notifier() {
-		for (Vue v : listeVue) {
+		for (Vue v : listeVueNotifiable) {
 			v.mettreAJour();
 		}
 	} // notifier()
@@ -374,7 +382,6 @@ public class Parking {
 					if (p.getType().equals(typePlace)) {
 						p.setVehicule(vehicule);
 						if (!appelInterne) {
-							System.out.println("Incremente");
 							++nbVehicule;
 							p.getVehicule().setDateArrivee();
 						}

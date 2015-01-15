@@ -28,7 +28,7 @@ public class VueParking extends Vue{
     /**
      *
      */
-    private JPanel parking = new JPanel();
+    private JPanel affichageParking = new JPanel();
     private JPanel main, legende;
 
     private JLabel titre;
@@ -44,6 +44,7 @@ public class VueParking extends Vue{
      */
     private JPanel panel1;
 
+    
     /***************************************************************/
 	/*						Constructeur						   */
     /***************************************************************/
@@ -51,7 +52,6 @@ public class VueParking extends Vue{
      * Constructeur de la classe VueParking, permettant de ...
      */
     public VueParking() {
-        Parking.getInstance().addVue(this);
         main = new JPanel();
 
         fenetre.setLocation(300, 100);
@@ -63,13 +63,13 @@ public class VueParking extends Vue{
 
         fenetre.setContentPane(main);
 
-        parking.setPreferredSize(new Dimension(650,600));
+        affichageParking.setPreferredSize(new Dimension(650, 600));
         progressBar.setPreferredSize(new Dimension(500,15));
 
         main.add(new JLabel("Capacité :"), BorderLayout.NORTH);
         main.add(progressBar, BorderLayout.NORTH);
 
-        main.add(parking, BorderLayout.CENTER);
+        main.add(affichageParking, BorderLayout.CENTER);
 
         main.add(legende(), BorderLayout.SOUTH);
 
@@ -89,7 +89,7 @@ public class VueParking extends Vue{
      * @return
      */
     private JPanel AffichageParking() {
-        parking.removeAll();
+        affichageParking.removeAll();
         for (Place p : Parking.getInstance().getListePlaces()) {
             JButton button = new JButton();
             button.setRolloverEnabled(false);
@@ -109,10 +109,10 @@ public class VueParking extends Vue{
                 button.setBackground(Color.green);
             }
 
-            parking.add(button);
+            affichageParking.add(button);
         }
 
-        return parking;
+        return affichageParking;
     } // AffichageParking()
 
     /**
@@ -312,10 +312,10 @@ public class VueParking extends Vue{
         float nbrVehicule = p.getNbVehicule();
         int pourcentage = (int)((nbrVehicule/nbPlacesMax)*100);
         progressBar.setValue(pourcentage);
-        parking = AffichageParking();
+        affichageParking = AffichageParking();
 
-        parking.revalidate();
-        parking.repaint();
+        affichageParking.revalidate();
+        affichageParking.repaint();
     } // mettreAJour()
 
     @Override

@@ -18,9 +18,7 @@ public class Main {
     public static void main(String[] args) {
         try {
             Parking parking = Parking.getInstance();
-
-            Vue test = new VueParking();
-
+            
             // Creation des places Particulier //
             for (int i = 0; i < 2; ++i) {
                 new Place("Particulier");
