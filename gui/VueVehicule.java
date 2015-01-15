@@ -150,10 +150,13 @@ public class VueVehicule extends Vue{
             public void actionPerformed(ActionEvent e) {
                 vehicule.removeAllItems();
                 Client client1 = getClient(client.getSelectedItem().toString());
-                for (Vehicule v1: client1.getListeVehicule()) {
-                    vehicule.addItem(v1);
+                if(!client1.getListeVehicule().isEmpty()) {
+                    for (Vehicule v1 : client1.getListeVehicule()) {
+                        vehicule.addItem(v1);
+                    }
+                    vehicule.setSelectedIndex(0);
                 }
-                vehicule.setSelectedIndex(0);
+
                 
             }
         });
