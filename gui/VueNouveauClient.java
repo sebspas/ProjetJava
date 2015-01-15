@@ -1,5 +1,8 @@
 package parking.gui;
 
+/***************************************************************/
+/*						Import						   		   */
+/***************************************************************/
 import parking.business.Client;
 import parking.business.facture.CalculerTarifHeure;
 
@@ -56,7 +59,7 @@ public class VueNouveauClient extends Vue {
         fenetre.pack();
         fenetre.setResizable(false);
         fenetre.setVisible(true);
-    } // VueNouveauClient()
+    } // Constructeur
 
 
     /***************************************************************/

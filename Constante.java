@@ -1,7 +1,9 @@
 package parking;
 
 /**
- * Created by Administrateur on 12/01/2015.
+ * Class Constante qui permet de repertorier toutes les constantes globales telles que la TVA.
+ *
+ * @author Chergui, Coadalen, Corfa, Corral
  */
 public class Constante {
     /***************************************************************/

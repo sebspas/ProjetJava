@@ -1,5 +1,8 @@
 package parking;
 
+/***************************************************************/
+/*						Import						   		   */
+/***************************************************************/
 import parking.business.*;
 import parking.business.facture.CalculerTarifHeure;
 import parking.business.facture.CalculerTarifPointsFidelite;
@@ -12,7 +15,10 @@ import parking.gui.VueParking;
 import parking.gui.VueTimer;
 
 /**
- * Created by Administrateur on 10/01/2015.
+ * Class Main qui permet de faire toutes les creations dont nous avons
+ * besoin pour creer l'application (clients, vehicules, places).
+ *
+ * @author Chergui, Coadalen, Corfa, Corral
  */
 public class Main {
     public static void main(String[] args) {

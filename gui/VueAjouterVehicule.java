@@ -25,20 +25,37 @@ public class VueAjouterVehicule extends Vue {
     /***************************************************************/
 	/*						Debut Donnees Membres 				   */
     /***************************************************************/
+    /**
+     *
+     */
     private JFrame fenetre = new JFrame("Ajouter Vehicule");
     //JPanel listeVehicule = new JPanel();
 
     //private JComboBox client;
+
+    /**
+     *
+     */
     private JPanel top, topClient, topVehicule,
                    center, topCenter, midCenter, midCenterLeft, midCenterRight, midBottom,
                    bottom, topBottom, topBottomLeft, topBottomRight,
                    main;
 
+    /**
+     *
+     */
     private JLabel labelClient, labelTypeVehicule,
                    labelImmatriculation, labelMarque, labelModele,
                    labelTonnage, labelHauteur;
 
+    /**
+     *
+     */
     private final JButton Valider = new JButton();
+
+    /**
+     *
+     */
     private final JButton Annuler = new JButton();
 
     /**
@@ -80,7 +97,7 @@ public class VueAjouterVehicule extends Vue {
 	/*						Constructeur						   */
     /***************************************************************/
     /**
-     * Constructeur de la classe VueAjouterVehicule(), permettant de
+     * Constructeur de la classe VueAjouterVehicule, permettant de
      */
     public VueAjouterVehicule() {
         // fenetre
@@ -98,7 +115,7 @@ public class VueAjouterVehicule extends Vue {
         fenetre.pack();
         fenetre.setResizable(false);
         fenetre.setVisible(true);
-    } // Constructeur()
+    } // Constructeur
 
     /***************************************************************/
 	/*						Getter								   */

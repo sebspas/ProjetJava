@@ -119,7 +119,7 @@ public class Parking {
 		
 		/* Demarrage Timer */
 		Timer.getInstance().start();
-	}
+	} // Constructeur
 
 	/***************************************************************/
 	/*						Getter								   */

@@ -1,5 +1,8 @@
 package parking.gui;
 
+/***************************************************************/
+/*						Import						   		   */
+/***************************************************************/
 import parking.business.facture.Facture;
 
 import javax.swing.*;
@@ -8,13 +11,39 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * Created by Administrateur on 14/01/2015.
+ * Class VueFacture qui cree une vue permettant de voir le detail
+ * de la facture ainsi que la possibilite de la sauvegarder.
+ *
+ * @author Chergui, Coadalen, Corfa, Corral
  */
 public class VueFacture {
+    /***************************************************************/
+	/*						Debut Donnees Membres 				   */
+    /***************************************************************/
+    /**
+     *
+     */
     private JPanel panel1, panel;
+
+    /**
+     *
+     */
     private JTextArea textArea1;
+
+    /**
+     *
+     */
     private JButton save;
 
+    /***************************************************************/
+	/*						Constructeur						   */
+    /***************************************************************/
+    /**
+     * Constructeur de la classe VueFacture, permettant de
+     *
+     * @param facture
+     *          La facture a creer.
+     */
     public VueFacture(final Facture facture) {
         final JFrame fenetre = new JFrame("Facture n°" + facture.getNumeroFacture());
         fenetre.setResizable(false);
@@ -45,5 +74,6 @@ public class VueFacture {
         fenetre.setContentPane(panel);
         fenetre.pack();
         fenetre.setVisible(true);
-    }
-}
+    } // Constructeur
+
+} // VueFacture class

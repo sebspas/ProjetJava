@@ -53,7 +53,7 @@ public class Place{
 		this.type = type;
 		this.Reserver = false;
 		Parking.getInstance().ajouterPlace(this);
-	}// Constructeur()
+	}// Constructeur
 
 	/***************************************************************/
 	/*						Getter								   */
