@@ -21,20 +21,39 @@ public class VueNouveauClient extends Vue {
     /***************************************************************/
 	/*						Debut Donnees Membres 				   */
     /***************************************************************/
+    /**
+     *
+     */
     private JFrame fenetre = new JFrame("Nouveau Client");
 
+    /**
+     *
+     */
     private JPanel top, topClientLeft, topClientRight,
             center,
             bottom,
             main;
 
+    /**
+     *
+     */
     private JLabel labelNom, labelPrenom,
                    labelAdresse;
 
+    /**
+     *
+     */
     private JTextField Nom, Prenom,
                        Adresse;
 
+    /**
+     * Le bouton permettant de valider.
+     */
     private final JButton Valider = new JButton();
+
+    /**
+     * Le bouton permettant d'annuler.
+     */
     private final JButton Annuler = new JButton();
 
 

@@ -1,7 +1,7 @@
 package parking.exception.business;
 
 /**
- * Exception se propageant lorsque le parking a atteint le nombre maximal de places.
+ * Exception se propageant lorsque le parking a atteint le nombre maximum de places.
  */
 public class NombrePlacesMaxException extends Exception{
 

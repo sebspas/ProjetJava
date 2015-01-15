@@ -16,7 +16,9 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
 /**
- * Class VueVehicule, herite de la classe Vue, permettant de ...
+ * Class VueVehicule, herite de la classe Vue, qui cree une vue permettant
+ * de gerer les vehicules avec la possibilites de les "parker" ou de
+ * les "deparker" en choisisant parmi les vehicules de chaque client.
  *
  * @author Chergui, Coadalen, Corfa, Corral
  */
@@ -25,39 +27,53 @@ public class VueVehicule extends Vue{
 	/*						Debut Donnees Membres 				   */
     /***************************************************************/
     /**
-     *
+     * La fenetre nommee "Gestion Vehicule".
      */
     private JFrame fenetre = new JFrame("Gestion Vehicule");
 
     /**
-     *
+     * Les panneaux correspondant a leur nomenclature.
      */
     private JPanel top, topClient, topVehicule,
                    center,
                    main;
 
+    /**
+     * Le panneau permettant de choisir un vehicule parmi une liste.
+     */
     private JPanel listeVehicule = new JPanel();
 
+    /**
+     * Les etiquettes concernant un client ainsi que le type d'un vehicule.
+     */
     private JLabel labelClient, labelTypeVehicule;
 
     /**
-     *
+     * Chaque ligne cliquable correspondant a un client.
      */
     private JComboBox client;
 
     /**
-     *
+     * Chaque ligne cliquable correspondant a un vehicule.
      */
     private JComboBox vehicule;
-    
+
+    /**
+     * Le bouton indique "Parker" dans la vue.
+     */
     private JButton parker_vehicule;
+
+    /**
+     * Le bouton indique "Deparker" dans la vue.
+     */
     private JButton unpark_vehicule;
 
     /***************************************************************/
 	/*						Constructeur						   */
     /***************************************************************/
     /**
-     * Constructeur de la classe VueVehicule, permettant de ...
+     * Constructeur de la classe VueVehicule, permettant de creer une vue
+     * donnant acces aux boutons park_vehicule et unpark_vehicule sur un vehicule.
      */
     public VueVehicule() {
         Parking.getInstance().addVue(this);
@@ -78,8 +94,15 @@ public class VueVehicule extends Vue{
     } // Constructeur
 
     /***************************************************************/
-	/*						Methodes							   */
+	/*						Getter								   */
     /***************************************************************/
+    /**
+     * Methode getClient() renvoie le client passe en parametre.
+     *
+     * @param nomprenom
+     *          Le nom et prenom du client.
+     * @return Le client attendu.
+     */
     public Client getClient(String nomprenom) {
         String[] splited = nomprenom.split("\\s+");
         for (Client c : Parking.getInstance().getListeClient()) {
@@ -91,8 +114,15 @@ public class VueVehicule extends Vue{
         }
         System.out.println("Echec");
         return null;
-    }
+    } // getClient()
 
+    /**
+     * Methode getVehicule() renvoie le vehicule passe en parametre.
+     *
+     * @param vehicule
+     *          Le vehicule d'un client.
+     * @return Le vehicule attendu.
+     */
     public Vehicule getVehicule(String vehicule) {
         Client c1 = getClient(client.getSelectedItem().toString());
         String[] splited = vehicule.split("\\s+");
@@ -103,8 +133,32 @@ public class VueVehicule extends Vue{
         }
         System.out.println("Echec");
         return null;
-    }
+    } // getVehicule()
 
+    /***************************************************************/
+	/*						Setter								   */
+    /***************************************************************/
+    /**
+     * Methode setVisible() permet d'indiquer si la fenetre doit etre visible ou non.
+     *
+     * @param visible
+     *          Booleen affichant la fenetre si il vaut true, et
+     *          ne rendant pas la fenetre visible si il vaut false.
+     */
+    @Override
+    public void setVisible(boolean visible) {
+        fenetre.setVisible(visible);
+    } // setVisible()
+
+    /***************************************************************/
+	/*						Methodes							   */
+    /***************************************************************/
+    /**
+     * Methode Top() permet de creer un panneau afin de ne
+     * s'occuper que de la partie superieure de la fenetre.
+     *
+     * @return Le panneau en haut de la fenetre.
+     */
     private JPanel Top() {
 
         // Top
@@ -174,6 +228,12 @@ public class VueVehicule extends Vue{
         return top;
     } // Top()
 
+    /**
+     * Methode Center() permet de creer un panneau afin de ne
+     * s'occuper que de la partie centrale de la fenetre.
+     *
+     * @return Le panneau au centre de la fenetre.
+     */
     private JPanel Center() {
         center = new JPanel();
         center.setLayout(new BorderLayout());
@@ -184,7 +244,7 @@ public class VueVehicule extends Vue{
 
         unpark_vehicule = new JButton();
         unpark_vehicule.setText("Unpark le vehicule");
-        unpark_vehicule.setPreferredSize(new Dimension(150,40));
+        unpark_vehicule.setPreferredSize(new Dimension(150, 40));
 
         parker_vehicule.setEnabled(false);
         unpark_vehicule.setEnabled(false);
@@ -212,10 +272,22 @@ public class VueVehicule extends Vue{
         });
 
         return center;
-    }
+    } // Center()
 
     /**
-     * Methode AfficheListeVehicule() permet de ...
+     * Methode afficherClients() permet d'afficher la liste des clients.
+     */
+    public void afficherClients() {
+        String identite;
+        for (Client c : Parking.getInstance().getListeClient()) {
+            identite = c.getNom() + " " + c.getPrenom();
+            client.addItem(identite);
+        }
+
+    } // afficherClients()
+
+    /**
+     * Methode AfficheListeVehicule() permet d'afficher la liste des vehicules.
      *
      * @return
      */
@@ -239,18 +311,6 @@ public class VueVehicule extends Vue{
     } // AfficheListeVehicule()
 
     /**
-     * Methode afficherClients() permet de ...
-     */
-    public void afficherClients() {
-        String identite;
-        for (Client c : Parking.getInstance().getListeClient()) {
-            identite = c.getNom() + " " + c.getPrenom();
-            client.addItem(identite);
-        }
-        
-    } // afficherClients()
-
-    /**
      * Methode mettreAJour() permet de mettre a jour la vue.
      */
     @Override
@@ -260,10 +320,5 @@ public class VueVehicule extends Vue{
         listeVehicule.revalidate();
         listeVehicule.repaint();
     } // mettreAJour()
-
-    @Override
-    public void setVisible(boolean visible) {
-        fenetre.setVisible(visible);
-    }
 
 } // VueVehicule class

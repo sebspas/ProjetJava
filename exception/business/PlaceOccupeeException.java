@@ -2,7 +2,7 @@ package parking.exception.business;
 
 /**
  * Exception se propageant lorsque l'on souhaite parker un vehicule sur une
- * place est déjà occupée (aussi lorqu'elle n'est pas adaptée au véhicule).
+ * place est déjà occupée (aussi lorqu'elle n'est pas adaptee au véhicule).
  */
 public class PlaceOccupeeException extends Exception{
 

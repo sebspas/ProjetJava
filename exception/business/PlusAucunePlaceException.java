@@ -1,7 +1,7 @@
 package parking.exception.business;
 
 /**
- * Exception se propageant lorsqu'aucune place n'est libre sur le parking.
+ * Exception se propageant lorsque aucune place n'est libre sur le parking.
  */
 public class PlusAucunePlaceException extends Exception{
 
