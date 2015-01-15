@@ -34,7 +34,7 @@ public class VueParking extends Vue{
     private JPanel main, legende;
 
     private JLabel titre;
-    private JButton bouton1, bouton2, bouton3, bouton4;
+    private JButton bouton1, bouton2, bouton3, bouton4, bouton5, bouton6;
 
     /**
      *
@@ -121,10 +121,12 @@ public class VueParking extends Vue{
             final ButtonPlace button = new ButtonPlace(p);
 
             button.setRolloverEnabled(false);
-            button.setBackground(new Color(189, 195, 199));
+            button.setBackground(new Color(22, 160, 133));
                 
             button.setPreferredSize(new Dimension(190,70));
-            
+            if (p.getType() == "Transporteur") {
+                button.setBackground(new Color(52, 152, 219));
+            }
             if (p.getVehicule() != null) {
                 button.setText(String.valueOf(p.getVehicule().getImmatriculation()));
                 if (p.getVehicule().getType().equals("Camion")) {
@@ -156,8 +158,8 @@ public class VueParking extends Vue{
                     }
                     else {
                         JOptionPane.showMessageDialog(fenetre,
-                                "Place déja occuper ! Ne peut pas être réservée !",
-                                "Error Place Occupée",
+                                "Place déja occupée ! Ne peut pas être réservée !",
+                                "Erreur Place Occupée",
                                 JOptionPane.ERROR_MESSAGE);
                     }
                 }
@@ -183,16 +185,22 @@ public class VueParking extends Vue{
         bouton2 = new JButton("Réservée");
         bouton3 = new JButton("Voiture");
         bouton4 = new JButton("Camion");
+        bouton5 = new JButton("Transporteur");
+        bouton6 = new JButton("Vehicule");
 
         bouton1.setIcon(icon_disponible);
         bouton2.setIcon(icon_reservee);
         bouton3.setIcon(icon_voiture);
         bouton4.setIcon(icon_camion);
+        bouton5.setBackground(new Color(22, 160, 133));
+        bouton6.setBackground(new Color(52, 152, 219));
 
         legende.add(bouton1, BorderLayout.CENTER);
         legende.add(bouton2, BorderLayout.CENTER);
         legende.add(bouton3, BorderLayout.CENTER);
         legende.add(bouton4, BorderLayout.CENTER);
+        legende.add(bouton5, BorderLayout.CENTER);
+        legende.add(bouton6, BorderLayout.CENTER);
 
         return legende;
     } // legende()
