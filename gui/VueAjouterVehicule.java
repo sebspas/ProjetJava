@@ -6,6 +6,8 @@ package parking.gui;
 import parking.business.Client;
 import parking.business.Parking;
 import parking.business.vehicule.Camion;
+import parking.business.vehicule.FabriqueVehicule;
+import parking.business.vehicule.IFabriqueVehicule;
 import parking.business.vehicule.Voiture;
 
 import javax.swing.*;
@@ -293,8 +295,9 @@ public class VueAjouterVehicule extends Vue {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (validateData()) {
+                    IFabriqueVehicule fabriqueVehicule = new FabriqueVehicule();
                     if (typeVehicule.getSelectedItem() == "Voiture") {;
-                        new Voiture(
+                        fabriqueVehicule.creer(
                                 Immatriculation.getText(),
                                 Marque.getText(),
                                 Modele.getText(),
@@ -302,7 +305,7 @@ public class VueAjouterVehicule extends Vue {
                         );
 
                     } else if (typeVehicule.getSelectedItem() == "Camion") {
-                        new Camion(
+                        fabriqueVehicule.creer(
                                 Immatriculation.getText(),
                                 Marque.getText(),
                                 Modele.getText(),

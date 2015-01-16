@@ -103,7 +103,7 @@ public class Parking {
 		listePlaces = new ArrayList<Place>();
 		listeFacture = new ArrayList<Facture>();
 		listeClients = new ArrayList<Client>();
-		nbPlacesMax = 25;
+		nbPlacesMax = 24;
 		numeroFacture = 0;
 		tarif_particulier = 1;
 		tarif_transporteur = 1.5;

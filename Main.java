@@ -7,9 +7,7 @@ import parking.business.*;
 import parking.business.facture.CalculerTarifHeure;
 import parking.business.facture.CalculerTarifPointsFidelite;
 import parking.business.facture.Facture;
-import parking.business.vehicule.Camion;
-import parking.business.vehicule.Vehicule;
-import parking.business.vehicule.Voiture;
+import parking.business.vehicule.*;
 import parking.gui.Vue;
 import parking.gui.VueParking;
 import parking.gui.VueTimer;
@@ -44,14 +42,15 @@ public class Main {
             Client client6 = new Client("Nathan", "Delamard", "149, Route des Mirages", new CalculerTarifHeure());
 
             // Creation des vehicules //
-            Vehicule v1 = new Voiture("AB-531-MT-13", "Citroen", "C3", client1);
-            Vehicule v2 = new Voiture("BT-640-AE-83 ", "Peugeot", "306", client2);
-            Vehicule v3 = new Voiture("AN-155-GT-45", "Renault", "Scenic", client3);
-            Vehicule v4 = new Voiture("CD-294-ZE-69", "Audi", "SWAG", client3);
-            Vehicule c1 = new Camion("BG-951-KC-29", "GMC", "Savana", client4, 15, 355);
-            Vehicule c2 = new Camion("AP-735-LP-84", "International", "CF600", client5, 15, 355);
-            Vehicule c3 = new Camion("BR-848-MM-75", "Chevrolet", "Express", client5, 15, 355);
-            Vehicule c4 = new Camion("CZ-609-OK-31 ", "Ford", "E350", client6, 15, 355);
+            IFabriqueVehicule fabriqueVehicule = new FabriqueVehicule();
+            Vehicule v1 = fabriqueVehicule.creer("AB-531-MT-13", "Citroen", "C3", client1);
+            Vehicule v2 = fabriqueVehicule.creer("BT-640-AE-83", "Peugeot", "306", client2);
+            Vehicule v3 = fabriqueVehicule.creer("AN-155-GT-45", "Renault", "Scenic", client3);
+            Vehicule v4 = fabriqueVehicule.creer("CD-294-ZE-69", "Audi", "SWAG", client3);
+            Vehicule c1 = fabriqueVehicule.creer("BG-951-KC-29", "GMC", "Savana", client4, 15, 355);
+            Vehicule c2 = fabriqueVehicule.creer("AP-735-LP-84", "International", "CF600", client5, 15, 355);
+            Vehicule c3 = fabriqueVehicule.creer("BR-848-MM-75", "Chevrolet", "Express", client5, 15, 355);
+            Vehicule c4 = fabriqueVehicule.creer("CZ-609-OK-31", "Ford", "E350", client6, 15, 355);
 
             // Placements des vehicules sur les places //
             parking.park(v1);
