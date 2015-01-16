@@ -4,7 +4,6 @@ package parking.business;
 /*						Import						   		   */
 /***************************************************************/
 import parking.gui.Vue;
-import parking.gui.VueTimer;
 
 /**
  * Class Timer qui cree une vue permettant de simuler le temps passe sur le
