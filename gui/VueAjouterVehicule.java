@@ -146,7 +146,8 @@ public class VueAjouterVehicule extends Vue {
 	/*						Methodes							   */
     /***************************************************************/
     /**
-     * Methode Top() permet de ...
+     * Methode Top() permet de creer un panneau afin de ne
+     * s'occuper que de la partie superieure de la fenetre.
      *
      * @return Le panneau en haut de la fenetre.
      */
@@ -203,7 +204,8 @@ public class VueAjouterVehicule extends Vue {
     } // Top()
 
     /**
-     * Methode Center() permet de
+     * Methode Center() permet de creer un panneau afin de ne
+     * s'occuper que de la partie centrale de la fenetre.
      *
      * @return Le panneau au centre de la fenetre.
      */
@@ -253,7 +255,8 @@ public class VueAjouterVehicule extends Vue {
     } // Center()
 
     /**
-     * Methode Bottom() permet de
+     * Methode Bottom() permet de creer un panneau afin de ne
+     * s'occuper que de la partie inferieure de la fenetre.
      *
      * @return Le panneau en bas de la fenetre.
      */
@@ -362,7 +365,7 @@ public class VueAjouterVehicule extends Vue {
     /**
      * Methode validateData() permet de
      *
-     * @return
+     * @return Booleen indiquant si les donnees sont validees (true) ou non (false).
      */
     public boolean validateData() {
         if (Immatriculation.getText().isEmpty()) {

@@ -1,5 +1,8 @@
 package parking.business.vehicule;
 
+/***************************************************************/
+/*						Import						   		   */
+/***************************************************************/
 import parking.business.Client;
 import parking.business.Parking;
 

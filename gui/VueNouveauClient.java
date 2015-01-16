@@ -86,7 +86,8 @@ public class VueNouveauClient extends Vue {
     /***************************************************************/
 
     /**
-     * Methode Top() permet de ...
+     * Methode Top() permet de creer un panneau afin de ne
+     * s'occuper que de la partie superieure de la fenetre.
      *
      * @return Le panneau en haut de la fenetre.
      */
@@ -126,7 +127,8 @@ public class VueNouveauClient extends Vue {
 
 
     /**
-     * Methode Center() permet de ...
+     * Methode Center() permet de creer un panneau afin de ne
+     * s'occuper que de la partie centrale de la fenetre.
      *
      * @return Le panneau au centre de la fenetre.
      */
@@ -149,7 +151,8 @@ public class VueNouveauClient extends Vue {
 
 
     /**
-     * Methode Bottom() permet de
+     * Methode Bottom() permet de creer un panneau afin de ne
+     * s'occuper que de la partie inferieure de la fenetre.
      *
      * @return Le panneau en bas de la fenetre.
      */
@@ -208,7 +211,11 @@ public class VueNouveauClient extends Vue {
         return bottom;
     } // Bottom()
 
-
+    /**
+     * Methode validateData() permet de
+     *
+     * @return Booleen indiquant si les donnees sont validees (true) ou non (false).
+     */
     public boolean validateData() {
         if (!Nom.getText().isEmpty() && !Prenom.getText().isEmpty() && !Adresse.getText().isEmpty())
             return true;
