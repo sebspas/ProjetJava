@@ -10,6 +10,7 @@ import parking.gui.Vue;
 import parking.gui.gerer.VueParking;
 import parking.gui.gerer.VueTimer;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -18,7 +19,7 @@ import java.util.ArrayList;
  *
  * @author Chergui, Coadalen, Corfa, Corral
  */
-public class Parking {
+public class Parking implements Serializable {
 	/***************************************************************/
 	/*						Debut Donnees Membres 				   */
 	/***************************************************************/
