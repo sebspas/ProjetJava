@@ -3,6 +3,7 @@ package parking.business;
 /***************************************************************/
 /*						Import						   		   */
 /***************************************************************/
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.*;
 
 /**
@@ -19,7 +20,6 @@ public class Gestionnaire {
      */
     public void sauvegarder(){
         new File("saves").mkdir();
-        
         File flux = new File("saves/" + Parking.getInstance().getNom() + ".ser");
         ObjectOutputStream oos = null;
 

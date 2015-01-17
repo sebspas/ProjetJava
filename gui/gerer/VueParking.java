@@ -12,6 +12,7 @@ import parking.gui.ajouter.VueNouveauClient;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -254,6 +255,10 @@ public class VueParking extends Vue implements Serializable{
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFileChooser dialogue = new JFileChooser();
+                FileNameExtensionFilter filter = new FileNameExtensionFilter(
+                        "Fichiers ser.", "ser");
+                dialogue.addChoosableFileFilter(filter);
+                dialogue.setAcceptAllFileFilterUsed(false);
                 dialogue.setCurrentDirectory(new File( "./saves" ) );
                 dialogue.showOpenDialog(null);
                 if (dialogue.getSelectedFile() != null) {
@@ -271,6 +276,7 @@ public class VueParking extends Vue implements Serializable{
             @Override
             public void actionPerformed(ActionEvent e) {
                 Gestionnaire save = new Gestionnaire();
+                
                 save.sauvegarder();
             }
         });
