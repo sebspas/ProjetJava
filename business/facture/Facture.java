@@ -12,6 +12,7 @@ import parking.gui.gerer.VueFacture;
 
 import java.io.File;
 import java.io.FileWriter;
+import java.io.Serializable;
 
 /**
  * Class Facture permettant de creer une nouvelle facture comportant des informations telles
@@ -19,7 +20,7 @@ import java.io.FileWriter;
  *
  * @author Chergui, Coadalen, Corfa, Corral
  */
-public class Facture {
+public class Facture implements Serializable{
     /***************************************************************/
 	/*						Debut Donnees Membres 				   */
     /***************************************************************/

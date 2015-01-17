@@ -7,6 +7,7 @@ import parking.business.facture.Calcul.CalculerTarif;
 import parking.business.vehicule.Vehicule;
 import parking.exception.business.VehiculeGareException;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -15,7 +16,7 @@ import java.util.ArrayList;
  *
  * @author Chergui, Coadalen, Corfa, Corral
  */
-public class Client {
+public class Client implements Serializable{
     /***************************************************************/
 	/*						Debut Donnees Membres 				   */
     /***************************************************************/

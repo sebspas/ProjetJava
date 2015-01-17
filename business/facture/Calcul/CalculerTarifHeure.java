@@ -8,6 +8,8 @@ import parking.business.Parking;
 import parking.business.Place;
 import parking.business.Timer;
 
+import java.io.Serializable;
+
 /**
  * Class CalculerTarifHeure, qui implemente l'interface CalculerTarif, et rajoute des
  * informations suplementaires dont elle a besoin pour calculer le tarif à l'heure.
@@ -15,7 +17,7 @@ import parking.business.Timer;
  * @see CalculerTarif
  * @author Chergui, Coadalen, Corfa, Corral
  */
-public class CalculerTarifHeure implements CalculerTarif{
+public class CalculerTarifHeure implements CalculerTarif, Serializable{
     /***************************************************************/
 	/*						Methodes							   */
     /***************************************************************/
