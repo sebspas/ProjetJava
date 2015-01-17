@@ -3,7 +3,7 @@ package parking.business;
 /***************************************************************/
 /*						Import						   		   */
 /***************************************************************/
-import parking.business.facture.CalculerTarif;
+import parking.business.facture.Calcul.CalculerTarif;
 import parking.business.vehicule.Vehicule;
 import parking.exception.business.VehiculeGareException;
 

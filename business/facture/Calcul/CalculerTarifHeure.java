@@ -1,4 +1,4 @@
-package parking.business.facture;
+package parking.business.facture.Calcul;
 
 /***************************************************************/
 /*						Import						   		   */
@@ -7,8 +7,6 @@ import parking.Constante;
 import parking.business.Parking;
 import parking.business.Place;
 import parking.business.Timer;
-
-import java.util.Date;
 
 /**
  * Class CalculerTarifHeure, qui implemente l'interface CalculerTarif, et rajoute des

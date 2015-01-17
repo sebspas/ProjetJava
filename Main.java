@@ -6,10 +6,10 @@ package parking;
 import parking.business.Client;
 import parking.business.Parking;
 import parking.business.Place;
-import parking.business.facture.CalculerTarifHeure;
-import parking.business.facture.CalculerTarifPointsFidelite;
-import parking.business.vehicule.FabriqueVehicule;
-import parking.business.vehicule.IFabriqueVehicule;
+import parking.business.facture.Calcul.CalculerTarifHeure;
+import parking.business.facture.Calcul.CalculerTarifPointsFidelite;
+import parking.business.vehicule.Fabrique.FabriqueVehicule;
+import parking.business.vehicule.Fabrique.IFabriqueVehicule;
 import parking.business.vehicule.Vehicule;
 
 /**

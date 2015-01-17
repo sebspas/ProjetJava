@@ -28,6 +28,10 @@ public abstract class Vue {
      */
     public abstract void mettreAJour();
 
+    /**
+     * Methode permettant de cacher ou afficher une vue.
+     * @param visible
+     */
     public abstract void setVisible(boolean visible);
 
 } // Vue class

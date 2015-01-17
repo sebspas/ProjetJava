@@ -4,7 +4,9 @@ package parking.gui;
 /*						Import						   		   */
 /***************************************************************/
 import parking.business.Client;
-import parking.business.facture.CalculerTarifHeure;
+import parking.business.facture.Fabrique.FabriqueCalculerTarif;
+import parking.business.facture.Fabrique.IFabriqueCalculerTarif;
+import parking.exception.business.MethodeNonGeree;
 
 import javax.swing.*;
 import java.awt.*;
@@ -46,6 +48,7 @@ public class VueNouveauClient extends Vue {
     private JTextField Nom, Prenom,
                        Adresse;
 
+    private JComboBox typeCalculTarif;
     /**
      * Le bouton permettant de valider.
      */
@@ -118,9 +121,14 @@ public class VueNouveauClient extends Vue {
         topClientRight.add(labelPrenom, BorderLayout.NORTH);
         topClientRight.add(Prenom, BorderLayout.CENTER);
 
-
+        typeCalculTarif = new JComboBox();
+        typeCalculTarif.addItem("CalculerTarifHeure");
+        typeCalculTarif.addItem("CalculerTarifPointsFidelite");
+        typeCalculTarif.setPreferredSize(new Dimension(300,20));
+        
         top.add(topClientLeft, BorderLayout.WEST);
         top.add(topClientRight, BorderLayout.EAST);
+        top.add(typeCalculTarif, BorderLayout.SOUTH);
 
         return top;
     } // Top()
@@ -141,11 +149,11 @@ public class VueNouveauClient extends Vue {
         labelAdresse = new JLabel("Adresse");
         Adresse = new JTextField();
         Adresse.setPreferredSize(new Dimension(300, 50));
-
-
-        center.add(labelAdresse, BorderLayout.NORTH);
+        
+        center.add(labelAdresse, BorderLayout.CENTER);
         center.add(Adresse, BorderLayout.SOUTH);
-
+        
+        
         return center;
     } // Center()
 
@@ -168,13 +176,17 @@ public class VueNouveauClient extends Vue {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (validateData()) {
-
-                    new Client(
-                            Nom.getText(),
-                            Prenom.getText(),
-                            Adresse.getText(),
-                            new CalculerTarifHeure()
-                    );
+                    IFabriqueCalculerTarif fabriqueCalculerTarif = new FabriqueCalculerTarif();
+                    try {
+                        new Client(
+                                Nom.getText(),
+                                Prenom.getText(),
+                                Adresse.getText(),
+                                fabriqueCalculerTarif.creer(typeCalculTarif.getSelectedItem().toString())
+                        );
+                    } catch (MethodeNonGeree methodeNonGeree) {
+                        methodeNonGeree.printStackTrace();
+                    }
 
                     JOptionPane.showMessageDialog(fenetre,
                             "Client " + Nom.getText() + " " + Prenom.getText() + " ajouté avec succès !",

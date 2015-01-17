@@ -114,7 +114,7 @@ public class Parking {
 		listeVueNotifiable.add(test);
 		
 		/*	Ajout de la vue du timer */
-		Vue vueTimer = new VueTimer(Timer.getInstance());
+		VueTimer vueTimer = new VueTimer(Timer.getInstance());
 		Timer.getInstance().setVue(vueTimer);
 		
 		/* Demarrage Timer */

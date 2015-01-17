@@ -5,10 +5,8 @@ package parking.gui;
 /***************************************************************/
 import parking.business.Client;
 import parking.business.Parking;
-import parking.business.vehicule.Camion;
-import parking.business.vehicule.FabriqueVehicule;
-import parking.business.vehicule.IFabriqueVehicule;
-import parking.business.vehicule.Voiture;
+import parking.business.vehicule.Fabrique.FabriqueVehicule;
+import parking.business.vehicule.Fabrique.IFabriqueVehicule;
 
 import javax.swing.*;
 import java.awt.*;

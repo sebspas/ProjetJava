@@ -1,9 +1,12 @@
-package parking.business.vehicule;
+package parking.business.vehicule.Fabrique;
 
 /***************************************************************/
 /*						Import						   		   */
 /***************************************************************/
 import parking.business.Client;
+import parking.business.vehicule.Camion;
+import parking.business.vehicule.Vehicule;
+import parking.business.vehicule.Voiture;
 
 /**
  * Class FabriqueVehicule, qui implemente la classe IFabriqueVehicule,
