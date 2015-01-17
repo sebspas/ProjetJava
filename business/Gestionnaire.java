@@ -5,7 +5,7 @@ import java.io.*;
 /**
  * Created by Naoki on 17/01/2015.
  */
-public class Sauvegarde {
+public class Gestionnaire {
     public void sauvegarder(){
         new File("saves").mkdir();
         

@@ -257,8 +257,8 @@ public class VueParking extends Vue implements Serializable{
                 dialogue.setCurrentDirectory(new File( "./saves" ) );
                 dialogue.showOpenDialog(null);
                 if (dialogue.getSelectedFile() != null) {
-                    Sauvegarde sauvegarde = new Sauvegarde();
-                    sauvegarde.lire(dialogue.getSelectedFile().toString());
+                    Gestionnaire gestionnaire = new Gestionnaire();
+                    gestionnaire.lire(dialogue.getSelectedFile().toString());
                 }
             }
         });
@@ -270,7 +270,7 @@ public class VueParking extends Vue implements Serializable{
         menu.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Sauvegarde save = new Sauvegarde();
+                Gestionnaire save = new Gestionnaire();
                 save.sauvegarder();
             }
         });
