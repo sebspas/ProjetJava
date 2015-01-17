@@ -31,7 +31,10 @@ public class ButtonPlace extends JButton{
      *          La place que prendra le bouton.
      */
     public ButtonPlace(Place place) {
+        // On construit un JButton
         super();
+        
+        // On définit la place associée au ButtonPlace
         this.place = place;
     } // Constructeur
 
