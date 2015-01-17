@@ -163,6 +163,22 @@ public class Parking implements Serializable {
 		return nbPlacesMax;
 	} // getNbPlacesMax()
 
+	public String getNom() {
+		return nom;
+	}
+
+	public ArrayList<Client> getListeClients() {
+		return listeClients;
+	}
+
+	public ArrayList<Vue> getListeVueNotifiable() {
+		return listeVueNotifiable;
+	}
+
+	public boolean isAppelInterne() {
+		return appelInterne;
+	}
+
 	/**
 	 * Methode getTarifTransporteur() renvoie le tarif d'une place de type transporteur.
 	 *
@@ -233,6 +249,34 @@ public class Parking implements Serializable {
 	public void setNumeroPlace(int numeroPlace) {
 		this.numeroPlace = numeroPlace;
 	}// setNumeroPlace()
+
+	public void setNbPlacesMax(int nbPlacesMax) {
+		this.nbPlacesMax = nbPlacesMax;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public void setListePlaces(ArrayList<Place> listePlaces) {
+		this.listePlaces = listePlaces;
+	}
+
+	public void setListeClients(ArrayList<Client> listeClients) {
+		this.listeClients = listeClients;
+	}
+
+	public void setListeFacture(ArrayList<Facture> listeFacture) {
+		this.listeFacture = listeFacture;
+	}
+
+	public void setListeVueNotifiable(ArrayList<Vue> listeVueNotifiable) {
+		this.listeVueNotifiable = listeVueNotifiable;
+	}
+
+	public void setAppelInterne(boolean appelInterne) {
+		this.appelInterne = appelInterne;
+	}
 
 	/**
 	 * Methode setTarifTransporteur() modifie le tarif d'une place de type transporteur.
