@@ -11,6 +11,7 @@ import parking.business.facture.Calcul.CalculerTarifPointsFidelite;
 import parking.business.vehicule.Fabrique.FabriqueVehicule;
 import parking.business.vehicule.Fabrique.IFabriqueVehicule;
 import parking.business.vehicule.Vehicule;
+import parking.gui.ajouter.VueCreation;
 
 /**
  * Class Main qui permet de faire toutes les creations dont nous avons
@@ -21,6 +22,8 @@ import parking.business.vehicule.Vehicule;
 public class Main {
     public static void main(String[] args) {
         try {
+
+            new VueCreation();
             Parking parking = Parking.getInstance();
             
             // Creation des places Particulier //
