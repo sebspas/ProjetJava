@@ -163,21 +163,32 @@ public class Parking implements Serializable {
 		return nbPlacesMax;
 	} // getNbPlacesMax()
 
+	/**
+	 * Methode renvoyant le nom du parking.
+	 *
+	 * @return Nom du parking.
+	 */
 	public String getNom() {
 		return nom;
-	}
+	} // getNom()
 
+	/**
+	 * Methode renvoyant la liste des clients.
+	 *
+	 * @return La liste des clients.
+	 */
 	public ArrayList<Client> getListeClients() {
 		return listeClients;
-	}
+	} // getListeClients()
 
+	/**
+	 * Methode renvoyant la liste des vues.
+	 *
+	 * @return La liste des vues.
+	 */
 	public ArrayList<Vue> getListeVueNotifiable() {
 		return listeVueNotifiable;
-	}
-
-	public boolean isAppelInterne() {
-		return appelInterne;
-	}
+	} // getListeVueNotifiable
 
 	/**
 	 * Methode getTarifTransporteur() renvoie le tarif d'une place de type transporteur.
@@ -250,33 +261,65 @@ public class Parking implements Serializable {
 		this.numeroPlace = numeroPlace;
 	}// setNumeroPlace()
 
+	/**
+	 * Methode setNbPlacesMax modifie le nombre de places maximum du parking.
+	 *
+	 * @param nbPlacesMax
+	 * 		Nombre de places maximum du parking.
+	 */
 	public void setNbPlacesMax(int nbPlacesMax) {
 		this.nbPlacesMax = nbPlacesMax;
-	}
+	} // setNbPlacesMax()
 
+	/**
+	 * Methode setNom qui modifie le nom du parking.
+	 *
+	 * @param nom
+	 * 		Le nom du parking.
+	 */
 	public void setNom(String nom) {
 		this.nom = nom;
-	}
+	} // setNom()
 
+	/**
+	 * Methode setListePlaces qui modifie la liste des places.
+	 *
+	 * @param listePlaces
+	 * 		Liste des places.
+	 */
 	public void setListePlaces(ArrayList<Place> listePlaces) {
 		this.listePlaces = listePlaces;
-	}
+	} // setListesPlaces()
 
+	/**
+	 * Methode setListeClients qui modifie la liste des clients.
+	 *
+	 * @param listeClients
+	 * 		Liste des clients.
+	 */
 	public void setListeClients(ArrayList<Client> listeClients) {
 		this.listeClients = listeClients;
-	}
+	} // setListeClients()
 
+	/**
+	 * Methode setListeFacture qui modifie la liste des factures.
+	 *
+	 * @param listeFacture
+	 * 		Liste des factures.
+	 */
 	public void setListeFacture(ArrayList<Facture> listeFacture) {
 		this.listeFacture = listeFacture;
-	}
+	} // setListeFactures()
 
+	/**
+	 * Methode setListeVueNotifiable qui modifie la liste des vues.
+	 *
+	 * @param listeVueNotifiable
+	 * 		Liste des vues.
+	 */
 	public void setListeVueNotifiable(ArrayList<Vue> listeVueNotifiable) {
 		this.listeVueNotifiable = listeVueNotifiable;
-	}
-
-	public void setAppelInterne(boolean appelInterne) {
-		this.appelInterne = appelInterne;
-	}
+	} // setListeVueNotifiable()
 
 	/**
 	 * Methode setTarifTransporteur() modifie le tarif d'une place de type transporteur.
