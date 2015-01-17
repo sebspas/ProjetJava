@@ -1,15 +1,26 @@
 package parking.business;
 
+/***************************************************************/
+/*						Import						   		   */
+/***************************************************************/
 import java.io.*;
 
 /**
- * Created by Naoki on 17/01/2015.
+ * Classe qui permet de sauvegarder ou de charger(lire) un parking.
+ *  
+ *
+ * @author Chergui, Coadalen, Corfa, Corral
  */
 public class Gestionnaire {
+
+    /**
+     * Methode sauvegarder(), permet de sauvegarder le parking dans un fichier .ser
+     * et crée le répertoire saves si il n'existe pas.
+     */
     public void sauvegarder(){
         new File("saves").mkdir();
         
-        File flux = new File("saves/MonParking.ser");
+        File flux = new File("saves/" + Parking.getInstance().getNom() + ".ser");
         ObjectOutputStream oos = null;
 
         try {
@@ -33,6 +44,11 @@ public class Gestionnaire {
         }
     }
 
+    /**
+     * Lit et charge le fichier passer en parametre. 
+     * @param fichier
+     *      Nom du fichier de save du parking.
+     */
     public void lire(String fichier){
         File flux = new File(fichier);
         ObjectInputStream ois = null;
