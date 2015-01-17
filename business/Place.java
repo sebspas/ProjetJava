@@ -148,7 +148,7 @@ public class Place{
 	 * 		Boolean True pour reserver, false pour dereserver
 	 */
 	public void setReservation(boolean Reserver) {
-		// On définit la place à reserer ou non
+		// On définit la place à reserver ou non
 		this.Reserver = Reserver;
 		
 		// Selon si on réserve ou déreserve une place on augmente ou diminue le nombre de place occupées.

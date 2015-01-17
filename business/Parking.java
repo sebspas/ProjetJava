@@ -241,7 +241,7 @@ public class Parking {
 	 */
 	public void setTarifTransporteur(double tarifTransporteur) {
 		this.tarifTransporteur = tarifTransporteur;
-	} //setTarifTransporteur ()
+	} //setTarifTransporteur()
 
 	/**
 	 * Methode setTarifParticulier() modifie le tarif d'une place de type particulier.
@@ -261,7 +261,7 @@ public class Parking {
 	 */
 	public void setNumeroFacture(int numeroFacture) {
 		this.numeroFacture = numeroFacture;
-	} //setNumeroFacture ()
+	} //setNumeroFacture()
 
 	/**
 	 * Methode setNbPlaceOccupees() modifie le nombre de places occupees.
@@ -271,7 +271,7 @@ public class Parking {
 	 */
 	public void setNbPlaceOccupees(int nbPlaceOccupees) {
 		this.nbPlaceOccupees = nbPlaceOccupees;
-	} //setNbPlaceOccupees ()
+	} //setNbPlaceOccupees()
 
 	/***************************************************************/
 	/*						Methodes							   */
@@ -284,7 +284,7 @@ public class Parking {
 	 */
 	public void addClient(Client c){
 		listeClients.add(c);
-	} //addClient ()
+	} //addClient()
 
 	/**
 	 * Methode addFacture() ajoute une facture a la liste des factures.
@@ -294,7 +294,7 @@ public class Parking {
 	 */
 	public void addFacture(Facture facture) {
 		listeFacture.add(facture);
-	} //addFacture ()
+	} //addFacture()
 
 	/**
 	 * Methode addVue() ajoute une vue a la liste des vues.
@@ -339,6 +339,7 @@ public class Parking {
 			p.setNumero(this.getNumeroPlace());
 			this.setNumeroPlace(this.getNumeroPlace() + 1);
 			this.listePlaces.add(p);
+			//Met a jour les vues
 			notifier();
 		}
 		catch (NombrePlacesMaxException e) {
@@ -347,10 +348,10 @@ public class Parking {
 	}// ajouterPlace()
 
 	/**
-	 * Methode testant l'existance d'un vehicule dans le parking.
+	 * Methode testant l'existence d'un vehicule dans le parking.
 	 *
 	 * @param v
-	 * 		Vehicule a recherche dans le parking.
+	 * 		Vehicule a rechercher dans le parking.
 	 * @return Renvoie un booleen indiquant si le vehicule est present ou non.
 	 */
 	public boolean vehiculeGare(Vehicule v){
@@ -372,6 +373,7 @@ public class Parking {
 		for(Place p : this.listePlaces){
 			if (numeroPlace == p.getNumeroPlace())
 				try {
+					//Décrémente le nombre de places si le vehicule ne se gare pas ailleurs (réorganisation)
 					if (!appelInterne) {
 						--nbPlaceOccupees;
 						this.addFacture(new Facture(p));
@@ -383,6 +385,7 @@ public class Parking {
 					return null;
 				}
 				finally {
+					//Met à jour les vues
 					notifier();
 				}
 		}
@@ -391,22 +394,26 @@ public class Parking {
 
 	/**
 	 * Methode park() permet de garer un vehicule sur une place de parking. La fonction va
-	 * chercher la place du meme type que le vehicule a garer, sinon elle le placera sur
-	 * une place du type transporteur si il y en a une de disponible.
+	 * chercher la premiere place du meme type que le vehicule a garer. Sinon si c'est une
+	 * une voiture elle la placera sur une place du type transporteur si il y en a une de disponible.
 	 *
 	 * @param vehicule
 	 * 		Le vehicule a garer sur le parking.
 	 */
 	public void park(Vehicule vehicule) {
 		try {
+			//Définition du type de place à rechercher
 			String typePlace = "Transporteur";
 			if (vehicule.getType().equals("Voiture")) {
 				typePlace = "Particulier";
 			}
 			for (Place p : this.listePlaces) {
+				//Vérifie si la place n'est pas réservée
 				if (p.getVehicule() == null && !(p.getReservation())) {
 					if (p.getType().equals(typePlace)) {
 						p.setVehicule(vehicule);
+						//Incrémente le nombre de places si le véhicule
+						//ne vient pas d'une autre place (réorganisation)
 						if (!appelInterne) {
 							++nbPlaceOccupees;
 							p.getVehicule().setDateArrivee();
@@ -415,6 +422,8 @@ public class Parking {
 					}
 				}
 			}
+			//Si plus aucune place particulier n'est disponible
+			//recherche d'une place transporteur
 			for (Place p : this.listePlaces) {
 				if (p.getVehicule() == null && !(p.getReservation())) {
 					++nbPlaceOccupees;
@@ -440,7 +449,7 @@ public class Parking {
 	} // park()
 
 	/**
-	 * Methode etatParking() affiche l'etat d'un parking.
+	 * Methode etatParking() affiche l'etat du parking.
 	 * Pour cela elle affiche, pour chaque vehicule, la
 	 * place qu'il occupe, le type de cette place, etc..
 	 */
@@ -459,7 +468,7 @@ public class Parking {
 	/**
 	 * Methode bookPlace() permet de reserver une place disponible sur le parking.
 	 *
-	 * @return La place reserver.
+	 * @return La place reservee.
 	 */
 	public Place bookPlace() {
 		try {
@@ -476,6 +485,7 @@ public class Parking {
 			return null;
 		}
 		finally {
+			//Met à jour les vues
 			notifier();
 		}
 	} // bookPlace()
@@ -515,22 +525,25 @@ public class Parking {
 	 *
 	 * @param numeroImmatriculation
 	 * 			Numero d'immatriculation du vehicule a retirer.
-	 * @return Le vehivule retire de sa place de parking.
+	 * @return Le vehicule retire de sa place de parking.
 	 */
 	public Vehicule retirerVehicule(String numeroImmatriculation) {
 		int numPlace = getLocation(numeroImmatriculation);
+		//Renvoie null si le véhicule n'est pas garé
 		if (numPlace == -1)
 			return null;
 		else
+			//Retire le véhicule
 			return unpark(numPlace);
 	} // retirerVehicule()
 
 	/**
 	 * Methode reorganiserPlaces() reorganise les places de parking apres le depart d'un vehicule.
-	 * par exemple si une place du type particulier c'est liberer et qu'une voiture et sur une
+	 * par exemple si une place du type particulier s'est liberee et qu'une voiture est sur une
 	 * place du type camion , on va alors la deplacer sur la place libre.
 	 */
 	public void reorganiserPlaces() {
+		//Indique que le véhicule ne quitte pas le parking mais change seulement de place
 		appelInterne = true;
 		for (Place p : this.listePlaces) {
 			if (p.getType().equals("Transporteur") && p.getVehicule() != null) {
@@ -540,6 +553,7 @@ public class Parking {
 				}
 			}
 		}
+		//Met à jour les vues
 		notifier();
 		appelInterne = false;
 	} // reorganiserPlaces()
