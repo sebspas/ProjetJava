@@ -3,16 +3,14 @@ package parking;
 /***************************************************************/
 /*						Import						   		   */
 /***************************************************************/
-import parking.business.*;
+import parking.business.Client;
+import parking.business.Parking;
+import parking.business.Place;
 import parking.business.facture.CalculerTarifHeure;
 import parking.business.facture.CalculerTarifPointsFidelite;
-import parking.business.facture.Facture;
 import parking.business.vehicule.FabriqueVehicule;
 import parking.business.vehicule.IFabriqueVehicule;
 import parking.business.vehicule.Vehicule;
-import parking.gui.Vue;
-import parking.gui.VueParking;
-import parking.gui.VueTimer;
 
 /**
  * Class Main qui permet de faire toutes les creations dont nous avons

@@ -3,11 +3,11 @@ package parking.business;
 /***************************************************************/
 /*						Import						   		   */
 /***************************************************************/
-import parking.gui.Vue;
+import parking.gui.VueTimer;
 
 /**
- * Class Timer qui cree une vue permettant de simuler le temps passe sur le
- * parking pour chaque vehicule et determinant donc le tarif de sa facture.
+ * Class Timer qui cree un timer permettant de simuler le temps passe sur le
+ * parking et permet de determiner le tarif de la facture des vehicules.
  *
  * @author Chergui, Coadalen, Corfa, Corral
  */
@@ -18,7 +18,7 @@ public class Timer extends Thread {
     /**
      * La vue.
      */
-    private Vue vue;
+    private VueTimer vue;
 
     /**
      * Le nombre de jour du timer.
@@ -68,6 +68,7 @@ public class Timer extends Thread {
      *          La vitesse a laquelle le temps passe.
      */
     private Timer(int day, int heures, int minutes, int secondes,int vitesse) {
+        // Initialise le timer
         this.day = day;
         this.heures = heures;
         this.minutes = minutes;
@@ -79,9 +80,10 @@ public class Timer extends Thread {
 	/*						Getter								   */
     /***************************************************************/
     /**
-     * Methode getInstance() renvoie
+     * Methode getInstance() renvoie l'unique instance du timer si elle n'est pas déjà définit. 
      *
-     * @return
+     * @return Timer
+     *          Le timer unique de l'application.
      */
     public static Timer getInstance() {
         if (timer != null) {
@@ -96,50 +98,55 @@ public class Timer extends Thread {
      *
      * @return La vue du timer.
      */
-    public Vue getVue() {
+    public VueTimer getVue() {
         return vue;
     } // getVue()
 
     /**
-     * Methode getTimer() renvoie
+     * Methode getTimer() renvoie une string contenant les informations du Timer.
      *
-     * @return
+     * @return String
+     *      La chaine de caractères contenant les infos du Timer.
      */
     public String getTimer() {
         return "Nous sommes le jour numero " + day + " ,il est : " +heures + "h et " + minutes + "min et " + secondes + " sec";
     } // getTimer()
 
     /**
-     * Methode getDay() renvoie
+     * Methode getDay() renvoie le jour.
      *
-     * @return
+     * @return int
+     *      Le jour actuel du timer.
      */
     public int getDay() {
         return day;
     } //getDay()
 
     /**
-     * Methode getHeures() renvoie
+     * Methode getHeures() renvoie l'heure.
      *
-     * @return
+     * @return int
+     *      L'heure actuelle du timer.
      */
     public int getHeures() {
         return heures;
     } // getHeure()
 
     /**
-     * Methode getMinutes() renvoie
+     * Methode getMinutes() renvoie les minutes.
      *
-     * @return
+     * @return int
+     *      Les minutes actuelles du timer.
      */
     public int getMinutes() {
         return minutes;
     } // getMinutes()
 
     /**
-     * Methode getSecondes() renvoie
+     * Methode getSecondes() renvoie les secondes.
      *
-     * @return
+     * @return int
+     *      Les secondes actuelles du timer.
      */
     public int getSecondes() {
         return secondes;
@@ -149,23 +156,25 @@ public class Timer extends Thread {
 	/*						Setter								   */
     /***************************************************************/
     /**
-     * Methode setVue() permet de
+     * Methode setVue() permet de définir la vue associée au timer.
      *
      * @param vue
      *          La vue du timer.
      */
-    public void setVue(Vue vue) {
+    public void setVue(VueTimer vue) {
         this.vue = vue;
     } // setVue()
 
     /**
-     * Methode setHeures() permet de
+     * Methode setHeures() permet de définir l'heure du timer.
      *
      * @param heures
      *          Le nombre d'heure(s) du timer.
      */
     public void setHeures(int heures) {
         this.heures = heures;
+        
+        // Met à jour la vue du timer, et applique les modifcations si besoin.
         this.mettreAJour();
     } // setHeures()
 
@@ -173,22 +182,25 @@ public class Timer extends Thread {
 	/*						Methodes							   */
     /***************************************************************/
     /**
-     * Methode run() permet de
+     * Methode run() permet de lancer le timer en parrallele de l'application.
      */
     @Override
     public void run() {
+        // On boucle de maniere constante
         while (true) {
             try {
+                // On attend une seconde
                 this.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+            // et on met à jour le timer et donc la vue.
             this.mettreAJour();
         }
     } // run()
 
     /**
-     * Methode mettreAJour() permet de
+     * Methode mettreAJour() permet de mettre a jour l'affichage du timer.
      */
     private void mettreAJour() {
         secondes = secondes + vitesse * 1;
@@ -209,6 +221,7 @@ public class Timer extends Thread {
             day = 0;
         }
 
+        // Met à jour la vue timer.
         vue.mettreAJour();
     } //  mettreAJour()
 

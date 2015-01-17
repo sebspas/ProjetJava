@@ -50,8 +50,11 @@ public class Place{
 	 *			Le type de la place.
 	 */
 	public Place(String type) {
+		// Initialisation des données membres de la place.
 		this.type = type;
 		this.Reserver = false;
+		
+		// Ajout de la place au parking.
 		Parking.getInstance().ajouterPlace(this);
 	}// Constructeur
 
@@ -63,7 +66,7 @@ public class Place{
 	 *
 	 * @return Le vehicule situe sur cette place.
 	 */
-	public Vehicule getVehicule() {
+	 public Vehicule getVehicule() {
 		return vehicule;
 	}// getVehicule()
 
@@ -72,7 +75,7 @@ public class Place{
 	 *
 	 * @return Le numero de la place.
 	 */
-	public int getNumero() {
+	 public int getNumero() {
 		return numeroPlace;
 	}//getNumero()
 
@@ -81,7 +84,7 @@ public class Place{
 	 *
 	 * @return le type de la place.
 	 */
-	public String getType() {
+	 public String getType() {
 		return type;
 	}//getType()
 
@@ -90,7 +93,7 @@ public class Place{
 	 *
 	 * @return Chaine de caractere indiquant la reservation ou non.
 	 */
-	public String getReserver() {
+	 public String getReserver() {
 		return Reserver ?  "est réservée." : "n'est pas réservée.";
 	} // getReserver()
 
@@ -99,7 +102,7 @@ public class Place{
 	 *
 	 * @return True pour reserver, false pour ne pas reserver.
 	 */
-	public boolean getReservation() {
+	 public boolean getReservation() {
 		return Reserver;
 	} // getReservation()
 
@@ -117,12 +120,15 @@ public class Place{
 	 * 			Une autre exception propagee en cas d'erreur.
 	 */
 	public void setVehicule(Vehicule vehicule) throws PlaceOccupeeException, PlaceReserverException{
-			if(this.vehicule != null || (vehicule.getType() == "Camion" && type == "Particulier"))
-				throw new PlaceOccupeeException();
-			else if (this.Reserver)
-				throw new PlaceReserverException();
-			else
-				this.vehicule = vehicule;
+		// Si la place possède déja un véhicule ou que le type de se Véhicule n'est pas compatible avec la place on léve une exception.
+		if(this.vehicule != null || (vehicule.getType() == "Camion" && type == "Particulier"))
+			throw new PlaceOccupeeException();
+		// si elle est réservée on lève une exception.
+		else if (this.Reserver)
+			throw new PlaceReserverException();
+		// sinon on définie le véhicule à cette place
+		else
+			this.vehicule = vehicule;
 	}// setVehicule()
 
 	/**
@@ -142,10 +148,12 @@ public class Place{
 	 * 		Boolean True pour reserver, false pour dereserver
 	 */
 	public void setReservation(boolean Reserver) {
+		// On définit la place à reserer ou non
 		this.Reserver = Reserver;
-		if (Reserver) {
+		
+		// Selon si on réserve ou déreserve une place on augmente ou diminue le nombre de place occupées.
+		if (Reserver)
 			Parking.getInstance().setNbPlaceOccupees(Parking.getInstance().getNbPlaceOccupees() + 1);
-		}
 		else
 			Parking.getInstance().setNbPlaceOccupees(Parking.getInstance().getNbPlaceOccupees() - 1);
 		Parking.getInstance().notifier();
@@ -165,13 +173,24 @@ public class Place{
 				+ vehicule + getReserver() + "]";
 	}// toString()
 
+	/**
+	 * Methode retirerVehicule() permet de retirer le véhicule de la place.
+	 * 
+	 * @return Vehicule
+	 * 			Le vehicule retire.
+	 * @throws PlaceLibreException
+	 */
 	public Vehicule retirerVehicule() throws PlaceLibreException{
+		// Si la place est déjà libre on lève une exception.
 		if (this.vehicule == null) {
 			throw new PlaceLibreException();
 		}
+		// Sinon on retire le véhicule.
 		Vehicule temp = this.vehicule;
 		this.vehicule = null;
+		// On réorganise le parking.
 		Parking.getInstance().reorganiserPlaces();
+		// On renvoie le véhicule retiré.
 		return temp;
 	} // retirerVehicule()
 

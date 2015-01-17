@@ -66,17 +66,25 @@ public class Client {
      *          Le calcul (general) du tarif du client a creer.
      */
     public Client(String nom, String prenom, String adresse,CalculerTarif calculerTarif) {
+        // Initialisation des données du client.
         this.nom = nom;
         this.prenom = prenom;
         this.adresse = adresse;
         this.calculerTarif = calculerTarif;
         this.listeVehicule = new ArrayList<Vehicule>();
+        
+        // On ajoute le client à la liste des clients du parking, car le client est forcément un client du parking.
         Parking.getInstance().addClient(this);
     } // Constructeur
 
     /***************************************************************/
 	/*						Getter								   */
     /***************************************************************/
+    /**
+     * Methode getListeVehicule() renvoie la liste des véhicules du client.
+     *
+     * @return La liste des véhicules du client.
+     */
     public ArrayList<Vehicule> getListeVehicule() {
         return listeVehicule;
     }
@@ -84,7 +92,7 @@ public class Client {
     /**
      * Methode getNom() renvoie le nom du client.
      *
-     * @return Le nom du client
+     * @return Le nom du client.
      */
     public String getNom() {
         return nom;
@@ -116,7 +124,7 @@ public class Client {
     } // getPointsDeFidelite()
 
     /**
-     * Methode getCalculerTarif() renvoie le calcul du tarif (general) du client.
+     * Methode getCalculerTarif() renvoie la méthode de calcul du tarif (general) du client.
      *
      * @return Le calcul du tarif du client.
      */
@@ -139,23 +147,6 @@ public class Client {
 	/*						Methodes							   */
     /***************************************************************/
     /**
-     * Methode toString() affiche toutes les informations du client.
-     *
-     * @return Une chaine de caracteres contenant les informations.
-     */
-    @Override
-    public String toString() {
-        return "Client{" +
-                "nom='" + nom + '\'' +
-                ", prenom='" + prenom + '\'' +
-                ", adresse='" + adresse + '\'' +
-                ", methode tarif=" + calculerTarif.toString() +
-                ", pointsDeFidelite=" + pointsDeFidelite +
-                ", listeVehicule=" + listeVehicule +
-                + '}';
-    } // toString()
-
-    /**
      * Methode addVehicule() ajoute un vehicule a la liste de tous les vehicules existants,
      * qu'ils soient sur le parking ou non.
      *
@@ -174,10 +165,28 @@ public class Client {
      *          L'exception propagee en cas d'erreur.
      */
     public void removeVehicule(Vehicule vehicule) throws VehiculeGareException {
+        // On ne peut pas suprimer le véhicule si il est garer sur une place.
         if (Parking.getInstance().vehiculeGare(vehicule))
             throw new VehiculeGareException();
         else
             listeVehicule.remove(vehicule);
     } // removeVehicule()
+
+    /**
+     * Methode toString() affiche toutes les informations du client.
+     *
+     * @return Une chaine de caracteres contenant les informations.
+     */
+    @Override
+    public String toString() {
+        return "Client{" +
+                "nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                ", adresse='" + adresse + '\'' +
+                ", methode tarif=" + calculerTarif.toString() +
+                ", pointsDeFidelite=" + pointsDeFidelite +
+                ", listeVehicule=" + listeVehicule +
+                + '}';
+    } // toString()
 
 } // Client class

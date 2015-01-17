@@ -9,6 +9,9 @@ public class Constante {
     /***************************************************************/
 	/*						Debut Donnees Membres 				   */
     /***************************************************************/
+    /**
+     * TVA
+     */
     static public final double TVA = 20.0;
 
 } // Constante class
