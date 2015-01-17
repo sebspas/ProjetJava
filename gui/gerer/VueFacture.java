@@ -1,4 +1,4 @@
-package parking.gui;
+package parking.gui.gerer;
 
 /***************************************************************/
 /*						Import						   		   */
@@ -47,7 +47,7 @@ public class VueFacture {
     public VueFacture(final Facture facture) {
         final JFrame fenetre = new JFrame("Facture n°" + facture.getNumeroFacture());
         fenetre.setResizable(false);
-        fenetre.setPreferredSize(new Dimension(450,320));
+        fenetre.setPreferredSize(new Dimension(450,400));
         fenetre.setDefaultCloseOperation(fenetre.DISPOSE_ON_CLOSE);
         
         panel = new JPanel();

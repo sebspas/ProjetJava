@@ -1,9 +1,10 @@
-package parking.business.vehicule;
+package parking.business.vehicule.Fabrique;
 
 /***************************************************************/
 /*						Import						   		   */
 /***************************************************************/
 import parking.business.Client;
+import parking.business.vehicule.Vehicule;
 
 /**
  * Class IFabriqueVehicule  Fait appel aux constructeur de Voiture ou 

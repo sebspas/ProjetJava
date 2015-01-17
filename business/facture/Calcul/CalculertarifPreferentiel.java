@@ -1,15 +1,9 @@
-package parking.business.facture;
+package parking.business.facture.Calcul;
 
 /***************************************************************/
 /*						Import						   		   */
 /***************************************************************/
-import parking.Constante;
-import parking.business.Client;
-import parking.business.Parking;
 import parking.business.Place;
-import parking.business.Timer;
-
-import java.util.Date;
 
 /**
  * Class CalculerTarifPointsFidelite, qui implemente l'interface CalculerTarif, et rajoute des
@@ -18,14 +12,14 @@ import java.util.Date;
  * @see CalculerTarif
  * @author Chergui, Coadalen, Corfa, Corral
  */
-public class CalculerTarifPointsFidelite implements CalculerTarif {
+public class CalculertarifPreferentiel implements CalculerTarif {
     private CalculerTarif calculerTarifHeure = new CalculerTarifHeure();
     /***************************************************************/
 	/*						Methodes							   */
     /***************************************************************/
     /**
-     * Implementation calculerTarif(), de la classe CalculerTarifPointsFidelite, permettant
-     * de calculer le tarif selon les points de fidelite d'un client.
+     * Implementation calculerTarif(), de la classe CalculerTarifPreferentiel, permettant
+     * de calculer le tarif avec une reduction preferentiel.
      *
      * @param p
      *          La place sur laquelle on effectue le calcul du tarif selon
@@ -36,20 +30,11 @@ public class CalculerTarifPointsFidelite implements CalculerTarif {
     public double calculerTarif(Place p) {
         // Utilisation de la méthode calculer tarif à l'heure
         double tarif = calculerTarifHeure.calculerTarif(p);
-        
-        // Récupération de la remise du client en fonction de son nombre de point de fidélité
-        double remise = 0;
-        Client client = p.getVehicule().getProprietaire();
-        client.setPointsDeFidelite(client.getPointsDeFidelite() + (int) (tarif * 2));
-        
-        if (client.getPointsDeFidelite() >= 10) {
-            remise = 1.0;
-            client.setPointsDeFidelite(client.getPointsDeFidelite()- 10);
-        }
-        
-        // Application de la remise
-        return  tarif - remise;
-    } // CalculerTarifPointsFidelite()
+
+
+        // Application de la reduction
+        return  tarif - (tarif*0.20);
+    }
 
     /**
      * Methode toString() affichant le tarif selon les points de fidelite d'un client.
@@ -58,7 +43,6 @@ public class CalculerTarifPointsFidelite implements CalculerTarif {
      */
     @Override
     public String toString() {
-        return "CalculerTarifPtsFidelite";
+        return "CalculerTarifPreferentiel";
     } // toString()
-
-} // CalculerTarifPointsFidelite class
+}

@@ -8,7 +8,7 @@ import parking.business.Parking;
 import parking.business.Place;
 import parking.business.Timer;
 import parking.business.vehicule.Vehicule;
-import parking.gui.VueFacture;
+import parking.gui.gerer.VueFacture;
 
 import java.io.File;
 import java.io.FileWriter;
