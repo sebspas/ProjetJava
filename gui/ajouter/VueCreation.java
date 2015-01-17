@@ -11,6 +11,7 @@ import parking.business.vehicule.Fabrique.IFabriqueVehicule;
 import parking.business.vehicule.Vehicule;
 import parking.gui.Vue;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
@@ -36,7 +37,9 @@ public class VueCreation {
             bottom, topBottom, topBottomLeft, topBottomRight,
             main;
 
-    private JLabel labelPlacesMax, labelTarifParticulier, labelTarifTransporteur,
+    private ImageIcon img = new ImageIcon(getClass().getResource("../ressources/parking.png"));
+
+    private JLabel JLimg, labelPlacesMax, labelTarifParticulier, labelTarifTransporteur,
                    labelNomParking, labelNbPlacesParticulier, labelNbPlacesTransporteur;
 
     private JTextField PlacesMax, TarifParticulier, TarifTransporteur,
@@ -54,7 +57,7 @@ public class VueCreation {
     public VueCreation() {
         // fenetre
         fenetre.setLocation(0, 0);
-        fenetre.setPreferredSize(new Dimension(320,260));
+        fenetre.setPreferredSize(new Dimension(320,320));
         fenetre.setDefaultCloseOperation(fenetre.EXIT_ON_CLOSE);
         fenetre.setLayout(new BorderLayout());
         fenetre.setJMenuBar(barreMenus());
@@ -161,16 +164,16 @@ public class VueCreation {
         top = new JPanel();
         top.setLayout(new BorderLayout());
 
+        JLimg = new JLabel(img, JLabel.CENTER);
+
         labelPlacesMax = new JLabel("Nombre de places Max");
         PlacesMax = new JTextField();
         PlacesMax.setPreferredSize(new Dimension(300, 20));
-
 
         top1 = new JPanel();
         top1.setLayout(new BorderLayout());
         top1.add(labelPlacesMax, BorderLayout.NORTH);
         top1.add(PlacesMax, BorderLayout.CENTER);
-
 
 
         labelTarifParticulier = new JLabel("Tarif Particulier");
@@ -197,6 +200,7 @@ public class VueCreation {
         top2.add(top2Right, BorderLayout.EAST);
 
 
+        top.add(JLimg, BorderLayout.NORTH);
         top.add(top1, BorderLayout.CENTER);
         top.add(top2, BorderLayout.SOUTH);
 
