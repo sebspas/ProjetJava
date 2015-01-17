@@ -85,8 +85,7 @@ public class VueParking extends Vue implements Serializable{
         fenetre.setJMenuBar(barreMenus());
 
         fenetre.setContentPane(main);
-
-        affichageParking.setPreferredSize(new Dimension(780, 470));
+        affichageParking.setPreferredSize(new Dimension(780, 870));
 
         JScrollPane scrollPane = new JScrollPane(affichageParking);
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);

@@ -1,11 +1,22 @@
 package parking.gui.ajouter;
 
+import parking.business.Client;
+import parking.business.Gestionnaire;
+import parking.business.Parking;
+import parking.business.Place;
+import parking.business.facture.Calcul.CalculerTarifHeure;
+import parking.business.facture.Calcul.CalculerTarifPointsFidelite;
+import parking.business.vehicule.Fabrique.FabriqueVehicule;
+import parking.business.vehicule.Fabrique.IFabriqueVehicule;
+import parking.business.vehicule.Vehicule;
 import parking.gui.Vue;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 /**
  * Created by jonathan on 17/01/2015.
@@ -93,7 +104,19 @@ public class VueCreation {
         menu.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                JFileChooser dialogue = new JFileChooser();
+                FileNameExtensionFilter filter = new FileNameExtensionFilter(
+                        "Fichiers ser.", "ser");
+                dialogue.addChoosableFileFilter(filter);
+                dialogue.setAcceptAllFileFilterUsed(false);
+                dialogue.setCurrentDirectory(new File( "./saves" ) );
+                dialogue.showOpenDialog(null);
+                if (dialogue.getSelectedFile() != null) {
+                    Parking.getInstance();
+                    Gestionnaire gestionnaire = new Gestionnaire();
+                    gestionnaire.lire(dialogue.getSelectedFile().toString());
+                    fenetre.setVisible(false);
+                }
             }
         });
         return menu;
@@ -248,25 +271,131 @@ public class VueCreation {
 
         topBottom = new JPanel();
         topBottom.setLayout(new BorderLayout());
-
-
-
-
+        
         Valider.setText("Valider");
         Valider.setPreferredSize(new Dimension(140, 40));
-        /*Valider.addActionListener(new ActionListener() {
+        Valider.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if (validateData()) {
+                    Parking p = Parking.getInstance();
+                    p.setNom(NomParking.getText());
+                    p.setNbPlacesMax(new Integer(PlacesMax.getText()));
 
-        });*/
+                    double tarifParticulier = new Double(TarifParticulier.getText());
+                    double tarifTransporteur = new Double(TarifTransporteur.getText());
 
+                    p.setTarifParticulier(tarifParticulier);
+                    p.setTarifTransporteur(tarifTransporteur);
 
+                    int nbParticulier = new Integer(NbPlacesParticulier.getText());
+                    int nbTransporteur = new Integer(NbPlacesTransporteur.getText());
+                    // Creation des places Particulier //
+                    for (int i = 0; i < nbParticulier; ++i) {
+                        new Place("Particulier");
+                    }
 
+                    // Creation des places Transporteur //
+                    for (int i = 0; i < nbTransporteur; ++i) {
+                        new Place("Transporteur");
+                    }
+                    
+                    if (NomParking.getText().equals("default")) {
+                        // Creation des clients //
+                        Client client1 = new Client("Jean", "Carna", "2, Rue des Concepts", new CalculerTarifHeure());
+                        Client client2 = new Client("Tom", "Galendo", "44, Chemin de Chateau Roi", new CalculerTarifHeure());
+                        Client client3 = new Client("Claude", "Hamari", "57 Avenue de la Garde", new CalculerTarifPointsFidelite());
+                        Client client4 = new Client("Kevin", "Alama", "29 Traverse des Buissons", new CalculerTarifHeure());
+                        Client client5 = new Client("Michel", "Bernard", "5, Avenue de la Republique", new CalculerTarifHeure());
+                        Client client6 = new Client("Nathan", "Delamard", "149, Route des Mirages", new CalculerTarifHeure());
 
+                        // Creation des vehicules //
+                        IFabriqueVehicule fabriqueVehicule = new FabriqueVehicule();
+                        Vehicule v1 = fabriqueVehicule.creer("AB-531-MT-13", "Citroen", "C3", client1);
+                        Vehicule v2 = fabriqueVehicule.creer("BT-640-AE-83", "Peugeot", "306", client2);
+                        Vehicule v3 = fabriqueVehicule.creer("AN-155-GT-45", "Renault", "Scenic", client3);
+                        Vehicule v4 = fabriqueVehicule.creer("CD-294-ZE-69", "Audi", "SWAG", client3);
+                        Vehicule c1 = fabriqueVehicule.creer("BG-951-KC-29", "GMC", "Savana", client4, 15, 355);
+                        Vehicule c2 = fabriqueVehicule.creer("AP-735-LP-84", "International", "CF600", client5, 15, 355);
+                        Vehicule c3 = fabriqueVehicule.creer("BR-848-MM-75", "Chevrolet", "Express", client5, 15, 355);
+                        Vehicule c4 = fabriqueVehicule.creer("CZ-609-OK-31", "Ford", "E350", client6, 15, 355);
+                    }
+                    fenetre.setVisible(false);
+                }
+            }
+        });
+        
         bottom.add(Valider, BorderLayout.NORTH);
-
-
+        
         return bottom;
     } // Bottom()
+
+    public boolean validateData() {
+        if (NomParking.getText().isEmpty()) {
+            return false;
+        }
+        if (!NomParking.getText().matches("[-a-zA-Z0-9]{5,15}")) {
+            JOptionPane.showMessageDialog(fenetre,
+                    "NomParking incorecte !",
+                    "Erreur NomParking",
+                    JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if (TarifParticulier.getText().isEmpty()) {
+            return false;
+        }
+        if (!TarifParticulier.getText().matches("[0-9.]{1,4}")) {
+            JOptionPane.showMessageDialog(fenetre,
+                    "TarifParticulier incorecte !",
+                    "Erreur TarifParticulier",
+                    JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if (TarifTransporteur.getText().isEmpty()) {
+            return false;
+        }
+        if (!TarifTransporteur.getText().matches("[0-9.]{1,4}")) {
+            JOptionPane.showMessageDialog(fenetre,
+                    "TarifTransporteur incorecte !",
+                    "Erreur TarifTransporteur",
+                    JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        if (NbPlacesTransporteur.getText().isEmpty()) {
+            return false;
+        }
+        if (!NbPlacesTransporteur.getText().matches("[0-9]{1,4}")) {
+            JOptionPane.showMessageDialog(fenetre,
+                    "NbPlacesTransporteur incorecte !",
+                    "Erreur NbPlacesTransporteur",
+                    JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        if (NbPlacesParticulier.getText().isEmpty()) {
+            return false;
+        }
+        if (!NbPlacesParticulier.getText().matches("[0-9]{1,4}")) {
+            JOptionPane.showMessageDialog(fenetre,
+                    "NbPlacesParticulier incorecte !",
+                    "Erreur NbPlacesParticulier",
+                    JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        if (PlacesMax.getText().isEmpty()) {
+            return false;
+        }
+        if (!PlacesMax.getText().matches("[0-9]{1,4}")) {
+            JOptionPane.showMessageDialog(fenetre,
+                    "PlacesMax incorecte !",
+                    "Erreur PlacesMax",
+                    JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        return true;
+    } // validateData()
 
 } // VueCreation
