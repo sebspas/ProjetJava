@@ -7,8 +7,8 @@ import parking.business.facture.Facture;
 import parking.business.vehicule.Vehicule;
 import parking.exception.business.*;
 import parking.gui.Vue;
-import parking.gui.VueParking;
-import parking.gui.VueTimer;
+import parking.gui.gerer.VueParking;
+import parking.gui.gerer.VueTimer;
 
 import java.util.ArrayList;
 
