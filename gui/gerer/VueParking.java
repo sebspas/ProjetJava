@@ -74,7 +74,7 @@ public class VueParking extends Vue {
         main = new JPanel();
         main.setBackground(new Color(127, 140, 141));
         fenetre.setResizable(false);
-        fenetre.setLocation(300, 100);
+        fenetre.setLocation(400, 100);
         fenetre.setPreferredSize(new Dimension(850, 600));
         fenetre.setDefaultCloseOperation(fenetre.EXIT_ON_CLOSE);
 
@@ -198,7 +198,14 @@ public class VueParking extends Vue {
         bouton4.setIcon(icon_camion);
         bouton6.setBackground(new Color(22, 160, 133));
         bouton5.setBackground(new Color(52, 152, 219));
-
+        
+        bouton1.setRolloverEnabled(false);
+        bouton2.setRolloverEnabled(false);
+        bouton3.setRolloverEnabled(false);
+        bouton4.setRolloverEnabled(false);
+        bouton5.setRolloverEnabled(false);
+        bouton6.setRolloverEnabled(false);
+        
         legende.add(bouton1, BorderLayout.CENTER);
         legende.add(bouton2, BorderLayout.CENTER);
         legende.add(bouton3, BorderLayout.CENTER);
@@ -230,10 +237,33 @@ public class VueParking extends Vue {
      */
     private JMenu creerMenuFichier() {
         JMenu menuFichier = new JMenu("Fichier");
+        menuFichier.add(creerMenuOuvrir());
+        menuFichier.add(creerMenuSauvegarder());
         menuFichier.add(creerMenuFichierQuitter());
         return menuFichier;
     } // creerMenuFichier()
 
+    private JMenuItem creerMenuOuvrir() {
+        JMenuItem menu = new JMenuItem("Ouvrir");
+        menu.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        return menu;
+    }
+    
+    private JMenuItem creerMenuSauvegarder() {
+        JMenuItem menu = new JMenuItem("Sauvegarder");
+        menu.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+            }
+        });
+        return menu;
+    }
     /**
      * Methode creerMenuFichierQuitter() permet de ...
      *
