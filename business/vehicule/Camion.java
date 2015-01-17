@@ -32,8 +32,7 @@ public class Camion extends Vehicule{
 	/*						Constructeur						   */
 	/***************************************************************/
 	/**
-	 * Constructeur de la classe Camion, utilisant le constructeur d'un vehicule classique
-	 * et ajoutant les specificites d'un camion
+	 * Constructeur de la classe Camion.
 	 *
 	 * @param immatriculation
 	 * 			L'immatriculation du camion a construire.

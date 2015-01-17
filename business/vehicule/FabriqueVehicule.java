@@ -37,7 +37,7 @@ public class FabriqueVehicule implements IFabriqueVehicule {
 
     /**
      * Methode creer() (surcharge de la methode ci dessus) permet de creer un nouveau vehicule (ici
-     * un camion), avec ses specificites en plus d'une voiture telles que le tonnage et la hauteur.
+     * un camion), avec ses specificites telles que le tonnage et la hauteur.
      *
      * @param immatriculation
      *          La plaque d'immatriculation du camion.

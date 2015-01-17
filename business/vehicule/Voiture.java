@@ -18,8 +18,7 @@ public class Voiture extends Vehicule{
 	/*						Constructeur						   */
     /***************************************************************/
     /**
-     * Constructeur de la classe Voiture, utilisant le constructeur d'un vehicule classique
-     * et ajoutant les specificites d'une voiture.
+     * Constructeur de la classe Voiture.
      *
      * @param immatriculation
      *          L'immatriculation de la voiture a construire.
@@ -37,7 +36,6 @@ public class Voiture extends Vehicule{
         this.proprietaire = proprietaire;
         proprietaire.addVehicule(this);
         this.type = "Voiture";
-        Parking.getInstance().notifier();
     }
 
     /***************************************************************/

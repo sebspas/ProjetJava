@@ -49,6 +49,9 @@ public abstract class Vehicule {
 	 */
 	private int jourArrivee;
 
+	/**
+	 * L'heure d'arrivée du vehicule.
+	 */
 	private int heureArrivee;
 
 	/***************************************************************/
@@ -71,20 +74,30 @@ public abstract class Vehicule {
 	public String getImmatriculation() {
 		return immatriculation;
 	} // getImmatriculation()
-
+	
 	/**
 	 * Methode getProprietaire() renvoie le numero d'immatriculation du vehicule.
 	 *
-	 * @return Le numero d'immatriculation du vehicule.
+	 * @return Le proprietaire du vehicule.
 	 */
 	public Client getProprietaire() {
 		return proprietaire;
 	} // getProprietaire()
 
+	/**
+	 * Methode getProprietaire() renvoie le numero d'immatriculation du vehicule.
+	 *
+	 * @return Le jour d'arrivee du vehicule sur la place qu'il occupe.
+	 */
 	public int getJourArrivee() {
 		return jourArrivee;
 	}
 
+	/**
+	 * Methode getProprietaire() renvoie le numero d'immatriculation du vehicule.
+	 *
+	 * @return L'heure d'arrivee du vehicule sur la place qu'il occupe.
+	 */
 	public int getHeureArrivee() {
 		return heureArrivee;
 	}

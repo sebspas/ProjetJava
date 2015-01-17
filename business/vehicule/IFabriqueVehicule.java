@@ -6,8 +6,8 @@ package parking.business.vehicule;
 import parking.business.Client;
 
 /**
- * Class IFabriqueVehicule et rajoute les informations suplementaires
- * dont elle a besoin pour cree un vehicule du type voiture.
+ * Class IFabriqueVehicule  Fait appel aux constructeur de Voiture ou 
+ * de Camion selon les parametres avec lesquels est appelee la fonction creer.
  *
  * @author Chergui, Coadalen, Corfa, Corral
  */
