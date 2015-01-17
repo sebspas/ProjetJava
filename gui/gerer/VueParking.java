@@ -15,6 +15,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
 
@@ -122,15 +123,13 @@ public class VueParking extends Vue implements Serializable{
      */
     private JPanel AffichageParking() {
         affichageParking.removeAll();
-        System.out.println("========================================");
         for (Place p : Parking.getInstance().getListePlaces()) {
             final ButtonPlace button = new ButtonPlace(p);
 
             button.setRolloverEnabled(false);
                 
             button.setPreferredSize(new Dimension(190,70));
-
-            System.out.println(p.getType());
+            
             if (p.getType().equals("Transporteur")) {
                 button.setBackground(new Color(52, 152, 219));
             }
@@ -255,9 +254,12 @@ public class VueParking extends Vue implements Serializable{
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFileChooser dialogue = new JFileChooser();
+                dialogue.setCurrentDirectory(new File( "./saves" ) );
                 dialogue.showOpenDialog(null);
-                Sauvegarde sauvegarde = new Sauvegarde();
-                sauvegarde.lire(dialogue.getSelectedFile().toString());
+                if (dialogue.getSelectedFile() != null) {
+                    Sauvegarde sauvegarde = new Sauvegarde();
+                    sauvegarde.lire(dialogue.getSelectedFile().toString());
+                }
             }
         });
         return menu;
