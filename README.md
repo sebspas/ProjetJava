@@ -31,12 +31,3 @@ javac parking/*.java
 
 5)Lancer le projet avec la commande suivante :
 java parking/Main
-
-###########################
-##### Utiliser le jar #####
-###########################
-1ère méthode :
-Aller dans l'arborescence où se situe le .jar puis double-cliquer.
-
-2ème méthode :
-Lancer la commande "java -jar parking.jar" dans le dossier contenant le .jar dans un terminal.
