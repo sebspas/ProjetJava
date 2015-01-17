@@ -1,4 +1,4 @@
-package parking.gui;
+package parking.gui.gerer;
 
 /***************************************************************/
 /*						Import						   		   */
@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import parking.business.Timer;
+import parking.gui.Vue;
 
 /**
  * Class VueTimer, qui herite de la classe Vue, qui cree une vue permettant
@@ -16,7 +17,7 @@ import parking.business.Timer;
  *
  * @author Chergui, Coadalen, Corfa, Corral
  */
-public class VueTimer extends Vue{
+public class VueTimer extends Vue {
     /***************************************************************/
 	/*						Debut Donnees Membres 				   */
     /***************************************************************/

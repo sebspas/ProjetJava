@@ -1,4 +1,4 @@
-package parking.gui;
+package parking.gui.gerer;
 
 /***************************************************************/
 /*						Import						   		   */
@@ -7,6 +7,7 @@ import parking.business.Client;
 import parking.business.Parking;
 import parking.business.Place;
 import parking.business.vehicule.Vehicule;
+import parking.gui.Vue;
 
 import javax.swing.*;
 import java.awt.*;
@@ -22,7 +23,7 @@ import java.awt.event.ItemListener;
  *
  * @author Chergui, Coadalen, Corfa, Corral
  */
-public class VueVehicule extends Vue{
+public class VueVehicule extends Vue {
     /***************************************************************/
 	/*						Debut Donnees Membres 				   */
     /***************************************************************/

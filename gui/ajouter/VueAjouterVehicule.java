@@ -1,4 +1,4 @@
-package parking.gui;
+package parking.gui.ajouter;
 
 /***************************************************************/
 /*						Import						   		   */
@@ -7,6 +7,7 @@ import parking.business.Client;
 import parking.business.Parking;
 import parking.business.vehicule.Fabrique.FabriqueVehicule;
 import parking.business.vehicule.Fabrique.IFabriqueVehicule;
+import parking.gui.Vue;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,10 +1,14 @@
-package parking.gui;
+package parking.gui.gerer;
 
 /***************************************************************/
 /*						Import						   		   */
 /***************************************************************/
 import parking.business.*;
 import parking.business.Timer;
+import parking.gui.ButtonPlace;
+import parking.gui.Vue;
+import parking.gui.ajouter.VueAjouterVehicule;
+import parking.gui.ajouter.VueNouveauClient;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -18,7 +22,7 @@ import java.io.IOException;
  *
  * @author Chergui, Coadalen, Corfa, Corral
  */
-public class VueParking extends Vue{
+public class VueParking extends Vue {
     /***************************************************************/
 	/*						Debut Donnees Membres 				   */
     /***************************************************************/
@@ -288,7 +292,7 @@ public class VueParking extends Vue{
      * Methode actionMenuVehiculeListe() permet de ...
      */
     private void actionMenuVehiculeListe() {
-        parking.gui.Vue listeVehicule = new parking.gui.VueVehicule();
+        parking.gui.Vue listeVehicule = new VueVehicule();
         listeVehicule.mettreAJour();
     } // actionMenuVehiculeListe()
 
@@ -313,7 +317,7 @@ public class VueParking extends Vue{
      * Methode actionMenuVehiculeAjouterVoiture() permet de ...
      */
     private void actionMenuVehiculeAjouterVoiture() {
-        parking.gui.Vue AjouterVehicule = new parking.gui.VueAjouterVehicule();
+        parking.gui.Vue AjouterVehicule = new VueAjouterVehicule();
     } // actionMenuVehiculeAjouterVoiture()
 
 
@@ -337,7 +341,7 @@ public class VueParking extends Vue{
 
 
     private void actionMenuClientNouveau() {
-       parking.gui.Vue NouveauClient = new parking.gui.VueNouveauClient();
+       parking.gui.Vue NouveauClient = new VueNouveauClient();
     } // actionMenuClientNouveau()
 
 

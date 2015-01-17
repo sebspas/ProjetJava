@@ -1,4 +1,4 @@
-package parking.gui;
+package parking.gui.ajouter;
 
 /***************************************************************/
 /*						Import						   		   */
@@ -7,6 +7,7 @@ import parking.business.Client;
 import parking.business.facture.Fabrique.FabriqueCalculerTarif;
 import parking.business.facture.Fabrique.IFabriqueCalculerTarif;
 import parking.exception.business.MethodeNonGeree;
+import parking.gui.Vue;
 
 import javax.swing.*;
 import java.awt.*;
@@ -124,6 +125,7 @@ public class VueNouveauClient extends Vue {
         typeCalculTarif = new JComboBox();
         typeCalculTarif.addItem("CalculerTarifHeure");
         typeCalculTarif.addItem("CalculerTarifPointsFidelite");
+        typeCalculTarif.addItem("CalculerTarifPreferentiel");
         typeCalculTarif.setPreferredSize(new Dimension(300,20));
         
         top.add(topClientLeft, BorderLayout.WEST);
