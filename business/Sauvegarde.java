@@ -41,7 +41,9 @@ public class Sauvegarde {
             Parking parking = (Parking)ois.readObject();
             Parking.getInstance().setNom(parking.getNom());
             Parking.getInstance().setNumeroFacture(parking.getNumeroFacture());
-            Parking.getInstance().setListeVueNotifiable(parking.getListeVueNotifiable());
+            
+            //Parking.getInstance().setListeVueNotifiable(parking.getListeVueNotifiable());
+            
             Parking.getInstance().setListePlaces(parking.getListePlaces());
             Parking.getInstance().setListeFacture(parking.getListeFacture());
             Parking.getInstance().setListeClients(parking.getListeClients());
@@ -50,6 +52,7 @@ public class Sauvegarde {
             Parking.getInstance().setTarifTransporteur(parking.getTarifTransporteur());
             Parking.getInstance().setAppelInterne(parking.isAppelInterne());
             Parking.getInstance().setNbPlaceOccupees(parking.getNbPlaceOccupees());
+            Parking.getInstance().notifier();
         }
         catch(EOFException e){
             e.printStackTrace();
