@@ -71,13 +71,13 @@ public class Place{
 	}// getVehicule()
 
 	/**
-	 * Methode getNumero() renvoie le numero de la place.
+	 * Methode getNumeroPlace() renvoie le numero de la place.
 	 *
 	 * @return Le numero de la place.
 	 */
-	 public int getNumero() {
+	 public int getNumeroPlace() {
 		return numeroPlace;
-	}//getNumero()
+	}//getNumeroPlace()
 
 	/**
 	 * Methode getType() renvoie le type de place.

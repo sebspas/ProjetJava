@@ -8,8 +8,6 @@ import parking.business.Parking;
 import parking.business.Place;
 import parking.business.Timer;
 
-import java.util.Date;
-
 /**
  * Class CalculerTarifHeure, qui implemente l'interface CalculerTarif, et rajoute des
  * informations suplementaires dont elle a besoin pour calculer le tarif à l'heure.
@@ -50,9 +48,9 @@ public class CalculerTarifHeure implements CalculerTarif{
         }
         
         //Récupération du prix de l'heure sur ce type de place
-        double tarif = Parking.getInstance().getTarif_particulier();
+        double tarif = Parking.getInstance().getTarifParticulier();
         if (p.getVehicule().getType() == "Transporteur")
-            tarif = Parking.getInstance().getTarif_transporteur();
+            tarif = Parking.getInstance().getTarifTransporteur();
 
         // Calcul final du tarif
         return ((double)nombreHeures)* tarif + ((double)nombreHeures)* tarif * Constante.TVA / 100;
