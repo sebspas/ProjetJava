@@ -34,9 +34,11 @@ public class CalculerTarifPointsFidelite implements CalculerTarif {
      */
     @Override
     public double calculerTarif(Place p) {
+        // Utilisation de la méthode calculer tarif à l'heure
         double tarif = calculerTarifHeure.calculerTarif(p);
+        
+        // Récupération de la remise du client en fonction de son nombre de point de fidélité
         double remise = 0;
-                
         Client client = p.getVehicule().getProprietaire();
         client.setPointsDeFidelite(client.getPointsDeFidelite() + (int) (tarif * 2));
         
@@ -44,7 +46,9 @@ public class CalculerTarifPointsFidelite implements CalculerTarif {
             remise = 1.0;
             client.setPointsDeFidelite(client.getPointsDeFidelite()- 10);
         }
-            return  tarif - remise;
+        
+        // Application de la remise
+        return  tarif - remise;
     } // CalculerTarifPointsFidelite()
 
     /**

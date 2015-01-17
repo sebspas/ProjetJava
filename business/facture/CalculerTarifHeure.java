@@ -31,27 +31,30 @@ public class CalculerTarifHeure implements CalculerTarif{
      */
     @Override
     public double calculerTarif(Place p) {
-
+        // Récupération de l'heure et du jour actuel selon le timer
         int heureActuelle = Timer.getInstance().getHeures();
         int jourActuel = Timer.getInstance().getDay();
 
+        // Récupération de l'heure et du jour d'arrivée du véhicule
         int heureArrivee = p.getVehicule().getHeureArrivee();
         int jourArrivee = p.getVehicule().getJourArrivee();
 
+        //Calcul du nombre d'heure passé sur le parking
         int nombreHeures = 0;
         if (jourActuel == jourArrivee) {
             nombreHeures = heureActuelle - heureArrivee;
-            if (nombreHeures == 0)
-                nombreHeures = 1;
+            if (nombreHeures == 0) nombreHeures = 1;
         }
         else {
             nombreHeures = ((jourActuel-jourArrivee)*24 + (24-heureArrivee) + (heureActuelle));
         }
-
+        
+        //Récupération du prix de l'heure sur ce type de place
         double tarif = Parking.getInstance().getTarif_particulier();
         if (p.getVehicule().getType() == "Transporteur")
             tarif = Parking.getInstance().getTarif_transporteur();
 
+        // Calcul final du tarif
         return ((double)nombreHeures)* tarif + ((double)nombreHeures)* tarif * Constante.TVA / 100;
     } // calculerTarif()
 

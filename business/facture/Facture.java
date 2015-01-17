@@ -43,10 +43,24 @@ public class Facture {
      */
     private Vehicule vehicule;
     
+    /**
+     * L'heure d'arrivée du véhicule.
+     */
     private int heureArr;
+
+    /**
+     * L'heure de départ du véhicule.
+     */
     private int heureDep;
-    
+
+    /**
+     * Le jour d'arrivé du véhicule. 
+     */
     private int jourArr;
+
+    /**
+     * Le jour de départ du véhicule.
+     */
     private int jourDep;
 
     /***************************************************************/
@@ -60,27 +74,45 @@ public class Facture {
      *          La place associee a la facture.
      */
     public Facture(Place place) {
-        
+        // Récupération de l'instance du parking
         Parking p = Parking.getInstance();
         
+        // Récupération du numéro de facture et incrémentation pour la facture à venir
         this.numeroFacture = p.getNumeroFacture();
         p.setNumeroFacture(p.getNumeroFacture()+1);
         
+        // Récupération du véhicule
         this.vehicule = place.getVehicule();
-        client = place.getVehicule().getProprietaire();
+        
+        // Récupération du client
+        client = vehicule.getProprietaire();
+        
+        // Récupération du tarif
         tarif = client.getCalculerTarif().calculerTarif(place);
         
+        // Récupération de l'heure et du jour
         heureArr = vehicule.getHeureArrivee();
         heureDep = Timer.getInstance().getHeures();
         
         jourArr = vehicule.getJourArrivee();
         jourDep = Timer.getInstance().getDay();
         
+        // Ajout de la facture à la liste des facture concernant le parking
         p.addFacture(this);
         
+        // Création et affichage d'une vue contenant la facture et proposant l'enregistrement
         new VueFacture(this);
     } // Constructeur
 
+    /***************************************************************/
+	/*						Getter								   */
+    /***************************************************************/
+    /**
+     * Methode getNumeroFacture() renvoie le numero de la facture du client.
+     * Utilisée pour le nom de la vueFacture.
+     *
+     * @return Le nom du client
+     */
     public int getNumeroFacture() {
         return numeroFacture;
     }
@@ -117,9 +149,14 @@ public class Facture {
      */
     public void sauvegarder(){
         try{
+            // Création du répertoire
             new File("Factures").mkdir();
+            
+            // Création du fichier
             File ff=new File("Factures/Factures" + numeroFacture + ".txt");
             ff.createNewFile();
+            
+            // Ecriture de la facture dans le fichier
             FileWriter ffw=new FileWriter(ff);
             ffw.write("####################### Facture " + numeroFacture + " #######################" + "\r\n" );
             ffw.write("#"                                   + "\r\n");
@@ -135,6 +172,8 @@ public class Facture {
             ffw.write("# Prénom : "  + client.getPrenom()   + "\r\n");
             ffw.write("# Adresse : " + client.getAdresse()  + "\r\n");
             ffw.write("#########################################################");
+            
+            // Fermeture du fichier
             ffw.close();
         } catch (Exception e) {
             e.printStackTrace();
