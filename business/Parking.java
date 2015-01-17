@@ -193,7 +193,7 @@ public class Parking implements Serializable {
 	 */
 	public int getLocation(String numeroImmatriculation) {
 		for (Place p : this.listePlaces) {
-			if ((p.getVehicule().getImmatriculation()).equals(numeroImmatriculation)) {
+			if (p.getVehicule() != null && p.getVehicule().getImmatriculation().equals(numeroImmatriculation)) {
 				return p.getNumeroPlace();
 			}
 		}
