@@ -64,10 +64,10 @@ public class VueParking extends Vue {
      */
     public VueParking() {
         try {
-            icon_voiture = new ImageIcon(ImageIO.read(getClass().getResource("ressources/voiture.png")));
-            icon_camion = new ImageIcon(ImageIO.read(getClass().getResource("ressources/camion.png")));
-            icon_reservee = new ImageIcon(ImageIO.read(getClass().getResource("ressources/reservee.png")));
-            icon_disponible = new ImageIcon(ImageIO.read(getClass().getResource("ressources/feu-vert.png")));
+            icon_voiture = new ImageIcon(ImageIO.read(getClass().getResource("../ressources/voiture.png")));
+            icon_camion = new ImageIcon(ImageIO.read(getClass().getResource("../ressources/camion.png")));
+            icon_reservee = new ImageIcon(ImageIO.read(getClass().getResource("../ressources/reservee.png")));
+            icon_disponible = new ImageIcon(ImageIO.read(getClass().getResource("../ressources/feu-vert.png")));
         } catch (IOException e) {
             e.printStackTrace();
         }
