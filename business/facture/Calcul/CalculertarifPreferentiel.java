@@ -5,6 +5,8 @@ package parking.business.facture.Calcul;
 /***************************************************************/
 import parking.business.Place;
 
+import java.io.Serializable;
+
 /**
  * Class CalculerTarifPointsFidelite, qui implemente l'interface CalculerTarif, et rajoute des
  * informations suplementaires dont elle a besoin pour calculer le tarif selon des points de fidelite.
@@ -12,7 +14,7 @@ import parking.business.Place;
  * @see CalculerTarif
  * @author Chergui, Coadalen, Corfa, Corral
  */
-public class CalculertarifPreferentiel implements CalculerTarif {
+public class CalculertarifPreferentiel implements CalculerTarif, Serializable {
     private CalculerTarif calculerTarifHeure = new CalculerTarifHeure();
     /***************************************************************/
 	/*						Methodes							   */

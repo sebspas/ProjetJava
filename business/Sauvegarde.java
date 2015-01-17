@@ -1,19 +1,19 @@
 package parking.business;
 
-import parking.business.Parking;
-
 import java.io.*;
 
 /**
  * Created by Naoki on 17/01/2015.
  */
 public class Sauvegarde {
-    public void sauvegarder(String fichier){
-        File flux = new File(fichier);
+    public void sauvegarder(){
+        new File("saves").mkdir();
+        
+        File flux = new File("saves/MonParking.ser");
         ObjectOutputStream oos = null;
 
         try {
-            oos =  new ObjectOutputStream(new FileOutputStream(fichier)) ;
+            oos =  new ObjectOutputStream(new FileOutputStream("saves/MonParking.ser")) ;
             oos.writeObject(Parking.getInstance());
         }
         catch(EOFException e){

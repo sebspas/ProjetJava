@@ -2,6 +2,8 @@ package parking.business.facture.Calcul;
 
 import parking.business.Place;
 
+import java.io.Serializable;
+
 /**
  * Interface CalculerTarif, definissant la fonction calculerTarif(),
  * permettant de calculer le tarif d'une place donnee en parametre.

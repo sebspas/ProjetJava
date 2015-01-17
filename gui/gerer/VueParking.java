@@ -16,13 +16,14 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.io.Serializable;
 
 /**
  * Class VueParking, herite de la classe Vue, permettant de ...
  *
  * @author Chergui, Coadalen, Corfa, Corral
  */
-public class VueParking extends Vue {
+public class VueParking extends Vue implements Serializable{
     /***************************************************************/
 	/*						Debut Donnees Membres 				   */
     /***************************************************************/
@@ -259,7 +260,8 @@ public class VueParking extends Vue {
         menu.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+                Sauvegarde save = new Sauvegarde();
+                save.sauvegarder();
             }
         });
         return menu;

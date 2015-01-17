@@ -8,13 +8,15 @@ import parking.exception.business.PlaceLibreException;
 import parking.exception.business.PlaceOccupeeException;
 import parking.exception.business.PlaceReserverException;
 
+import java.io.Serializable;
+
 /**
  * Class Place permmettant de creer une nouvelle place au parking avec son numero,
  * son type, le vehicule qui s'y situe, etc..
  *
  * @author Chergui, Coadalen, Corfa, Corral
  */
-public class Place{
+public class Place implements Serializable{
 	/***************************************************************/
 	/*						Debut Donnees Membres 				   */
 	/***************************************************************/

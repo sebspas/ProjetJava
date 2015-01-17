@@ -5,13 +5,15 @@ package parking.business;
 /***************************************************************/
 import parking.gui.gerer.VueTimer;
 
+import java.io.Serializable;
+
 /**
  * Class Timer qui cree un timer permettant de simuler le temps passe sur le
  * parking et permet de determiner le tarif de la facture des vehicules.
  *
  * @author Chergui, Coadalen, Corfa, Corral
  */
-public class Timer extends Thread {
+public class Timer extends Thread implements Serializable {
     /***************************************************************/
 	/*						Debut Donnees Membres 				   */
     /***************************************************************/

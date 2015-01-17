@@ -7,6 +7,7 @@ import parking.business.Client;
 import parking.business.Parking;
 import parking.business.Timer;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -15,7 +16,7 @@ import java.util.Date;
  *
  * @author Chergui, Coadalen, Corfa, Corral
  */
-public abstract class Vehicule {
+public abstract class Vehicule implements Serializable{
 	/***************************************************************/
 	/*						Debut Donnees Membres 				   */
 	/***************************************************************/
