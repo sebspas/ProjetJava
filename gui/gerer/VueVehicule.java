@@ -22,6 +22,7 @@ import java.io.Serializable;
  * de gerer les vehicules avec la possibilites de les "parker" ou de
  * les "deparker" en choisisant parmi les vehicules de chaque client.
  *
+ * @see Vue, Serializable
  * @author Chergui, Coadalen, Corfa, Corral
  */
 public class VueVehicule extends Vue implements Serializable{
@@ -61,15 +62,18 @@ public class VueVehicule extends Vue implements Serializable{
     private JComboBox vehicule;
 
     /**
-     * Le bouton indique "Parker" dans la vue.
+     * Le bouton permettant de "parker" un vehicule.
      */
     private JButton parker_vehicule;
 
     /**
-     * Le bouton indique "Deparker" dans la vue.
+     * Le bouton permettant de "deparker" un vehicule.
      */
     private JButton unpark_vehicule;
-    
+
+    /**
+     * Le bouton permettant de supprimer un vehicule.
+     */
     private JButton supprimer_vehicule;
 
     /***************************************************************/
@@ -293,7 +297,7 @@ public class VueVehicule extends Vue implements Serializable{
     /**
      * Methode AfficheListeVehicule() permet d'afficher la liste des vehicules.
      *
-     * @return
+     * @return La liste des vehicules.
      */
     private JPanel AfficheListeVehicule() {
         listeVehicule.removeAll();

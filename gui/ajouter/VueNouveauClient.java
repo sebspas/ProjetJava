@@ -18,6 +18,7 @@ import java.awt.event.ActionListener;
  * Class VueNouveauClient, qui herite de la classe Vue,
  * qui cree une vue permettant de creer un nouveau client.
  *
+ * @see Vue
  * @author Chergui, Coadalen, Corfa, Corral
  */
 public class VueNouveauClient extends Vue {
@@ -25,12 +26,12 @@ public class VueNouveauClient extends Vue {
 	/*						Debut Donnees Membres 				   */
     /***************************************************************/
     /**
-     *
+     * La fenetre nommee "Nouveau Client".
      */
     private JFrame fenetre = new JFrame("Nouveau Client");
 
     /**
-     *
+     * Les differents panneaux correspondant à leur noms.
      */
     private JPanel top, topClientLeft, topClientRight,
             center,
@@ -38,17 +39,20 @@ public class VueNouveauClient extends Vue {
             main;
 
     /**
-     *
+     * Les etiquettes indiquant le nom, le prenom et l'adresse du nouveau client.
      */
     private JLabel labelNom, labelPrenom,
                    labelAdresse;
 
     /**
-     *
+     * Les champs necessaires pour remplir le nom, le prenom et l'adresse du client.
      */
     private JTextField Nom, Prenom,
                        Adresse;
 
+    /**
+     * Chaque ligne cliquable correspondant a un type de calcul du tarif.
+     */
     private JComboBox typeCalculTarif;
     /**
      * Le bouton permettant de valider.
@@ -65,7 +69,8 @@ public class VueNouveauClient extends Vue {
 	/*						Constructeur						   */
     /***************************************************************/
     /**
-     * Constructeur de la classe VueAjouterVehicule(), permettant de
+     * Constructeur de la classe VueNouveauClient(), permettant de
+     * creer une vue servant a ajouter un nouveau client.
      */
     public VueNouveauClient() {
         fenetre.setLocation(0, 0);
@@ -84,6 +89,20 @@ public class VueNouveauClient extends Vue {
         fenetre.setVisible(true);
     } // Constructeur
 
+    /***************************************************************/
+	/*						Setter								   */
+    /***************************************************************/
+    /**
+     * Methode setVisible() permet d'indiquer si la fenetre doit etre visible ou non.
+     *
+     * @param visible
+     *          Booleen affichant la fenetre si il vaut true, et
+     *          ne rendant pas la fenetre visible si il vaut false.
+     */
+    @Override
+    public void setVisible(boolean visible) {
+        fenetre.setVisible(visible);
+    } // setVisible()
 
     /***************************************************************/
 	/*						Methodes							   */
@@ -134,7 +153,6 @@ public class VueNouveauClient extends Vue {
 
         return top;
     } // Top()
-
 
     /**
      * Methode Center() permet de creer un panneau afin de ne
@@ -226,7 +244,7 @@ public class VueNouveauClient extends Vue {
     } // Bottom()
 
     /**
-     * Methode validateData() permet de
+     * Methode validateData() permet d'indiquer si les donnees ont ete valide ou non a l'aide d'un booleen.
      *
      * @return Booleen indiquant si les donnees sont validees (true) ou non (false).
      */
@@ -235,21 +253,21 @@ public class VueNouveauClient extends Vue {
             return false;
         if (!Nom.getText().matches("[a-zA-Z-_]{2,35}")) {
             JOptionPane.showMessageDialog(fenetre,
-                    "Nom incorect !",
+                    "Nom incorrect !",
                     "Erreur nom",
                     JOptionPane.ERROR_MESSAGE);
             return false;
         }
         if (!Prenom.getText().matches("[a-zA-Z-_]{2,35}")) {
             JOptionPane.showMessageDialog(fenetre,
-                    "Prenom incorect !",
+                    "Prenom incorrect !",
                     "Erreur prenom",
                     JOptionPane.ERROR_MESSAGE);
             return false;
         }
-        if (!Adresse.getText().matches("[a-zA-Z-_.,\\s]*")) {
+        if (!Adresse.getText().matches("[a-zA-Z0-9-_.,\\s]*")) {
             JOptionPane.showMessageDialog(fenetre,
-                    "Adresse incorecte !",
+                    "Adresse incorrecte !",
                     "Erreur adresse",
                     JOptionPane.ERROR_MESSAGE);
             return false;
@@ -258,8 +276,6 @@ public class VueNouveauClient extends Vue {
         return true;
     } // validateData()
 
-
-
     /**
      * Methode mettreAJour() permet de mettre a jour la vue.
      */
@@ -267,10 +283,5 @@ public class VueNouveauClient extends Vue {
     public void mettreAJour() {
 
     } // mettreAJour()
-
-    @Override
-    public void setVisible(boolean visible) {
-        fenetre.setVisible(visible);
-    }
 
 } // VueNouveauClient

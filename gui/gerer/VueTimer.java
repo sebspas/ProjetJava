@@ -15,6 +15,7 @@ import parking.gui.Vue;
  * Class VueTimer, qui herite de la classe Vue, qui cree une vue permettant
  * d'afficher le temps selon le fonctionnement de la class Timer.
  *
+ * @see Vue
  * @author Chergui, Coadalen, Corfa, Corral
  */
 public class VueTimer extends Vue {
@@ -22,42 +23,40 @@ public class VueTimer extends Vue {
 	/*						Debut Donnees Membres 				   */
     /***************************************************************/
     /**
-     *
+     * La fenetre du timer.
      */
     private JFrame fenetre;
 
     /**
-     *
+     * Le panneau principal de la fenetre.
      */
-    private JTextField textField1;
+    private JPanel panel;
 
     /**
-     *
+     * Les differents champs "textField1" et "textField2".
      */
-    private Timer timer;
+    private JTextField textField1, textField2;
 
     /**
-     *
+     * Le bouton permettant d'ajouter une heure au timer.
      */
     private JButton incremente;
 
     /**
-     *
+     * Le timer.
      */
-    private JPanel panel;
-    /**
-     *
-     */
-    private JTextField textField2;
+    private Timer timer;
 
     /***************************************************************/
 	/*						Constructeur						   */
     /***************************************************************/
     /**
-     * Constructeur de la classe VueTimer, permettant de
+     * Constructeur de la classe VueTimer, permettant de creer une vue affichant
+     * un timer afin de simuler le nombre d'heure passe d'un vehicule sur
+     * le parking et ainsi connaitre le tarif approprie au temps passe.
      *
      * @param timer
-     *          Le temps passe sur le parking.
+     *          L'heure actuelle du parking.
      */
     public VueTimer(final Timer timer) {
         this.timer = timer;
@@ -93,9 +92,11 @@ public class VueTimer extends Vue {
 	/*						Setter								   */
     /***************************************************************/
     /**
-     * Methode setVisible() permet de
+     * Methode setVisible() permet d'indiquer si la fenetre doit etre visible ou non.
      *
      * @param visible
+     *          Booleen affichant la fenetre si il vaut true, et
+     *          ne rendant pas la fenetre visible si il vaut false.
      */
     @Override
     public void setVisible(boolean visible) {
@@ -106,7 +107,7 @@ public class VueTimer extends Vue {
 	/*						Methodes							   */
     /***************************************************************/
     /**
-     * Methode mettreAJour() permet de
+     * Methode mettreAJour() permet de mettre a jour la vue.
      */
     @Override
     public void mettreAJour() {

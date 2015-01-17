@@ -30,6 +30,7 @@ public abstract class Vue {
 
     /**
      * Methode permettant de cacher ou afficher une vue.
+     *
      * @param visible
      */
     public abstract void setVisible(boolean visible);

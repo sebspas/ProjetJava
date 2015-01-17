@@ -21,17 +21,17 @@ public class VueFacture {
 	/*						Debut Donnees Membres 				   */
     /***************************************************************/
     /**
-     *
+     * Les panneaux "panel1" et "panel" accueillant la facture.
      */
     private JPanel panel1, panel;
 
     /**
-     *
+     * Le champ prevu pour afficher la facture.
      */
     private JTextArea textArea1;
 
     /**
-     *
+     * Le bouton permettant de sauvegarder la facture.
      */
     private JButton save;
 
@@ -39,7 +39,9 @@ public class VueFacture {
 	/*						Constructeur						   */
     /***************************************************************/
     /**
-     * Constructeur de la classe VueFacture, permettant de
+     * Constructeur de la classe VueFacture, permettant de creer une vue
+     * affichant la facture d'un client avec differentes informations
+     * telles que le tarif, l'heure d'arrivee, l'heure de depart, etc.
      *
      * @param facture
      *          La facture a creer.

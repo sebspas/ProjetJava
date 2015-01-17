@@ -20,6 +20,7 @@ import java.awt.event.ItemListener;
  * Class VueAjouterVehicule, qui herite de la classe Vue,
  * qui cree une vue permettant d'ajouter un vehicule.
  *
+ * @see Vue
  * @author Chergui, Coadalen, Corfa, Corral
  */
 public class VueAjouterVehicule extends Vue {
@@ -27,7 +28,7 @@ public class VueAjouterVehicule extends Vue {
 	/*						Debut Donnees Membres 				   */
     /***************************************************************/
     /**
-     *
+     * La fenetre nommee "Ajouter Vehicule".
      */
     private JFrame fenetre = new JFrame("Ajouter Vehicule");
     //JPanel listeVehicule = new JPanel();
@@ -35,7 +36,7 @@ public class VueAjouterVehicule extends Vue {
     //private JComboBox client;
 
     /**
-     *
+     * Les differents panneaux correspondant à leur noms.
      */
     private JPanel top, topClient, topVehicule,
                    center, topCenter, midCenter, midCenterLeft, midCenterRight, midBottom,
@@ -43,54 +44,54 @@ public class VueAjouterVehicule extends Vue {
                    main;
 
     /**
-     *
+     * Les differentes etiquettes correspondant à leur noms.
      */
     private JLabel labelClient, labelTypeVehicule,
                    labelImmatriculation, labelMarque, labelModele,
                    labelTonnage, labelHauteur;
 
     /**
-     *
+     * Le bouton "Valider".
      */
     private final JButton Valider = new JButton();
 
     /**
-     *
+     * Le bouton "Annuler".
      */
     private final JButton Annuler = new JButton();
 
     /**
-     *
+     * Chaque ligne cliquable correspondant a un client.
      */
     private JComboBox client;
 
     /**
-     *
+     * Chaque ligne cliquable correspondant a un type de vehicule.
      */
     private JComboBox typeVehicule;
 
     /**
-     *
+     * Le champ de la plaque d'immatriculation.
      */
     private JTextField Immatriculation;
 
     /**
-     *
+     * Le champ de la marque du vehicule.
      */
     private JTextField Marque;
 
     /**
-     *
+     * Le champ du modele du vehicule.
      */
     private JTextField Modele;
 
     /**
-     *
+     * Le champ de la hauteur du vehicule (pour les camions seulement).
      */
     private JTextField Hauteur;
 
     /**
-     *
+     * Le champ du tonnage du vehicule (pour les camions seulement).
      */
     private JTextField Tonnage;
 
@@ -99,6 +100,7 @@ public class VueAjouterVehicule extends Vue {
     /***************************************************************/
     /**
      * Constructeur de la classe VueAjouterVehicule, permettant de
+     * creer une vue servant a ajouter un vehicule (voiture ou camion).
      */
     public VueAjouterVehicule() {
         // fenetre
@@ -119,10 +121,26 @@ public class VueAjouterVehicule extends Vue {
     } // Constructeur
 
     /***************************************************************/
+	/*						Setter								   */
+    /***************************************************************/
+    /**
+     * Methode setVisible() permet d'indiquer si la fenetre doit etre visible ou non.
+     *
+     * @param visible
+     *          Booleen affichant la fenetre si il vaut true, et
+     *          ne rendant pas la fenetre visible si il vaut false.
+     */
+    @Override
+    public void setVisible(boolean visible) {
+        fenetre.setVisible(visible);
+    } // setVisible()
+
+    /***************************************************************/
 	/*						Getter								   */
     /***************************************************************/
     /**
-     * Methode getClient() renvoie ...
+     * Methode getClient() renvoie le client correspondant au nom
+     * et au prenom indiques dans les parametres.
      *
      * @param nomprenom
      *          Le nom et prenom du client.
@@ -362,7 +380,7 @@ public class VueAjouterVehicule extends Vue {
     } // Bottom()
 
     /**
-     * Methode validateData() permet de
+     * Methode validateData() permet d'indiquer si les donnees ont ete valide ou non a l'aide d'un booleen.
      *
      * @return Booleen indiquant si les donnees sont validees (true) ou non (false).
      */
@@ -372,7 +390,7 @@ public class VueAjouterVehicule extends Vue {
         }
         if (!Immatriculation.getText().matches("[-a-zA-Z0-9]{5,15}")) {
             JOptionPane.showMessageDialog(fenetre,
-                    "Immatriculation incorecte !",
+                    "Immatriculation incorrecte ! Espacer avec \"-\"",
                     "Erreur immatriculation",
                     JOptionPane.ERROR_MESSAGE);
             return false;
@@ -382,7 +400,7 @@ public class VueAjouterVehicule extends Vue {
         }
         if (!Marque.getText().matches("[a-zA-Z0-9\\s]{2,20}")) {
             JOptionPane.showMessageDialog(fenetre,
-                    "Marque incorecte !",
+                    "Marque incorrecte !",
                     "Erreur marque",
                     JOptionPane.ERROR_MESSAGE);
             return false;            
@@ -392,7 +410,7 @@ public class VueAjouterVehicule extends Vue {
         }
         if (!Modele.getText().matches("[a-zA-Z0-9\\s]{2,20}")) {
             JOptionPane.showMessageDialog(fenetre,
-                    "Modele incorect !",
+                    "Modele incorrect !",
                     "Erreur modele",
                     JOptionPane.ERROR_MESSAGE);
             return false;
@@ -404,7 +422,7 @@ public class VueAjouterVehicule extends Vue {
             }
             if (!Hauteur.getText().matches("[0-9.]{0,2}")) {
                 JOptionPane.showMessageDialog(fenetre,
-                        "Hauteur incorecte !",
+                        "Hauteur incorrecte !",
                         "Erreur hauteur",
                         JOptionPane.ERROR_MESSAGE);
                 return false;
@@ -414,7 +432,7 @@ public class VueAjouterVehicule extends Vue {
             }
             if (!Tonnage.getText().matches("[0-9.]{0,2}")) {
                 JOptionPane.showMessageDialog(fenetre,
-                        "Tonnage incorect !",
+                        "Tonnage incorrect !",
                         "Erreur tonnage",
                         JOptionPane.ERROR_MESSAGE);
                 return false;
@@ -425,7 +443,7 @@ public class VueAjouterVehicule extends Vue {
     } // validateData()
 
     /**
-     * Methode afficherClients() permet de
+     * Methode afficherClients() permet d'afficher tous les clients par leur nom et prenom.
      */
     public void afficherClients() {
         String identite;
@@ -442,10 +460,5 @@ public class VueAjouterVehicule extends Vue {
     public void mettreAJour() {
         return;
     } // mettreAJour()
-
-    @Override
-    public void setVisible(boolean visible) {
-        fenetre.setVisible(visible);
-    }
 
 } // VueAjouterVehicule class

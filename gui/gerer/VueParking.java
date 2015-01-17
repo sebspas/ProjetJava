@@ -21,8 +21,10 @@ import java.io.IOException;
 import java.io.Serializable;
 
 /**
- * Class VueParking, herite de la classe Vue, permettant de ...
+ * Class VueParking, herite de la classe Vue, permettant de creer une
+ * nouvelle vue qui correspondra a la fenetre principale de l'application.
  *
+ * @see Vue, Serializable
  * @author Chergui, Coadalen, Corfa, Corral
  */
 public class VueParking extends Vue implements Serializable{
@@ -30,40 +32,61 @@ public class VueParking extends Vue implements Serializable{
 	/*						Debut Donnees Membres 				   */
     /***************************************************************/
     /**
-     *
+     * La fenetre principale de l'application.
      */
     private JFrame fenetre = new JFrame("Affichage Parking");
 
     /**
-     *
+     * Le panneau correspondant au parking.
      */
     private JPanel affichageParking = new JPanel();
-    private JPanel main, legende;
 
+    /**
+     * Les panneaux main, legende et panel1.
+     */
+    private JPanel main, legende, panel1;
+
+    /**
+     * L'etiquette contenant le titre de cette vue.
+     */
     private JLabel titre;
+
+    /**
+     * Les "boutons" 1 a 6 (non cliquables).
+     */
     private JButton bouton1, bouton2, bouton3, bouton4, bouton5, bouton6;
 
     /**
-     *
+     * La barre de progression indiquant la capacite du parking.
      */
     private JProgressBar progressBar = new JProgressBar();
 
     /**
-     *
+     * L'image/l'icone de la voiture.
      */
-    private JPanel panel1;
-
     private ImageIcon icon_voiture;
+
+    /**
+     * L'image/l'icone du camion.
+     */
     private ImageIcon icon_camion;
+
+    /**
+     * L'image/l'icone d'une place reservee.
+     */
     private ImageIcon icon_reservee;
+
+    /**
+     * L'image/l'icone d'une place disponible.
+     */
     private ImageIcon icon_disponible;
 
-    
     /***************************************************************/
 	/*						Constructeur						   */
     /***************************************************************/
     /**
-     * Constructeur de la classe VueParking, permettant de ...
+     * Constructeur de la classe VueParking, permettant de creer une vue representant
+     * le parking avec toutes les fonctionnalites possibles a cette vue.
      */
     public VueParking() {
         try {
@@ -114,12 +137,27 @@ public class VueParking extends Vue implements Serializable{
     } // Constructeur
 
     /***************************************************************/
+	/*						Setter								   */
+    /***************************************************************/
+    /**
+     * Methode setVisible() permet d'indiquer si la fenetre doit etre visible ou non.
+     *
+     * @param visible
+     *          Booleen affichant la fenetre si il vaut true, et
+     *          ne rendant pas la fenetre visible si il vaut false.
+     */
+    @Override
+    public void setVisible(boolean visible) {
+        fenetre.setVisible(visible);
+    } // setVisible()
+
+    /***************************************************************/
 	/*						Methodes							   */
     /***************************************************************/
     /**
-     * Methode AffichageParking() permet de ...
+     * Methode AffichageParking() permet d'afficher le parking cree prealablement.
      *
-     * @return
+     * @return Le parking a afficher
      */
     private JPanel AffichageParking() {
         affichageParking.removeAll();
@@ -181,7 +219,7 @@ public class VueParking extends Vue implements Serializable{
     } // AffichageParking()
 
     /**
-     * Methode legende() permet de ...
+     * Methode legende() permet de creer une legende des differentes images utilisees danns le parking.
      *
      * @return Le panneau "legende".
      */
@@ -222,9 +260,10 @@ public class VueParking extends Vue implements Serializable{
     } // legende()
 
     /**
-     * Methode barreMenus() permet de ...
+     * Methode barreMenus() permet de creer un menu sous forme de
+     * barre horizontale et qui contient plusieurs fonctionnalites.
      *
-     * @return
+     * @return La barre de menu.
      */
     private JMenuBar barreMenus() {
         JMenuBar barre = new JMenuBar();
@@ -236,9 +275,9 @@ public class VueParking extends Vue implements Serializable{
     } // barreMenus()
 
     /**
-     * Methode creerMenuFichier() permet de ...
+     * Methode creerMenuFichier() permet de creer une section "Fichier" dans la barre de menu.
      *
-     * @return
+     * @return Le menu "Fichier".
      */
     private JMenu creerMenuFichier() {
         JMenu menuFichier = new JMenu("Fichier");
@@ -248,6 +287,11 @@ public class VueParking extends Vue implements Serializable{
         return menuFichier;
     } // creerMenuFichier()
 
+    /**
+     * Methode creerMenuOuvrir() permet de creer un item "Ouvrir" dans le menu "Fichier".
+     *
+     * @return L'item "Liste vehicules".
+     */
     private JMenuItem creerMenuOuvrir() {
         JMenuItem menu = new JMenuItem("Ouvrir");
         menu.addActionListener(new ActionListener() {
@@ -267,8 +311,13 @@ public class VueParking extends Vue implements Serializable{
             }
         });
         return menu;
-    }
-    
+    } // creerMenuOuvrir()
+
+    /**
+     * Methode creerMenuSauvegarder() permet de creer un item "Sauvegarder" dans le menu "Fichier".
+     *
+     * @return L'item "Sauvegarder".
+     */
     private JMenuItem creerMenuSauvegarder() {
         JMenuItem menu = new JMenuItem("Sauvegarder");
         menu.addActionListener(new ActionListener() {
@@ -280,11 +329,12 @@ public class VueParking extends Vue implements Serializable{
             }
         });
         return menu;
-    }
+    } // creerMenuSauvegarder()
+
     /**
-     * Methode creerMenuFichierQuitter() permet de ...
+     * Methode creerMenuFichierQuitter() permet de creer un item "Quitter" dans le menu "Fichier".
      *
-     * @return
+     * @return L'item "Quitter".
      */
     private JMenuItem creerMenuFichierQuitter() {
         JMenuItem menu = new JMenuItem("Quitter");
@@ -299,7 +349,8 @@ public class VueParking extends Vue implements Serializable{
     } // creerMenuFichierQuitter()
 
     /**
-     * Methode actionMenuFichierQuitter() permet de ...
+     * Methode actionMenuFichierQuitter() permet d'afficher un message
+     * de confirmation lors de la fermeture de la fenetre principale.
      */
     private void actionMenuFichierQuitter() {
         if (JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(fenetre, "Voulez-vous vraiment quitter ?"))
@@ -307,9 +358,9 @@ public class VueParking extends Vue implements Serializable{
     } // actionMenuFichierQuitter()
 
     /**
-     * Methode creerMenuVehicule() permet de ...
+     * Methode creerMenuVehicule() permet de creer une section "Vehicule" dans la barre de menu.
      *
-     * @return
+     * @return Le menu "Vehicule".
      */
     private JMenu creerMenuVehicule() {
         JMenu menuVehicule = new JMenu("Vehicule");
@@ -319,9 +370,9 @@ public class VueParking extends Vue implements Serializable{
     } // creerMenuVehicule()
 
     /**
-     * Methode creerMenuVehiculeListe() permet de ...
+     * Methode creerMenuVehiculeListe() permet de creer un item "Liste vehicules" dans le menu "Vehicule".
      *
-     * @return
+     * @return L'item "Liste vehicules".
      */
     private JMenuItem creerMenuVehiculeListe() {
         JMenuItem menu = new JMenuItem("Liste vehicules");
@@ -336,7 +387,7 @@ public class VueParking extends Vue implements Serializable{
     } // creerMenuVehiculeListe()
 
     /**
-     * Methode actionMenuVehiculeListe() permet de ...
+     * Methode actionMenuVehiculeListe() permet d'afficher une liste de vehicule automatiquement mise a jour.
      */
     private void actionMenuVehiculeListe() {
         parking.gui.Vue listeVehicule = new VueVehicule();
@@ -344,9 +395,9 @@ public class VueParking extends Vue implements Serializable{
     } // actionMenuVehiculeListe()
 
     /**
-     * Methode creerMenuVehiculeAjouterVehicule() permet de ...
+     * Methode creerMenuVehiculeAjouterVehicule() permet de creer un item "Ajouter vehicule" dans le menu "Vehicule".
      *
-     * @return
+     * @return L'item "Ajouter vehicule".
      */
     private JMenuItem creerMenuVehiculeAjouterVehicule() {
         JMenuItem menu = new JMenuItem("Ajouter vehicule");
@@ -361,19 +412,28 @@ public class VueParking extends Vue implements Serializable{
     } // creerMenuVehiculeAjouterVehicule()
 
     /**
-     * Methode actionMenuVehiculeAjouterVoiture() permet de ...
+     * Methode actionMenuVehiculeAjouterVoiture() permet d'ajouter une voiture dans le parking.
      */
     private void actionMenuVehiculeAjouterVoiture() {
         parking.gui.Vue AjouterVehicule = new VueAjouterVehicule();
     } // actionMenuVehiculeAjouterVoiture()
 
-
+    /**
+     * Methode creerMenuClient() permet de creer une section "Client" dans la barre de menu.
+     *
+     * @return Le menu "Client".
+     */
     private JMenu creerMenuClient() {
         JMenu menuClient = new JMenu("Client");
         menuClient.add(creerMenuClientNouveau());
         return menuClient;
     } // creerMenuClient()
 
+    /**
+     * Methode creerMenuClientNouveau() permet de creer un item "Nouveau" dans le menu "Client".
+     *
+     * @return L'item "Nouveau".
+     */
     private JMenuItem creerMenuClientNouveau() {
         JMenuItem menu = new JMenuItem("Nouveau");
         menu.addActionListener(new ActionListener() {
@@ -386,18 +446,29 @@ public class VueParking extends Vue implements Serializable{
         return menu;
     } // creerMenuClientNouveau()
 
-
+    /**
+     * Methode actionMenuClientNouveau() permet d'ajouter un nouveau client.
+     */
     private void actionMenuClientNouveau() {
        parking.gui.Vue NouveauClient = new VueNouveauClient();
     } // actionMenuClientNouveau()
 
-
+    /**
+     * Methode creerMenuTimer() permet de creer une section "Timer" dans la barre de menu.
+     *
+     * @return Le menu "Timer".
+     */
     private JMenu creerMenuTimer() {
         JMenu menuTimer = new JMenu("Timer");
         menuTimer.add(creerMenuTimerAfficher());
         return menuTimer;
     } // creerMenuTimer()
 
+    /**
+     * Methode creerMenuTimerAfficher() permet de creer un item "Afficher" dans le menu "Timer".
+     *
+     * @return L'item "Afficher".
+     */
     private JMenuItem creerMenuTimerAfficher() {
         JMenuItem menu = new JMenuItem("Afficher");
         menu.addActionListener(new ActionListener() {
@@ -410,11 +481,12 @@ public class VueParking extends Vue implements Serializable{
         return menu;
     } // creerMenuTimerAfficher()
 
-
+    /**
+     * Methode actionMenuTimerAfficher() permet de rendre le timer visible.
+     */
     private void actionMenuTimerAfficher() {
         Timer.getInstance().getVue().setVisible(true);
     } // actionMenuTimerAfficher()
-
 
     /**
      * Methode mettreAJour() permet de mettre a jour la vue.
@@ -431,10 +503,5 @@ public class VueParking extends Vue implements Serializable{
         affichageParking.revalidate();
         affichageParking.repaint();
     } // mettreAJour()
-
-    @Override
-    public void setVisible(boolean visible) {
-        fenetre.setVisible(visible);
-    }
 
 } // VueParking class
