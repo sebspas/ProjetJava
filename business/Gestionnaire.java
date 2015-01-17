@@ -7,16 +7,17 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.*;
 
 /**
- * Classe qui permet de sauvegarder ou de charger(lire) un parking.
- *  
+ * Classe Gestionnaire permettant de sauvegarder ou de charger(lire) un parking.
  *
  * @author Chergui, Coadalen, Corfa, Corral
  */
 public class Gestionnaire {
-
+    /***************************************************************/
+	/*						Methodes							   */
+    /***************************************************************/
     /**
-     * Methode sauvegarder(), permet de sauvegarder le parking dans un fichier .ser
-     * et crée le répertoire saves si il n'existe pas.
+     * Methode sauvegarder(), permet de sauvegarder le parking dans un
+     * fichier .ser et cree le repertoire saves si il n'existe pas.
      */
     public void sauvegarder(){
         new File("saves").mkdir();
@@ -42,12 +43,12 @@ public class Gestionnaire {
                 ex.printStackTrace();
             }
         }
-    }
+    } // sauvegarder()
 
     /**
-     * Lit et charge le fichier passer en parametre. 
+     * Methode lire() permet de lire et charger le fichier passe en parametre.
      * @param fichier
-     *      Nom du fichier de save du parking.
+     *          Nom du fichier de save du parking.
      */
     public void lire(String fichier){
         File flux = new File(fichier);
@@ -90,5 +91,6 @@ public class Gestionnaire {
                 ex.printStackTrace();
             }
         }
-    }
-}
+    } // lire()
+
+} // Gestionnaire class

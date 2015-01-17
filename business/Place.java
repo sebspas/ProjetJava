@@ -11,9 +11,10 @@ import parking.exception.business.PlaceReserverException;
 import java.io.Serializable;
 
 /**
- * Class Place permmettant de creer une nouvelle place au parking avec son numero,
- * son type, le vehicule qui s'y situe, etc..
+ * Class Place permmettant de creer une nouvelle place au parking
+ * avec son numero, son type, le vehicule qui s'y situe, etc..
  *
+ * @see Serializable
  * @author Chergui, Coadalen, Corfa, Corral
  */
 public class Place implements Serializable{
@@ -45,8 +46,8 @@ public class Place implements Serializable{
 	/***************************************************************/
 	/**
 	 * Constructeur de la classe Place, permettant de creer une place a partir
-	 * du type specifie en parametre ainsi que les informations utliles pour
-	 * une place, celle ci n'est pas reservee pas defaut.
+	 * du type specifie en parametre ainsi que les informations utliles
+	 * pour une place, celle ci n'est pas reservee pas defaut.
 	 *
 	 * @param type
 	 *			Le type de la place.
@@ -147,7 +148,7 @@ public class Place implements Serializable{
 	 * Methode setReservation() permet de reserver ou non la place.
 	 *
 	 * @param Reserver
-	 * 		Boolean True pour reserver, false pour dereserver
+	 * 		Boolean True pour reserver, false pour "dereserver".
 	 */
 	public void setReservation(boolean Reserver) {
 		// On définit la place à reserver ou non

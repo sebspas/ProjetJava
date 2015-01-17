@@ -14,6 +14,7 @@ import java.util.ArrayList;
  * Class Client permettant d'ajouter un client en indiquant diverses informations telles que
  * son nom, son prenom, son adresse, ses points de fidelite, etc..
  *
+ * @see Serializable
  * @author Chergui, Coadalen, Corfa, Corral
  */
 public class Client implements Serializable{

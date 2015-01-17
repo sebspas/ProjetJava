@@ -10,19 +10,25 @@ import parking.business.facture.Calcul.CalculertarifPreferentiel;
 import parking.exception.business.MethodeNonGeree;
 
 /**
- * Class FabriqueCalculerTarif, qui implemente la classe IFabriqueCalculerTarif, permet de creer un CalculerTarifHeure ou
- * un autre type de calcul selon les parametres avec lesquels est appelee la fonction creer..
+ * Class FabriqueCalculerTarif, qui implemente la classe IFabriqueCalculerTarif,
+ * permet de creer un CalculerTarifHeure ou un autre type de calcul
+ * selon les parametres avec lesquels est appelee la fonction creer.
  *
+ * @see IFabriqueCalculerTarif
  * @author Chergui, Coadalen, Corfa, Corral
  */
 public class FabriqueCalculerTarif implements IFabriqueCalculerTarif {
-
+    /***************************************************************/
+	/*						Methodes							   */
+    /***************************************************************/
     /**
-     * * Fonction créant la methode de calcul correspondant au nom passer en parametre.
+     * Methode creer() permettant la creation de la methode
+     * de calcul correspondant au nom passe en parametre.
+     *
      * @param nom
-     *      Nom de la methode de calcul.
+     *          Nom de la methode de calcul.
      * @return CalculerTarif
-     *      Methode de calcul chosit.
+     *          Methode de calcul chosit.
      * @throws MethodeNonGeree
      */
     @Override
@@ -39,5 +45,6 @@ public class FabriqueCalculerTarif implements IFabriqueCalculerTarif {
         else {
             throw new MethodeNonGeree();
         }
-    }
-}
+    } // creer()
+
+} // FabriqueCalculerTarif class

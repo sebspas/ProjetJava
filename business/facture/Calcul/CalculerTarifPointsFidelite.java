@@ -12,7 +12,7 @@ import java.io.Serializable;
  * Class CalculerTarifPointsFidelite, qui implemente l'interface CalculerTarif, et rajoute des
  * informations suplementaires dont elle a besoin pour calculer le tarif selon des points de fidelite.
  *
- * @see CalculerTarif
+ * @see CalculerTarif, Serializable
  * @author Chergui, Coadalen, Corfa, Corral
  */
 public class CalculerTarifPointsFidelite implements CalculerTarif, Serializable {
@@ -21,12 +21,12 @@ public class CalculerTarifPointsFidelite implements CalculerTarif, Serializable 
 	/*						Methodes							   */
     /***************************************************************/
     /**
-     * Implementation calculerTarif(), de la classe CalculerTarifPointsFidelite, permettant
-     * de calculer le tarif selon les points de fidelite d'un client.
+     * Implementation calculerTarif(), de la classe CalculerTarifPointsFidelite,
+     * permettant de calculer le tarif selon les points de fidelite d'un client.
      *
      * @param p
-     *          La place sur laquelle on effectue le calcul du tarif selon
-     *          les points de fidelite d'un client.
+     *          La place sur laquelle on effectue le calcul du
+     *          tarif selon les points de fidelite d'un client.
      * @return Le tarif du client selon ses points de fidelite.
      */
     @Override

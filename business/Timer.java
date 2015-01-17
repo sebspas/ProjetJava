@@ -8,9 +8,10 @@ import parking.gui.gerer.VueTimer;
 import java.io.Serializable;
 
 /**
- * Class Timer qui cree un timer permettant de simuler le temps passe sur le
- * parking et permet de determiner le tarif de la facture des vehicules.
+ * Class Timer qui cree un timer permettant de simuler le temps passe sur
+ * le parking et permet de determiner le tarif de la facture des vehicules.
  *
+ * @see Thread, Serializable
  * @author Chergui, Coadalen, Corfa, Corral
  */
 public class Timer extends Thread implements Serializable {
@@ -18,7 +19,7 @@ public class Timer extends Thread implements Serializable {
 	/*						Debut Donnees Membres 				   */
     /***************************************************************/
     /**
-     * La vue.
+     * La vue du timer.
      */
     private VueTimer vue;
 
@@ -56,7 +57,8 @@ public class Timer extends Thread implements Serializable {
 	/*						Constructeur						   */
     /***************************************************************/
     /**
-     * Constructeur de la classe Timer, permettant de
+     * Constructeur de la classe Timer, permettant d'initialiser un timer au
+     * jour, heure, minute, seconde et vitesse definient dans les parametres.
      *
      * @param day
      *          Le nombre de jour(s).

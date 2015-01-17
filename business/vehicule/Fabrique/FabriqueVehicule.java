@@ -12,6 +12,7 @@ import parking.business.vehicule.Voiture;
  * Class FabriqueVehicule, qui implemente la classe IFabriqueVehicule,
  * et permet de fabriquer un vehicule (Voiture ou Camion).
  *
+ * @see IFabriqueVehicule
  * @author Chergui, Coadalen, Corfa, Corral
  */
 public class FabriqueVehicule implements IFabriqueVehicule {

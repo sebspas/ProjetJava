@@ -11,7 +11,7 @@ import java.io.Serializable;
  * Class CalculerTarifPointsFidelite, qui implemente l'interface CalculerTarif, et rajoute des
  * informations suplementaires dont elle a besoin pour calculer le tarif selon des points de fidelite.
  *
- * @see CalculerTarif
+ * @see CalculerTarif, Serializable
  * @author Chergui, Coadalen, Corfa, Corral
  */
 public class CalculertarifPreferentiel implements CalculerTarif, Serializable {
@@ -47,4 +47,5 @@ public class CalculertarifPreferentiel implements CalculerTarif, Serializable {
     public String toString() {
         return "CalculerTarifPreferentiel";
     } // toString()
-}
+
+} // CalculertarifPreferentiel class

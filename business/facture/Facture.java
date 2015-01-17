@@ -15,9 +15,10 @@ import java.io.FileWriter;
 import java.io.Serializable;
 
 /**
- * Class Facture permettant de creer une nouvelle facture comportant des informations telles
- * que le numero de facture, le tarif, le client et le vehicule associe.
+ * Class Facture permettant de creer une nouvelle facture comportant des informations
+ * telles que le numero de facture, le tarif, le client et le vehicule associe.
  *
+ * @see Serializable
  * @author Chergui, Coadalen, Corfa, Corral
  */
 public class Facture implements Serializable{
@@ -43,24 +44,24 @@ public class Facture implements Serializable{
      * Le vehicule concerne par la facture.
      */
     private Vehicule vehicule;
-    
+
     /**
-     * L'heure d'arrivée du véhicule.
+     * L'heure d'arrivee du vehicule.
      */
     private int heureArr;
 
     /**
-     * L'heure de départ du véhicule.
+     * L'heure de depart du vehicule.
      */
     private int heureDep;
 
     /**
-     * Le jour d'arrivé du véhicule. 
+     * Le jour d'arrive du vehicule.
      */
     private int jourArr;
 
     /**
-     * Le jour de départ du véhicule.
+     * Le jour de depart du vehicule.
      */
     private int jourDep;
 
@@ -68,8 +69,8 @@ public class Facture implements Serializable{
 	/*						Constructeur						   */
     /***************************************************************/
     /**
-     * Constructeur de la classe Facture, permettant de creer une facture
-     * a partir de la place concernee par celle ci.
+     * Constructeur de la classe Facture, permettant de creer
+     * une facture a partir de la place concernee par celle ci.
      *
      * @param place
      *          La place associee a la facture.

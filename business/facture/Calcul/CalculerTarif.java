@@ -1,5 +1,8 @@
 package parking.business.facture.Calcul;
 
+/***************************************************************/
+/*						Import						   		   */
+/***************************************************************/
 import parking.business.Place;
 
 import java.io.Serializable;
@@ -12,13 +15,13 @@ import java.io.Serializable;
  */
 public interface CalculerTarif {
     /**
-     * Methode abstrite calculerTarif(), de la classe CalculerTarifHeure, permettant de
+     * Methode abstraite calculerTarif(), de la classe CalculerTarifHeure, permettant de
      * calculer le tarif d'une place pour un client.
      *
      * @param p
      *          La place sur laquelle on effectue le calcul du tarif a l'heure.
-     * @return Le tarif calculer.
+     * @return Le tarif calcule.
      */
     public double calculerTarif(Place p);
 
-}
+} // CalculerTarif interface

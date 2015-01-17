@@ -1,5 +1,8 @@
 package parking.gui.ajouter;
 
+/***************************************************************/
+/*						Import						   		   */
+/***************************************************************/
 import parking.business.Client;
 import parking.business.Gestionnaire;
 import parking.business.Parking;
@@ -20,31 +23,47 @@ import java.awt.event.ActionListener;
 import java.io.File;
 
 /**
- * Created by jonathan on 17/01/2015.
+ * Class VueCreation permettant de creer une vue // TODO .....................
+ *
+ * @author Chergui, Coadalen, Corfa, Corral
  */
 public class VueCreation {
-
     /***************************************************************/
 	/*						Debut Donnees Membres 				   */
     /***************************************************************/
     /**
-     *
+     *  // TODO
      */
     private JFrame fenetre = new JFrame("Nouveau parking");
 
+    /**
+     *  // TODO
+     */
     private JPanel top, top1, top2, top2Left, top2Right,
             center, topCenter, midCenter, midCenterLeft, midCenterRight, midBottom,
             bottom, topBottom, topBottomLeft, topBottomRight,
             main;
 
+    /**
+     *  // TODO
+     */
     private ImageIcon img = new ImageIcon(getClass().getResource("../ressources/parking.png"));
 
+    /**
+     *  // TODO
+     */
     private JLabel JLimg, labelPlacesMax, labelTarifParticulier, labelTarifTransporteur,
                    labelNomParking, labelNbPlacesParticulier, labelNbPlacesTransporteur;
 
+    /**
+     *  // TODO
+     */
     private JTextField PlacesMax, TarifParticulier, TarifTransporteur,
                        NomParking, NbPlacesParticulier, NbPlacesTransporteur;
 
+    /**
+     * Le bouton "Valider" de cette vue.
+     */
     private final JButton Valider = new JButton();
 
 
@@ -52,7 +71,7 @@ public class VueCreation {
 	/*						Constructeur						   */
     /***************************************************************/
     /**
-     * Constructeur de la classe VueAjouterVehicule, permettant de
+     * Constructeur de la classe VueCreation, permettant de // TODO
      */
     public VueCreation() {
         // fenetre
@@ -73,16 +92,13 @@ public class VueCreation {
         fenetre.setVisible(true);
     } // Constructeur
 
-
     /***************************************************************/
 	/*						Methodes							   */
     /***************************************************************/
-
-
     /**
-     * Methode barreMenus() permet de ...
+     * Methode barreMenus() permet de // TODO
      *
-     * @return
+     * @return // TODO
      */
     private JMenuBar barreMenus() {
         JMenuBar barre = new JMenuBar();
@@ -91,9 +107,9 @@ public class VueCreation {
     } // barreMenus()
 
     /**
-     * Methode creerMenuFichier() permet de ...
+     * Methode creerMenuFichier() permet de // TODO
      *
-     * @return
+     * @return // TODO
      */
     private JMenu creerMenuFichier() {
         JMenu menuFichier = new JMenu("Fichier");
@@ -102,6 +118,11 @@ public class VueCreation {
         return menuFichier;
     } // creerMenuFichier()
 
+    /**
+     * // TODO
+     *
+     * @return // TODO
+     */
     private JMenuItem creerMenuOuvrir() {
         JMenuItem menu = new JMenuItem("Ouvrir");
         menu.addActionListener(new ActionListener() {
@@ -112,7 +133,7 @@ public class VueCreation {
                         "Fichiers ser.", "ser");
                 dialogue.addChoosableFileFilter(filter);
                 dialogue.setAcceptAllFileFilterUsed(false);
-                dialogue.setCurrentDirectory(new File( "./saves" ) );
+                dialogue.setCurrentDirectory(new File("./saves"));
                 dialogue.showOpenDialog(null);
                 if (dialogue.getSelectedFile() != null) {
                     Parking.getInstance();
@@ -126,9 +147,9 @@ public class VueCreation {
     }
 
     /**
-     * Methode creerMenuFichierQuitter() permet de ...
+     * Methode creerMenuFichierQuitter() permet de // TODO
      *
-     * @return
+     * @return // TODO
      */
     private JMenuItem creerMenuFichierQuitter() {
         JMenuItem menu = new JMenuItem("Quitter");
@@ -143,14 +164,12 @@ public class VueCreation {
     } // creerMenuFichierQuitter()
 
     /**
-     * Methode actionMenuFichierQuitter() permet de ...
+     * Methode actionMenuFichierQuitter() permet de // TODO
      */
     private void actionMenuFichierQuitter() {
         if (JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(fenetre, "Voulez-vous vraiment quitter ?"))
             System.exit(0);
     } // actionMenuFichierQuitter()
-
-
 
     /**
      * Methode Top() permet de creer un panneau afin de ne
@@ -208,8 +227,8 @@ public class VueCreation {
     } // Top()
 
     /**
-     * Methode Center() permet de creer un panneau afin de ne
-     * s'occuper que de la partie centrale de la fenetre.
+     * Methode Center() permet de creer un panneau afin de
+     * ne s'occuper que de la partie centrale de la fenetre.
      *
      * @return Le panneau au centre de la fenetre.
      */
@@ -334,6 +353,11 @@ public class VueCreation {
         return bottom;
     } // Bottom()
 
+    /**
+     * // TODO
+     *
+     * @return // TODO
+     */
     public boolean validateData() {
         if (NomParking.getText().isEmpty()) {
             return false;
@@ -402,4 +426,4 @@ public class VueCreation {
         return true;
     } // validateData()
 
-} // VueCreation
+} // VueCreation class

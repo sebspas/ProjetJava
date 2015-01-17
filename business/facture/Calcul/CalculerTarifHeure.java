@@ -14,7 +14,7 @@ import java.io.Serializable;
  * Class CalculerTarifHeure, qui implemente l'interface CalculerTarif, et rajoute des
  * informations suplementaires dont elle a besoin pour calculer le tarif à l'heure.
  *
- * @see CalculerTarif
+ * @see CalculerTarif, Serializable
  * @author Chergui, Coadalen, Corfa, Corral
  */
 public class CalculerTarifHeure implements CalculerTarif, Serializable{
