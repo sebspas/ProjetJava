@@ -42,15 +42,17 @@ public class Sauvegarde {
             Parking.getInstance().setNom(parking.getNom());
             Parking.getInstance().setNumeroFacture(parking.getNumeroFacture());
             
-            //Parking.getInstance().setListeVueNotifiable(parking.getListeVueNotifiable());
-            
             Parking.getInstance().setListePlaces(parking.getListePlaces());
+            
             Parking.getInstance().setListeFacture(parking.getListeFacture());
+            
             Parking.getInstance().setListeClients(parking.getListeClients());
+            
             Parking.getInstance().setNbPlacesMax(parking.getNbPlacesMax());
+            
             Parking.getInstance().setTarifParticulier(parking.getTarifParticulier());
             Parking.getInstance().setTarifTransporteur(parking.getTarifTransporteur());
-            Parking.getInstance().setAppelInterne(parking.isAppelInterne());
+
             Parking.getInstance().setNbPlaceOccupees(parking.getNbPlaceOccupees());
             Parking.getInstance().notifier();
         }

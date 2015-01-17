@@ -122,15 +122,20 @@ public class VueParking extends Vue implements Serializable{
      */
     private JPanel AffichageParking() {
         affichageParking.removeAll();
+        System.out.println("========================================");
         for (Place p : Parking.getInstance().getListePlaces()) {
             final ButtonPlace button = new ButtonPlace(p);
 
             button.setRolloverEnabled(false);
-            button.setBackground(new Color(22, 160, 133));
                 
             button.setPreferredSize(new Dimension(190,70));
-            if (p.getType() == "Transporteur") {
+
+            System.out.println(p.getType());
+            if (p.getType().equals("Transporteur")) {
                 button.setBackground(new Color(52, 152, 219));
+            }
+            if (p.getType().equals("Particulier")) {
+                button.setBackground(new Color(22, 160, 133));
             }
             if (p.getVehicule() != null) {
                 button.setText(String.valueOf(p.getVehicule().getImmatriculation()));
