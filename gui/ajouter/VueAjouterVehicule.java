@@ -326,7 +326,7 @@ public class VueAjouterVehicule extends Vue {
                     fenetre.dispose();
                 } else {
                     JOptionPane.showMessageDialog(fenetre,
-                            "Vous devez remplir tous les champs !",
+                            "Enregistrement impossible !",
                             "Inane error",
                             JOptionPane.ERROR_MESSAGE);
                 }
@@ -370,18 +370,53 @@ public class VueAjouterVehicule extends Vue {
         if (Immatriculation.getText().isEmpty()) {
             return false;
         }
+        if (!Immatriculation.getText().matches("[-a-zA-Z0-9]{5,15}")) {
+            JOptionPane.showMessageDialog(fenetre,
+                    "Immatriculation incorecte !",
+                    "Erreur immatriculation",
+                    JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
         if (Marque.getText().isEmpty()) {
             return false;
         }
+        if (!Marque.getText().matches("[a-zA-Z0-9\\s]{2,20}")) {
+            JOptionPane.showMessageDialog(fenetre,
+                    "Marque incorecte !",
+                    "Erreur marque",
+                    JOptionPane.ERROR_MESSAGE);
+            return false;            
+        }
         if (Modele.getText().isEmpty()) {
             return  false;
+        }
+        if (!Modele.getText().matches("[a-zA-Z0-9\\s]{2,20}")) {
+            JOptionPane.showMessageDialog(fenetre,
+                    "Modele incorect !",
+                    "Erreur modele",
+                    JOptionPane.ERROR_MESSAGE);
+            return false;
         }
 
         if (typeVehicule.getSelectedItem() == "Camion") {
             if (Hauteur.getText().isEmpty()) {
                 return false;
             }
+            if (!Hauteur.getText().matches("[0-9.]{0,2}")) {
+                JOptionPane.showMessageDialog(fenetre,
+                        "Hauteur incorecte !",
+                        "Erreur hauteur",
+                        JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
             if (Tonnage.getText().isEmpty()) {
+                return false;
+            }
+            if (!Tonnage.getText().matches("[0-9.]{0,2}")) {
+                JOptionPane.showMessageDialog(fenetre,
+                        "Tonnage incorect !",
+                        "Erreur tonnage",
+                        JOptionPane.ERROR_MESSAGE);
                 return false;
             }
         }
@@ -405,10 +440,7 @@ public class VueAjouterVehicule extends Vue {
      */
     @Override
     public void mettreAJour() {
-        //listeClients = AfficheListeVehicule();
-
-        //listeVehicule.revalidate();
-        //listeVehicule.repaint();
+        return;
     } // mettreAJour()
 
     @Override

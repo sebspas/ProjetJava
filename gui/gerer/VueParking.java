@@ -75,7 +75,7 @@ public class VueParking extends Vue {
         main.setBackground(new Color(127, 140, 141));
         fenetre.setResizable(false);
         fenetre.setLocation(300, 100);
-        fenetre.setPreferredSize(new Dimension(830, 600));
+        fenetre.setPreferredSize(new Dimension(850, 600));
         fenetre.setDefaultCloseOperation(fenetre.EXIT_ON_CLOSE);
 
         fenetre.setLayout(new BorderLayout());
@@ -182,7 +182,7 @@ public class VueParking extends Vue {
      */
     private JPanel legende() {
         legende = new JPanel();
-        legende.setPreferredSize(new Dimension(800,80));
+        legende.setPreferredSize(new Dimension(850,80));
         legende.setBackground(new Color(127, 140, 141));
 
         bouton1 = new JButton("Libre");
@@ -190,14 +190,14 @@ public class VueParking extends Vue {
         bouton3 = new JButton("Voiture");
         bouton4 = new JButton("Camion");
         bouton5 = new JButton("Transporteur");
-        bouton6 = new JButton("Vehicule");
+        bouton6 = new JButton("Particulier");
 
         bouton1.setIcon(icon_disponible);
         bouton2.setIcon(icon_reservee);
         bouton3.setIcon(icon_voiture);
         bouton4.setIcon(icon_camion);
-        bouton5.setBackground(new Color(22, 160, 133));
-        bouton6.setBackground(new Color(52, 152, 219));
+        bouton6.setBackground(new Color(22, 160, 133));
+        bouton5.setBackground(new Color(52, 152, 219));
 
         legende.add(bouton1, BorderLayout.CENTER);
         legende.add(bouton2, BorderLayout.CENTER);

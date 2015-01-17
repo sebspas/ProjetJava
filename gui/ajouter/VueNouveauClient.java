@@ -231,10 +231,31 @@ public class VueNouveauClient extends Vue {
      * @return Booleen indiquant si les donnees sont validees (true) ou non (false).
      */
     public boolean validateData() {
-        if (!Nom.getText().isEmpty() && !Prenom.getText().isEmpty() && !Adresse.getText().isEmpty())
-            return true;
-
-        return false;
+        if (Nom.getText().isEmpty() && Prenom.getText().isEmpty() && Adresse.getText().isEmpty())
+            return false;
+        if (!Nom.getText().matches("[a-zA-Z-_]{2,35}")) {
+            JOptionPane.showMessageDialog(fenetre,
+                    "Nom incorect !",
+                    "Erreur nom",
+                    JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if (!Prenom.getText().matches("[a-zA-Z-_]{2,35}")) {
+            JOptionPane.showMessageDialog(fenetre,
+                    "Prenom incorect !",
+                    "Erreur prenom",
+                    JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if (!Adresse.getText().matches("[a-zA-Z-_.,\\s]*")) {
+            JOptionPane.showMessageDialog(fenetre,
+                    "Adresse incorecte !",
+                    "Erreur adresse",
+                    JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+            
+        return true;
     } // validateData()
 
 

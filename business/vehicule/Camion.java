@@ -20,12 +20,12 @@ public class Camion extends Vehicule{
 	/**
 	 * Le tonnage du camion.
 	 */
-	private int tonnage;
+	private double tonnage;
 
 	/**
 	 * La hauteur du camion.
 	 */
-	private int hauteur;
+	private double hauteur;
 
 
 	/***************************************************************/
