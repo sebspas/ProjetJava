@@ -68,6 +68,8 @@ public class VueVehicule extends Vue {
      * Le bouton indique "Deparker" dans la vue.
      */
     private JButton unpark_vehicule;
+    
+    private JButton supprimer_vehicule;
 
     /***************************************************************/
 	/*						Constructeur						   */
