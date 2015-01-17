@@ -84,7 +84,7 @@ public class Timer extends Thread implements Serializable {
 	/*						Getter								   */
     /***************************************************************/
     /**
-     * Methode getInstance() renvoie l'unique instance du timer si elle n'est pas déjà définit. 
+     * Methode getInstance() renvoie l'unique instance du timer si elle n'est pas deja definit.
      *
      * @return Timer
      *          Le timer unique de l'application.
@@ -110,7 +110,7 @@ public class Timer extends Thread implements Serializable {
      * Methode getTimer() renvoie une string contenant les informations du Timer.
      *
      * @return String
-     *      La chaine de caractères contenant les infos du Timer.
+     *      La chaine de caracteres contenant les infos du Timer.
      */
     public String getTimer() {
         return "Nous sommes le jour numero " + day + " ,il est : " +heures + "h et " + minutes + "min et " + secondes + " sec";
@@ -160,7 +160,7 @@ public class Timer extends Thread implements Serializable {
 	/*						Setter								   */
     /***************************************************************/
     /**
-     * Methode setVue() permet de définir la vue associée au timer.
+     * Methode setVue() permet de definir la vue associee au timer.
      *
      * @param vue
      *          La vue du timer.
@@ -170,7 +170,7 @@ public class Timer extends Thread implements Serializable {
     } // setVue()
 
     /**
-     * Methode setHeures() permet de définir l'heure du timer.
+     * Methode setHeures() permet de definir l'heure du timer.
      *
      * @param heures
      *          Le nombre d'heure(s) du timer.

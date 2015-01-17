@@ -290,7 +290,7 @@ public class VueParking extends Vue implements Serializable{
     /**
      * Methode creerMenuOuvrir() permet de creer un item "Ouvrir" dans le menu "Fichier".
      *
-     * @return L'item "Liste vehicules".
+     * @return L'item "Ouvrir".
      */
     private JMenuItem creerMenuOuvrir() {
         JMenuItem menu = new JMenuItem("Ouvrir");

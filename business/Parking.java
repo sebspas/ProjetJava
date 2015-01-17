@@ -104,7 +104,7 @@ public class Parking implements Serializable {
 	/*						Constructeur						   */
 	/***************************************************************/
 	/**
-	 * Constructeur par défaut de la classe Parking.
+	 * Constructeur par defaut de la classe Parking.
 	 */
 	private Parking() {
 		/* Initialisation des donnees membres */

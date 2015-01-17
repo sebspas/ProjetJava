@@ -168,7 +168,7 @@ public class Place implements Serializable{
 	/**
 	 * Methode toString() affiche toutes les informations de la place.
 	 *
-	 * @return Une chaine de caracteres contenant les informations spécifiques a une place.
+	 * @return Une chaine de caracteres contenant les informations specifiques a une place.
 	 */
 	@Override
 	public String toString() {
@@ -177,7 +177,7 @@ public class Place implements Serializable{
 	}// toString()
 
 	/**
-	 * Methode retirerVehicule() permet de retirer le véhicule de la place.
+	 * Methode retirerVehicule() permet de retirer le vehicule de la place.
 	 * 
 	 * @return Vehicule
 	 * 			Le vehicule retire.

@@ -340,7 +340,6 @@ public class VueAjouterVehicule extends Vue {
                             "Véhicule " + Marque.getText() + " " + Modele.getText() + " ajouté avec succès !",
                             "Success",
                             JOptionPane.PLAIN_MESSAGE);
-
                     fenetre.dispose();
                 } else {
                     JOptionPane.showMessageDialog(fenetre,

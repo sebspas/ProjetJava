@@ -23,7 +23,10 @@ import java.awt.event.ActionListener;
 import java.io.File;
 
 /**
- * Class VueCreation permettant de creer une vue // TODO .....................
+ * Class VueCreation permettant de creer une vue qui sera la toute
+ * premiere fenetre de l'application et qui aura pour but de creer un
+ * parking type selon differents criteres comme son nom, sa capacite maximum
+ * de places, son nombre de place de type particulier ou de type transporteur.
  *
  * @author Chergui, Coadalen, Corfa, Corral
  */
@@ -32,12 +35,13 @@ public class VueCreation {
 	/*						Debut Donnees Membres 				   */
     /***************************************************************/
     /**
-     *  // TODO
+     *  La fenetre de cette vue nommee "Nouveau parking".
      */
     private JFrame fenetre = new JFrame("Nouveau parking");
 
     /**
-     *  // TODO
+     *  Les differents panneaux permettant de decomposer la fenetre en plusieurs parties.
+     *  Chaque partie etant plus ou moins bien appelee en fonction de sa position dans la fenetre.
      */
     private JPanel top, top1, top2, top2Left, top2Right,
             center, topCenter, midCenter, midCenterLeft, midCenterRight, midBottom,
@@ -45,18 +49,18 @@ public class VueCreation {
             main;
 
     /**
-     *  // TODO
+     * L'image/l'icone bien connue d'un parking represente par un "P"
      */
     private ImageIcon img = new ImageIcon(getClass().getResource("../ressources/parking.png"));
 
     /**
-     *  // TODO
+     * Les differentes etiquettes servant a donner un renseignement sur chaque champ de cette vue.
      */
     private JLabel JLimg, labelPlacesMax, labelTarifParticulier, labelTarifTransporteur,
                    labelNomParking, labelNbPlacesParticulier, labelNbPlacesTransporteur;
 
     /**
-     *  // TODO
+     * Les differents champs de texte de la fenetre dont leur label a ete precise ci-dessus.
      */
     private JTextField PlacesMax, TarifParticulier, TarifTransporteur,
                        NomParking, NbPlacesParticulier, NbPlacesTransporteur;
@@ -71,7 +75,9 @@ public class VueCreation {
 	/*						Constructeur						   */
     /***************************************************************/
     /**
-     * Constructeur de la classe VueCreation, permettant de // TODO
+     * Constructeur de la classe VueCreation, permettant de creer une nouvelle
+     * vue representant la creation d'un parking ainsi que la possibilite
+     * de lui donner des valeurs afin de le parametrer comme on le souhaite.
      */
     public VueCreation() {
         // fenetre
@@ -96,9 +102,10 @@ public class VueCreation {
 	/*						Methodes							   */
     /***************************************************************/
     /**
-     * Methode barreMenus() permet de // TODO
+     * Methode barreMenus() permet de creer un menu sous forme de
+     * barre horizontale et qui contient plusieurs fonctionnalites.
      *
-     * @return // TODO
+     * @return La barre de menu.
      */
     private JMenuBar barreMenus() {
         JMenuBar barre = new JMenuBar();
@@ -107,9 +114,9 @@ public class VueCreation {
     } // barreMenus()
 
     /**
-     * Methode creerMenuFichier() permet de // TODO
+     * Methode creerMenuFichier() permet de creer une section "Fichier" dans la barre de menu.
      *
-     * @return // TODO
+     * @return Le menu "Fichier".
      */
     private JMenu creerMenuFichier() {
         JMenu menuFichier = new JMenu("Fichier");
@@ -119,9 +126,9 @@ public class VueCreation {
     } // creerMenuFichier()
 
     /**
-     * // TODO
+     * Methode creerMenuOuvrir() permet de creer un item "Ouvrir" dans le menu "Fichier".
      *
-     * @return // TODO
+     * @return L'item "Ouvrir".
      */
     private JMenuItem creerMenuOuvrir() {
         JMenuItem menu = new JMenuItem("Ouvrir");
@@ -147,9 +154,9 @@ public class VueCreation {
     }
 
     /**
-     * Methode creerMenuFichierQuitter() permet de // TODO
+     * Methode creerMenuFichierQuitter() permet de creer un item "Quitter" dans le menu "Fichier".
      *
-     * @return // TODO
+     * @return L'item "Quitter".
      */
     private JMenuItem creerMenuFichierQuitter() {
         JMenuItem menu = new JMenuItem("Quitter");
@@ -164,7 +171,8 @@ public class VueCreation {
     } // creerMenuFichierQuitter()
 
     /**
-     * Methode actionMenuFichierQuitter() permet de // TODO
+     * Methode actionMenuFichierQuitter() permet d'afficher un message
+     * de confirmation lors de la fermeture de la fenetre principale.
      */
     private void actionMenuFichierQuitter() {
         if (JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(fenetre, "Voulez-vous vraiment quitter ?"))
@@ -354,9 +362,9 @@ public class VueCreation {
     } // Bottom()
 
     /**
-     * // TODO
+     * Methode validateData() permet d'indiquer si les donnees ont ete valide ou non a l'aide d'un booleen.
      *
-     * @return // TODO
+     * @return Booleen indiquant si les donnees sont validees (true) ou non (false).
      */
     public boolean validateData() {
         if (NomParking.getText().isEmpty()) {
@@ -364,7 +372,7 @@ public class VueCreation {
         }
         if (!NomParking.getText().matches("[-a-zA-Z0-9]{5,15}")) {
             JOptionPane.showMessageDialog(fenetre,
-                    "NomParking incorecte !",
+                    "NomParking incorrect !",
                     "Erreur NomParking",
                     JOptionPane.ERROR_MESSAGE);
             return false;
@@ -374,7 +382,7 @@ public class VueCreation {
         }
         if (!TarifParticulier.getText().matches("[0-9.]{1,4}")) {
             JOptionPane.showMessageDialog(fenetre,
-                    "TarifParticulier incorecte !",
+                    "TarifParticulier incorrect !",
                     "Erreur TarifParticulier",
                     JOptionPane.ERROR_MESSAGE);
             return false;
@@ -384,7 +392,7 @@ public class VueCreation {
         }
         if (!TarifTransporteur.getText().matches("[0-9.]{1,4}")) {
             JOptionPane.showMessageDialog(fenetre,
-                    "TarifTransporteur incorecte !",
+                    "TarifTransporteur incorrect !",
                     "Erreur TarifTransporteur",
                     JOptionPane.ERROR_MESSAGE);
             return false;
@@ -395,7 +403,7 @@ public class VueCreation {
         }
         if (!NbPlacesTransporteur.getText().matches("[0-9]{1,4}")) {
             JOptionPane.showMessageDialog(fenetre,
-                    "NbPlacesTransporteur incorecte !",
+                    "NbPlacesTransporteur incorrect !",
                     "Erreur NbPlacesTransporteur",
                     JOptionPane.ERROR_MESSAGE);
             return false;
@@ -406,7 +414,7 @@ public class VueCreation {
         }
         if (!NbPlacesParticulier.getText().matches("[0-9]{1,4}")) {
             JOptionPane.showMessageDialog(fenetre,
-                    "NbPlacesParticulier incorecte !",
+                    "NbPlacesParticulier incorrect !",
                     "Erreur NbPlacesParticulier",
                     JOptionPane.ERROR_MESSAGE);
             return false;
@@ -417,7 +425,7 @@ public class VueCreation {
         }
         if (!PlacesMax.getText().matches("[0-9]{1,4}")) {
             JOptionPane.showMessageDialog(fenetre,
-                    "PlacesMax incorecte !",
+                    "PlacesMax incorrectes !",
                     "Erreur PlacesMax",
                     JOptionPane.ERROR_MESSAGE);
             return false;

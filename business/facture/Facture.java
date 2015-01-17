@@ -111,7 +111,7 @@ public class Facture implements Serializable{
     /***************************************************************/
     /**
      * Methode getNumeroFacture() renvoie le numero de la facture du client.
-     * Utilisée pour le nom de la vueFacture.
+     * Utilisee pour le nom de la vueFacture.
      *
      * @return Le nom du client
      */

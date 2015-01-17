@@ -83,9 +83,9 @@ public class Client implements Serializable{
 	/*						Getter								   */
     /***************************************************************/
     /**
-     * Methode getListeVehicule() renvoie la liste des véhicules du client.
+     * Methode getListeVehicule() renvoie la liste des vehicules du client.
      *
-     * @return La liste des véhicules du client.
+     * @return La liste des vehicules du client.
      */
     public ArrayList<Vehicule> getListeVehicule() {
         return listeVehicule;
@@ -126,7 +126,7 @@ public class Client implements Serializable{
     } // getPointsDeFidelite()
 
     /**
-     * Methode getCalculerTarif() renvoie la méthode de calcul du tarif (general) du client.
+     * Methode getCalculerTarif() renvoie la methode de calcul du tarif (general) du client.
      *
      * @return Le calcul du tarif du client.
      */

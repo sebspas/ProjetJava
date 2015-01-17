@@ -47,12 +47,12 @@ public abstract class Vehicule implements Serializable{
 	protected String type;
 
 	/**
-	 * La date d'arrivée du vehicule.
+	 * La date d'arrivee du vehicule.
 	 */
 	private int jourArrivee;
 
 	/**
-	 * L'heure d'arrivée du vehicule.
+	 * L'heure d'arrivee du vehicule.
 	 */
 	private int heureArrivee;
 
