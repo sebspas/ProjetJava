@@ -249,7 +249,9 @@ public class VueParking extends Vue implements Serializable{
         menu.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                JFileChooser dialogue = new JFileChooser();
+                dialogue.showOpenDialog(null);
+                System.out.println(dialogue.getSelectedFile());
             }
         });
         return menu;
