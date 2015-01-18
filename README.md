@@ -8,11 +8,11 @@ Projet de java S3
 ############################
 Windows
 ==========
-1)Récupérer le path du dossier bin de Java dans Programmes puis se placer dans le dossier src du projet.
+1)Récupérer le path du dossier bin de Java dans Programmes.
 
 2)Créer un nouveau dossier
 
-3)Dans un terminal, taper les lignes suivantes :
+3)Dans un terminal se placer dans le nouveau dossier puis taper les lignes suivantes :
 set path=%path%;"path_du_dossier_bin"
 javac parking/*.java
 java parking/Main
