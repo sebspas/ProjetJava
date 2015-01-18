@@ -21,14 +21,14 @@ public class VueFacture {
 	/*						Debut Donnees Membres 				   */
     /***************************************************************/
     /**
-     * Les panneaux "panel1" et "panel" accueillant la facture.
+     * Le panneau "panel" accueillant la facture.
      */
-    private JPanel panel1, panel;
+    private JPanel panel;
 
     /**
      * Le champ prevu pour afficher la facture.
      */
-    private JTextArea textArea1;
+    private JTextArea textAreaFacture;
 
     /**
      * Le bouton permettant de sauvegarder la facture.
@@ -53,16 +53,16 @@ public class VueFacture {
         fenetre.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         
         panel = new JPanel();
-        
-        panel .setLayout(new BorderLayout());
+        panel.setLayout(new BorderLayout());
         
         save = new JButton("Sauvegarder");
         
         panel.add(save, BorderLayout.SOUTH);
-        panel.add(textArea1, BorderLayout.CENTER);
+        panel.add(textAreaFacture, BorderLayout.CENTER);
 
-        textArea1.setPreferredSize(new Dimension(400,300));
-        textArea1.setText(facture.toString());
+        textAreaFacture = new JTextArea();
+        textAreaFacture.setPreferredSize(new Dimension(400,300));
+        textAreaFacture.setText(facture.toString());
 
         
         save.addActionListener(new ActionListener() {
