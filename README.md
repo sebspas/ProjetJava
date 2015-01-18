@@ -12,7 +12,9 @@ Windows
 
 2)Créer un nouveau dossier
 
-3)Dans un terminal se placer dans le nouveau dossier puis taper les lignes suivantes :
+3)Extraire le zip dans le nouveau dossier
+
+4)Dans un terminal se placer dans le nouveau dossier puis taper les lignes suivantes :
 set path=%path%;"path_du_dossier_bin"
 javac parking/*.java
 java parking/Main
