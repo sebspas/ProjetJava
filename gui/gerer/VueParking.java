@@ -44,12 +44,7 @@ public class VueParking extends Vue implements Serializable{
     /**
      * Les panneaux main, legende et panel1.
      */
-    private JPanel main, legende, panel1;
-
-    /**
-     * L'etiquette contenant le titre de cette vue.
-     */
-    private JLabel titre;
+    private JPanel main, legende;
 
     /**
      * Les "boutons" 1 a 6 (non cliquables).
