@@ -54,13 +54,13 @@ public class VueFacture {
         
         panel = new JPanel();
         panel.setLayout(new BorderLayout());
-        
+
+        textAreaFacture = new JTextArea();
         save = new JButton("Sauvegarder");
         
         panel.add(save, BorderLayout.SOUTH);
         panel.add(textAreaFacture, BorderLayout.CENTER);
 
-        textAreaFacture = new JTextArea();
         textAreaFacture.setPreferredSize(new Dimension(400,300));
         textAreaFacture.setText(facture.toString());
 
