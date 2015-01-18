@@ -16,7 +16,7 @@ Windows
 
 4)Dans un terminal se placer dans le nouveau dossier puis taper les lignes suivantes :
 set path=%path%;"path_du_dossier_bin"
-javac parking/*.java
+javac -encoding utf8 parking/*.java
 java parking/Main
 
 Linux
