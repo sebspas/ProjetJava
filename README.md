@@ -30,6 +30,7 @@ sudo apt-get install openjdk-7-jdk
 
 4)Dans le terminal se rendre dans le dossier et taper la commande suivante :
 javac parking/*.java
+javac -encoding utf8 parking/*.java
 
 5)Lancer le projet avec la commande suivante :
 java parking/Main
