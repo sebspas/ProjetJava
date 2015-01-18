@@ -33,9 +33,14 @@ public class VueTimer extends Vue {
     private JPanel panel;
 
     /**
+     * Police pour textFieldJour et textFieldHeure
+     */
+    private Font font1 = new Font("SansSerif", Font.BOLD, 20);
+
+    /**
      * Les differents champs "textField1" et "textField2".
      */
-    private JTextField textField1, textField2;
+    private JTextField textFieldJour, textFieldHeure;
 
     /**
      * Le bouton permettant d'ajouter une heure au timer.
@@ -69,7 +74,21 @@ public class VueTimer extends Vue {
         
         panel = new JPanel();
         panel.setLayout(new BorderLayout());
-        
+
+        textFieldJour = new JTextField();
+        textFieldJour.setBackground(Color.gray);
+        textFieldJour.setForeground(Color.white);
+        textFieldJour.setHorizontalAlignment(JTextField.CENTER);
+        textFieldJour.setFont(font1);
+        textFieldJour.setEditable(false);
+
+        textFieldHeure = new JTextField();
+        textFieldHeure.setBackground(Color.gray);
+        textFieldHeure.setForeground(Color.white);
+        textFieldHeure.setHorizontalAlignment(JTextField.CENTER);
+        textFieldHeure.setFont(font1);
+        textFieldHeure.setEditable(false);
+
         incremente = new JButton("Ajouter 1 Heure");
         
         incremente.addActionListener(new ActionListener() {
@@ -79,8 +98,8 @@ public class VueTimer extends Vue {
             }
         });
         
-        panel.add(textField1, BorderLayout.NORTH);
-        panel.add(textField2, BorderLayout.CENTER);
+        panel.add(textFieldJour, BorderLayout.NORTH);
+        panel.add(textFieldHeure, BorderLayout.CENTER);
         panel.add(incremente, BorderLayout.SOUTH);
         
         fenetre.setContentPane(panel);
@@ -111,8 +130,8 @@ public class VueTimer extends Vue {
      */
     @Override
     public void mettreAJour() {
-        textField1.setText("Jour : " + this.timer.getDay() + " jour(s)");
-        textField2.setText("Heure : " + this.timer.getHeures() + " : " + this.timer.getMinutes() + " : "  + this.timer.getSecondes() +" sec(s)");
+        textFieldJour.setText("Jour : " + this.timer.getDay() + " jour(s)");
+        textFieldHeure.setText("Heure : " + this.timer.getHeures() + " : " + this.timer.getMinutes() + " : " + this.timer.getSecondes() + " sec(s)");
     } // mettreAJour()
 
 } // VueTimer class

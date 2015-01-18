@@ -287,39 +287,13 @@ public class VueVehicule extends Vue implements Serializable{
 
     } // afficherClients()
 
-    /**
-     * Methode AfficheListeVehicule() permet d'afficher la liste des vehicules.
-     *
-     * @return La liste des vehicules.
-     */
-    private JPanel AfficheListeVehicule() {
-        listeVehicule.removeAll();
-        DefaultListModel dlm = new DefaultListModel();
-        JList list = new JList(dlm);
-        list.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-        list.setLayoutOrientation(JList.HORIZONTAL_WRAP);
-        list.setVisibleRowCount(-1);
-        JScrollPane listScroller = new JScrollPane(list);
-        listScroller.setPreferredSize(new Dimension(500, 350));
-        list.setVisibleRowCount(10);
-        for (Place p : Parking.getInstance().getListePlaces()) {
-            if (p.getVehicule() != null) {
-                dlm.addElement(p.getVehicule());
-            }
-        }
-        listeVehicule.add(listScroller);
-        return listeVehicule;
-    } // AfficheListeVehicule()
 
     /**
      * Methode mettreAJour() permet de mettre a jour la vue.
      */
     @Override
     public void mettreAJour() {
-        listeVehicule = AfficheListeVehicule();
-
-        listeVehicule.revalidate();
-        listeVehicule.repaint();
+        return;
     } // mettreAJour()
 
 } // VueVehicule class
