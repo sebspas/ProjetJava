@@ -14,6 +14,7 @@ import parking.gui.ajouter.VueCreation;
 public class Main {
     public static void main(String[] args) {
         try {
+            System.setProperty( "file.encoding", "UTF-8" );
             new VueCreation();
         }
         catch (Exception e) {
