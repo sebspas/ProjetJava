@@ -56,6 +56,7 @@ public class VueFacture {
         panel.setLayout(new BorderLayout());
 
         textAreaFacture = new JTextArea();
+        textAreaFacture.setEditable(false);
         save = new JButton("Sauvegarder");
         
         panel.add(save, BorderLayout.SOUTH);
