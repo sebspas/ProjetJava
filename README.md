@@ -36,10 +36,10 @@ java parking/Main
 ##### Utilisation de l'application #####
 ########################################
 
-- Lors de la création d'un parking vous pouvez utiliser le nom default pour obtenir
-une base de données contenant déja plusieur client et véhicule.
+- Lors de la création d'un parking vous pouvez le nommer "default" pour
+obtenir une base de données contenant déja plusieurs clients et véhicules.
 
 - Vous pouvez à tout moment sauvegarder le parking pour le restaurer plus tard.
 
-- Depuis l'interface d'administration du parking vous pouvez cliquez sur une place 
+- Depuis l'interface d'administration du parking vous pouvez cliquer sur une place 
 pour la réserver ou la dé-réserver.
