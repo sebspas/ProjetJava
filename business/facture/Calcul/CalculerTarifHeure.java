@@ -7,7 +7,6 @@ import parking.Constante;
 import parking.business.Parking;
 import parking.business.Place;
 import parking.business.Timer;
-
 import java.io.Serializable;
 
 /**
@@ -40,7 +39,7 @@ public class CalculerTarifHeure implements CalculerTarif, Serializable{
         int jourArrivee = p.getVehicule().getJourArrivee();
 
         //Calcul du nombre d'heure passé sur le parking
-        int nombreHeures = 0;
+        int nombreHeures;
         if (jourActuel == jourArrivee) {
             nombreHeures = heureActuelle - heureArrivee;
             if (nombreHeures == 0) nombreHeures = 1;
@@ -51,7 +50,7 @@ public class CalculerTarifHeure implements CalculerTarif, Serializable{
         
         //Récupération du prix de l'heure sur ce type de place
         double tarif = Parking.getInstance().getTarifParticulier();
-        if (p.getVehicule().getType() == "Transporteur")
+        if (p.getVehicule().getType().equals("Transporteur"))
             tarif = Parking.getInstance().getTarifTransporteur();
 
         // Calcul final du tarif

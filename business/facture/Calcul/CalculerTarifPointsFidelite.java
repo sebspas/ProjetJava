@@ -5,7 +5,6 @@ package parking.business.facture.Calcul;
 /***************************************************************/
 import parking.business.Client;
 import parking.business.Place;
-
 import java.io.Serializable;
 
 /**

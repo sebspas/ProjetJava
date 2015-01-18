@@ -124,7 +124,7 @@ public class Place implements Serializable{
 	 */
 	public void setVehicule(Vehicule vehicule) throws PlaceOccupeeException, PlaceReserverException{
 		// Si la place possède déja un véhicule ou que le type de se Véhicule n'est pas compatible avec la place on léve une exception.
-		if(this.vehicule != null || (vehicule.getType() == "Camion" && type == "Particulier"))
+		if(this.vehicule != null || (vehicule.getType().equals("Camion") && type.equals("Particulier")))
 			throw new PlaceOccupeeException();
 		// si elle est réservée on lève une exception.
 		else if (this.Reserver)

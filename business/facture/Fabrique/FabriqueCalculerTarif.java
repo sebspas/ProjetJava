@@ -33,13 +33,13 @@ public class FabriqueCalculerTarif implements IFabriqueCalculerTarif {
      */
     @Override
     public CalculerTarif creer(String nom) throws MethodeNonGeree {
-        if (nom == "CalculerTarifHeure") {
+        if (nom.equals("CalculerTarifHeure")) {
             return new CalculerTarifHeure();
         }
-        else if (nom == "CalculerTarifPointsFidelite") {
+        else if (nom.equals("CalculerTarifPointsFidelite")) {
             return new CalculerTarifPointsFidelite();
         }
-        else if (nom == "CalculerTarifPreferentiel") {
+        else if (nom.equals("CalculerTarifPreferentiel")) {
             return new CalculertarifPreferentiel();
         }
         else {

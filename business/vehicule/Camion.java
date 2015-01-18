@@ -4,7 +4,6 @@ package parking.business.vehicule;
 /*						Import						   		   */
 /***************************************************************/
 import parking.business.Client;
-import parking.business.Parking;
 
 /**
  * Class Camion, qui herite de la classe Vehicule, et rajoute les informations suplementaires

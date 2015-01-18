@@ -10,6 +10,7 @@ import parking.gui.Vue;
 import parking.gui.gerer.VueParking;
 import parking.gui.gerer.VueTimer;
 
+import javax.swing.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 

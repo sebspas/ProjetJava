@@ -102,7 +102,7 @@ public class VueParking extends Vue implements Serializable{
         fenetre.setResizable(false);
         fenetre.setLocation(400, 100);
         fenetre.setPreferredSize(new Dimension(850, 600));
-        fenetre.setDefaultCloseOperation(fenetre.EXIT_ON_CLOSE);
+        fenetre.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         fenetre.setLayout(new BorderLayout());
         fenetre.setJMenuBar(barreMenus());
@@ -415,7 +415,7 @@ public class VueParking extends Vue implements Serializable{
      * Methode actionMenuVehiculeAjouterVoiture() permet d'ajouter une voiture dans le parking.
      */
     private void actionMenuVehiculeAjouterVoiture() {
-        parking.gui.Vue AjouterVehicule = new VueAjouterVehicule();
+        new VueAjouterVehicule();
     } // actionMenuVehiculeAjouterVoiture()
 
     /**
@@ -450,7 +450,7 @@ public class VueParking extends Vue implements Serializable{
      * Methode actionMenuClientNouveau() permet d'ajouter un nouveau client.
      */
     private void actionMenuClientNouveau() {
-       parking.gui.Vue NouveauClient = new VueNouveauClient();
+       new VueNouveauClient();
     } // actionMenuClientNouveau()
 
     /**

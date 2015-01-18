@@ -71,11 +71,6 @@ public class VueVehicule extends Vue implements Serializable{
      */
     private JButton unpark_vehicule;
 
-    /**
-     * Le bouton permettant de supprimer un vehicule.
-     */
-    private JButton supprimer_vehicule;
-
     /***************************************************************/
 	/*						Constructeur						   */
     /***************************************************************/
@@ -179,8 +174,6 @@ public class VueVehicule extends Vue implements Serializable{
 
         afficherClients();
         fenetre.repaint();
-        
-        client.setSelectedIndex(0);
         
         topClient = new JPanel();
         topClient.setLayout(new BorderLayout());

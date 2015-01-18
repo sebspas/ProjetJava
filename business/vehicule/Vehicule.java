@@ -4,11 +4,8 @@ package parking.business.vehicule;
 /*						Import						   		   */
 /***************************************************************/
 import parking.business.Client;
-import parking.business.Parking;
 import parking.business.Timer;
-
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * Class Vehicule permettant de creer un nouveau vehicule avec ses specificites comme

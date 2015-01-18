@@ -107,16 +107,6 @@ public class Timer extends Thread implements Serializable {
     } // getVue()
 
     /**
-     * Methode getTimer() renvoie une string contenant les informations du Timer.
-     *
-     * @return String
-     *      La chaine de caracteres contenant les infos du Timer.
-     */
-    public String getTimer() {
-        return "Nous sommes le jour numero " + day + " ,il est : " +heures + "h et " + minutes + "min et " + secondes + " sec";
-    } // getTimer()
-
-    /**
      * Methode getDay() renvoie le jour.
      *
      * @return int
@@ -194,7 +184,7 @@ public class Timer extends Thread implements Serializable {
         while (true) {
             try {
                 // On attend une seconde
-                this.sleep(1000);
+                sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -207,7 +197,7 @@ public class Timer extends Thread implements Serializable {
      * Methode mettreAJour() permet de mettre a jour l'affichage du timer.
      */
     private void mettreAJour() {
-        secondes = secondes + vitesse * 1;
+        secondes = secondes + vitesse;
         
         if (secondes == 60) {
             secondes = 0;

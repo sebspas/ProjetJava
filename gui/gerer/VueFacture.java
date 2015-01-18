@@ -50,7 +50,7 @@ public class VueFacture {
         final JFrame fenetre = new JFrame("Facture n°" + facture.getNumeroFacture());
         fenetre.setResizable(false);
         fenetre.setPreferredSize(new Dimension(450,400));
-        fenetre.setDefaultCloseOperation(fenetre.DISPOSE_ON_CLOSE);
+        fenetre.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         
         panel = new JPanel();
         

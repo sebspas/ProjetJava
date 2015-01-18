@@ -106,7 +106,7 @@ public class VueAjouterVehicule extends Vue {
         // fenetre
         fenetre.setLocation(0, 0);
         fenetre.setPreferredSize(new Dimension(320,280));
-        fenetre.setDefaultCloseOperation(fenetre.DISPOSE_ON_CLOSE);
+        fenetre.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         fenetre.setLayout(new BorderLayout());
 
         main = new JPanel();
@@ -200,8 +200,7 @@ public class VueAjouterVehicule extends Vue {
                     Hauteur.setEnabled(true);
                     Tonnage.setEnabled(true);
                     fenetre.repaint();
-                }
-                else {
+                } else {
                     Hauteur.setEnabled(false);
                     Tonnage.setEnabled(false);
                     fenetre.repaint();
@@ -316,7 +315,7 @@ public class VueAjouterVehicule extends Vue {
             public void actionPerformed(ActionEvent e) {
                 if (validateData()) {
                     IFabriqueVehicule fabriqueVehicule = new FabriqueVehicule();
-                    if (typeVehicule.getSelectedItem() == "Voiture") {;
+                    if (typeVehicule.getSelectedItem() == "Voiture") {
                         fabriqueVehicule.creer(
                                 Immatriculation.getText(),
                                 Marque.getText(),
@@ -384,6 +383,9 @@ public class VueAjouterVehicule extends Vue {
      * @return Booleen indiquant si les donnees sont validees (true) ou non (false).
      */
     public boolean validateData() {
+        if (client.getSelectedItem() == null) {
+            return false;
+        }
         if (Immatriculation.getText().isEmpty()) {
             return false;
         }

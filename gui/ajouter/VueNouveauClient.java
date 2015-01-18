@@ -75,7 +75,7 @@ public class VueNouveauClient extends Vue {
     public VueNouveauClient() {
         fenetre.setLocation(0, 0);
         fenetre.setPreferredSize(new Dimension(320,200));
-        fenetre.setDefaultCloseOperation(fenetre.DISPOSE_ON_CLOSE);
+        fenetre.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         fenetre.setLayout(new BorderLayout());
 
         main = new JPanel();

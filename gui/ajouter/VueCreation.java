@@ -83,7 +83,7 @@ public class VueCreation {
         // fenetre
         fenetre.setLocation(0, 0);
         fenetre.setPreferredSize(new Dimension(320,320));
-        fenetre.setDefaultCloseOperation(fenetre.EXIT_ON_CLOSE);
+        fenetre.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         fenetre.setLayout(new BorderLayout());
         fenetre.setJMenuBar(barreMenus());
 
@@ -342,14 +342,14 @@ public class VueCreation {
 
                         // Creation des vehicules //
                         IFabriqueVehicule fabriqueVehicule = new FabriqueVehicule();
-                        Vehicule v1 = fabriqueVehicule.creer("AB-531-MT-13", "Citroen", "C3", client1);
-                        Vehicule v2 = fabriqueVehicule.creer("BT-640-AE-83", "Peugeot", "306", client2);
-                        Vehicule v3 = fabriqueVehicule.creer("AN-155-GT-45", "Renault", "Scenic", client3);
-                        Vehicule v4 = fabriqueVehicule.creer("CD-294-ZE-69", "Audi", "SWAG", client3);
-                        Vehicule c1 = fabriqueVehicule.creer("BG-951-KC-29", "GMC", "Savana", client4, 15, 355);
-                        Vehicule c2 = fabriqueVehicule.creer("AP-735-LP-84", "International", "CF600", client5, 15, 355);
-                        Vehicule c3 = fabriqueVehicule.creer("BR-848-MM-75", "Chevrolet", "Express", client5, 15, 355);
-                        Vehicule c4 = fabriqueVehicule.creer("CZ-609-OK-31", "Ford", "E350", client6, 15, 355);
+                        fabriqueVehicule.creer("AB-531-MT-13", "Citroen", "C3", client1);
+                        fabriqueVehicule.creer("BT-640-AE-83", "Peugeot", "306", client2);
+                        fabriqueVehicule.creer("AN-155-GT-45", "Renault", "Scenic", client3);
+                        fabriqueVehicule.creer("CD-294-ZE-69", "Audi", "SWAG", client3);
+                        fabriqueVehicule.creer("BG-951-KC-29", "GMC", "Savana", client4, 15, 355);
+                        fabriqueVehicule.creer("AP-735-LP-84", "International", "CF600", client5, 15, 355);
+                        fabriqueVehicule.creer("BR-848-MM-75", "Chevrolet", "Express", client5, 15, 355);
+                        fabriqueVehicule.creer("CZ-609-OK-31", "Ford", "E350", client6, 15, 355);
                     }
                     fenetre.setVisible(false);
                 }
@@ -430,7 +430,17 @@ public class VueCreation {
                     JOptionPane.ERROR_MESSAGE);
             return false;
         }
-
+        int NbPlaceP = new Integer(NbPlacesParticulier.getText());
+        int NbPlaceT = new Integer(NbPlacesTransporteur.getText());
+        int NbPlaceMax = new Integer(PlacesMax.getText());
+        
+        if (NbPlaceMax < (NbPlaceP + NbPlaceT ) || (NbPlaceMax != (NbPlaceP + NbPlaceT))) {
+            JOptionPane.showMessageDialog(fenetre,
+                    "PlacesMax incorrectes !",
+                    "Erreur PlacesMax",
+                    JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
         return true;
     } // validateData()
 

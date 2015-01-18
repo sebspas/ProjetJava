@@ -3,7 +3,6 @@ package parking.business;
 /***************************************************************/
 /*						Import						   		   */
 /***************************************************************/
-import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.*;
 
 /**
@@ -21,11 +20,11 @@ public class Gestionnaire {
      */
     public void sauvegarder(){
         new File("saves").mkdir();
-        File flux = new File("saves/" + Parking.getInstance().getNom() + ".ser");
+        new File("saves/" + Parking.getInstance().getNom() + ".ser");
         ObjectOutputStream oos = null;
 
         try {
-            oos =  new ObjectOutputStream(new FileOutputStream("saves/MonParking.ser")) ;
+            oos =  new ObjectOutputStream(new FileOutputStream("saves/" + Parking.getInstance().getNom() + ".ser")) ;
             oos.writeObject(Parking.getInstance());
         }
         catch(EOFException e){
@@ -51,7 +50,7 @@ public class Gestionnaire {
      *          Nom du fichier de save du parking.
      */
     public void lire(String fichier){
-        File flux = new File(fichier);
+        new File(fichier);
         ObjectInputStream ois = null;
         try {
             ois =  new ObjectInputStream(new FileInputStream(fichier)) ;
